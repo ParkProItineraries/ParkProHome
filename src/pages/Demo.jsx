@@ -47,6 +47,18 @@ const StepIndicator = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.lg};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  flex-wrap: wrap;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: ${({ theme }) => theme.spacing.md};
+    margin-bottom: ${({ theme }) => theme.spacing.xl};
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    gap: ${({ theme }) => theme.spacing.sm};
+    flex-direction: column;
+    align-items: stretch;
+  }
 `;
 
 const Step = styled.div`
@@ -74,6 +86,12 @@ const Step = styled.div`
     $completed ? theme.shadows.gold : 
     $active ? theme.shadows.gold : 
     'none'};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    justify-content: center;
+    padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
 `;
 
 const StepNumber = styled.div`

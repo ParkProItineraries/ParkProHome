@@ -57,6 +57,12 @@ const FeatureGrid = styled.div`
     grid-template-columns: 1fr;
     gap: ${({ theme }) => theme.spacing.xl};
   }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
+    margin-top: ${({ theme }) => theme.spacing['2xl']};
+  }
 `;
 
 const FeatureCard = styled(Card)`
@@ -69,6 +75,10 @@ const FeatureCard = styled(Card)`
     transform: translateY(-8px);
     border-color: ${({ theme }) => theme.colors.gold};
     box-shadow: ${({ theme }) => theme.shadows['gold-lg']};
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ theme }) => theme.spacing.xl};
   }
 `;
 

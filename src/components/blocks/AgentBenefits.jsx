@@ -54,6 +54,12 @@ const BenefitsGrid = styled.div`
     grid-template-columns: 1fr;
     gap: ${({ theme }) => theme.spacing.xl};
   }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
+    margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  }
 `;
 
 const BenefitCard = styled(motion.div).withConfig({
@@ -70,6 +76,10 @@ const BenefitCard = styled(motion.div).withConfig({
     transform: translateY(-4px);
     box-shadow: ${({ theme }) => theme.shadows.lg};
     border-color: ${({ theme }) => theme.colors.gold};
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ theme }) => theme.spacing.xl};
   }
 `;
 
