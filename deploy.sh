@@ -40,6 +40,18 @@ fi
 
 echo -e "${GREEN}✅ AWS CLI configured${NC}"
 
+# Upload sitemap.xml with correct MIME type first
+echo -e "${YELLOW}🗺️ Uploading sitemap.xml...${NC}"
+aws s3 cp dist/sitemap.xml s3://$S3_BUCKET/sitemap.xml \
+    --content-type "application/xml" \
+    --cache-control "public, max-age=3600"
+
+# Upload robots.txt with correct MIME type
+echo -e "${YELLOW}🤖 Uploading robots.txt...${NC}"
+aws s3 cp dist/robots.txt s3://$S3_BUCKET/robots.txt \
+    --content-type "text/plain" \
+    --cache-control "public, max-age=3600"
+
 # Upload static assets with long cache
 echo -e "${YELLOW}📤 Uploading static assets...${NC}"
 aws s3 sync dist/ s3://$S3_BUCKET/ \
@@ -57,18 +69,6 @@ aws s3 sync dist/ s3://$S3_BUCKET/ \
     --cache-control "public, max-age=0, must-revalidate" \
     --include "*.html" \
     --include "*.json"
-
-# Upload sitemap.xml with correct MIME type
-echo -e "${YELLOW}🗺️ Uploading sitemap.xml...${NC}"
-aws s3 cp dist/sitemap.xml s3://$S3_BUCKET/sitemap.xml \
-    --content-type "application/xml" \
-    --cache-control "public, max-age=3600"
-
-# Upload robots.txt with correct MIME type
-echo -e "${YELLOW}🤖 Uploading robots.txt...${NC}"
-aws s3 cp dist/robots.txt s3://$S3_BUCKET/robots.txt \
-    --content-type "text/plain" \
-    --cache-control "public, max-age=3600"
 
 echo -e "${GREEN}✅ Files uploaded to S3${NC}"
 

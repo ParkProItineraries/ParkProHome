@@ -35,6 +35,16 @@ jobs:
         
     - name: Deploy to S3
       run: |
+        # Upload sitemap.xml with correct MIME type first
+        aws s3 cp dist/sitemap.xml s3://parkproit.com/sitemap.xml \
+          --content-type "application/xml" \
+          --cache-control "public, max-age=3600"
+        
+        # Upload robots.txt with correct MIME type
+        aws s3 cp dist/robots.txt s3://parkproit.com/robots.txt \
+          --content-type "text/plain" \
+          --cache-control "public, max-age=3600"
+        
         # Upload static assets with long cache
         aws s3 sync dist/ s3://parkproit.com/ \
           --delete \
@@ -50,16 +60,6 @@ jobs:
           --cache-control "public, max-age=0, must-revalidate" \
           --include "*.html" \
           --include "*.json"
-        
-        # Upload sitemap.xml with correct MIME type
-        aws s3 cp dist/sitemap.xml s3://parkproit.com/sitemap.xml \
-          --content-type "application/xml" \
-          --cache-control "public, max-age=3600"
-        
-        # Upload robots.txt with correct MIME type
-        aws s3 cp dist/robots.txt s3://parkproit.com/robots.txt \
-          --content-type "text/plain" \
-          --cache-control "public, max-age=3600"
           
     - name: Invalidate CloudFront
       run: |
