@@ -85,7 +85,7 @@ jspm_packages/
 
 # Gatsby files
 .cache/
-public
+# Note: public/ directory should NOT be ignored as it contains source files like sitemap.xml
 
 # Storybook build outputs
 .out
