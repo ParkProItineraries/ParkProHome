@@ -224,8 +224,8 @@ const Hero = () => {
   ];
 
   return (
-    <HeroSection>
-      <FloatingElements>
+    <HeroSection role="banner" aria-label="Park Pro - Automated Disney Planning for Travel Agents">
+      <FloatingElements aria-hidden="true">
         {floatingElements.map((element, index) => (
           <FloatingElement
             key={index}
@@ -250,8 +250,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            role="status"
+            aria-label="Early access program for travel agents"
           >
-            <Star size={16} />
+            <Star size={16} aria-hidden="true" />
             Exclusive Early Access for Travel Agents
           </Badge>
           
@@ -277,6 +279,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            role="group"
+            aria-label="Call to action buttons"
           >
             <Button 
               to="/demo" 
@@ -291,6 +295,7 @@ const Hero = () => {
                 textDecoration: 'none',
                 display: 'inline-block'
               }}
+              aria-label="See how Park Pro works - Watch demo"
             >
               See How It Works
             </Button>
@@ -308,6 +313,7 @@ const Hero = () => {
                 textDecoration: 'none',
                 display: 'inline-block'
               }}
+              aria-label="Join early access program for travel agents"
             >
               Join Early Access
             </Button>
@@ -317,6 +323,8 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            role="group"
+            aria-label="Key statistics and benefits"
           >
             {stats.map((stat, index) => (
               <StatItem
@@ -324,8 +332,10 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 + index * 0.2 }}
+                role="article"
+                aria-label={`${stat.number} ${stat.label}`}
               >
-                <StatNumber>{stat.number}</StatNumber>
+                <StatNumber aria-label={stat.number}>{stat.number}</StatNumber>
                 <StatLabel>{stat.label}</StatLabel>
               </StatItem>
             ))}

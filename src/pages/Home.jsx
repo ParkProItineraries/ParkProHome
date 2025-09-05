@@ -16,10 +16,12 @@ const HomeWrapper = styled.div`
 const Home = () => {
   return (
     <HomeWrapper>
-      <Hero />
-      <AgentBenefits />
-      <FeatureGridComponent />
-      <CTA />
+      <main role="main" aria-label="Park Pro homepage content">
+        <Hero />
+        <AgentBenefits />
+        <FeatureGridComponent />
+        <CTA />
+      </main>
     </HomeWrapper>
   );
 };
