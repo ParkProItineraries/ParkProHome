@@ -110,7 +110,7 @@ const Footer = () => {
             </FooterText>
           </FooterColumn>
 
-          {/* Quick Links Column */}
+          {/* Quick Links column */}
           <FooterColumn>
             <FooterTitle>Quick Links</FooterTitle>
             <FooterLink to="/about">About</FooterLink>

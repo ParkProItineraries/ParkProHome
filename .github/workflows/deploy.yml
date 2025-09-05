@@ -26,6 +26,11 @@ jobs:
     - name: Build project
       run: npm run build
       
+    - name: Copy SEO files to dist
+      run: |
+        cp public/sitemap.xml dist/sitemap.xml
+        cp public/robots.txt dist/robots.txt
+      
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:

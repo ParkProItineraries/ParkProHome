@@ -19,7 +19,7 @@ const RequestAccess = React.lazy(() => import("./pages/RequestAccess"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Signup = React.lazy(() => import("./pages/Signup"));
 
-// Business pages
+// Business Pages
 const TermsOfService = React.lazy(() => import("./pages/business/TermsOfService"));
 const PrivacyPolicy = React.lazy(() => import("./pages/business/PrivacyPolicy"));
 

@@ -26,6 +26,18 @@ if [ ! -d "dist" ]; then
     npm run build
 fi
 
+# Check if sitemap.xml exists in dist
+if [ ! -f "dist/sitemap.xml" ]; then
+    echo -e "${YELLOW}📦 Copying sitemap.xml from public to dist...${NC}"
+    cp public/sitemap.xml dist/sitemap.xml
+fi
+
+# Check if robots.txt exists in dist
+if [ ! -f "dist/robots.txt" ]; then
+    echo -e "${YELLOW}📦 Copying robots.txt from public to dist...${NC}"
+    cp public/robots.txt dist/robots.txt
+fi
+
 # Check if AWS CLI is installed
 if ! command -v aws &> /dev/null; then
     echo -e "${RED}❌ AWS CLI is not installed. Please install it first.${NC}"
