@@ -18,6 +18,9 @@ const DemoItinerary = React.lazy(() => import("./pages/DemoItinerary"));
 const RequestAccess = React.lazy(() => import("./pages/RequestAccess"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Signup = React.lazy(() => import("./pages/Signup"));
+const DisneyPlanningSoftware = React.lazy(() => import("./pages/DisneyPlanningSoftware"));
+const TravelAgentSoftware = React.lazy(() => import("./pages/TravelAgentSoftware"));
+const FAQ = React.lazy(() => import("./pages/FAQ"));
 
 // Business Pages
 const TermsOfService = React.lazy(() => import("./pages/business/TermsOfService"));
@@ -61,6 +64,9 @@ const App = () => {
                     <Route path="/demo" element={<Demo />} />
                     <Route path="/request-access" element={<RequestAccess />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/disney-planning-software" element={<DisneyPlanningSoftware />} />
+                    <Route path="/travel-agent-software" element={<TravelAgentSoftware />} />
+                    <Route path="/faq" element={<FAQ />} />
                     <Route path="/business/terms-of-service" element={<TermsOfService />} />
                     <Route path="/business/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="*" element={<NotFound />} />

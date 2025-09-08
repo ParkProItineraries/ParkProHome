@@ -262,8 +262,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            Stop Spending Hours on Disney Itineraries{" "}
-            <span className="gradient-text">Start Closing More Bookings</span>
+            <span className="gradient-text">Park Pro</span> - The #1 Disney Planning Software for Travel Agents{" "}
+            <span className="gradient-text">Stop Spending Hours on Disney Itineraries</span>
           </Title>
           
           <Subtitle
@@ -271,8 +271,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
-            Create personalized Disney itineraries in minutes, not hours. Our automated system handles crowd levels, 
-            wait times, and dining reservations so you can focus on what matters most - building relationships and closing deals.
+            <strong>Park Pro</strong> is the best Disney itinerary generator and travel agent software. Our automated Disney planning software creates personalized Disney World and Disneyland itineraries in minutes, not hours. The leading travel agent productivity tool handles crowd levels, wait times, and dining reservations so you can focus on building relationships and closing more deals.
           </Subtitle>
           
           <CTAButtons
