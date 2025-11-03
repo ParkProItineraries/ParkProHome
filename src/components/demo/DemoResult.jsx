@@ -150,7 +150,7 @@ const DemoResult = ({ generatedItinerary, error, isGenerating }) => {
         </ResultIcon>
         <ResultTitle>Ready to Create Magic?</ResultTitle>
         <ResultText>
-          Fill out the form to see how Park Pro generates personalized 
+          Fill out the form to see how ParkPro generates personalized 
           Disney itineraries in seconds!
         </ResultText>
       </ResultContainer>
@@ -180,7 +180,7 @@ const DemoResult = ({ generatedItinerary, error, isGenerating }) => {
         </div>
       </ResultText>
       <StyledButton onClick={() => window.open("https://app.parkproit.com", "_blank")}>
-        Get Started with Park Pro
+        Get Started with ParkPro
       </StyledButton>
     </ResultContainer>
   );

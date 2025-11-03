@@ -1,6 +1,6 @@
-# Park Pro - Landing Page
+# ParkPro - Landing Page
 
-A premium, high-converting landing page for Park Pro, an automated Disney itinerary generator for travel agents.
+A premium, high-converting landing page for ParkPro, an automated Disney itinerary generator for travel agents.
 
 ## Features
 
@@ -11,7 +11,7 @@ A premium, high-converting landing page for Park Pro, an automated Disney itiner
 
 ## API Integration
 
-This landing page is wired up to your Park Pro backend API. To configure the connection:
+This landing page is wired up to your ParkPro backend API. To configure the connection:
 
 1. Create a `.env` file in the root directory
 2. Add your API URL:

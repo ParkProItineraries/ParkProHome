@@ -312,7 +312,7 @@ const Signup = () => {
           <Card>
             <Title>Application Submitted!</Title>
             <SuccessMsg>
-              Thank you for your interest in Park Pro! Your application has been submitted and is currently under review. 
+              Thank you for your interest in ParkPro! Your application has been submitted and is currently under review. 
               We'll review your information and get back to you within 24 hours.
               {selectedPlan && selectedPlan.id !== 'enterprise' && (
                 <div style={{ marginTop: '1rem', fontSize: '1rem', color: '#64748b' }}>

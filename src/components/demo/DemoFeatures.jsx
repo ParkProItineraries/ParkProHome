@@ -105,7 +105,7 @@ const DemoFeatures = () => {
 
   return (
     <FeaturesSection>
-      <FeaturesTitle>Why Choose Park Pro?</FeaturesTitle>
+      <FeaturesTitle>Why Choose ParkPro?</FeaturesTitle>
       <FeaturesGrid>
         {features.map((feature, index) => (
           <FeatureCard

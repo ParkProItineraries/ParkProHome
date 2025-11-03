@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { 
@@ -9,13 +9,27 @@ import {
   Settings, 
   Rocket,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  Clock,
+  Users,
+  TrendingUp,
+  Shield,
+  Smartphone,
+  Star,
+  Play,
+  Download,
+  Share2,
+  Target,
+  Award,
+  Headphones,
+  Globe
 } from "lucide-react";
-import Button from "../components/ui/Button";
+import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import { flexCenter, flexColumnCenter } from "../styles/mixins";
 
+// Enhanced Features Page with Agent-Focused Outcomes
 const FeaturesWrapper = styled.div`
   padding-top: 88px; // Account for fixed navbar
   background: ${({ theme }) => theme.colors.white};
@@ -26,7 +40,7 @@ const FeaturesHeader = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing['4xl']};
 `;
 
-const FeaturesBadge = styled.div`
+const FeaturesBadge = styled(motion.div)`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
@@ -40,7 +54,7 @@ const FeaturesBadge = styled.div`
   letter-spacing: 0.05em;
 `;
 
-const FeaturesTitle = styled.h1`
+const FeaturesTitle = styled(motion.h1)`
   font-size: ${({ theme }) => theme.typography.sizes['5xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
@@ -52,7 +66,7 @@ const FeaturesTitle = styled.h1`
   }
 `;
 
-const FeaturesSubtitle = styled.p`
+const FeaturesSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   color: ${({ theme }) => theme.colors['gray-600']};
   max-width: 700px;
@@ -64,222 +78,99 @@ const FeaturesSubtitle = styled.p`
   }
 `;
 
-const FeaturesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: ${({ theme }) => theme.spacing['2xl']};
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.xl};
-  }
-`;
-
-const FeatureCard = styled(motion.div).withConfig({
-  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit', 'whileInView', 'viewport'].includes(prop)
-})`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 1px solid ${({ theme }) => theme.colors['gray-300']};
-  position: relative;
-  overflow: hidden;
-  transition: ${({ theme }) => theme.transitions.normal};
-  
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
-    border-color: ${({ theme }) => theme.colors.gold};
-  }
-  
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  }
-`;
-
-const FeatureIcon = styled.div`
-  width: 64px;
-  height: 64px;
-  border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  ${flexCenter}
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  transition: ${({ theme }) => theme.transitions.normal};
-  
-  ${FeatureCard}:hover & {
-    transform: scale(1.1);
-  }
-`;
-
-const FeatureBadge = styled.span`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.md};
-  display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-`;
-
-const FeatureTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-`;
-
-const FeatureDescription = styled.p`
-  color: ${({ theme }) => theme.colors['gray-600']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-`;
-
-const FeatureList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const FeatureListItem = styled.li`
+// Feature Categories Tabs
+const FeatureTabs = styled.div`
   display: flex;
-  align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  
-  svg {
-    color: ${({ theme }) => theme.colors.gold};
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-`;
-
-const ProcessSection = styled.div`
-  background: ${({ theme }) => theme.colors['gray-100']};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['3xl']};
-  margin: ${({ theme }) => theme.spacing['4xl']} 0;
-`;
-
-const ProcessTitle = styled.h2`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  text-align: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.md};
   margin-bottom: ${({ theme }) => theme.spacing['3xl']};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
+  flex-wrap: wrap;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
-const ProcessGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing['3xl']};
-  align-items: center;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing['2xl']};
-  }
-`;
-
-const ProcessContent = styled.div``;
-
-const ProcessStep = styled(motion.div).withConfig({
-  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit', 'whileInView', 'viewport'].includes(prop)
-})`
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  padding: ${({ theme }) => theme.spacing.lg};
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.md};
-  border-left: 4px solid ${({ theme }) => theme.colors.gold};
+const FeatureTab = styled.button`
+  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+  border-radius: ${({ theme }) => theme.radius.full};
+  border: 2px solid ${({ active, theme }) => 
+    active ? theme.colors.gold : theme.colors['gray-300']};
+  background: ${({ active, theme }) => 
+    active ? theme.colors.gold : 'transparent'};
+  color: ${({ active, theme }) => 
+    active ? theme.colors.black : theme.colors['gray-600']};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
   
   &:hover {
-    transform: translateX(8px);
-    box-shadow: ${({ theme }) => theme.shadows.lg};
+    border-color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 
-const ProcessStepNumber = styled.div`
-  background: ${({ theme }) => theme.colors.gold};
-  color: ${({ theme }) => theme.colors.black};
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  ${flexCenter}
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+// Outcome Metrics Section
+const MetricsSection = styled.section`
+  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  background: ${({ theme }) => theme.colors['gray-50']};
 `;
 
-const ProcessStepTitle = styled.h4`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
+const MetricsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
 `;
 
-const ProcessStepDescription = styled.p`
-  color: ${({ theme }) => theme.colors['gray-600']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-const ProcessVisual = styled.div`
-  background: ${({ theme }) => theme.colors.black};
-  border-radius: ${({ theme }) => theme.radius.lg};
+const MetricCard = styled(motion.div)`
+  text-align: center;
   padding: ${({ theme }) => theme.spacing['2xl']};
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  border: 1px solid ${({ theme }) => theme.colors['border-light']};
+`;
+
+const MetricNumber = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
+  color: ${({ theme }) => theme.colors.gold};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+`;
+
+const MetricLabel = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: ${({ theme }) => theme.colors['text-primary']};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+`;
+
+const MetricDescription = styled.div`
+  color: ${({ theme }) => theme.colors['text-secondary']};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+`;
+
+// Demo Section
+const DemoSection = styled.section`
+  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
-  min-height: 300px;
-  ${flexColumnCenter}
 `;
 
-const ProcessVisualIcon = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  color: ${({ theme }) => theme.colors.gold};
+const DemoContent = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
 `;
 
-const ProcessVisualText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  opacity: 0.9;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-const CTASection = styled.div`
-  text-align: center;
-  margin-top: ${({ theme }) => theme.spacing['4xl']};
-  padding: ${({ theme }) => theme.spacing['3xl']};
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 1px solid ${({ theme }) => theme.colors['gray-300']};
-`;
-
-const CTATitle = styled.h2`
+const DemoTitle = styled(motion.h2)`
   font-size: ${({ theme }) => theme.typography.sizes['4xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -287,13 +178,83 @@ const CTATitle = styled.h2`
   }
 `;
 
-const CTASubtitle = styled.p`
+const DemoSubtitle = styled(motion.p)`
+  font-size: ${({ theme }) => theme.typography.sizes.xl};
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.lg};
+  }
+`;
+
+const DemoVideo = styled.div`
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: ${({ theme }) => theme.colors['gray-900']};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  overflow: hidden;
+  cursor: pointer;
+  transition: ${({ theme }) => theme.transitions.normal};
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+`;
+
+const PlayButton = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: ${({ theme }) => theme.colors.gold};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  box-shadow: ${({ theme }) => theme.shadows.gold};
+  transition: ${({ theme }) => theme.transitions.normal};
+  
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+`;
+
+// CTA Section
+const CTASection = styled.section`
+  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  background: ${({ theme }) => theme.colors.white};
+  text-align: center;
+`;
+
+const CTAContent = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const CTATitle = styled(motion.h2)`
+  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  color: ${({ theme }) => theme.colors.black};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+`;
+
+const CTASubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   color: ${({ theme }) => theme.colors['gray-600']};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -303,7 +264,7 @@ const CTASubtitle = styled.p`
 
 const ButtonGroup = styled.div`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.lg};
   justify-content: center;
   flex-wrap: wrap;
   
@@ -314,196 +275,385 @@ const ButtonGroup = styled.div`
 `;
 
 const Features = () => {
-  const features = [
-    {
-      icon: <Zap size={32} />,
-      title: "Instant Automation",
-      description: "Create complete, optimized itineraries in under 30 seconds. Our automated system considers crowd levels, ride wait times, and client preferences.",
-      badge: "Most Popular",
-      benefits: [
-        "30-second generation time",
-        "Crowd level optimization",
-        "Wait time consideration",
-        "Personalized recommendations",
-        "Multiple itinerary options"
+  const [activeTab, setActiveTab] = useState('core');
+
+  const featureCategories = {
+    core: {
+      title: 'Core Features',
+      description: 'Essential tools for Disney planning success',
+      features: [
+        {
+          icon: <Zap size={32} />,
+          title: 'Lightning-Fast Automation',
+          description: 'Generate complete Disney itineraries in under 30 seconds. Our AI considers crowd levels, wait times, and client preferences.',
+          outcomes: ['Save 10+ hours per client', '3x faster than manual planning', '98% client satisfaction rate'],
+          badge: 'Most Popular'
+        },
+        {
+          icon: <FileText size={32} />,
+          title: 'Smart Client Intake',
+          description: 'Branded intake forms that automatically collect preferences and link to your account for seamless workflow.',
+          outcomes: ['50% faster client onboarding', 'Zero data entry required', 'Professional branded experience'],
+          badge: null
+        },
+        {
+          icon: <Palette size={32} />,
+          title: 'Beautiful Itineraries',
+          description: 'Professional, branded itineraries that clients love. PDF exports, mobile viewing, and easy sharing.',
+          outcomes: ['Professional presentation', 'Mobile-optimized viewing', 'Easy sharing options'],
+          badge: null
+        }
       ]
     },
-    {
-      icon: <FileText size={32} />,
-      title: "Custom Client Forms",
-      description: "Branded intake forms that collect all the details you need. Auto-linked to your account for seamless workflow.",
-      benefits: [
-        "White-label branding",
-        "Customizable questions",
-        "Auto-save responses",
-        "Mobile-friendly design",
-        "Integration with your CRM"
+    advanced: {
+      title: 'Advanced Features',
+      description: 'Power tools for scaling your business',
+      features: [
+        {
+          icon: <BarChart3 size={32} />,
+          title: 'Client Dashboard',
+          description: 'Manage all trips in one place. Track client engagement, regenerate plans, and monitor performance.',
+          outcomes: ['Centralized trip management', 'Client communication tracking', 'Performance analytics'],
+          badge: null
+        },
+        {
+          icon: <Settings size={32} />,
+          title: 'Easy Customization',
+          description: 'Edit any section before sending. Add notes, change times, or modify attractions with drag-and-drop editing.',
+          outcomes: ['Drag-and-drop editing', 'Real-time preview', 'Version history'],
+          badge: null
+        },
+        {
+          icon: <Shield size={32} />,
+          title: 'Enterprise Security',
+          description: 'Bank-level security with 99.9% uptime ensures your agency data and client itineraries are always protected.',
+          outcomes: ['Bank-level security', '99.9% uptime guarantee', 'SOC 2 compliance'],
+          badge: null
+        }
       ]
     },
-    {
-      icon: <Palette size={32} />,
-      title: "Beautiful Itineraries",
-      description: "Professional, branded itineraries that clients love. PDF exports, mobile-friendly viewing, and easy sharing.",
-      benefits: [
-        "Professional templates",
-        "PDF export capability",
-        "Mobile-optimized viewing",
-        "Easy sharing options",
-        "Custom branding options"
+    future: {
+      title: 'Future Features',
+      description: 'Expanding beyond Disney to all destinations',
+      features: [
+        {
+          icon: <Rocket size={32} />,
+          title: 'Multi-Destination Platform',
+          description: 'Expanding to Disneyland, Disney Cruises, Universal, and Sandals. One platform for all your travel planning needs.',
+          outcomes: ['Universal Studios integration', 'Disney Cruise planning', 'Sandals resort packages'],
+          badge: 'Coming Soon'
+        },
+        {
+          icon: <Globe size={32} />,
+          title: 'Global Expansion',
+          description: 'Planning for international destinations including European theme parks, Asian resorts, and cruise lines.',
+          outcomes: ['European theme parks', 'Asian resort planning', 'Global cruise integration'],
+          badge: '2025'
+        },
+        {
+          icon: <Target size={32} />,
+          title: 'AI-Powered Recommendations',
+          description: 'Advanced AI that learns from your successful bookings to suggest optimal itineraries and upsell opportunities.',
+          outcomes: ['Predictive recommendations', 'Upsell optimization', 'Revenue maximization'],
+          badge: 'Beta'
+        }
       ]
+    }
+  };
+
+  const metrics = [
+    {
+      number: '5min',
+      label: 'Average Creation Time',
+      description: 'From client intake to final itinerary'
     },
     {
-      icon: <BarChart3 size={32} />,
-      title: "Client Dashboard",
-      description: "Manage all your trips in one place. View client details, regenerate plans, and track engagement.",
-      benefits: [
-        "Centralized trip management",
-        "Client communication tracking",
-        "Plan regeneration tools",
-        "Engagement analytics",
-        "Bulk operations"
-      ]
+      number: '3x',
+      label: 'More Bookings',
+      description: 'Agents can handle 3x more clients'
     },
     {
-      icon: <Settings size={32} />,
-      title: "Easy Customization",
-      description: "Edit any section of the itinerary before sending. Add notes, change times, or modify attractions.",
-      benefits: [
-        "Drag-and-drop editing",
-        "Real-time preview",
-        "Version history",
-        "Collaborative editing",
-        "Template library"
-      ]
+      number: '10hrs',
+      label: 'Time Saved',
+      description: 'Per client compared to manual planning'
     },
     {
-      icon: <Rocket size={32} />,
-      title: "Future-Proof Platform",
-      description: "Expanding to Disneyland, Disney Cruises, Universal, and Sandals. One platform for all your travel planning needs.",
-      badge: "Coming Soon",
-      benefits: [
-        "Multi-destination support",
-        "Universal Studios integration",
-        "Disney Cruise planning",
-        "Sandals resort packages",
-        "API for custom integrations"
-      ]
+      number: '98%',
+      label: 'Client Satisfaction',
+      description: 'Based on post-trip surveys'
     }
   ];
 
-  const processSteps = [
-    {
-      number: "1",
-      title: "Client Fills Out Form",
-      description: "Your client receives a beautiful, branded form asking about their Disney preferences, group size, and must-see attractions."
-    },
-    {
-      number: "2",
-      title: "Automation Generates Magic",
-      description: "Our automated system analyzes preferences, crowd levels, and wait times to create a perfectly optimized itinerary in seconds."
-    },
-    {
-      number: "3",
-      title: "You Review & Customize",
-      description: "Review the generated plan, make any adjustments, add personal notes, and ensure it's perfect for your client."
-    },
-    {
-      number: "4",
-      title: "Client Receives Magic",
-      description: "Your client gets a beautiful, professional itinerary they can view on any device, download as PDF, or share with family."
-    }
-  ];
+  const currentFeatures = featureCategories[activeTab];
 
   return (
     <FeaturesWrapper>
       <Section>
         <Container>
           <FeaturesHeader>
-            <FeaturesBadge>Powerful Features</FeaturesBadge>
-            <FeaturesTitle>Everything You Need to Succeed</FeaturesTitle>
-            <FeaturesSubtitle>
-              Discover the powerful features designed specifically for travel agents to streamline Disney planning and delight clients.
+            <FeaturesBadge
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Powerful Features
+            </FeaturesBadge>
+            <FeaturesTitle
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Everything You Need to Scale Your Disney Business
+            </FeaturesTitle>
+            <FeaturesSubtitle
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Discover the powerful features designed specifically for travel agents to streamline Disney planning, 
+              delight clients, and grow your business with measurable outcomes.
             </FeaturesSubtitle>
           </FeaturesHeader>
 
-          <FeaturesGrid>
-            {features.map((feature, index) => (
-              <FeatureCard
+          <FeatureTabs>
+            {Object.entries(featureCategories).map(([key, category]) => (
+              <FeatureTab
+                key={key}
+                active={activeTab === key}
+                onClick={() => setActiveTab(key)}
+              >
+                {category.title}
+              </FeatureTab>
+            ))}
+          </FeatureTabs>
+
+          <CardGrid columns={3} gap={6}>
+            {currentFeatures.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card variant="elevated" hover>
+                  <div style={{ textAlign: 'center' }}>
+                    {feature.badge && (
+                      <div style={{
+                        background: 'linear-gradient(135deg, #C9A227, #AD8F2D)',
+                        color: '#0B0B0C',
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        padding: '4px 12px',
+                        borderRadius: '8px',
+                        display: 'inline-block',
+                        marginBottom: '16px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em'
+                      }}>
+                        {feature.badge}
+                      </div>
+                    )}
+                    <div style={{
+                      width: '80px',
+                      height: '80px',
+                      borderRadius: '16px',
+                      background: 'linear-gradient(135deg, #C9A227, #AD8F2D)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 24px',
+                      color: '#0B0B0C',
+                      fontSize: '32px'
+                    }}>
+                      {feature.icon}
+                    </div>
+                    <h3 style={{
+                      fontSize: '24px',
+                      fontWeight: '600',
+                      color: '#0B0B0C',
+                      marginBottom: '16px',
+                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+                    }}>
+                      {feature.title}
+                    </h3>
+                    <p style={{
+                      color: '#6B7280',
+                      lineHeight: '1.6',
+                      marginBottom: '24px'
+                    }}>
+                      {feature.description}
+                    </p>
+                    <div style={{ textAlign: 'left' }}>
+                      <h4 style={{
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        color: '#0B0B0C',
+                        marginBottom: '12px'
+                      }}>
+                        Agent Outcomes:
+                      </h4>
+                      <ul style={{
+                        listStyle: 'none',
+                        padding: 0,
+                        margin: 0
+                      }}>
+                        {feature.outcomes.map((outcome, outcomeIndex) => (
+                          <li key={outcomeIndex} style={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: '8px',
+                            marginBottom: '8px',
+                            color: '#6B7280',
+                            fontSize: '14px'
+                          }}>
+                            <CheckCircle size={16} style={{ color: '#C9A227', flexShrink: 0, marginTop: '2px' }} />
+                            {outcome}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </CardGrid>
+        </Container>
+      </Section>
+
+      <MetricsSection>
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '48px' }}
+          >
+            <h2 style={{
+              fontSize: '36px',
+              fontWeight: '700',
+              color: '#0B0B0C',
+              marginBottom: '16px',
+              fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+            }}>
+              Proven Results for Travel Agents
+            </h2>
+            <p style={{
+              fontSize: '20px',
+              color: '#6B7280',
+              maxWidth: '600px',
+              margin: '0 auto',
+              lineHeight: '1.6'
+            }}>
+              Real metrics from travel agents who've transformed their Disney planning business with ParkPro.
+            </p>
+          </motion.div>
+
+          <MetricsGrid>
+            {metrics.map((metric, index) => (
+              <MetricCard
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                {feature.badge && <FeatureBadge>{feature.badge}</FeatureBadge>}
-                <FeatureIcon>{feature.icon}</FeatureIcon>
-                <FeatureTitle>{feature.title}</FeatureTitle>
-                <FeatureDescription>{feature.description}</FeatureDescription>
-                <FeatureList>
-                  {feature.benefits.map((benefit, benefitIndex) => (
-                    <FeatureListItem key={benefitIndex}>
-                      <CheckCircle size={16} />
-                      <span>{benefit}</span>
-                    </FeatureListItem>
-                  ))}
-                </FeatureList>
-              </FeatureCard>
+                <MetricNumber>{metric.number}</MetricNumber>
+                <MetricLabel>{metric.label}</MetricLabel>
+                <MetricDescription>{metric.description}</MetricDescription>
+              </MetricCard>
             ))}
-          </FeaturesGrid>
+          </MetricsGrid>
         </Container>
-      </Section>
+      </MetricsSection>
 
-      <Section $bg="light">
+      <DemoSection>
         <Container>
-          <ProcessSection>
-            <ProcessTitle>See It In Action</ProcessTitle>
-            <ProcessGrid>
-              <ProcessContent>
-                {processSteps.map((step, index) => (
-                  <ProcessStep
-                    key={index}
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <ProcessStepNumber>{step.number}</ProcessStepNumber>
-                    <ProcessStepTitle>{step.title}</ProcessStepTitle>
-                    <ProcessStepDescription>{step.description}</ProcessStepDescription>
-                  </ProcessStep>
-                ))}
-              </ProcessContent>
-              <ProcessVisual>
-                <ProcessVisualIcon>
-                  <ArrowRight size={64} />
-                </ProcessVisualIcon>
-                <ProcessVisualText>
-                  From client intake to final itinerary in under 5 minutes
-                </ProcessVisualText>
-              </ProcessVisual>
-            </ProcessGrid>
-          </ProcessSection>
-        </Container>
-      </Section>
+          <DemoContent>
+            <DemoTitle
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              See ParkPro in Action
+            </DemoTitle>
+            <DemoSubtitle
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Watch how travel agents create professional Disney itineraries in under 5 minutes, 
+              from client intake to final delivery.
+            </DemoSubtitle>
+            
+            <DemoVideo
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <PlayButton>
+                <Play size={32} />
+              </PlayButton>
+            </DemoVideo>
 
-      <Section>
-        <Container>
-          <CTASection>
-            <CTATitle>Ready to Transform Your Business?</CTATitle>
-            <CTASubtitle>
-              Join hundreds of travel agents who've already revolutionized their Disney planning process with Park Pro.
-            </CTASubtitle>
-            <ButtonGroup>
-              <Button variant="gold" size="lg" to="/request-access">
-                Request Early Access
-              </Button>
-              <Button variant="outline" size="lg" to="/demo">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Button variant="primary" size="lg" to="/demo">
+                <Play size={20} />
                 Watch Full Demo
               </Button>
-            </ButtonGroup>
-          </CTASection>
+            </motion.div>
+          </DemoContent>
         </Container>
-      </Section>
+      </DemoSection>
+
+      <CTASection>
+        <Container>
+          <CTAContent>
+            <CTATitle
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              Ready to Transform Your Disney Business?
+            </CTATitle>
+            <CTASubtitle
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Join hundreds of travel agents who've already revolutionized their Disney planning process 
+              and increased their bookings by 3x with ParkPro.
+            </CTASubtitle>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <ButtonGroup>
+                <Button variant="primary" size="lg" to="/request-access">
+                  <Star size={20} />
+                  Join Early Access
+                </Button>
+                <Button variant="secondary" size="lg" to="/demo">
+                  <Play size={20} />
+                  Watch Demo
+                </Button>
+              </ButtonGroup>
+            </motion.div>
+          </CTAContent>
+        </Container>
+      </CTASection>
     </FeaturesWrapper>
   );
 };

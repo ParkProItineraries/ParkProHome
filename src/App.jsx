@@ -1,17 +1,24 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { HelmetProvider } from "react-helmet-async";
 import GlobalStyle from "./styles/GlobalStyles";
 import theme from "./styles/theme";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { AnalyticsProvider } from "./components/analytics/Analytics";
+import { AccessibilityProvider } from "./components/accessibility/Accessibility";
 
 // Lazy load components for better performance
 const Home = React.lazy(() => import("./pages/Home"));
 const Pricing = React.lazy(() => import("./pages/Pricing"));
 const Features = React.lazy(() => import("./pages/Features"));
+const Solutions = React.lazy(() => import("./pages/Solutions"));
+const SoloAgents = React.lazy(() => import("./pages/SoloAgents"));
+const Agencies = React.lazy(() => import("./pages/Agencies"));
+const Enterprise = React.lazy(() => import("./pages/Enterprise"));
 const About = React.lazy(() => import("./pages/About"));
 const Demo = React.lazy(() => import("./pages/Demo"));
 const DemoItinerary = React.lazy(() => import("./pages/DemoItinerary"));
@@ -42,43 +49,53 @@ const LoadingSpinner = () => (
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <ErrorBoundary>
-        <Router>
-          <ScrollToTop />
-          <GlobalStyle />
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              {/* Standalone itinerary page without navbar/footer */}
-              <Route path="/demo-itinerary" element={<DemoItinerary />} />
-              
-              {/* Regular pages with navbar and footer */}
-              <Route path="/*" element={
-                <>
-                  <Navbar />
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        <AnalyticsProvider>
+          <AccessibilityProvider>
+            <ErrorBoundary>
+              <Router>
+                <ScrollToTop />
+                <GlobalStyle />
+                <Suspense fallback={<LoadingSpinner />}>
                   <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/pricing" element={<Pricing />} />
-                    <Route path="/features" element={<Features />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/demo" element={<Demo />} />
-                    <Route path="/request-access" element={<RequestAccess />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/disney-planning-software" element={<DisneyPlanningSoftware />} />
-                    <Route path="/travel-agent-software" element={<TravelAgentSoftware />} />
-                    <Route path="/faq" element={<FAQ />} />
-                    <Route path="/business/terms-of-service" element={<TermsOfService />} />
-                    <Route path="/business/privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="*" element={<NotFound />} />
+                    {/* Standalone itinerary page without navbar/footer */}
+                    <Route path="/demo-itinerary" element={<DemoItinerary />} />
+                    
+                    {/* Regular pages with navbar and footer */}
+                    <Route path="/*" element={
+                      <>
+                        <Navbar />
+                        <Routes>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/pricing" element={<Pricing />} />
+                          <Route path="/features" element={<Features />} />
+                          <Route path="/solutions" element={<Solutions />} />
+                          <Route path="/solutions/solo-agents" element={<SoloAgents />} />
+                          <Route path="/solutions/agencies" element={<Agencies />} />
+                          <Route path="/solutions/enterprise" element={<Enterprise />} />
+                          <Route path="/about" element={<About />} />
+                          <Route path="/demo" element={<Demo />} />
+                          <Route path="/request-access" element={<RequestAccess />} />
+                          <Route path="/signup" element={<Signup />} />
+                          <Route path="/disney-planning-software" element={<DisneyPlanningSoftware />} />
+                          <Route path="/travel-agent-software" element={<TravelAgentSoftware />} />
+                          <Route path="/faq" element={<FAQ />} />
+                          <Route path="/business/terms-of-service" element={<TermsOfService />} />
+                          <Route path="/business/privacy-policy" element={<PrivacyPolicy />} />
+                          <Route path="*" element={<NotFound />} />
+                        </Routes>
+                        <Footer />
+                      </>
+                    } />
                   </Routes>
-                  <Footer />
-                </>
-              } />
-            </Routes>
-          </Suspense>
-        </Router>
-      </ErrorBoundary>
-    </ThemeProvider>
+                </Suspense>
+              </Router>
+            </ErrorBoundary>
+          </AccessibilityProvider>
+        </AnalyticsProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 };
 

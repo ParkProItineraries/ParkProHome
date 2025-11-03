@@ -577,7 +577,7 @@ const RequestAccess = () => {
         <Container>
           <Header>
             <Badge>Early Access Program</Badge>
-            <Title>Request Access to Park Pro</Title>
+            <Title>Request Access to ParkPro</Title>
             <Subtitle>
               Join the exclusive group of travel agents who will revolutionize their Disney planning business with automated itineraries.
             </Subtitle>
@@ -782,7 +782,7 @@ const RequestAccess = () => {
       <Section>
         <Container>
           <StatsSection>
-            <StatsTitle>Why Choose Park Pro?</StatsTitle>
+            <StatsTitle>Why Choose ParkPro?</StatsTitle>
             <StatsSubtitle>
               Be part of the future of Disney travel agent services
             </StatsSubtitle>

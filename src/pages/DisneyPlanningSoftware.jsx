@@ -335,7 +335,7 @@ const DisneyPlanningSoftware = () => {
     {
       icon: <TrendingUp />,
       title: "3x More Bookings",
-      description: "Travel agents using Park Pro close 3x more Disney bookings. Our Disney planning automation helps you focus on selling, not planning."
+      description: "Travel agents using ParkPro close 3x more Disney bookings. Our Disney planning automation helps you focus on selling, not planning."
     },
     {
       icon: <Star />,
@@ -356,7 +356,7 @@ const DisneyPlanningSoftware = () => {
       ]
     },
     {
-      title: "Park Pro Software",
+      title: "ParkPro Software",
       highlight: true,
       items: [
         { icon: "✅", text: "5 minutes per client" },
@@ -394,7 +394,7 @@ const DisneyPlanningSoftware = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Park Pro is the leading Disney itinerary generator and travel agent software. 
+            ParkPro is the leading Disney itinerary generator and travel agent software. 
             Create automated Disney World and Disneyland itineraries in minutes, not hours. 
             Join hundreds of successful travel agents who've transformed their Disney planning business.
           </HeroSubtitle>
@@ -470,7 +470,7 @@ const DisneyPlanningSoftware = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Why Travel Agents Choose Park Pro
+            Why Travel Agents Choose ParkPro
           </SectionTitle>
           
           <FeaturesGrid>
@@ -499,7 +499,7 @@ const DisneyPlanningSoftware = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Park Pro vs Other Disney Planning Software
+            ParkPro vs Other Disney Planning Software
           </SectionTitle>
           
           <ComparisonGrid>

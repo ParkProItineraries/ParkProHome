@@ -8,8 +8,10 @@ import {
   TrendingUp, 
   Shield, 
   Smartphone,
+  CheckCircle,
   ArrowRight,
-  Play
+  Play,
+  Quote
 } from "lucide-react";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
@@ -330,7 +332,7 @@ const CTAButtonsWrapper = styled(motion.div)`
   }
 `;
 
-const Home = () => {
+const EnhancedHome = () => {
   const features = [
     {
       icon: <Clock size={32} />,
@@ -639,4 +641,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default EnhancedHome;

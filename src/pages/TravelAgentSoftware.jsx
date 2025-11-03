@@ -356,7 +356,7 @@ const TravelAgentSoftware = () => {
     {
       icon: <Briefcase />,
       title: "Complete Travel Agent Business Tools",
-      description: "Everything you need to run a successful travel agent business. From client management to booking automation, Park Pro has you covered."
+      description: "Everything you need to run a successful travel agent business. From client management to booking automation, ParkPro has you covered."
     },
     {
       icon: <Clock />,
@@ -366,7 +366,7 @@ const TravelAgentSoftware = () => {
     {
       icon: <DollarSign />,
       title: "Increase Revenue by 300%",
-      description: "Travel agents using Park Pro see 300% revenue increases. Serve more clients with the same amount of time."
+      description: "Travel agents using ParkPro see 300% revenue increases. Serve more clients with the same amount of time."
     },
     {
       icon: <Users />,
@@ -376,7 +376,7 @@ const TravelAgentSoftware = () => {
     {
       icon: <TrendingUp />,
       title: "Scale Your Business",
-      description: "Grow your travel agent business without growing your workload. Park Pro scales with you as you take on more clients."
+      description: "Grow your travel agent business without growing your workload. ParkPro scales with you as you take on more clients."
     },
     {
       icon: <Star />,
@@ -410,7 +410,7 @@ const TravelAgentSoftware = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Park Pro is the leading travel agent software designed specifically for Disney planning. 
+            ParkPro is the leading travel agent software designed specifically for Disney planning. 
             Automate your workflow, save time, and increase revenue with the most comprehensive 
             travel agent business tools available.
           </HeroSubtitle>
@@ -515,13 +515,13 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Park Pro vs Other Travel Agent Software
+            ParkPro vs Other Travel Agent Software
           </SectionTitle>
           
           <ComparisonTable>
             <TableHeader>
               <TableCell $feature>Feature</TableCell>
-              <TableCell $highlight>Park Pro</TableCell>
+              <TableCell $highlight>ParkPro</TableCell>
               <TableCell>Other Software</TableCell>
               <TableCell>Manual Planning</TableCell>
             </TableHeader>

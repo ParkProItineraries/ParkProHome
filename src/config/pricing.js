@@ -1,5 +1,9 @@
-// Shared pricing configuration for Park Pro
+// Shared pricing configuration for ParkPro
 // This ensures consistency across all components
+// 
+// IMPORTANT: All prices shown are BEFORE applicable sales tax or VAT.
+// Taxes are calculated automatically at checkout based on customer's billing address.
+// This follows industry standard practice (Netflix, Shopify, Notion, etc.)
 
 export const PRICING_PLANS = {
   solo: {

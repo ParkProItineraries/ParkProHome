@@ -863,7 +863,7 @@ const Demo = () => {
             <DemoTitle>Watch the Complete Agent Workflow</DemoTitle>
             <DemoSubtitle>
               See the full process from client questionnaire to delivered itinerary. 
-              Watch how Park Pro transforms your Disney planning business in real-time.
+              Watch how ParkPro transforms your Disney planning business in real-time.
             </DemoSubtitle>
           </DemoHeader>
 

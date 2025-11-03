@@ -1,103 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
   <!-- Homepage -->
   <url>
     <loc>https://parkproit.com/</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://parkproit.com/logo.png</image:loc>
+      <image:title>ParkPro - Disney Planning Software for Travel Agents</image:title>
+      <image:caption>ParkPro is the #1 Disney planning software for travel agents</image:caption>
+    </image:image>
   </url>
 
-  <!-- Demo Page -->
-  <url>
-    <loc>https://parkproit.com/demo</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- About Page -->
-  <url>
-    <loc>https://parkproit.com/about</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Request Access Page -->
-  <url>
-    <loc>https://parkproit.com/request-access</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Pricing Page -->
+  <!-- Core Marketing Pages -->
   <url>
     <loc>https://parkproit.com/pricing</loc>
-    <lastmod>2024-12-08</lastmod>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://parkproit.com/features</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://parkproit.com/solutions</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Features Page -->
+  <!-- Solution Pages -->
   <url>
-    <loc>https://parkproit.com/features</loc>
-    <lastmod>2024-12-08</lastmod>
+    <loc>https://parkproit.com/solutions/solo-agents</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://parkproit.com/solutions/agencies</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://parkproit.com/solutions/enterprise</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Demo and Access Pages -->
+  <url>
+    <loc>https://parkproit.com/demo</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Signup Page -->
   <url>
-    <loc>https://parkproit.com/signup</loc>
-    <lastmod>2024-12-08</lastmod>
+    <loc>https://parkproit.com/request-access</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Support and Contact -->
+  <url>
+    <loc>https://parkproit.com/contact</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- Disney Planning Software Page -->
   <url>
-    <loc>https://parkproit.com/disney-planning-software</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Travel Agent Software Page -->
-  <url>
-    <loc>https://parkproit.com/travel-agent-software</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- FAQ Page -->
-  <url>
-    <loc>https://parkproit.com/faq</loc>
-    <lastmod>2024-12-08</lastmod>
+    <loc>https://parkproit.com/support</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
 
-  <!-- Terms of Service -->
+  <!-- Legal Pages -->
   <url>
-    <loc>https://parkproit.com/business/terms-of-service</loc>
-    <lastmod>2024-12-08</lastmod>
+    <loc>https://parkproit.com/legal/terms</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
-  <!-- Privacy Policy -->
   <url>
-    <loc>https://parkproit.com/business/privacy-policy</loc>
-    <lastmod>2024-12-08</lastmod>
+    <loc>https://parkproit.com/legal/privacy</loc>
+    <lastmod>2024-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <!-- Resources Pages -->
+  <url>
+    <loc>https://parkproit.com/resources</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://parkproit.com/resources/blog</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://parkproit.com/resources/guides</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Testimonials -->
+  <url>
+    <loc>https://parkproit.com/testimonials</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Error Pages -->
+  <url>
+    <loc>https://parkproit.com/404</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
   </url>
 
 </urlset>

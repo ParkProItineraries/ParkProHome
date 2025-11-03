@@ -54,23 +54,23 @@ const TermsOfService = () => (
       <Card>
         <Title>Terms of Service</Title>
         <Text>
-          Welcome to Park Pro! These Terms of Service govern your use of our website and services. By accessing or using Park Pro, you agree to these terms.
+          Welcome to ParkPro! These Terms of Service govern your use of our website and services. By accessing or using ParkPro, you agree to these terms.
         </Text>
         <SectionTitle>Use of Service</SectionTitle>
         <Text>
-          You agree to use Park Pro only for lawful purposes and in accordance with these Terms. You are responsible for maintaining the confidentiality of your account information.
+          You agree to use ParkPro only for lawful purposes and in accordance with these Terms. You are responsible for maintaining the confidentiality of your account information.
         </Text>
         <SectionTitle>Intellectual Property</SectionTitle>
         <Text>
-          All content, trademarks, and data on this site are the property of Park Pro or its licensors. You may not use, reproduce, or distribute any content without permission.
+          All content, trademarks, and data on this site are the property of ParkPro or its licensors. You may not use, reproduce, or distribute any content without permission.
         </Text>
         <SectionTitle>Limitation of Liability</SectionTitle>
         <Text>
-          Park Pro is provided "as is" without warranties of any kind. We are not liable for any damages arising from your use of our services.
+          ParkPro is provided "as is" without warranties of any kind. We are not liable for any damages arising from your use of our services.
         </Text>
         <SectionTitle>Changes to Terms</SectionTitle>
         <Text>
-          We may update these Terms of Service from time to time. Continued use of Park Pro after changes means you accept the new terms.
+          We may update these Terms of Service from time to time. Continued use of ParkPro after changes means you accept the new terms.
         </Text>
         <SectionTitle>Contact Us</SectionTitle>
         <Text>

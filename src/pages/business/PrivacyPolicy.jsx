@@ -54,7 +54,7 @@ const PrivacyPolicy = () => (
       <Card>
         <Title>Privacy Policy</Title>
         <Text>
-          Your privacy is important to us. This Privacy Policy explains how Park Pro collects, uses, and protects your information when you use our website and services.
+          Your privacy is important to us. This Privacy Policy explains how ParkPro collects, uses, and protects your information when you use our website and services.
         </Text>
         <SectionTitle>Information We Collect</SectionTitle>
         <Text>

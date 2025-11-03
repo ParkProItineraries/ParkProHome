@@ -179,7 +179,7 @@ const FeatureGridComponent = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <SectionTitle>Why Choose Park Pro?</SectionTitle>
+            <SectionTitle>Why Choose ParkPro?</SectionTitle>
             <SectionSubtitle>
               Our automated platform combines cutting-edge technology with Disney expertise 
               to deliver exceptional planning experiences for travel agents and their clients.

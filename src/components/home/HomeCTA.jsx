@@ -157,7 +157,7 @@ const HomeCTA = () => {
           viewport={{ once: true }}
         >
           Join hundreds of travel agents who are already creating magical Disney experiences 
-          for their clients with Park Pro. Start your free trial today!
+          for their clients with ParkPro. Start your free trial today!
         </CTASubtitle>
         
         <CTAButtons

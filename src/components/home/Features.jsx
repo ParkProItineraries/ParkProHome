@@ -110,7 +110,7 @@ const Features = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Why Travel Agents Choose Park Pro
+            Why Travel Agents Choose ParkPro
           </SectionTitle>
           <SectionSubtitle
             initial={{ opacity: 0, y: 20 }}

@@ -204,7 +204,7 @@ const AgentBenefits = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Why Travel Agents Choose Park Pro - The Best Disney Planning Software
+              Why Travel Agents Choose ParkPro - The Best Disney Planning Software
             </BenefitsTitle>
             <BenefitsSubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -212,8 +212,8 @@ const AgentBenefits = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join hundreds of successful travel agents who've transformed their Disney planning business with Park Pro travel agent software. 
-              Discover why Park Pro is the leading Disney itinerary generator and travel agent productivity tool. Here's what you'll get when you join our early access program.
+              Join hundreds of successful travel agents who've transformed their Disney planning business with ParkPro travel agent software. 
+              Discover why ParkPro is the leading Disney itinerary generator and travel agent productivity tool. Here's what you'll get when you join our early access program.
             </BenefitsSubtitle>
           </BenefitsHeader>
 

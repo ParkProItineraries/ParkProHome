@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
-import ParkProLogo from "../assets/Park Pro Black_Long.svg";
+import ParkProLogo from "../assets/ParkPro Black_Long.svg";
 
 const Nav = styled(motion.nav).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)

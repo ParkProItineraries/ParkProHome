@@ -434,7 +434,7 @@ const About = () => {
     initials: "KT",
     name: "Kyle Todoran",
     title: "Founder & CEO",
-    bio: "Software engineer with years of Disney experience. Built Park Pro after experiencing the pain of Disney planning firsthand and seeing how travel agents struggle with manual processes."
+    bio: "Software engineer with years of Disney experience. Built ParkPro after experiencing the pain of Disney planning firsthand and seeing how travel agents struggle with manual processes."
   };
 
   return (
@@ -445,7 +445,7 @@ const About = () => {
             <AboutBadge>My Story</AboutBadge>
             <AboutTitle>Built by a Travel Agent, for Travel Agents</AboutTitle>
             <AboutSubtitle>
-              I understand the challenges you face because I've lived them. Park Pro was born from real pain points in Disney planning.
+              I understand the challenges you face because I've lived them. ParkPro was born from real pain points in Disney planning.
             </AboutSubtitle>
           </AboutHeader>
 
@@ -463,7 +463,7 @@ const About = () => {
                   dining reservations, and ride strategies.
                 </StoryParagraph>
                 <StoryParagraph>
-                  That's why I built Park Pro - to automate the tedious parts of Disney planning and give travel agents back their time 
+                  That's why I built ParkPro - to automate the tedious parts of Disney planning and give travel agents back their time 
                   while delivering even better experiences to their clients.
                 </StoryParagraph>
               </StoryText>
@@ -576,7 +576,7 @@ const About = () => {
           <CTASection>
             <CTATitle>Ready to Join the Revolution?</CTATitle>
             <CTASubtitle>
-              Be part of the future of Disney travel planning. Join hundreds of agents who've already transformed their business with Park Pro.
+              Be part of the future of Disney travel planning. Join hundreds of agents who've already transformed their business with ParkPro.
             </CTASubtitle>
             <ButtonGroup>
               <Button variant="gold" size="lg" to="/request-access">

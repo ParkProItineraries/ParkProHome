@@ -60,7 +60,7 @@ const DemoHeader = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        <Title>See Park Pro in Action</Title>
+        <Title>See ParkPro in Action</Title>
       </motion.div>
       
       <motion.div
@@ -69,7 +69,7 @@ const DemoHeader = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <Subtitle>
-          Experience how Park Pro transforms client preferences into detailed, 
+          Experience how ParkPro transforms client preferences into detailed, 
           personalized Disney itineraries in seconds. Try it yourself below!
         </Subtitle>
       </motion.div>

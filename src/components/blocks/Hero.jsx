@@ -224,7 +224,7 @@ const Hero = () => {
   ];
 
   return (
-    <HeroSection role="banner" aria-label="Park Pro - Automated Disney Planning for Travel Agents">
+    <HeroSection role="banner" aria-label="ParkPro - Automated Disney Planning for Travel Agents">
       <FloatingElements aria-hidden="true">
         {floatingElements.map((element, index) => (
           <FloatingElement
@@ -262,7 +262,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <span className="gradient-text">Park Pro</span> - The #1 Disney Planning Software for Travel Agents{" "}
+            <span className="gradient-text">ParkPro</span> - The #1 Disney Planning Software for Travel Agents{" "}
             <span className="gradient-text">Stop Spending Hours on Disney Itineraries</span>
           </Title>
           
@@ -271,7 +271,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
-            <strong>Park Pro</strong> is the best Disney itinerary generator and travel agent software. Our automated Disney planning software creates personalized Disney World and Disneyland itineraries in minutes, not hours. The leading travel agent productivity tool handles crowd levels, wait times, and dining reservations so you can focus on building relationships and closing more deals.
+            <strong>ParkPro</strong> is the best Disney itinerary generator and travel agent software. Our automated Disney planning software creates personalized Disney World and Disneyland itineraries in minutes, not hours. The leading travel agent productivity tool handles crowd levels, wait times, and dining reservations so you can focus on building relationships and closing more deals.
           </Subtitle>
           
           <CTAButtons
@@ -294,7 +294,7 @@ const Hero = () => {
                 textDecoration: 'none',
                 display: 'inline-block'
               }}
-              aria-label="See how Park Pro works - Watch demo"
+              aria-label="See how ParkPro works - Watch demo"
             >
               See How It Works
             </Button>
