@@ -511,7 +511,7 @@ const PaymentForm = ({ onSuccess, selectedPlan }) => {
       )}
 
       <div style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#6b7280', lineHeight: '1.5' }}>
-        💡 <strong>Note:</strong> Your subscription will be <strong>pending approval</strong>. You'll only be charged after Kyle approves your access. If denied, you'll receive a full refund immediately.
+        💡 <strong>Note:</strong> Your subscription will be <strong>pending approval</strong>. You'll only be charged after our team approves your access. If denied, you'll receive a full refund immediately.
       </div>
 
       <ButtonRow>
@@ -947,7 +947,7 @@ const RequestAccessWithPayment = () => {
       <Alert $variant="info">
         <AlertCircle size={18} />
         <span>
-          💡 <strong>Prices exclude taxes.</strong> Sales tax will be calculated based on your billing address. Your subscription will be pending approval - you won't be charged until Kyle approves your access!
+          💡 <strong>Prices exclude taxes.</strong> Sales tax will be calculated based on your billing address. Your subscription will be pending approval - you won't be charged until our team approves your access!
         </span>
       </Alert>
 
@@ -1040,7 +1040,7 @@ const RequestAccessWithPayment = () => {
           <strong>How it works:</strong>
           <ol style={{ margin: '0.5rem 0 0 1.25rem', lineHeight: '1.6' }}>
             <li>Enter your payment information securely</li>
-            <li>Your request goes to Kyle for approval</li>
+            <li>Your request is submitted for admin review</li>
             <li>If approved: Your subscription activates and you get access!</li>
             <li>If denied: You receive a full refund immediately with no questions asked</li>
           </ol>
@@ -1099,7 +1099,7 @@ const RequestAccessWithPayment = () => {
           <div>
             <strong>What happens next:</strong>
             <ol style={{ margin: '0.5rem 0 0 1.25rem', lineHeight: '1.6', textAlign: 'left' }}>
-              <li>Kyle has been notified of your request</li>
+              <li>Our team has been notified of your request</li>
               <li>You'll receive an email at <strong>{formData.email}</strong> within 24 hours</li>
               <li>If approved: Your subscription activates and you can log in immediately</li>
               <li>If denied: You'll receive a full refund automatically</li>
