@@ -549,6 +549,14 @@ const RequestAccessWithPayment = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Check for required environment variables
+  useEffect(() => {
+    if (!import.meta.env.VITE_API_URL) {
+      console.error('VITE_API_URL is not defined in environment variables');
+      setErrorMessage('Configuration error: API URL not set. Please contact support.');
+    }
+  }, []);
+
   // Available plans (fetch from backend in production)
   const plans = [
     {
@@ -639,6 +647,10 @@ const RequestAccessWithPayment = () => {
     // Create a SetupIntent on the backend for paid plans
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
+      if (!apiUrl) {
+        throw new Error('API URL is not configured. Please check your environment variables.');
+      }
+      
       const response = await fetch(`${apiUrl}/api/stripe/create-setup-intent`, {
         method: "POST",
         headers: {
@@ -672,6 +684,11 @@ const RequestAccessWithPayment = () => {
     setErrorMessage("");
 
     const apiUrl = import.meta.env.VITE_API_URL;
+    if (!apiUrl) {
+      setErrorMessage('API URL is not configured. Please check your environment variables.');
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch(`${apiUrl}/api/signup-with-payment`, {
@@ -709,6 +726,11 @@ const RequestAccessWithPayment = () => {
     setErrorMessage("");
 
     const apiUrl = import.meta.env.VITE_API_URL;
+    if (!apiUrl) {
+      setErrorMessage('API URL is not configured. Please check your environment variables.');
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch(`${apiUrl}/api/signup-with-payment`, {
