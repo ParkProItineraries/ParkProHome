@@ -17,7 +17,8 @@ import {
   CreditCard,
   Lock,
   AlertCircle,
-  CheckCircle
+  CheckCircle,
+  Loader
 } from "lucide-react";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -551,6 +552,7 @@ const RequestAccessWithPayment = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [configLoaded, setConfigLoaded] = useState(false);
+  const [loadingPlan, setLoadingPlan] = useState(false);
 
   // Fetch ALL configuration from backend on mount (from AWS SSM)
   useEffect(() => {
@@ -655,10 +657,12 @@ const RequestAccessWithPayment = () => {
   const handlePlanSelect = async (plan) => {
     setSelectedPlan(plan);
     setErrorMessage("");
+    setLoadingPlan(true);
 
     // If plan is free ($0), skip payment and submit directly
     if (plan.price === 0) {
       await handleFreeSignup(plan);
+      setLoadingPlan(false);
       return;
     }
 
@@ -687,12 +691,14 @@ const RequestAccessWithPayment = () => {
 
       if (response.ok) {
         setSetupIntentClientSecret(data.clientSecret);
-        setCurrentStep(3);
+        setCurrentStep(3); // Move to payment step
       } else {
         throw new Error(data.message || "Failed to initialize payment");
       }
     } catch (error) {
       setErrorMessage(error.message);
+    } finally {
+      setLoadingPlan(false);
     }
   };
 
@@ -946,17 +952,43 @@ const RequestAccessWithPayment = () => {
 
       <Alert $variant="info">
         <AlertCircle size={18} />
-        <span>
-          💡 <strong>Prices exclude taxes.</strong> Sales tax will be calculated based on your billing address. Your subscription will be pending approval - you won't be charged until our team approves your access!
-        </span>
+        <div>
+          <p style={{ marginBottom: '0.5rem' }}>
+            💡 <strong>Prices exclude taxes.</strong> Sales tax will be calculated based on your billing address.
+          </p>
+          <p style={{ fontSize: '0.875rem', color: '#4b5563' }}>
+            {selectedPlan?.price === 0 
+              ? "✨ Free plan - you'll skip the payment step!"
+              : "💳 After selecting a paid plan, you'll enter your payment details on the next screen. Your subscription will be pending approval - you won't be charged until our team approves your access!"
+            }
+          </p>
+        </div>
       </Alert>
+
+      {/* Loading Indicator */}
+      {loadingPlan && (
+        <Alert $variant="info" style={{ marginTop: '1rem' }}>
+          <Loader className="w-5 h-5 animate-spin" />
+          <span>
+            {selectedPlan?.price === 0 
+              ? "Processing your free signup..."
+              : "Initializing secure payment form..."
+            }
+          </span>
+        </Alert>
+      )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
         {plans.map((plan) => (
           <PlanCard
             key={plan.id}
             $selected={selectedPlan?.id === plan.id}
-            onClick={() => handlePlanSelect(plan)}
+            onClick={() => !loadingPlan && handlePlanSelect(plan)}
+            style={{ 
+              opacity: loadingPlan ? 0.6 : 1, 
+              cursor: loadingPlan ? 'wait' : 'pointer',
+              pointerEvents: loadingPlan ? 'none' : 'auto'
+            }}
           >
             <PlanHeader>
               <div>
