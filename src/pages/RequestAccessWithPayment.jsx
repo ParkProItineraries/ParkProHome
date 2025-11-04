@@ -27,8 +27,8 @@ import Section from "../components/layout/Section";
 import Card from "../components/ui/Card";
 import { flexCenter } from "../styles/mixins";
 
-// Initialize Stripe
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+// Stripe will be initialized after fetching config from backend
+let stripePromise = null;
 
 const RequestAccessWrapper = styled.div`
   padding-top: 88px;
@@ -548,13 +548,38 @@ const RequestAccessWithPayment = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [stripeConfigLoaded, setStripeConfigLoaded] = useState(false);
 
-  // Check for required environment variables
+  // Fetch Stripe config from backend on mount
   useEffect(() => {
-    if (!import.meta.env.VITE_API_URL) {
-      console.error('VITE_API_URL is not defined in environment variables');
-      setErrorMessage('Configuration error: API URL not set. Please contact support.');
-    }
+    const fetchStripeConfig = async () => {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      
+      if (!apiUrl) {
+        console.error('VITE_API_URL is not defined in environment variables');
+        setErrorMessage('Configuration error: API URL not set. Please contact support.');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${apiUrl}/api/stripe/config`);
+        const data = await response.json();
+
+        if (response.ok && data.publishableKey) {
+          // Initialize Stripe with the publishable key from backend
+          stripePromise = loadStripe(data.publishableKey);
+          setStripeConfigLoaded(true);
+          console.log('Stripe configuration loaded from backend');
+        } else {
+          throw new Error(data.message || 'Failed to load Stripe configuration');
+        }
+      } catch (error) {
+        console.error('Failed to load Stripe config:', error);
+        setErrorMessage('Failed to load payment configuration. Please try again later.');
+      }
+    };
+
+    fetchStripeConfig();
   }, []);
 
   // Available plans (fetch from backend in production)
