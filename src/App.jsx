@@ -22,7 +22,7 @@ const Enterprise = React.lazy(() => import("./pages/Enterprise"));
 const About = React.lazy(() => import("./pages/About"));
 const Demo = React.lazy(() => import("./pages/Demo"));
 const DemoItinerary = React.lazy(() => import("./pages/DemoItinerary"));
-const RequestAccess = React.lazy(() => import("./pages/RequestAccess"));
+const RequestAccess = React.lazy(() => import("./pages/RequestAccessWithPayment"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Signup = React.lazy(() => import("./pages/Signup"));
 const DisneyPlanningSoftware = React.lazy(() => import("./pages/DisneyPlanningSoftware"));
