@@ -26,9 +26,11 @@ import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Card from "../components/ui/Card";
 import { flexCenter } from "../styles/mixins";
+import { fetchConfig } from "../config/environment";
 
 // Stripe will be initialized after fetching config from backend
 let stripePromise = null;
+let apiUrl = null;
 
 const RequestAccessWrapper = styled.div`
   padding-top: 88px;
@@ -548,38 +550,29 @@ const RequestAccessWithPayment = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [stripeConfigLoaded, setStripeConfigLoaded] = useState(false);
+  const [configLoaded, setConfigLoaded] = useState(false);
 
-  // Fetch Stripe config from backend on mount
+  // Fetch ALL configuration from backend on mount (from AWS SSM)
   useEffect(() => {
-    const fetchStripeConfig = async () => {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      
-      if (!apiUrl) {
-        console.error('VITE_API_URL is not defined in environment variables');
-        setErrorMessage('Configuration error: API URL not set. Please contact support.');
-        return;
-      }
-
+    const initializeConfig = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/stripe/config`);
-        const data = await response.json();
-
-        if (response.ok && data.publishableKey) {
-          // Initialize Stripe with the publishable key from backend
-          stripePromise = loadStripe(data.publishableKey);
-          setStripeConfigLoaded(true);
-          console.log('Stripe configuration loaded from backend');
-        } else {
-          throw new Error(data.message || 'Failed to load Stripe configuration');
-        }
+        const config = await fetchConfig();
+        
+        // Set the global apiUrl
+        apiUrl = config.apiUrl;
+        
+        // Initialize Stripe with the publishable key from backend
+        stripePromise = loadStripe(config.stripePublishableKey);
+        
+        setConfigLoaded(true);
+        console.log('✅ All configuration loaded from backend (AWS SSM)');
       } catch (error) {
-        console.error('Failed to load Stripe config:', error);
-        setErrorMessage('Failed to load payment configuration. Please try again later.');
+        console.error('❌ Failed to load configuration:', error);
+        setErrorMessage('Failed to load application configuration. Please try again later.');
       }
     };
 
-    fetchStripeConfig();
+    initializeConfig();
   }, []);
 
   // Available plans (fetch from backend in production)
@@ -671,9 +664,8 @@ const RequestAccessWithPayment = () => {
 
     // Create a SetupIntent on the backend for paid plans
     try {
-      const apiUrl = import.meta.env.VITE_API_URL;
       if (!apiUrl) {
-        throw new Error('API URL is not configured. Please check your environment variables.');
+        throw new Error('Configuration not loaded. Please refresh the page.');
       }
       
       const response = await fetch(`${apiUrl}/api/stripe/create-setup-intent`, {
@@ -708,9 +700,8 @@ const RequestAccessWithPayment = () => {
     setIsSubmitting(true);
     setErrorMessage("");
 
-    const apiUrl = import.meta.env.VITE_API_URL;
     if (!apiUrl) {
-      setErrorMessage('API URL is not configured. Please check your environment variables.');
+      setErrorMessage('Configuration not loaded. Please refresh the page.');
       setIsSubmitting(false);
       return;
     }
@@ -750,9 +741,8 @@ const RequestAccessWithPayment = () => {
     setIsSubmitting(true);
     setErrorMessage("");
 
-    const apiUrl = import.meta.env.VITE_API_URL;
     if (!apiUrl) {
-      setErrorMessage('API URL is not configured. Please check your environment variables.');
+      setErrorMessage('Configuration not loaded. Please refresh the page.');
       setIsSubmitting(false);
       return;
     }
