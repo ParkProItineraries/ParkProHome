@@ -552,6 +552,19 @@ const RequestAccessWithPayment = () => {
   // Available plans (fetch from backend in production)
   const plans = [
     {
+      id: "admin_test",
+      name: "Admin Test (Free)",
+      price: 0,
+      interval: "month",
+      features: [
+        "Full platform access",
+        "All features enabled",
+        "For testing purposes only",
+        "No payment required"
+      ],
+      isTest: true
+    },
+    {
       id: "itinerary_starter_tier1",
       name: "Itinerary Starter",
       price: 147,
@@ -617,7 +630,13 @@ const RequestAccessWithPayment = () => {
     setSelectedPlan(plan);
     setErrorMessage("");
 
-    // Create a SetupIntent on the backend
+    // If plan is free ($0), skip payment and submit directly
+    if (plan.price === 0) {
+      await handleFreeSignup(plan);
+      return;
+    }
+
+    // Create a SetupIntent on the backend for paid plans
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(`${apiUrl}/api/stripe/create-setup-intent`, {
@@ -645,6 +664,42 @@ const RequestAccessWithPayment = () => {
       }
     } catch (error) {
       setErrorMessage(error.message);
+    }
+  };
+
+  const handleFreeSignup = async (plan) => {
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    try {
+      const response = await fetch(`${apiUrl}/api/signup-with-payment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          planId: plan.id,
+          paymentMethodId: null, // No payment method for free plan
+          source: "landing-page-paid-access"
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setCurrentStep(4);
+      } else {
+        throw new Error(data.message || "Signup failed");
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -870,6 +925,19 @@ const RequestAccessWithPayment = () => {
               <div>
                 <PlanName>
                   {plan.name}
+                  {plan.isTest && (
+                    <span style={{ 
+                      marginLeft: '0.5rem', 
+                      padding: '0.25rem 0.5rem', 
+                      background: 'linear-gradient(135deg, #ef4444, #dc2626)', 
+                      color: '#fff', 
+                      fontSize: '0.75rem', 
+                      borderRadius: '9999px',
+                      fontWeight: 'bold'
+                    }}>
+                      🧪 TESTING
+                    </span>
+                  )}
                   {plan.recommended && (
                     <span style={{ 
                       marginLeft: '0.5rem', 
@@ -886,7 +954,13 @@ const RequestAccessWithPayment = () => {
                 </PlanName>
               </div>
               <PlanPrice>
-                ${plan.price}<span>/{plan.interval}</span>
+                {plan.price === 0 ? (
+                  <span style={{ color: '#10b981' }}>FREE</span>
+                ) : (
+                  <>
+                    ${plan.price}<span>/{plan.interval}</span>
+                  </>
+                )}
               </PlanPrice>
             </PlanHeader>
             <PlanFeatures>
