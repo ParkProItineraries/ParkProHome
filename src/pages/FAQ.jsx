@@ -236,7 +236,7 @@ const FAQ = () => {
     },
     {
       question: "How much does ParkPro cost?",
-      answer: "We offer three tiers: Solo ($49/month for individual agents), Team ($149/month for small agencies), and Enterprise (custom pricing for large organizations). All plans include unlimited itinerary creation and updates. See our full pricing page for detailed feature comparisons and current promotions. We also offer a 14-day money-back guarantee if you're not satisfied."
+      answer: "We offer five tiers to fit different business sizes: Solo Agent ($97/month for 2 itineraries), Agent+ ($197/month for 4 itineraries), Agency ($297/month for 14 itineraries and 7 users), Agency+ ($497/month for 25 itineraries and 10 users), and Enterprise (custom pricing for unlimited itineraries and users). See our full pricing page for detailed feature comparisons and add-on options. We also offer a 14-day money-back guarantee if you're not satisfied."
     },
     {
       question: "Is there a free trial?",
