@@ -255,8 +255,8 @@ const TextArea = styled.textarea`
 
 const CheckboxGroup = styled.div`
   display: flex;
-  align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
   padding: ${({ theme }) => theme.spacing.md};
   background: ${({ theme }) => theme.colors['gray-50']};
   border-radius: ${({ theme }) => theme.radius.md};
@@ -264,7 +264,11 @@ const CheckboxGroup = styled.div`
 `;
 
 const Checkbox = styled.input`
-  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
   accent-color: ${({ theme }) => theme.colors.gold};
 `;
 
@@ -901,17 +905,20 @@ const RequestAccessWithPayment = () => {
               onClick={() => setShowPassword(!showPassword)}
               style={{
                 position: 'absolute',
-                right: '0.75rem',
+                right: '0.5rem',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: '0.25rem',
+                padding: '0.5rem',
                 color: '#6b7280',
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                transition: 'color 0.2s'
               }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#374151'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
             >
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
@@ -940,17 +947,20 @@ const RequestAccessWithPayment = () => {
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               style={{
                 position: 'absolute',
-                right: '0.75rem',
+                right: '0.5rem',
                 top: '50%',
                 transform: 'translateY(-50%)',
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: '0.25rem',
+                padding: '0.5rem',
                 color: '#6b7280',
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                transition: 'color 0.2s'
               }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#374151'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
             >
               {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
