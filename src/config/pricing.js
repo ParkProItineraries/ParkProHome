@@ -2,166 +2,185 @@
 // This ensures consistency across all components
 // 
 // IMPORTANT: 
-// - All prices are PER SEAT/PER USER, not flat monthly fees
-// - Total cost = (price per seat) × (number of users)
 // - All prices shown are BEFORE applicable sales tax or VAT
 // - Taxes are calculated automatically at checkout based on customer's billing address
-// - This follows industry standard practice (Slack, Salesforce, HubSpot, etc.)
+// - Annual pricing = ~10-11× monthly (equivalent to "2 months free")
+// - Add-ons must always cost slightly more per itinerary than upgrading a tier
+//
+// TIER LADDER: Solo → Solo+ → Agency Lite → Agency → Agency+ → Enterprise
 
 export const PRICING_PLANS = {
-  starter: {
+  solo: {
     id: "itinerary_starter",
-    name: "Itinerary Starter",
+    name: "Solo",
     price: 147,
-    priceDisplay: "$147/mo per seat",
+    priceYearly: 1569,
+    priceDisplay: "$147/mo",
+    priceDisplayYearly: "$1,569/yr",
     stripeProductId: "prod_starter",
-    description: "Perfect for solo agents just getting started or testing the waters.",
-    itineraries: 2,
+    description: "Perfect for independent agents managing a few clients.",
+    itineraries: 5,
+    costPerItinerary: "~$29",
     users: 1,
-    addonPrice: 50,
     features: [
-      "2 itineraries/month",
+      "5 itineraries/month (~$29 each)",
       "1 user seat",
       "Full access to client intake forms and itinerary builder",
       "Dashboard to manage trips",
       "Email support",
-      "Add-ons: Extra itineraries $50 each",
+      "Save with annual: $1,569/yr (2 months free)",
     ],
     featureFlags: {
       branding: false,
       api: false,
       impersonation: false,
       extraUsers: false,
+      crm: false,
     },
   },
-  basic_crm: {
-    id: "basic_crm",
-    name: "Basic CRM",
-    price: 167,
-    priceDisplay: "$167/mo per seat",
-    stripeProductId: "prod_basic_crm",
-    description: "Built for growing solo agents who need more flexibility.",
-    itineraries: 4,
-    users: 1,
-    addonPrice: 45,
-    features: [
-      "4 itineraries/month",
-      "1 user seat",
-      "CRM features for client management",
-      "Save itinerary templates",
-      "Priority email support",
-      "Add-ons: Extra itineraries $45 each",
-    ],
-    featureFlags: {
-      branding: false,
-      api: false,
-      impersonation: false,
-      extraUsers: false,
-    },
-  },
-  pro: {
+  solo_plus: {
     id: "pro",
-    name: "Pro",
+    name: "Solo+",
     price: 197,
-    priceDisplay: "$197/mo per seat",
+    priceYearly: 2103,
+    priceDisplay: "$197/mo",
+    priceDisplayYearly: "$2,103/yr",
     stripeProductId: "prod_pro",
-    description: "Ideal for active solo agents or small teams.",
+    description: "For experienced solo agents or micro-agencies ready to scale.",
     itineraries: 8,
-    users: 2,
-    addonPrice: 45,
+    costPerItinerary: "~$25",
+    users: 1,
     features: [
-      "8 itineraries/month",
-      "2 user seats",
-      "Advanced CRM features",
-      "Shared agency dashboard",
+      "8 itineraries/month (~$25 each)",
+      "1 user seat",
+      "Advanced itinerary templates",
       "Branding: Add your logo to itineraries",
       "Priority email support",
-      "Add-ons: Extra itineraries $45 each",
+      "Save with annual: $2,103/yr (2 months free)",
     ],
     featureFlags: {
       branding: true,
       api: false,
       impersonation: false,
       extraUsers: false,
+      crm: false,
     },
   },
-  agency_crm: {
-    id: "agency_crm",
-    name: "Agency CRM",
-    price: 247,
-    priceDisplay: "$247/mo per seat",
-    stripeProductId: "prod_agency_crm",
-    description: "For small agencies building a steady client base.",
-    itineraries: 14,
-    users: 5,
-    addonPrice: 40,
+  agency_lite: {
+    id: "basic_crm",
+    name: "Agency Lite",
+    price: 167,
+    priceYearly: 1782,
+    priceDisplay: "$167/mo",
+    priceDisplayYearly: "$1,782/yr",
+    stripeProductId: "prod_basic_crm",
+    description: "Includes CRM tools for small teams without full Agency pricing.",
+    itineraries: 10,
+    costPerItinerary: "~$16.70",
+    users: 1,
     features: [
-      "14 itineraries/month",
-      "5 user seats",
+      "10 itineraries/month (~$16.70 each)",
+      "1 user seat",
+      "CRM features for client management",
+      "Save itinerary templates",
+      "Tags and trip notes",
+      "Priority email support",
+      "Save with annual: $1,782/yr (2 months free)",
+    ],
+    featureFlags: {
+      branding: false,
+      api: false,
+      impersonation: false,
+      extraUsers: false,
+      crm: true,
+    },
+  },
+  agency: {
+    id: "agency_crm",
+    name: "Agency",
+    price: 247,
+    priceYearly: 2637,
+    priceDisplay: "$247/mo",
+    priceDisplayYearly: "$2,637/yr",
+    stripeProductId: "prod_agency_crm",
+    description: "Built for small agencies managing multiple agents and clients.",
+    itineraries: 12,
+    costPerItinerary: "~$21",
+    users: 3,
+    features: [
+      "12 itineraries/month (~$21 each)",
+      "3 user seats",
       "Full CRM with automation",
       "Shared agency dashboard",
       "Branding: Add your logo to itineraries",
-      "Tags and trip notes for organizing trips",
       "Priority email support",
-      "Add-ons: Extra itineraries $40 each, extra users $15/user/mo",
+      "Save with annual: $2,637/yr (2 months free)",
     ],
     featureFlags: {
       branding: true,
       api: false,
       impersonation: false,
       extraUsers: true,
+      crm: true,
     },
   },
   agency_plus: {
     id: "agency_plus",
     name: "Agency+",
     price: 297,
-    priceDisplay: "$297/mo per seat",
+    priceYearly: 3171,
+    priceDisplay: "$297/mo",
+    priceDisplayYearly: "$3,171/yr",
     stripeProductId: "prod_agency_plus",
-    description: "For high-performing teams with automation needs.",
-    itineraries: 25,
-    users: 10,
-    addonPrice: 35,
+    description: "Advanced automation and scaling for growing travel agencies.",
+    itineraries: 16,
+    costPerItinerary: "~$18",
+    users: 5,
     features: [
-      "25 itineraries/month",
-      "10 user seats",
+      "16 itineraries/month (~$18 each)",
+      "5 user seats",
       "Full CRM with advanced automation",
       "API Access for integrations",
       "Early feature access",
       "White-glove onboarding",
       "Live chat support",
-      "Add-ons: Extra itineraries $35 each, extra users $10/user/mo",
+      "Save with annual: $3,171/yr (2 months free)",
     ],
     featureFlags: {
       branding: true,
       api: true,
       impersonation: false,
       extraUsers: true,
+      crm: true,
     },
   },
   enterprise: {
     id: "enterprise",
     name: "Enterprise",
     price: null,
-    priceDisplay: "Custom Quote",
+    priceYearly: null,
+    priceDisplay: "Custom ($99–$147/seat)",
+    priceDisplayYearly: "Custom Pricing",
     stripeProductId: null,
-    description: "Designed for national brands and high-volume agencies.",
-    itineraries: -1, // Unlimited
+    description: "Full platform access, API integrations, and enterprise-level support.",
+    itineraries: -1, // 25-30 per seat
+    costPerItinerary: "~$17",
     users: -1, // Unlimited
-    addonPrice: 0,
     features: [
+      "25–30 itineraries per seat",
       "Unlimited users",
-      "Unlimited itineraries",
       "Dedicated success manager",
       "Admin dashboard with impersonation",
       "Custom CRM/API integrations",
       "SLA-backed priority support",
+      "Custom contract terms",
     ],
     featureFlags: {
       branding: true,
       api: true,
       impersonation: true,
       extraUsers: true,
+      crm: true,
     },
   },
 };
@@ -186,28 +205,49 @@ export const getPlansForDisplay = () => {
     id: plan.id,
     name: plan.name,
     price: plan.price,
+    priceYearly: plan.priceYearly,
     priceDisplay: plan.priceDisplay,
+    priceDisplayYearly: plan.priceDisplayYearly,
     description: plan.description,
     itineraries: plan.itineraries,
+    costPerItinerary: plan.costPerItinerary,
     users: plan.users,
-    addonPrice: plan.addonPrice,
     features: plan.features
   }));
 };
 
 // Add-ons pricing
+// NOTE: Add-ons must always cost slightly more per itinerary than upgrading a tier
 export const ADD_ONS = {
-  disneyland: { name: "Disneyland", price: 15, priceDisplay: "+$15/mo" },
-  disneyCruises: { name: "Disney Cruises", price: 20, priceDisplay: "+$20/mo" },
-  universal: { name: "Universal", price: 20, priceDisplay: "+$20/mo" },
-  allDestinations: { name: "All-Destinations Bundle", price: 49, priceDisplay: "+$49/mo" },
-  extraUsers: {
-    solo: { price: 0, priceDisplay: "N/A" }, // Solo doesn't support extra users
-    agentplus: { price: 0, priceDisplay: "N/A" }, // Agent+ doesn't support extra users
-    agency: { price: 15, priceDisplay: "+$15/user/mo" },
-    agencyplus: { price: 10, priceDisplay: "+$10/user/mo" },
-    enterprise: { price: 0, priceDisplay: "Unlimited" }
-  }
+  extraItineraries: {
+    small: {
+      name: "5 Extra Itineraries",
+      quantity: 5,
+      priceMonthly: 160,
+      priceYearly: 128,
+      priceDisplay: "$160/mo",
+      priceDisplayYearly: "$128/yr",
+      costPerItinerary: "$32/itinerary monthly",
+    },
+    medium: {
+      name: "10 Extra Itineraries",
+      quantity: 10,
+      priceMonthly: 300,
+      priceYearly: 240,
+      priceDisplay: "$300/mo",
+      priceDisplayYearly: "$240/yr",
+      costPerItinerary: "$30/itinerary monthly",
+    },
+    large: {
+      name: "20 Extra Itineraries",
+      quantity: 20,
+      priceMonthly: 560,
+      priceYearly: 448,
+      priceDisplay: "$560/mo",
+      priceDisplayYearly: "$448/yr",
+      costPerItinerary: "$28/itinerary monthly",
+    },
+  },
 };
 
-export default PRICING_PLANS; 
+export default PRICING_PLANS;

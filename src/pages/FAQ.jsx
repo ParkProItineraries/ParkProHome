@@ -236,7 +236,7 @@ const FAQ = () => {
     },
     {
       question: "How much does ParkPro cost?",
-      answer: "We offer six tiers with per-seat pricing: Itinerary Starter ($147/month per seat, includes 2 itineraries), Basic CRM ($167/month per seat, includes 4 itineraries and CRM features), Pro ($197/month per seat, includes 8 itineraries, supports 2 users), Agency CRM ($247/month per seat, includes 14 itineraries, supports 5 users), Agency+ ($297/month per seat, includes 25 itineraries, supports 10 users), and Enterprise (custom pricing for unlimited). Your total cost is the per-seat price multiplied by the number of users on your plan. See our full pricing page for detailed feature comparisons and add-on options. We also offer a 14-day money-back guarantee if you're not satisfied."
+      answer: "We offer six tiers: Solo ($147/month for 5 itineraries), Solo+ ($197/month for 8 itineraries), Agency Lite ($167/month for 10 itineraries with CRM), Agency ($247/month for 12 itineraries and 3 users), Agency+ ($297/month for 16 itineraries and 5 users), and Enterprise (custom pricing at $99-$147 per seat for 25-30 itineraries per seat). All plans offer annual pricing with 2 months free (for example, Solo annual is $1,569/year instead of $1,764). You can also purchase add-on itinerary bundles: 5 extra ($160/mo), 10 extra ($300/mo), or 20 extra ($560/mo). We offer a 14-day money-back guarantee if you're not satisfied."
     },
     {
       question: "Is there a free trial?",
