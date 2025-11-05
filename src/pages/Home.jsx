@@ -19,6 +19,7 @@ import Section from "../components/layout/Section";
 import { flexColumnCenter } from "../styles/mixins";
 import Testimonials from "../components/home/Testimonials";
 import TrustBar from "../components/TrustBar";
+import { copy } from "../content/strings";
 
 // Enhanced Home Page Wrapper
 const HomeWrapper = styled.div`
@@ -362,10 +363,10 @@ const Home = () => {
   return (
     <HomeWrapper>
       <Helmet>
-        <title>ParkPro | Automated Disney Planning Software for Travel Agents</title>
+        <title>{copy.pages.home.title}</title>
         <meta 
           name="description" 
-          content="Save 10+ hours per client with automated Disney itinerary planning. Trusted by 500+ travel agents. Create professional Disney World & Disneyland plans in minutes." 
+          content={copy.pages.home.description} 
         />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
@@ -388,7 +389,7 @@ const Home = () => {
                 aria-label="Early access program for travel agents"
               >
                 <Star size={16} aria-hidden="true" />
-                Exclusive Early Access for Travel Agents
+                {copy.hero.badge}
               </Badge>
               
               <Title
@@ -396,7 +397,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               >
-                The <span className="gradient-text">Salesforce</span> of Travel Agent Software
+                {copy.hero.h1}
               </Title>
               
               <Subtitle
@@ -404,7 +405,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               >
-                <strong>ParkPro</strong> is the #1 Disney planning software for travel agents. Create personalized Disney World and Disneyland itineraries in 5 minutes, save 10+ hours per client, and close 3x more bookings with our automated travel agent tools.
+                {copy.hero.sub}
               </Subtitle>
               
               <CTAButtons
@@ -420,7 +421,7 @@ const Home = () => {
                   size="lg"
                   aria-label="Join early access program for travel agents"
                 >
-                  Join Early Access
+                  {copy.ctas.start}
                   <ArrowRight size={20} />
                 </Button>
                 <Button 
@@ -430,7 +431,7 @@ const Home = () => {
                   aria-label="See how ParkPro works - Watch demo"
                 >
                   <Play size={20} />
-                  See How It Works
+                  {copy.ctas.demo}
                 </Button>
               </CTAButtons>
               
