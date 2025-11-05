@@ -15,6 +15,7 @@ import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import { flexColumnCenter } from "../styles/mixins";
+import Testimonials from "../components/home/Testimonials";
 
 // Enhanced Home Page Wrapper
 const HomeWrapper = styled.div`
@@ -213,70 +214,6 @@ const SectionSubtitle = styled(motion.p)`
   }
 `;
 
-// Testimonials Section
-const TestimonialsSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
-`;
-
-const TestimonialCard = styled(Card)`
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  border: none;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
-  }
-`;
-
-const TestimonialQuote = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: ${({ theme }) => theme.colors['text-primary']};
-  font-style: italic;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
-  &::before {
-    content: '"';
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    color: ${({ theme }) => theme.colors.gold};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-  }
-  
-  &::after {
-    content: '"';
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    color: ${({ theme }) => theme.colors.gold};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-  }
-`;
-
-const TestimonialAuthor = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const AuthorName = styled.div`
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors['text-primary']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-`;
-
-const AuthorTitle = styled.div`
-  color: ${({ theme }) => theme.colors['text-secondary']};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-const AuthorCompany = styled.div`
-  color: ${({ theme }) => theme.colors.gold};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
 // CTA Section
 const CTASection = styled.section`
   padding: ${({ theme }) => theme.spacing['4xl']} 0;
@@ -361,27 +298,6 @@ const Home = () => {
       icon: <Star size={32} />,
       title: "Early Access Benefits",
       description: "Get exclusive pricing, priority support, and direct access to our development team for feature requests."
-    }
-  ];
-
-  const testimonials = [
-    {
-      quote: "ParkPro has completely transformed my Disney planning business. I went from spending 8 hours per itinerary to just 30 minutes. My clients are amazed by the quality and detail.",
-      author: "Sarah Johnson",
-      title: "Travel Agent",
-      company: "Magic Moments Travel"
-    },
-    {
-      quote: "The ROI is incredible. I've increased my Disney bookings by 300% while reducing my planning time by 90%. This is exactly what the industry needed.",
-      author: "Mike Rodriguez",
-      title: "Agency Owner",
-      company: "Dream Vacations"
-    },
-    {
-      quote: "My clients love the personalized recommendations and real-time updates. I look like a Disney expert without having to memorize every detail.",
-      author: "Jennifer Chen",
-      title: "Senior Travel Agent",
-      company: "Luxury Travel Co"
     }
   ];
 
@@ -549,51 +465,8 @@ const Home = () => {
         </FeaturesSection>
 
         {/* Testimonials Section */}
-        <TestimonialsSection>
-          <Container>
-            <SectionHeader>
-              <SectionTitle
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                What Travel Agents Are Saying
-              </SectionTitle>
-              <SectionSubtitle
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                Join the growing community of successful travel agents who've transformed their Disney planning business.
-              </SectionSubtitle>
-            </SectionHeader>
+        <Testimonials />
 
-            <CardGrid columns={3} gap={6}>
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <TestimonialCard>
-                    <TestimonialQuote>{testimonial.quote}</TestimonialQuote>
-                    <TestimonialAuthor>
-                      <AuthorName>{testimonial.author}</AuthorName>
-                      <AuthorTitle>{testimonial.title}</AuthorTitle>
-                      <AuthorCompany>{testimonial.company}</AuthorCompany>
-                    </TestimonialAuthor>
-                  </TestimonialCard>
-                </motion.div>
-              ))}
-            </CardGrid>
-          </Container>
-        </TestimonialsSection>
-
-        {/* CTA Section */}
         <CTASection>
           <Container>
             <CTAContent>
