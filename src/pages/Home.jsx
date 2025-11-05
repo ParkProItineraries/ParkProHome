@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Play
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -308,8 +309,71 @@ const Home = () => {
     { number: "50", label: "Agent Spots Left" }
   ];
 
+  // SEO Schema Markup for better Google visibility
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ParkPro",
+    "url": "https://parkproit.com",
+    "logo": "https://parkproit.com/assets/logo.png",
+    "description": "Automated Disney itinerary planning software for travel agents. Save 10+ hours per client and increase bookings by 3x.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-260-312-0506",
+      "contactType": "Customer Service",
+      "email": "support@parkproit.com"
+    },
+    "sameAs": [
+      "https://www.facebook.com/parkproit",
+      "https://www.instagram.com/parkproit"
+    ]
+  };
+
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ParkPro",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web-based",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "lowPrice": "49",
+      "highPrice": "149",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "49.00",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "billingIncrement": 1
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "description": "Automated Disney itinerary builder for travel agents. Create professional Disney World and Disneyland itineraries in 15-30 minutes instead of 8-12 hours."
+  };
+
   return (
     <HomeWrapper>
+      <Helmet>
+        <title>ParkPro | Automated Disney Planning Software for Travel Agents</title>
+        <meta 
+          name="description" 
+          content="Save 10+ hours per client with automated Disney itinerary planning. Trusted by 500+ travel agents. Create professional Disney World & Disneyland plans in minutes." 
+        />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(softwareSchema)}
+        </script>
+      </Helmet>
+
       <main role="main" aria-label="ParkPro homepage content">
         {/* Hero Section */}
         <HeroSection role="banner" aria-label="ParkPro - Automated Disney Planning for Travel Agents">

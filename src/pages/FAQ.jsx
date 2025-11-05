@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, HelpCircle, ArrowRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Button from "../components/ui/Button";
@@ -303,8 +304,33 @@ const FAQ = () => {
     }
   ];
 
+  // Generate FAQ Schema for SEO (Google Rich Snippets)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <PageWrapper>
+      <Helmet>
+        <title>ParkPro FAQ | Disney Planning Software Questions Answered</title>
+        <meta 
+          name="description" 
+          content="Get answers to common questions about ParkPro Disney planning software for travel agents. Learn about pricing, features, support, and more." 
+        />
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+
       <HeroSection>
         <Container>
           <HeroTitle
