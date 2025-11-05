@@ -28,6 +28,7 @@ const Signup = React.lazy(() => import("./pages/Signup"));
 const DisneyPlanningSoftware = React.lazy(() => import("./pages/DisneyPlanningSoftware"));
 const TravelAgentSoftware = React.lazy(() => import("./pages/TravelAgentSoftware"));
 const FAQ = React.lazy(() => import("./pages/FAQ"));
+const Contact = React.lazy(() => import("./pages/Contact"));
 
 // Business Pages
 const TermsOfService = React.lazy(() => import("./pages/business/TermsOfService"));
@@ -81,6 +82,7 @@ const App = () => {
                           <Route path="/disney-planning-software" element={<DisneyPlanningSoftware />} />
                           <Route path="/travel-agent-software" element={<TravelAgentSoftware />} />
                           <Route path="/faq" element={<FAQ />} />
+                          <Route path="/contact" element={<Contact />} />
                           <Route path="/business/terms-of-service" element={<TermsOfService />} />
                           <Route path="/business/privacy-policy" element={<PrivacyPolicy />} />
                           <Route path="*" element={<NotFound />} />

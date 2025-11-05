@@ -78,69 +78,53 @@
   <!-- Support and Contact -->
   <url>
     <loc>https://parkproit.com/contact</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://parkproit.com/support</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://parkproit.com/legal/terms</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://parkproit.com/business/terms-of-service</loc>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://parkproit.com/legal/privacy</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://parkproit.com/business/privacy-policy</loc>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
-  <!-- Resources Pages -->
+  <!-- SEO Landing Pages -->
   <url>
-    <loc>https://parkproit.com/resources</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://parkproit.com/disney-planning-software</loc>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://parkproit.com/resources/blog</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://parkproit.com/resources/guides</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://parkproit.com/travel-agent-software</loc>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Testimonials -->
   <url>
-    <loc>https://parkproit.com/testimonials</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://parkproit.com/faq</loc>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
 
-  <!-- Error Pages -->
   <url>
-    <loc>https://parkproit.com/404</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
+    <loc>https://parkproit.com/about</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

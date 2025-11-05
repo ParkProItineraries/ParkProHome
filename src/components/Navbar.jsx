@@ -228,6 +228,7 @@ const Navbar = () => {
   const navItems = [
     { to: "/about", label: "About" },
     { to: "/demo", label: "Demo" },
+    { to: "/contact", label: "Contact" },
   ];
 
   const isActive = (path) => location.pathname === path;

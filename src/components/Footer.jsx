@@ -115,7 +115,8 @@ const Footer = () => {
             <FooterTitle>Quick Links</FooterTitle>
             <FooterLink to="/about">About</FooterLink>
             <FooterLink to="/demo">Demo</FooterLink>
-            <FooterLink to="/request-access">Request Early Access</FooterLink>
+            <FooterLink to="/contact">Contact</FooterLink>
+            <FooterLink to="/request-access">Request Access</FooterLink>
           </FooterColumn>
 
           {/* Contact Column */}
