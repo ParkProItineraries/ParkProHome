@@ -19,6 +19,7 @@ import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import { flexCenter, flexColumnCenter } from "../styles/mixins";
+import TrustBar from "../components/TrustBar";
 
 // Enhanced Pricing Page with proper tiers, decoy pricing, and FAQ
 const PricingWrapper = styled.div`
@@ -515,6 +516,9 @@ const Pricing = () => {
           </PricingGrid>
         </Container>
       </Section>
+
+      {/* Trust Bar */}
+      <TrustBar variant="light" showSocialProof={false} />
 
       <FAQSection>
         <Container>

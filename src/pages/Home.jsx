@@ -16,6 +16,7 @@ import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import { flexColumnCenter } from "../styles/mixins";
 import Testimonials from "../components/home/Testimonials";
+import TrustBar from "../components/TrustBar";
 
 // Enhanced Home Page Wrapper
 const HomeWrapper = styled.div`
@@ -392,6 +393,9 @@ const Home = () => {
             </HeroContent>
           </Container>
         </HeroSection>
+
+        {/* Trust Bar */}
+        <TrustBar variant="light" showSocialProof={true} />
 
         {/* Features Section */}
         <FeaturesSection>

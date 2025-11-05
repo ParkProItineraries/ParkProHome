@@ -21,6 +21,7 @@ import { Helmet } from "react-helmet-async";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Button from "../components/ui/Button";
+import TrustBar from "../components/TrustBar";
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -685,6 +686,9 @@ const Comparison = () => {
           </StatsGrid>
         </Container>
       </Section>
+
+      {/* Trust Bar */}
+      <TrustBar variant="light" showSocialProof={false} />
 
       {/* Comparison Table Section */}
       <ComparisonSection>
