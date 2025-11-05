@@ -451,9 +451,9 @@ const About = () => {
         <Container>
           <AboutHeader>
             <AboutBadge>My Story</AboutBadge>
-            <AboutTitle>Built by a Travel Agent, for Travel Agents</AboutTitle>
+            <AboutTitle>{copy.pages.about.h1}</AboutTitle>
             <AboutSubtitle>
-              I understand the challenges you face because I've lived them. ParkPro was born from real pain points in Disney planning.
+              {copy.pages.about.sub}
             </AboutSubtitle>
           </AboutHeader>
 

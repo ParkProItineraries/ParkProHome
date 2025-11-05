@@ -407,15 +407,14 @@ const Features = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Everything You Need to Scale Your Disney Business
+              {copy.pages.features.h1}
             </FeaturesTitle>
             <FeaturesSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Discover the powerful features designed specifically for travel agents to streamline Disney planning, 
-              delight clients, and grow your business with measurable outcomes.
+              {copy.pages.features.sub}
             </FeaturesSubtitle>
           </FeaturesHeader>
 

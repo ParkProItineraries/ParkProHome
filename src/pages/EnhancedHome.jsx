@@ -18,6 +18,7 @@ import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import { flexColumnCenter } from "../styles/mixins";
+import { copy } from "../content/strings";
 
 // Enhanced Home Page Wrapper
 const HomeWrapper = styled.div`
@@ -417,7 +418,7 @@ const EnhancedHome = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               >
-                The <span className="gradient-text">Salesforce</span> of Travel Agent Software
+                {copy.hero.h1}
               </Title>
               
               <Subtitle

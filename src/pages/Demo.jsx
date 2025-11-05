@@ -863,11 +863,10 @@ const Demo = () => {
             <Section>
     <Container>
           <DemoHeader>
-            <DemoBadge>Live Demo</DemoBadge>
-            <DemoTitle>Watch the Complete Agent Workflow</DemoTitle>
+            <DemoBadge>{copy.pages.demo.badge}</DemoBadge>
+            <DemoTitle>{copy.pages.demo.h1}</DemoTitle>
             <DemoSubtitle>
-              See the full process from client questionnaire to delivered itinerary. 
-              Watch how ParkPro transforms your Disney planning business in real-time.
+              {copy.pages.demo.sub}
             </DemoSubtitle>
           </DemoHeader>
 
