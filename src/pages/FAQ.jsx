@@ -231,51 +231,75 @@ const FAQ = () => {
   const faqs = [
     {
       question: "What is ParkPro and how does it work?",
-      answer: "ParkPro is the #1 Disney planning software for travel agents. Our automated Disney itinerary generator creates personalized Disney World and Disneyland itineraries in just 5 minutes. Simply input your client's preferences, and our AI-powered system handles crowd levels, wait times, dining reservations, and optimal park schedules to create professional itineraries that save you 10+ hours per client."
+      answer: "ParkPro is an automated itinerary builder designed specifically for travel agents who plan Disney vacations. You simply input your client's preferences (travel dates, party size, ages, interests, budget), and our system generates a complete, day-by-day itinerary in minutes. We handle the tedious research—crowd predictions, wait times, dining availability, show schedules—so you can focus on the creative aspects and client relationships."
     },
     {
-      question: "How much time does ParkPro save travel agents?",
-      answer: "ParkPro saves travel agents 10+ hours per client on Disney planning. Instead of spending hours researching crowd levels, wait times, and dining availability, our automated Disney planning software creates complete itineraries in 5 minutes. This allows you to serve 3x more clients and increase your revenue by 300%."
+      question: "How much does ParkPro cost?",
+      answer: "We offer three tiers: Solo ($49/month for individual agents), Team ($149/month for small agencies), and Enterprise (custom pricing for large organizations). All plans include unlimited itinerary creation and updates. See our full pricing page for detailed feature comparisons and current promotions. We also offer a 14-day money-back guarantee if you're not satisfied."
     },
     {
-      question: "Is ParkPro better than other Disney planning software?",
-      answer: "Yes, ParkPro is the best Disney planning software for travel agents. Unlike other travel agent software that requires 2-3 hours per client, ParkPro creates complete Disney itineraries in 5 minutes. We provide real-time Disney data, automated updates, and professional results that impress clients. Our travel agent productivity tools are specifically designed for Disney planning professionals."
+      question: "Is there a free trial?",
+      answer: "We currently don't offer a traditional free trial, but we do provide a comprehensive video demo and a 14-day money-back guarantee. If ParkPro doesn't save you significant time or meet your needs within the first two weeks, just let us know and we'll issue a full refund—no questions asked."
     },
     {
-      question: "What Disney parks does ParkPro support?",
-      answer: "ParkPro supports all major Disney destinations including Disney World (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom), Disneyland (Disneyland Park, California Adventure), and Disney Springs. Our Disney planning software covers crowd levels, wait times, dining reservations, and optimal scheduling for all Disney parks and attractions."
+      question: "Can I cancel my subscription anytime?",
+      answer: "Yes, absolutely. You can cancel your subscription at any time from your account settings. There are no long-term contracts or cancellation fees. If you cancel mid-cycle, you'll retain access until the end of your current billing period. We also offer pause options if you need a temporary break during off-season."
     },
     {
-      question: "How accurate is ParkPro's Disney data?",
-      answer: "ParkPro maintains 99% accuracy with real-time Disney data including crowd levels, wait times, and dining availability. Our Disney planning software updates automatically throughout the day to ensure your clients get the most current information. This accuracy is why travel agents trust ParkPro as their primary Disney planning tool."
+      question: "What Disney parks and resorts does ParkPro support?",
+      answer: "We currently support all six Disney parks in the United States: Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom at Walt Disney World in Florida, plus Disneyland Park and Disney California Adventure in California. We also include Disney Springs, water parks, and resort activities. International Disney parks are on our roadmap for 2026."
     },
     {
-      question: "Can I customize Disney itineraries for different client types?",
-      answer: "Absolutely! ParkPro's Disney itinerary generator allows full customization for families, couples, groups, and special needs. Our travel agent software adapts to different ages, interests, mobility needs, and budget requirements. You can create everything from luxury Disney experiences to budget-friendly family trips."
+      question: "How long does it take to create an itinerary?",
+      answer: "Most agents create a complete multi-day itinerary in 15-30 minutes, compared to the 8-12 hours typically required for manual planning. The initial setup (client preferences, party details) takes about 5 minutes, then our system generates the base itinerary instantly. You'll spend another 10-20 minutes customizing and adding personal touches before presenting it to your client."
     },
     {
-      question: "How does ParkPro compare to manual Disney planning?",
-      answer: "Manual Disney planning takes 10+ hours per client and often results in outdated information and client complaints. ParkPro's automated Disney planning software creates professional itineraries in 5 minutes with 99% accuracy. Travel agents using ParkPro see 300% revenue increases and serve 3x more clients with the same time investment."
+      question: "Can I customize itineraries for different client needs?",
+      answer: "Absolutely! Our builder includes filters for age groups (toddlers, kids, teens, adults, seniors), mobility considerations, budget levels, interest types (thrill rides, character meets, shows, dining experiences), and special occasions (birthdays, anniversaries, first visits). You can also manually adjust any suggestion—swap attractions, change dining times, add rest breaks, or include special requests."
     },
     {
-      question: "What travel agent business tools does ParkPro include?",
-      answer: "ParkPro includes comprehensive travel agent business tools: Disney itinerary generation, client management, automated updates, mobile access, and professional presentation materials. Our travel agent software streamlines your entire Disney planning workflow, from initial consultation to final itinerary delivery."
+      question: "How accurate is your crowd and wait time data?",
+      answer: "We aggregate data from multiple sources including historical park data, Disney's official calendars, special events, and weather patterns. Our predictions are typically accurate within 15-20 minutes for wait times and help clients avoid peak crowds. However, unexpected circumstances (ride breakdowns, weather) can always impact real-time conditions, which is why we also provide mobile access for day-of adjustments."
     },
     {
-      question: "Is ParkPro suitable for new travel agents?",
-      answer: "Yes! ParkPro is perfect for new travel agents who want to offer professional Disney planning services immediately. Our Disney planning software eliminates the learning curve of manual planning and provides instant expertise. New agents can compete with experienced planners from day one using ParkPro's automated tools."
+      question: "Do I need to install any software?",
+      answer: "No installation required! ParkPro is entirely web-based and works in any modern browser (Chrome, Safari, Firefox, Edge). Just log in from any computer, and your itineraries are always accessible. We also offer a mobile-optimized version that your clients can use on their phones during their trip."
     },
     {
-      question: "How much does ParkPro cost for travel agents?",
-      answer: "ParkPro offers competitive pricing for travel agents with early access discounts. Our Disney planning software pays for itself by saving 10+ hours per client. Most travel agents see ROI within their first month. Contact us for current pricing and early access program details."
+      question: "Can my clients access their itineraries on their phones?",
+      answer: "Yes! Every itinerary you create includes a shareable mobile link that your clients can access on their smartphones. They'll see their daily schedule, dining reservations, attraction tips, and even real-time updates if you need to make changes. The mobile view is optimized for use inside the parks with offline access for areas with poor signal."
     },
     {
-      question: "Does ParkPro integrate with other travel agent software?",
-      answer: "ParkPro is designed to work alongside your existing travel agent software. Our Disney planning software focuses specifically on Disney itinerary generation and can be integrated into your current workflow. We're constantly adding integrations with popular travel agent platforms and booking systems."
+      question: "What happens if Disney changes park hours or attraction availability?",
+      answer: "Great question! Disney frequently updates schedules, especially for shows and special events. We monitor these changes and send you email alerts when something affects one of your active itineraries. You can then quickly regenerate that day's plan or make manual adjustments. We recommend checking itineraries about 2 weeks before the trip and again 2-3 days before for final updates."
     },
     {
-      question: "What support does ParkPro provide to travel agents?",
-      answer: "ParkPro provides comprehensive support including onboarding, training, and ongoing assistance. Our team understands the travel agent industry and Disney planning challenges. We offer phone support, email assistance, and training resources to ensure your success with our Disney planning software."
+      question: "Is ParkPro suitable for brand new travel agents?",
+      answer: "Definitely! Many of our users are new to Disney planning and use ParkPro to build their expertise quickly. The system essentially gives you instant knowledge that would normally take years to acquire. We also provide training resources, best practice guides, and example itineraries. You'll be able to deliver professional-quality plans from day one, which helps you build credibility and confidence with clients."
+    },
+    {
+      question: "How is my client data protected?",
+      answer: "We take data security seriously. All data is encrypted in transit (SSL/TLS) and at rest (AES-256). We're hosted on enterprise-grade AWS infrastructure with automatic backups. We never sell or share your client information with third parties, and you can delete client data at any time. We're also compliant with GDPR and CCPA privacy regulations."
+    },
+    {
+      question: "Can I see a demo before signing up?",
+      answer: "Yes! We have a detailed video demo on our Demo page that walks through the entire itinerary creation process. You can also request a live demo with our team if you prefer a personalized walkthrough. During the demo, we'll create a sample itinerary together so you can see exactly how the system works and ask questions specific to your agency's needs."
+    },
+    {
+      question: "Does ParkPro integrate with other booking systems?",
+      answer: "We're currently a standalone platform that focuses exclusively on itinerary creation and client planning. While we don't have direct integrations with booking systems yet, you can easily export itineraries to PDF or share digital links to include with your booking confirmations. Integrations with popular travel agent platforms are on our 2025 roadmap based on user feedback."
+    },
+    {
+      question: "What kind of support do you offer?",
+      answer: "All plans include email support with responses within 24 hours on business days. Team and Enterprise plans also include priority support and optional onboarding calls. We have a comprehensive help center with video tutorials, FAQs, and best practice guides. Our team consists of former travel agents and Disney planning experts who understand your workflow and challenges."
+    },
+    {
+      question: "What if ParkPro doesn't work for my agency?",
+      answer: "We offer a 14-day money-back guarantee on all plans. If you decide ParkPro isn't the right fit within your first two weeks, just contact us and we'll process a full refund. We've found that most agents see immediate value, but we want you to feel confident in your investment. No hard feelings if it's not a good match!"
+    },
+    {
+      question: "How many itineraries can I create per month?",
+      answer: "All plans include unlimited itinerary creation—there are no caps or per-itinerary fees. Whether you create 5 itineraries or 500, the price stays the same. You also get unlimited updates and revisions to existing itineraries. The only difference between plans is the number of team members and advanced collaboration features."
     }
   ];
 
@@ -295,8 +319,8 @@ const FAQ = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Everything you need to know about the best Disney planning software for travel agents. 
-            Get answers to common questions about ParkPro's automated Disney itinerary generator and travel agent tools.
+            Get clear, honest answers to your questions about ParkPro. Learn about pricing, features, 
+            how it works, and whether it's the right fit for your travel agency.
           </HeroSubtitle>
         </Container>
       </HeroSection>
@@ -354,7 +378,7 @@ const FAQ = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Transform Your Disney Planning Business?
+            Still Have Questions?
           </CTATitle>
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
@@ -362,8 +386,8 @@ const FAQ = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Join hundreds of successful travel agents using ParkPro to save 10+ hours per client 
-            and increase revenue by 300%. Get 50% off your first year with early access.
+            The best way to see if ParkPro is right for you is to try it. 
+            Start your subscription today with our 14-day money-back guarantee.
           </CTASubtitle>
           
           <motion.div
@@ -388,7 +412,7 @@ const FAQ = () => {
                 gap: '8px'
               }}
             >
-              Join Early Access - 50% Off
+              Get Started Today
               <ArrowRight size={20} />
             </Button>
           </motion.div>
