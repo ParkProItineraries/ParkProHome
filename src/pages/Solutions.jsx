@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import SEO, { SEOConfigs } from '../components/seo/SEO';
 import { motion } from "framer-motion";
 import { 
   Users, 
@@ -294,6 +295,7 @@ const Solutions = () => {
 
   return (
     <SolutionsWrapper>
+      <SEO {...SEOConfigs.solutions} />
       <Section>
         <Container>
           <SolutionsHeader>

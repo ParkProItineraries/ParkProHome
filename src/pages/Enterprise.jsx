@@ -1,5 +1,6 @@
 import React from "react";
 import theme from '../styles/theme';
+import SEO, { SEOConfigs } from '../components/seo/SEO';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { 
@@ -435,6 +436,7 @@ const Enterprise = () => {
 
   return (
     <EnterpriseWrapper>
+      <SEO {...SEOConfigs.enterprise} />
       {/* Hero Section */}
       <HeroSection>
         <Container>

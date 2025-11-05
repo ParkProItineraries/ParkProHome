@@ -1,5 +1,6 @@
 import React from "react";
 import theme from '../styles/theme';
+import SEO, { SEOConfigs } from '../components/seo/SEO';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { 
@@ -430,6 +431,7 @@ const Agencies = () => {
 
   return (
     <AgenciesWrapper>
+      <SEO {...SEOConfigs.agencies} />
       {/* Hero Section */}
       <HeroSection>
         <Container>

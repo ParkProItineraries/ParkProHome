@@ -165,11 +165,11 @@ const GlobalStyles = createGlobalStyle`
     transition: ${theme.transitions.normal};
     
     &:hover {
-      color: ${theme.colors.gold};
+      color: ${theme.colors.primary};
     }
     
     &:focus-visible {
-      outline: 2px solid ${theme.colors.gold};
+      outline: 2px solid ${theme.colors.primary};
       outline-offset: 2px;
       border-radius: ${theme.radius.sm};
     }
@@ -185,7 +185,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     
     &:focus-visible {
-      outline: 2px solid ${theme.colors.gold};
+      outline: 2px solid ${theme.colors.primary};
       outline-offset: 2px;
       border-radius: ${theme.radius.sm};
     }
@@ -232,13 +232,13 @@ const GlobalStyles = createGlobalStyle`
 
   /* Selection */
   ::selection {
-    background: ${theme.colors.gold};
-    color: ${theme.colors.black};
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
   }
 
   /* Focus styles */
   :focus-visible {
-    outline: 2px solid ${theme.colors.gold};
+    outline: 2px solid ${theme.colors.primary};
     outline-offset: 2px;
   }
 

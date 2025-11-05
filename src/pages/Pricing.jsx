@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { 
   Star, 
   Clock, 
@@ -413,6 +414,28 @@ const Pricing = () => {
 
   return (
     <PricingWrapper>
+      <Helmet>
+        <title>ParkPro Pricing | Disney Planning Software from $147/month</title>
+        <meta 
+          name="description" 
+          content="Flexible pricing for Disney planning automation. Plans start at $147/mo for 5 itineraries. Save 10+ hours per client. 14-day money-back guarantee." 
+        />
+        <link rel="canonical" href="https://parkproit.com/pricing" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="ParkPro Pricing | Disney Planning Software" />
+        <meta property="og:description" content="Flexible pricing for Disney planning automation. Plans from $147-$297/month. Save 10+ hours per client." />
+        <meta property="og:url" content="https://parkproit.com/pricing" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://parkproit.com/og-pricing.png" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="ParkPro Pricing | Disney Planning Software" />
+        <meta name="twitter:description" content="Flexible pricing for Disney planning automation. Save 10+ hours per client." />
+        <meta name="twitter:image" content="https://parkproit.com/og-pricing.png" />
+      </Helmet>
+
       <Section>
         <Container>
           <PricingHeader>

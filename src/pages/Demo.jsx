@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import theme from '../styles/theme';
+import SEO, { SEOConfigs } from '../components/seo/SEO';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -856,6 +857,7 @@ const Demo = () => {
 
   return (
     <DemoWrapper>
+      <SEO {...SEOConfigs.demo} />
       <GlobalStyles />
             <Section>
     <Container>

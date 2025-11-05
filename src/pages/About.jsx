@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SEO, { SEOConfigs } from '../components/seo/SEO';
 import { motion } from "framer-motion";
 import { 
   Target, 
@@ -439,6 +440,12 @@ const About = () => {
 
   return (
     <AboutWrapper>
+      <SEO 
+        title="About ParkPro - Our Story & Mission"
+        description="Learn about ParkPro's mission to empower travel agents with automated Disney planning tools. Built by agents, for agents."
+        keywords="about ParkPro, ParkPro story, Disney planning software company, travel agent tools company"
+        url="/about"
+      />
       <Section>
         <Container>
           <AboutHeader>

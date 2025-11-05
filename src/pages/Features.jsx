@@ -28,6 +28,7 @@ import {
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
+import SEO, { SEOConfigs } from "../components/seo/SEO";
 import { flexCenter, flexColumnCenter } from "../styles/mixins";
 
 // Enhanced Features Page with Agent-Focused Outcomes
@@ -389,6 +390,7 @@ const Features = () => {
 
   return (
     <FeaturesWrapper>
+      <SEO {...SEOConfigs.features} />
       <Section>
         <Container>
           <FeaturesHeader>
