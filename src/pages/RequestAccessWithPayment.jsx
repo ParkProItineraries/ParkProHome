@@ -18,7 +18,9 @@ import {
   Lock,
   AlertCircle,
   CheckCircle,
-  Loader
+  Loader,
+  Eye,
+  EyeOff
 } from "lucide-react";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -538,6 +540,9 @@ const RequestAccessWithPayment = () => {
     firstName: "",
     lastName: "",
     email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
     company: "",
     role: "",
     agencySize: "",
@@ -545,6 +550,8 @@ const RequestAccessWithPayment = () => {
     message: "",
     acceptTerms: false,
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [setupIntentClientSecret, setSetupIntentClientSecret] = useState(null);
   const [paymentMethodId, setPaymentMethodId] = useState(null);
@@ -646,8 +653,37 @@ const RequestAccessWithPayment = () => {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.role || !formData.acceptTerms) {
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.username || !formData.password || !formData.confirmPassword || !formData.role || !formData.acceptTerms) {
       setErrorMessage("Please fill in all required fields and accept the terms.");
+      return;
+    }
+
+    // Validate username
+    if (formData.username.length < 3) {
+      setErrorMessage("Username must be at least 3 characters long.");
+      return;
+    }
+
+    // Validate password
+    if (formData.password.length < 8) {
+      setErrorMessage("Password must be at least 8 characters long.");
+      return;
+    }
+
+    // Validate password match
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+
+    // Check password strength
+    const hasUpperCase = /[A-Z]/.test(formData.password);
+    const hasLowerCase = /[a-z]/.test(formData.password);
+    const hasNumber = /[0-9]/.test(formData.password);
+    
+    if (!hasUpperCase || !hasLowerCase || !hasNumber) {
+      setErrorMessage("Password must contain at least one uppercase letter, one lowercase letter, and one number.");
       return;
     }
 
@@ -830,6 +866,97 @@ const RequestAccessWithPayment = () => {
           placeholder="your@email.com"
         />
       </FormGroup>
+
+      <FormGroup>
+        <Label htmlFor="username">Username *</Label>
+        <Input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          placeholder="Choose a username (min 3 characters)"
+          minLength="3"
+        />
+      </FormGroup>
+
+      <FormRow>
+        <FormGroup>
+          <Label htmlFor="password">Password *</Label>
+          <div style={{ position: 'relative' }}>
+            <Input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder="Min 8 characters"
+              minLength="8"
+              style={{ paddingRight: '2.5rem' }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: 'absolute',
+                right: '0.75rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '0.25rem',
+                color: '#6b7280',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
+          <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.25rem' }}>
+            Must include uppercase, lowercase, and number
+          </p>
+        </FormGroup>
+
+        <FormGroup>
+          <Label htmlFor="confirmPassword">Confirm Password *</Label>
+          <div style={{ position: 'relative' }}>
+            <Input
+              type={showConfirmPassword ? "text" : "password"}
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              placeholder="Confirm password"
+              minLength="8"
+              style={{ paddingRight: '2.5rem' }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              style={{
+                position: 'absolute',
+                right: '0.75rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '0.25rem',
+                color: '#6b7280',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
+        </FormGroup>
+      </FormRow>
 
       <FormGroup>
         <Label htmlFor="company">Agency Name</Label>
