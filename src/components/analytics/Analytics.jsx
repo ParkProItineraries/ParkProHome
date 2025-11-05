@@ -26,7 +26,7 @@ export const useGA4 = () => {
     const ga4Id = import.meta.env.VITE_GA4_MEASUREMENT_ID;
     
     if (!ga4Id) {
-      console.warn('GA4 Measurement ID not found. Analytics will not be initialized.');
+      // GA4 is optional - using Plausible instead
       return;
     }
 
