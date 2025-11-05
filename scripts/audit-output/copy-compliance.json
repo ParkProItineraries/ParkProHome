@@ -1,0 +1,368 @@
+{
+  "summary": {
+    "total": 20,
+    "fullyCompliant": 12,
+    "partiallyCompliant": 0,
+    "needsWork": 8
+  },
+  "pages": [
+    {
+      "file": "About.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/About.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": true,
+      "potentialHardcodedCount": 1,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Agencies.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Agencies.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Comparison.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Comparison.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Contact.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Contact.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Demo.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Demo.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "DemoItinerary.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/DemoItinerary.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "DisneyPlanningSoftware.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/DisneyPlanningSoftware.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Enterprise.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Enterprise.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "FAQ.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/FAQ.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Features.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Features.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Home.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Home.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": true,
+      "usesCopySections": false,
+      "usesCopyCtas": true,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "NotFound.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/NotFound.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": false,
+      "usesContainer": false
+    },
+    {
+      "file": "Pricing.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Pricing.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "RequestAccessWithPayment.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/RequestAccessWithPayment.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Signup.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Signup.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": false,
+      "usesContainer": true
+    },
+    {
+      "file": "SoloAgents.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/SoloAgents.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "Solutions.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/Solutions.jsx",
+      "importsCopy": true,
+      "usesCopyPages": true,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": true,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "TravelAgentSoftware.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/TravelAgentSoftware.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "PrivacyPolicy.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/business/PrivacyPolicy.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": true,
+      "usesContainer": true
+    },
+    {
+      "file": "TermsOfService.jsx",
+      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/business/TermsOfService.jsx",
+      "importsCopy": false,
+      "usesCopyPages": false,
+      "usesCopyHero": false,
+      "usesCopySections": false,
+      "usesCopyCtas": false,
+      "hasHardcodedStrings": false,
+      "potentialHardcodedCount": 0,
+      "hasHelmet": false,
+      "usesSection": true,
+      "usesContainer": true
+    }
+  ],
+  "compliance": {
+    "fullyCompliant": [
+      "About.jsx",
+      "Agencies.jsx",
+      "Comparison.jsx",
+      "Contact.jsx",
+      "Demo.jsx",
+      "Enterprise.jsx",
+      "FAQ.jsx",
+      "Features.jsx",
+      "Home.jsx",
+      "Pricing.jsx",
+      "SoloAgents.jsx",
+      "Solutions.jsx"
+    ],
+    "partiallyCompliant": [],
+    "needsWork": [
+      {
+        "file": "DemoItinerary.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text"
+        ]
+      },
+      {
+        "file": "DisneyPlanningSoftware.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text"
+        ]
+      },
+      {
+        "file": "NotFound.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text",
+          "no Section",
+          "no Container"
+        ]
+      },
+      {
+        "file": "RequestAccessWithPayment.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text"
+        ]
+      },
+      {
+        "file": "Signup.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text",
+          "no Section"
+        ]
+      },
+      {
+        "file": "TravelAgentSoftware.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text"
+        ]
+      },
+      {
+        "file": "PrivacyPolicy.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text"
+        ]
+      },
+      {
+        "file": "TermsOfService.jsx",
+        "issues": [
+          "no copy import",
+          "hardcoded text"
+        ]
+      }
+    ]
+  }
+}

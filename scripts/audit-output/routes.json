@@ -1,0 +1,344 @@
+{
+  "summary": {
+    "totalRoutes": 20,
+    "totalPages": 22,
+    "navLinks": 9,
+    "footerLinks": 8,
+    "sitemapPaths": 17,
+    "contentLinks": 11,
+    "unroutedPages": 1
+  },
+  "routes": [
+    {
+      "path": "/demo-itinerary",
+      "component": "DemoItinerary",
+      "file": "./pages/DemoItinerary",
+      "lazy": true
+    },
+    {
+      "path": "/",
+      "component": "Home",
+      "file": "./pages/Home",
+      "lazy": true
+    },
+    {
+      "path": "/pricing",
+      "component": "Pricing",
+      "file": "./pages/Pricing",
+      "lazy": true
+    },
+    {
+      "path": "/features",
+      "component": "Features",
+      "file": "./pages/Features",
+      "lazy": true
+    },
+    {
+      "path": "/solutions",
+      "component": "Solutions",
+      "file": "./pages/Solutions",
+      "lazy": true
+    },
+    {
+      "path": "/solutions/solo-agents",
+      "component": "SoloAgents",
+      "file": "./pages/SoloAgents",
+      "lazy": true
+    },
+    {
+      "path": "/solutions/agencies",
+      "component": "Agencies",
+      "file": "./pages/Agencies",
+      "lazy": true
+    },
+    {
+      "path": "/solutions/enterprise",
+      "component": "Enterprise",
+      "file": "./pages/Enterprise",
+      "lazy": true
+    },
+    {
+      "path": "/about",
+      "component": "About",
+      "file": "./pages/About",
+      "lazy": true
+    },
+    {
+      "path": "/demo",
+      "component": "Demo",
+      "file": "./pages/Demo",
+      "lazy": true
+    },
+    {
+      "path": "/request-access",
+      "component": "RequestAccess",
+      "file": "./pages/RequestAccessWithPayment",
+      "lazy": true
+    },
+    {
+      "path": "/signup",
+      "component": "Signup",
+      "file": "./pages/Signup",
+      "lazy": true
+    },
+    {
+      "path": "/disney-planning-software",
+      "component": "DisneyPlanningSoftware",
+      "file": "./pages/DisneyPlanningSoftware",
+      "lazy": true
+    },
+    {
+      "path": "/travel-agent-software",
+      "component": "TravelAgentSoftware",
+      "file": "./pages/TravelAgentSoftware",
+      "lazy": true
+    },
+    {
+      "path": "/faq",
+      "component": "FAQ",
+      "file": "./pages/FAQ",
+      "lazy": true
+    },
+    {
+      "path": "/contact",
+      "component": "Contact",
+      "file": "./pages/Contact",
+      "lazy": true
+    },
+    {
+      "path": "/comparison",
+      "component": "Comparison",
+      "file": "./pages/Comparison",
+      "lazy": true
+    },
+    {
+      "path": "/business/terms-of-service",
+      "component": "TermsOfService",
+      "file": "./pages/business/TermsOfService",
+      "lazy": true
+    },
+    {
+      "path": "/business/privacy-policy",
+      "component": "PrivacyPolicy",
+      "file": "./pages/business/PrivacyPolicy",
+      "lazy": true
+    },
+    {
+      "path": "*",
+      "component": "NotFound",
+      "file": "./pages/NotFound",
+      "lazy": true
+    }
+  ],
+  "pages": [
+    {
+      "file": "pages/About.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/About.jsx",
+      "name": "About"
+    },
+    {
+      "file": "pages/Agencies.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Agencies.jsx",
+      "name": "Agencies"
+    },
+    {
+      "file": "pages/Comparison.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Comparison.jsx",
+      "name": "Comparison"
+    },
+    {
+      "file": "pages/Contact.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Contact.jsx",
+      "name": "Contact"
+    },
+    {
+      "file": "pages/Demo.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Demo.jsx",
+      "name": "Demo"
+    },
+    {
+      "file": "pages/DemoItinerary.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/DemoItinerary.jsx",
+      "name": "DemoItinerary"
+    },
+    {
+      "file": "pages/DisneyPlanningSoftware.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/DisneyPlanningSoftware.jsx",
+      "name": "DisneyPlanningSoftware"
+    },
+    {
+      "file": "pages/EnhancedHome.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/EnhancedHome.jsx",
+      "name": "EnhancedHome"
+    },
+    {
+      "file": "pages/Enterprise.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Enterprise.jsx",
+      "name": "Enterprise"
+    },
+    {
+      "file": "pages/FAQ.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/FAQ.jsx",
+      "name": "FAQ"
+    },
+    {
+      "file": "pages/Features.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Features.jsx",
+      "name": "Features"
+    },
+    {
+      "file": "pages/Home.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Home.jsx",
+      "name": "Home"
+    },
+    {
+      "file": "pages/NotFound.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/NotFound.jsx",
+      "name": "NotFound"
+    },
+    {
+      "file": "pages/Pricing.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Pricing.jsx",
+      "name": "Pricing"
+    },
+    {
+      "file": "pages/RequestAccess.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/RequestAccess.jsx",
+      "name": "RequestAccess"
+    },
+    {
+      "file": "pages/RequestAccessWithPayment.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/RequestAccessWithPayment.jsx",
+      "name": "RequestAccessWithPayment"
+    },
+    {
+      "file": "pages/Signup.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Signup.jsx",
+      "name": "Signup"
+    },
+    {
+      "file": "pages/SoloAgents.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/SoloAgents.jsx",
+      "name": "SoloAgents"
+    },
+    {
+      "file": "pages/Solutions.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Solutions.jsx",
+      "name": "Solutions"
+    },
+    {
+      "file": "pages/TravelAgentSoftware.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/TravelAgentSoftware.jsx",
+      "name": "TravelAgentSoftware"
+    },
+    {
+      "file": "pages/business/PrivacyPolicy.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/business/PrivacyPolicy.jsx",
+      "name": "PrivacyPolicy"
+    },
+    {
+      "file": "pages/business/TermsOfService.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/business/TermsOfService.jsx",
+      "name": "TermsOfService"
+    }
+  ],
+  "navPaths": [
+    "/pricing",
+    "/features",
+    "/solutions",
+    "/comparison",
+    "/faq",
+    "/contact",
+    "/",
+    "/signup",
+    "/request-access"
+  ],
+  "footerPaths": [
+    "/pricing",
+    "/features",
+    "/solutions",
+    "/comparison",
+    "/demo",
+    "/faq",
+    "/contact",
+    "/request-access"
+  ],
+  "sitemapPaths": [
+    "/",
+    "/pricing",
+    "/features",
+    "/solutions",
+    "/solutions/solo-agents",
+    "/solutions/agencies",
+    "/solutions/enterprise",
+    "/demo",
+    "/request-access",
+    "/contact",
+    "/business/terms-of-service",
+    "/business/privacy-policy",
+    "/disney-planning-software",
+    "/travel-agent-software",
+    "/faq",
+    "/comparison",
+    "/about"
+  ],
+  "contentLinks": [
+    "/faq",
+    "/business/terms-of-service",
+    "/business/privacy-policy",
+    "/contact",
+    "/terms",
+    "/privacy",
+    "/favicon.ico",
+    "/favicon-32x32.png",
+    "/favicon-16x16.png",
+    "/apple-touch-icon.png",
+    "/site.webmanifest"
+  ],
+  "allLinkedPaths": [
+    "/",
+    "/about",
+    "/apple-touch-icon.png",
+    "/business/privacy-policy",
+    "/business/terms-of-service",
+    "/comparison",
+    "/contact",
+    "/demo",
+    "/disney-planning-software",
+    "/faq",
+    "/favicon-16x16.png",
+    "/favicon-32x32.png",
+    "/favicon.ico",
+    "/features",
+    "/pricing",
+    "/privacy",
+    "/request-access",
+    "/signup",
+    "/site.webmanifest",
+    "/solutions",
+    "/solutions/agencies",
+    "/solutions/enterprise",
+    "/solutions/solo-agents",
+    "/terms",
+    "/travel-agent-software"
+  ],
+  "unroutedPages": [
+    {
+      "file": "pages/EnhancedHome.jsx",
+      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/EnhancedHome.jsx",
+      "name": "EnhancedHome",
+      "importedBy": []
+    }
+  ],
+  "recommendations": {
+    "safeToRemove": [
+      {
+        "file": "pages/EnhancedHome.jsx",
+        "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/EnhancedHome.jsx",
+        "name": "EnhancedHome",
+        "importedBy": []
+      }
+    ],
+    "needsInvestigation": []
+  }
+}

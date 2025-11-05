@@ -8,8 +8,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Redirect from "./components/Redirect";
 import { AnalyticsProvider } from "./components/analytics/Analytics";
 import { AccessibilityProvider } from "./components/accessibility/Accessibility";
+import redirectMap from "./routes/redirects";
 
 // Lazy load components for better performance
 const Home = React.lazy(() => import("./pages/Home"));
@@ -69,6 +71,11 @@ const App = () => {
                       <>
                         <Navbar />
                         <Routes>
+                          {/* Redirects for legacy/short URLs */}
+                          {Object.entries(redirectMap).map(([from, to]) => (
+                            <Route key={from} path={from} element={<Redirect to={to} />} />
+                          ))}
+                          
                           <Route path="/" element={<Home />} />
                           <Route path="/pricing" element={<Pricing />} />
                           <Route path="/features" element={<Features />} />

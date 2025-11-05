@@ -430,11 +430,11 @@ const Signup = () => {
               />
               <Label htmlFor="acceptTerms" style={{ margin: 0, fontSize: "0.875rem" }}>
                 I accept the{" "}
-                <a href="/terms" target="_blank" style={{ color: "#3b82f6" }}>
+                <a href="/business/terms-of-service" target="_blank" style={{ color: "#3b82f6" }}>
                   Terms and Conditions
                 </a>{" "}
                 and{" "}
-                <a href="/privacy" target="_blank" style={{ color: "#3b82f6" }}>
+                <a href="/business/privacy-policy" target="_blank" style={{ color: "#3b82f6" }}>
                   Privacy Policy
                 </a>
               </Label>
