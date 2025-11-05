@@ -32,7 +32,7 @@ const HeroSection = styled(Section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23C9A227" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233B82F6" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
     opacity: 0.5;
   }
 `;
@@ -179,7 +179,7 @@ const FeatureCard = styled(motion.div).withConfig({
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, ${({ theme }) => theme.colors.gold} 0%, #B8941F 100%);
+    background: linear-gradient(90deg, ${({ theme }) => theme.colors.gold} 0%, #2563EB 100%);
   }
 
   &:hover {
@@ -193,7 +193,7 @@ const FeatureIcon = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold} 0%, #B8941F 100%);
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold} 0%, #2563EB 100%);
   ${flexCenter}
   margin: 0 auto ${({ theme }) => theme.spacing.lg} auto;
   color: white;
@@ -303,7 +303,7 @@ const TableCell = styled.div`
 `;
 
 const CTASection = styled(Section)`
-  background: linear-gradient(135deg, #C9A227 0%, #B8941F 100%);
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
   color: white;
   text-align: center;
   position: relative;
@@ -460,7 +460,7 @@ const TravelAgentSoftware = () => {
               variant="gold"
               size="lg"
               style={{
-                background: '#C9A227',
+                background: '#3B82F6',
                 color: '#0B0B0C',
                 padding: '16px 32px',
                 borderRadius: '16px',
@@ -569,7 +569,7 @@ const TravelAgentSoftware = () => {
               size="lg"
               style={{
                 background: '#0B0B0C',
-                color: '#C9A227',
+                color: '#3B82F6',
                 padding: '16px 32px',
                 borderRadius: '16px',
                 fontWeight: '600',

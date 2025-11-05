@@ -19,7 +19,7 @@ export const SkipToMainContent = () => {
         position: 'absolute',
         top: '-40px',
         left: '6px',
-        background: '#C9A227',
+        background: '#3B82F6',
         color: '#0B0B0C',
         padding: '8px 16px',
         textDecoration: 'none',
@@ -202,9 +202,9 @@ export const AccessibleButton = ({
       aria-describedby={ariaDescribedBy}
       style={{
         padding: '12px 24px',
-        border: '2px solid #C9A227',
+        border: '2px solid #3B82F6',
         borderRadius: '8px',
-        background: disabled ? '#F3F4F6' : '#C9A227',
+        background: disabled ? '#F3F4F6' : '#3B82F6',
         color: disabled ? '#9CA3AF' : '#0B0B0C',
         cursor: disabled ? 'not-allowed' : 'pointer',
         fontSize: '16px',
@@ -212,11 +212,11 @@ export const AccessibleButton = ({
         transition: 'all 0.2s ease',
         ...(disabled ? {} : {
           '&:hover': {
-            background: '#AD8F2D',
+            background: '#2563EB',
             transform: 'translateY(-1px)',
           },
           '&:focus': {
-            outline: '2px solid #C9A227',
+            outline: '2px solid #3B82F6',
             outlineOffset: '2px',
           },
         }),
@@ -271,7 +271,7 @@ export const AccessibleFormField = ({
           transition: 'border-color 0.2s ease',
           '&:focus': {
             outline: 'none',
-            borderColor: '#C9A227',
+            borderColor: '#3B82F6',
             boxShadow: '0 0 0 3px rgba(201, 162, 39, 0.2)',
           },
         }}

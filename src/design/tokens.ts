@@ -7,8 +7,8 @@ export const designTokens = {
     // Primary Brand Colors
     black: '#0B0B0C',
     white: '#FFFFFF',
-    gold: '#C9A227',
-    'gold-muted': '#AD8F2D',
+    gold: '#3B82F6',
+    'gold-muted': '#2563EB',
     
     // Accent Colors (as requested)
     teal: '#14B8A6',
@@ -47,7 +47,7 @@ export const designTokens = {
     'text-secondary': '#4B5563',
     'text-tertiary': '#6B7280',
     'text-light': '#FFFFFF',
-    'text-gold': '#C9A227',
+    'text-gold': '#3B82F6',
     'text-teal': '#14B8A6',
     'text-purple': '#8B5CF6',
     
@@ -55,7 +55,7 @@ export const designTokens = {
     'border-light': '#E5E7EB',
     'border-medium': '#D1D5DB',
     'border-dark': '#9CA3AF',
-    'border-gold': '#C9A227',
+    'border-gold': '#3B82F6',
     'border-teal': '#14B8A6',
     'border-purple': '#8B5CF6',
   },
@@ -289,7 +289,7 @@ export const designTokens = {
       },
       variants: {
         primary: {
-          background: '#C9A227',
+          background: '#3B82F6',
           color: '#0B0B0C',
           border: 'none',
         },
@@ -334,7 +334,7 @@ export const designTokens = {
         },
         outlined: {
           background: 'transparent',
-          border: '2px solid #C9A227',
+          border: '2px solid #3B82F6',
           borderRadius: '0.75rem',
           padding: '1.5rem',
         },

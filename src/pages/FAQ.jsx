@@ -33,7 +33,7 @@ const HeroSection = styled(Section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23C9A227" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233B82F6" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
     opacity: 0.5;
   }
 `;
@@ -171,7 +171,7 @@ const FAQAnswer = styled(motion.div)`
 `;
 
 const CTASection = styled(Section)`
-  background: linear-gradient(135deg, #C9A227 0%, #B8941F 100%);
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
   color: white;
   text-align: center;
   position: relative;
@@ -359,7 +359,7 @@ const FAQ = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <HelpCircle size={48} style={{ color: '#C9A227' }} />
+            <HelpCircle size={48} style={{ color: '#3B82F6' }} />
             ParkPro FAQ
           </FAQTitle>
           
@@ -428,7 +428,7 @@ const FAQ = () => {
               size="lg"
               style={{
                 background: '#0B0B0C',
-                color: '#C9A227',
+                color: '#3B82F6',
                 padding: '16px 32px',
                 borderRadius: '16px',
                 fontWeight: '600',

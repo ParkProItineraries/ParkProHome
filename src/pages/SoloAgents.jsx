@@ -46,7 +46,7 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A227' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
   }
 `;
@@ -558,7 +558,7 @@ const SoloAgents = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div style={{ fontSize: '64px', marginBottom: '24px', color: '#C9A227' }}>
+              <div style={{ fontSize: '64px', marginBottom: '24px', color: '#3B82F6' }}>
                 <Target size={64} />
               </div>
               <div style={{ fontSize: '24px', fontWeight: '600', marginBottom: '16px' }}>
@@ -608,7 +608,7 @@ const SoloAgents = () => {
                       width: '80px',
                       height: '80px',
                       borderRadius: '16px',
-                      background: 'linear-gradient(135deg, #C9A227, #AD8F2D)',
+                      background: 'linear-gradient(135deg, #3B82F6, #2563EB)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -657,7 +657,7 @@ const SoloAgents = () => {
                             color: '#6B7280',
                             fontSize: '14px'
                           }}>
-                            <CheckCircle size={16} style={{ color: '#C9A227', flexShrink: 0, marginTop: '2px' }} />
+                            <CheckCircle size={16} style={{ color: '#3B82F6', flexShrink: 0, marginTop: '2px' }} />
                             {outcome}
                           </li>
                         ))}

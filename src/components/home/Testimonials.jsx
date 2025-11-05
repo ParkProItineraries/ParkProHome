@@ -265,8 +265,8 @@ const Testimonials = () => {
                   <Star 
                     key={i} 
                     size={16} 
-                    fill="#C9A227" 
-                    stroke="#C9A227"
+                    fill="#3B82F6" 
+                    stroke="#3B82F6"
                   />
                 ))}
               </Rating>
@@ -309,8 +309,8 @@ const Testimonials = () => {
                   <Star 
                     key={i} 
                     size={16} 
-                    fill="#C9A227" 
-                    stroke="#C9A227"
+                    fill="#3B82F6" 
+                    stroke="#3B82F6"
                   />
                 ))}
               </Rating>

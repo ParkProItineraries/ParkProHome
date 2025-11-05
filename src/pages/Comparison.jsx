@@ -44,7 +44,7 @@ const HeroSection = styled(Section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23C9A227" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233B82F6" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
     opacity: 0.5;
   }
 `;
@@ -146,7 +146,7 @@ const TableHeader = styled.div`
 `;
 
 const TableHeaderCell = styled.div`
-  color: ${({ $isHighlight }) => $isHighlight ? '#C9A227' : 'rgba(255, 255, 255, 0.7)'};
+  color: ${({ $isHighlight }) => $isHighlight ? '#3B82F6' : 'rgba(255, 255, 255, 0.7)'};
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   text-align: center;
@@ -865,7 +865,7 @@ const Comparison = () => {
             variant="primary"
             size="lg"
             style={{
-              background: '#C9A227',
+              background: '#3B82F6',
               color: '#0B0B0C',
               padding: '16px 32px',
               display: 'inline-flex',

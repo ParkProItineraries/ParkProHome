@@ -392,7 +392,7 @@ const Select = styled.select`
     outline: none;
     border-color: ${({ theme }) => theme.colors.gold};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23C9A227' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233B82F6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
   }
   
   &:hover {
@@ -705,19 +705,19 @@ const Demo = () => {
           </StepDescription>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#C9A227', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Analyzing crowd patterns for {formData.days} days</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#C9A227', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Matching rides to family preferences</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#C9A227', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Optimizing park order and timing</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#C9A227', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Creating personalized recommendations</span>
             </div>
           </div>
@@ -736,13 +736,13 @@ const Demo = () => {
           </StepDescription>
           <SampleItinerary>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <Calendar size={16} style={{ color: '#C9A227' }} />
+              <Calendar size={16} style={{ color: '#3B82F6' }} />
               <span style={{ fontWeight: '600', color: '#0B0B0C' }}>4-Day Disney World Itinerary</span>
             </div>
             
             <ItineraryDay>
               <DayHeader>
-                <Sun size={16} style={{ color: '#C9A227' }} />
+                <Sun size={16} style={{ color: '#3B82F6' }} />
                 <DayTitle>Day 1 - Magic Kingdom</DayTitle>
               </DayHeader>
               <DaySchedule>
@@ -772,7 +772,7 @@ const Demo = () => {
 
             <ItineraryDay>
               <DayHeader>
-                <Sun size={16} style={{ color: '#C9A227' }} />
+                <Sun size={16} style={{ color: '#3B82F6' }} />
                 <DayTitle>Day 2 - EPCOT</DayTitle>
               </DayHeader>
               <DaySchedule>

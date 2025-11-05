@@ -439,7 +439,7 @@ const Features = () => {
                   <div style={{ textAlign: 'center' }}>
                     {feature.badge && (
                       <div style={{
-                        background: 'linear-gradient(135deg, #C9A227, #AD8F2D)',
+                        background: 'linear-gradient(135deg, #3B82F6, #2563EB)',
                         color: '#0B0B0C',
                         fontSize: '12px',
                         fontWeight: '600',
@@ -457,7 +457,7 @@ const Features = () => {
                       width: '80px',
                       height: '80px',
                       borderRadius: '16px',
-                      background: 'linear-gradient(135deg, #C9A227, #AD8F2D)',
+                      background: 'linear-gradient(135deg, #3B82F6, #2563EB)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -506,7 +506,7 @@ const Features = () => {
                             color: '#6B7280',
                             fontSize: '14px'
                           }}>
-                            <CheckCircle size={16} style={{ color: '#C9A227', flexShrink: 0, marginTop: '2px' }} />
+                            <CheckCircle size={16} style={{ color: '#3B82F6', flexShrink: 0, marginTop: '2px' }} />
                             {outcome}
                           </li>
                         ))}
