@@ -536,7 +536,7 @@ const Comparison = () => {
       feature: "Cost per Month",
       icon: <DollarSign size={20} />,
       manual: "Your time (worth $$$$)",
-      parkpro: "Starting at $147/mo"
+      parkpro: "$147/mo per seat (scales with team)"
     }
   ];
 

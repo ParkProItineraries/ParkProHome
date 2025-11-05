@@ -1,16 +1,19 @@
 // Shared pricing configuration for ParkPro
 // This ensures consistency across all components
 // 
-// IMPORTANT: All prices shown are BEFORE applicable sales tax or VAT.
-// Taxes are calculated automatically at checkout based on customer's billing address.
-// This follows industry standard practice (Netflix, Shopify, Notion, etc.)
+// IMPORTANT: 
+// - All prices are PER SEAT/PER USER, not flat monthly fees
+// - Total cost = (price per seat) × (number of users)
+// - All prices shown are BEFORE applicable sales tax or VAT
+// - Taxes are calculated automatically at checkout based on customer's billing address
+// - This follows industry standard practice (Slack, Salesforce, HubSpot, etc.)
 
 export const PRICING_PLANS = {
   starter: {
     id: "itinerary_starter",
     name: "Itinerary Starter",
     price: 147,
-    priceDisplay: "$147/mo",
+    priceDisplay: "$147/mo per seat",
     stripeProductId: "prod_starter",
     description: "Perfect for solo agents just getting started or testing the waters.",
     itineraries: 2,
@@ -35,7 +38,7 @@ export const PRICING_PLANS = {
     id: "basic_crm",
     name: "Basic CRM",
     price: 167,
-    priceDisplay: "$167/mo",
+    priceDisplay: "$167/mo per seat",
     stripeProductId: "prod_basic_crm",
     description: "Built for growing solo agents who need more flexibility.",
     itineraries: 4,
@@ -60,7 +63,7 @@ export const PRICING_PLANS = {
     id: "pro",
     name: "Pro",
     price: 197,
-    priceDisplay: "$197/mo",
+    priceDisplay: "$197/mo per seat",
     stripeProductId: "prod_pro",
     description: "Ideal for active solo agents or small teams.",
     itineraries: 8,
@@ -86,7 +89,7 @@ export const PRICING_PLANS = {
     id: "agency_crm",
     name: "Agency CRM",
     price: 247,
-    priceDisplay: "$247/mo",
+    priceDisplay: "$247/mo per seat",
     stripeProductId: "prod_agency_crm",
     description: "For small agencies building a steady client base.",
     itineraries: 14,
@@ -113,7 +116,7 @@ export const PRICING_PLANS = {
     id: "agency_plus",
     name: "Agency+",
     price: 297,
-    priceDisplay: "$297/mo",
+    priceDisplay: "$297/mo per seat",
     stripeProductId: "prod_agency_plus",
     description: "For high-performing teams with automation needs.",
     itineraries: 25,

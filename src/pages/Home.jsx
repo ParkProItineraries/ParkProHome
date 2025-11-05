@@ -355,7 +355,7 @@ const Home = () => {
       "bestRating": "5",
       "worstRating": "1"
     },
-    "description": "Automated Disney itinerary builder for travel agents. Create professional Disney World and Disneyland itineraries in 15-30 minutes instead of 8-12 hours."
+    "description": "Automated Disney itinerary builder for travel agents. Create professional Disney World and Disneyland itineraries in 15-30 minutes instead of 8-12 hours. Per-seat pricing starting at $147/month."
   };
 
   return (
