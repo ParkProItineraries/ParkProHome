@@ -12,6 +12,7 @@ import {
   Star,
   Quote
 } from "lucide-react";
+import { copy } from "../content/strings";
 import Button from "../components/ui/Button";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";

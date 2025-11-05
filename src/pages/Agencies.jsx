@@ -25,6 +25,7 @@ import {
   Settings,
   Crown
 } from "lucide-react";
+import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -450,7 +451,7 @@ const Agencies = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Scale Your Agency with <span className="gradient-text">Team Collaboration</span>
+              {copy.pages.agencies.h1}
             </HeroTitle>
             
             <HeroSubtitle
@@ -458,8 +459,7 @@ const Agencies = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Standardize your Disney planning process across all agents. Improve team collaboration, 
-              ensure consistent quality, and scale your agency with powerful team management tools.
+              {copy.pages.agencies.sub}
             </HeroSubtitle>
             
             <motion.div

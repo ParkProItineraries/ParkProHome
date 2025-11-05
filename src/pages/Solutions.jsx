@@ -20,6 +20,7 @@ import {
   Zap,
   BarChart3
 } from "lucide-react";
+import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -311,15 +312,14 @@ const Solutions = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Solutions Built for Every Travel Professional
+              {copy.pages.solutions.h1}
             </SolutionsTitle>
             <SolutionsSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Whether you're a solo agent or part of a large enterprise, we have the perfect solution 
-              to transform your Disney planning business and delight your clients.
+              {copy.pages.solutions.sub}
             </SolutionsSubtitle>
           </SolutionsHeader>
 

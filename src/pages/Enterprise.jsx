@@ -30,6 +30,7 @@ import {
   Code,
   Zap as Lightning
 } from "lucide-react";
+import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -455,7 +456,7 @@ const Enterprise = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Enterprise-Grade <span className="gradient-text">Disney Planning</span>
+              {copy.pages.enterprise.h1}
             </HeroTitle>
             
             <HeroSubtitle
@@ -463,8 +464,7 @@ const Enterprise = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Comprehensive solution for large organizations with custom integrations, 
-              dedicated support, advanced security, and enterprise-grade infrastructure.
+              {copy.pages.enterprise.sub}
             </HeroSubtitle>
             
             <motion.div

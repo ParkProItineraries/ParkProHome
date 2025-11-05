@@ -28,6 +28,7 @@ import Button from "../components/ui/Button";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Card from "../components/ui/Card";
+import { copy } from "../content/strings";
 import { flexCenter, flexColumnCenter } from "../styles/mixins";
 
 const DemoWrapper = styled.div`

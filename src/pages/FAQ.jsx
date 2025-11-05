@@ -323,10 +323,10 @@ const FAQ = () => {
   return (
     <PageWrapper>
       <Helmet>
-        <title>ParkPro FAQ | Disney Planning Software Questions Answered</title>
+        <title>{copy.pages.faq.title}</title>
         <meta 
           name="description" 
-          content="Get answers to common questions about ParkPro Disney planning software for travel agents. Learn about pricing, features, support, and more." 
+          content={copy.pages.faq.description} 
         />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
@@ -340,15 +340,14 @@ const FAQ = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Frequently Asked Questions About ParkPro
+            {copy.pages.faq.h1}
           </HeroTitle>
           <HeroSubtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Get clear, honest answers to your questions about ParkPro. Learn about pricing, features, 
-            how it works, and whether it's the right fit for your travel agency.
+            {copy.pages.faq.sub}
           </HeroSubtitle>
         </Container>
       </HeroSection>
@@ -406,7 +405,7 @@ const FAQ = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Still Have Questions?
+            {copy.pages.faq.bottomCta}
           </CTATitle>
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}

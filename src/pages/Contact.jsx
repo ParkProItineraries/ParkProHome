@@ -17,6 +17,7 @@ import Section from "../components/layout/Section";
 import Card from "../components/ui/Card";
 import SEO from "../components/seo/SEO";
 import { trackFormSubmit } from "../components/analytics/Analytics";
+import { copy } from "../content/strings";
 
 const ContactWrapper = styled.div`
   padding-top: 88px;
@@ -413,8 +414,8 @@ const Contact = () => {
   return (
     <>
       <SEO 
-        title="Contact Us - Get in Touch with ParkPro"
-        description="Contact ParkPro for questions about our Disney planning software for travel agents. Email, phone, or use our contact form. We respond within 24 hours."
+        title={copy.pages.contact.title}
+        description={copy.pages.contact.description}
         keywords="contact ParkPro, Disney planning software support, travel agent software support, ParkPro customer service, Disney itinerary software contact, travel agent support"
         url="/contact"
       />
@@ -424,9 +425,9 @@ const Contact = () => {
           <Container>
             <Header>
               <Badge>Get in Touch</Badge>
-              <Title>Contact Our Team</Title>
+              <Title>{copy.pages.contact.h1}</Title>
               <Subtitle>
-                Have questions? We're here to help. Send us a message and we'll respond within 24 hours.
+                {copy.pages.contact.sub}
               </Subtitle>
             </Header>
 

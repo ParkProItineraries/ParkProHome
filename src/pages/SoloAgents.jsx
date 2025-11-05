@@ -22,6 +22,7 @@ import {
   Palette,
   X
 } from "lucide-react";
+import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -447,7 +448,7 @@ const SoloAgents = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Scale Your Disney Business with <span className="gradient-text">Automation</span>
+              {copy.pages.solo.h1}
             </HeroTitle>
             
             <HeroSubtitle
@@ -455,8 +456,7 @@ const SoloAgents = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Stop spending 8+ hours per Disney itinerary. ParkPro helps solo travel agents create 
-              professional Disney plans in under 5 minutes, serve 3x more clients, and grow their business.
+              {copy.pages.solo.sub}
             </HeroSubtitle>
             
             <motion.div

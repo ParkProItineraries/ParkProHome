@@ -25,6 +25,7 @@ import {
   Headphones,
   Globe
 } from "lucide-react";
+import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
