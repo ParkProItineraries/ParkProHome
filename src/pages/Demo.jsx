@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import theme from '../styles/theme';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -705,19 +706,19 @@ const Demo = () => {
           </StepDescription>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Analyzing crowd patterns for {formData.days} days</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Matching rides to family preferences</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Optimizing park order and timing</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: '#3B82F6', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Creating personalized recommendations</span>
             </div>
           </div>
@@ -736,13 +737,13 @@ const Demo = () => {
           </StepDescription>
           <SampleItinerary>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <Calendar size={16} style={{ color: '#3B82F6' }} />
+              <Calendar size={16} style={{ color: theme.colors.primary }} />
               <span style={{ fontWeight: '600', color: '#0B0B0C' }}>4-Day Disney World Itinerary</span>
             </div>
             
             <ItineraryDay>
               <DayHeader>
-                <Sun size={16} style={{ color: '#3B82F6' }} />
+                <Sun size={16} style={{ color: theme.colors.primary }} />
                 <DayTitle>Day 1 - Magic Kingdom</DayTitle>
               </DayHeader>
               <DaySchedule>
@@ -772,7 +773,7 @@ const Demo = () => {
 
             <ItineraryDay>
               <DayHeader>
-                <Sun size={16} style={{ color: '#3B82F6' }} />
+                <Sun size={16} style={{ color: theme.colors.primary }} />
                 <DayTitle>Day 2 - EPCOT</DayTitle>
               </DayHeader>
               <DaySchedule>

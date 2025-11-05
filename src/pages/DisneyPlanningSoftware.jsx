@@ -1,4 +1,5 @@
 import React from "react";
+import theme from '../styles/theme';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Clock, Users, TrendingUp, Star, CheckCircle, ArrowRight, Zap, Shield, Award } from "lucide-react";
@@ -169,7 +170,7 @@ const FeatureCard = styled(motion.div).withConfig({
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, ${({ theme }) => theme.colors.gold} 0%, #2563EB 100%);
+    background: linear-gradient(90deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors['primary-dark']} 100%);
   }
 
   &:hover {
@@ -183,7 +184,7 @@ const FeatureIcon = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold} 0%, #2563EB 100%);
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors['primary-dark']} 100%);
   ${flexCenter}
   margin: 0 auto ${({ theme }) => theme.spacing.lg} auto;
   color: white;
@@ -226,7 +227,7 @@ const ComparisonCard = styled.div`
   border-radius: ${({ theme }) => theme.radius.xl};
   padding: ${({ theme }) => theme.spacing['2xl']};
   box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: ${({ $highlight }) => $highlight ? `3px solid #3B82F6` : `1px solid ${({ theme }) => theme.colors['gray-200']}`};
+  border: ${({ $highlight, theme }) => $highlight ? `3px solid ${theme.colors.primary}` : `1px solid ${theme.colors['gray-200']}`};
   text-align: center;
   position: relative;
   transition: all 0.3s ease;
@@ -444,7 +445,7 @@ const DisneyPlanningSoftware = () => {
               variant="gold"
               size="lg"
               style={{
-                background: '#3B82F6',
+                background: theme.colors.primary,
                 color: '#0B0B0C',
                 padding: '16px 32px',
                 borderRadius: '16px',
@@ -559,7 +560,7 @@ const DisneyPlanningSoftware = () => {
               size="lg"
               style={{
                 background: '#0B0B0C',
-                color: '#3B82F6',
+                color: theme.colors.primary,
                 padding: '16px 32px',
                 borderRadius: '16px',
                 fontWeight: '600',

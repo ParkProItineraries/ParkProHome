@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -187,6 +187,8 @@ const StatLabel = styled.div`
 `;
 
 const Testimonials = () => {
+  const theme = useTheme();
+  
   const testimonials = [
     {
       id: 1,
@@ -265,8 +267,8 @@ const Testimonials = () => {
                   <Star 
                     key={i} 
                     size={16} 
-                    fill="#3B82F6" 
-                    stroke="#3B82F6"
+                    fill={theme.colors.primary} 
+                    stroke={theme.colors.primary}
                   />
                 ))}
               </Rating>
@@ -309,8 +311,8 @@ const Testimonials = () => {
                   <Star 
                     key={i} 
                     size={16} 
-                    fill="#3B82F6" 
-                    stroke="#3B82F6"
+                    fill={theme.colors.primary} 
+                    stroke={theme.colors.primary}
                   />
                 ))}
               </Rating>

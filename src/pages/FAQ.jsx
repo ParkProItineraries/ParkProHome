@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, HelpCircle, ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
@@ -220,6 +220,7 @@ const CTASubtitle = styled(motion.p).withConfig({
 `;
 
 const FAQ = () => {
+  const theme = useTheme();
   const [openItems, setOpenItems] = useState({});
 
   const toggleItem = (index) => {
@@ -359,7 +360,7 @@ const FAQ = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <HelpCircle size={48} style={{ color: '#3B82F6' }} />
+            <HelpCircle size={48} style={{ color: theme.colors.primary }} />
             ParkPro FAQ
           </FAQTitle>
           
@@ -428,7 +429,7 @@ const FAQ = () => {
               size="lg"
               style={{
                 background: '#0B0B0C',
-                color: '#3B82F6',
+                color: theme.colors.primary,
                 padding: '16px 32px',
                 borderRadius: '16px',
                 fontWeight: '600',

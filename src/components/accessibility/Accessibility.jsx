@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import theme from '../../styles/theme';
 
 // Skip to main content link
 export const SkipToMainContent = () => {
@@ -19,8 +20,8 @@ export const SkipToMainContent = () => {
         position: 'absolute',
         top: '-40px',
         left: '6px',
-        background: '#3B82F6',
-        color: '#0B0B0C',
+        background: theme.colors.primary,
+        color: theme.colors.black,
         padding: '8px 16px',
         textDecoration: 'none',
         borderRadius: '4px',
@@ -202,21 +203,21 @@ export const AccessibleButton = ({
       aria-describedby={ariaDescribedBy}
       style={{
         padding: '12px 24px',
-        border: '2px solid #3B82F6',
+        border: `2px solid ${theme.colors.primary}`,
         borderRadius: '8px',
-        background: disabled ? '#F3F4F6' : '#3B82F6',
-        color: disabled ? '#9CA3AF' : '#0B0B0C',
+        background: disabled ? theme.colors['gray-100'] : theme.colors.primary,
+        color: disabled ? theme.colors['gray-400'] : theme.colors.black,
         cursor: disabled ? 'not-allowed' : 'pointer',
         fontSize: '16px',
         fontWeight: '600',
         transition: 'all 0.2s ease',
         ...(disabled ? {} : {
           '&:hover': {
-            background: '#2563EB',
+            background: theme.colors['primary-dark'],
             transform: 'translateY(-1px)',
           },
           '&:focus': {
-            outline: '2px solid #3B82F6',
+            outline: `2px solid ${theme.colors.primary}`,
             outlineOffset: '2px',
           },
         }),
@@ -265,14 +266,14 @@ export const AccessibleFormField = ({
         style={{
           width: '100%',
           padding: '12px',
-          border: `2px solid ${error ? '#EF4444' : '#E5E7EB'}`,
+          border: `2px solid ${error ? theme.colors.error : theme.colors['border-light']}`,
           borderRadius: '8px',
           fontSize: '16px',
           transition: 'border-color 0.2s ease',
           '&:focus': {
             outline: 'none',
-            borderColor: '#3B82F6',
-            boxShadow: '0 0 0 3px rgba(201, 162, 39, 0.2)',
+            borderColor: theme.colors.primary,
+            boxShadow: `0 0 0 3px ${theme.colors.primary}33`,
           },
         }}
         {...props}

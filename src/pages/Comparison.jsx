@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import theme from '../styles/theme';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { 
@@ -865,7 +866,7 @@ const Comparison = () => {
             variant="primary"
             size="lg"
             style={{
-              background: '#3B82F6',
+              background: theme.colors.primary,
               color: '#0B0B0C',
               padding: '16px 32px',
               display: 'inline-flex',

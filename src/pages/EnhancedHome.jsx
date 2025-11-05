@@ -1,4 +1,5 @@
 import React from "react";
+import theme from '../styles/theme';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { 
@@ -516,7 +517,7 @@ const EnhancedHome = () => {
                         width: '80px',
                         height: '80px',
                         borderRadius: '16px',
-                        background: 'linear-gradient(135deg, #3B82F6, #2563EB)',
+                        background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors['primary-dark']})`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
