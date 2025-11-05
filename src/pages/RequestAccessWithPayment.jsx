@@ -589,7 +589,7 @@ const RequestAccessWithPayment = () => {
   }, []);
 
   // Available plans (fetch from backend in production)
-  const plans = [
+  const allPlans = [
     {
       id: "admin_test",
       name: "Admin Test (Free)",
@@ -601,7 +601,8 @@ const RequestAccessWithPayment = () => {
         "For testing purposes only",
         "No payment required"
       ],
-      isTest: true
+      isTest: true,
+      roles: ["solo-agent", "agency-owner", "agency-manager", "travel-consultant", "other"]
     },
     {
       id: "itinerary_starter_tier1",
@@ -613,7 +614,9 @@ const RequestAccessWithPayment = () => {
         "Basic customization",
         "Email support",
         "PDF exports"
-      ]
+      ],
+      roles: ["solo-agent", "travel-consultant", "other"],
+      tier: 1
     },
     {
       id: "itinerary_pro_tier2",
@@ -627,7 +630,9 @@ const RequestAccessWithPayment = () => {
         "PDF & digital exports",
         "Client branding"
       ],
-      recommended: true
+      recommended: true,
+      roles: ["solo-agent", "agency-owner", "agency-manager", "travel-consultant", "other"],
+      tier: 2
     },
     {
       id: "itinerary_enterprise_tier3",
@@ -641,9 +646,24 @@ const RequestAccessWithPayment = () => {
         "All export formats",
         "Custom integrations",
         "Multi-agent access"
-      ]
+      ],
+      roles: ["agency-owner", "agency-manager"],
+      tier: 3
     }
   ];
+
+  // Filter plans based on selected role
+  const getFilteredPlans = () => {
+    if (!formData.role) {
+      return allPlans; // Show all if no role selected yet
+    }
+
+    return allPlans.filter(plan => 
+      plan.roles && plan.roles.includes(formData.role)
+    );
+  };
+
+  const plans = getFilteredPlans();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -1080,11 +1100,26 @@ const RequestAccessWithPayment = () => {
     </Form>
   );
 
-  const renderStep2 = () => (
+  const renderStep2 = () => {
+    const getRoleLabel = (role) => {
+      const roleMap = {
+        'solo-agent': 'Solo Travel Agent',
+        'agency-owner': 'Agency Owner',
+        'agency-manager': 'Agency Manager',
+        'travel-consultant': 'Travel Consultant',
+        'other': 'Other'
+      };
+      return roleMap[role] || role;
+    };
+
+    return (
     <>
       <FormTitle>Choose Your Plan</FormTitle>
       <FormSubtitle>
-        Select the plan that best fits your agency's needs
+        {formData.role 
+          ? `Plans for ${getRoleLabel(formData.role)}`
+          : 'Select the plan that best fits your agency\'s needs'
+        }
       </FormSubtitle>
 
       <Alert $variant="info">
@@ -1194,7 +1229,8 @@ const RequestAccessWithPayment = () => {
         </SecondaryButton>
       </ButtonRow>
     </>
-  );
+    );
+  };
 
   const renderStep3 = () => (
     <>
