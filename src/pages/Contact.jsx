@@ -214,17 +214,36 @@ const TextArea = styled.textarea`
 
 const Select = styled.select`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  padding-right: ${({ theme }) => theme.spacing.xl};
   border: 1px solid ${({ theme }) => theme.colors['gray-300']};
   border-radius: ${({ theme }) => theme.radius.md};
   font-size: ${({ theme }) => theme.typography.sizes.base};
   background: ${({ theme }) => theme.colors.white};
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right ${({ theme }) => theme.spacing.sm} center;
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
   transition: ${({ theme }) => theme.transitions.normal};
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.gold};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23C9A227' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  }
+  
+  &:hover {
+    border-color: ${({ theme }) => theme.colors['gray-400']};
+  }
+  
+  option {
+    padding: ${({ theme }) => theme.spacing.sm};
+    background: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors['gray-900']};
   }
 `;
 
@@ -503,7 +522,7 @@ const Contact = () => {
                   </FormGroup>
 
                   <FormGroup>
-                    <Label htmlFor="subject">Subject *</Label>
+                    <Label htmlFor="subject">What can we help you with? *</Label>
                     <Select
                       id="subject"
                       name="subject"
@@ -511,13 +530,16 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                     >
-                      <option value="">Select a subject</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="demo">Request a Demo</option>
-                      <option value="pricing">Pricing Question</option>
-                      <option value="technical">Technical Support</option>
-                      <option value="partnership">Partnership Opportunity</option>
-                      <option value="other">Other</option>
+                      <option value="">Select a topic...</option>
+                      <option value="demo">💡 I want to see a demo</option>
+                      <option value="pricing">💰 I have questions about pricing</option>
+                      <option value="features">✨ I want to know about features</option>
+                      <option value="onboarding">🚀 Help with getting started</option>
+                      <option value="technical">🔧 Technical support</option>
+                      <option value="billing">💳 Billing or subscription question</option>
+                      <option value="partnership">🤝 Partnership opportunity</option>
+                      <option value="feedback">💬 I have feedback or a suggestion</option>
+                      <option value="other">📝 Something else</option>
                     </Select>
                   </FormGroup>
 
