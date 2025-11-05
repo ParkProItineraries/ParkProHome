@@ -536,7 +536,7 @@ const Comparison = () => {
       feature: "Cost per Month",
       icon: <DollarSign size={20} />,
       manual: "Your time (worth $$$$)",
-      parkpro: "Starting at $97/mo"
+      parkpro: "Starting at $147/mo"
     }
   ];
 

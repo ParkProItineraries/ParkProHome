@@ -338,11 +338,11 @@ const Home = () => {
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "USD",
-      "lowPrice": "97",
-      "highPrice": "497",
+      "lowPrice": "147",
+      "highPrice": "297",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
-        "price": "97.00",
+        "price": "147.00",
         "priceCurrency": "USD",
         "billingDuration": "P1M",
         "billingIncrement": 1
