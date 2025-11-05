@@ -1,14 +1,23 @@
 import { useEffect } from 'react';
 
-// Plausible Analytics Integration
+// Plausible Analytics Integration - Deferred for TBT optimization
 export const usePlausible = () => {
   useEffect(() => {
-    // Load Plausible script
-    const script = document.createElement('script');
-    script.defer = true;
-    script.dataset.domain = 'parkproit.com';
-    script.src = 'https://plausible.io/js/script.js';
-    document.head.appendChild(script);
+    // Defer analytics loading until browser is idle (TBT optimization)
+    const loadAnalytics = () => {
+      const script = document.createElement('script');
+      script.defer = true;
+      script.dataset.domain = 'parkproit.com';
+      script.src = 'https://plausible.io/js/script.js';
+      document.head.appendChild(script);
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadAnalytics);
+    } else {
+      // Fallback for browsers without requestIdleCallback
+      setTimeout(loadAnalytics, 1);
+    }
 
     return () => {
       // Cleanup script on unmount
@@ -20,7 +29,7 @@ export const usePlausible = () => {
   }, []);
 };
 
-// Google Analytics 4 Integration
+// Google Analytics 4 Integration - Deferred for TBT optimization
 export const useGA4 = () => {
   useEffect(() => {
     const ga4Id = import.meta.env.VITE_GA4_MEASUREMENT_ID;
@@ -30,23 +39,31 @@ export const useGA4 = () => {
       return;
     }
 
-    // Load Google Analytics
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`;
-    document.head.appendChild(script);
+    // Defer GA4 loading until browser is idle (TBT optimization)
+    const loadGA4 = () => {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${ga4Id}`;
+      document.head.appendChild(script);
 
-    // Initialize gtag
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
+      // Initialize gtag
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', ga4Id, {
+        page_title: document.title,
+        page_location: window.location.href,
+      });
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGA4);
+    } else {
+      setTimeout(loadGA4, 1);
     }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', ga4Id, {
-      page_title: document.title,
-      page_location: window.location.href,
-    });
 
     return () => {
       // Cleanup

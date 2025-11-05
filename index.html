@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#3b82f6" />
+    <meta name="theme-color" content="#3B82F6" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="ParkPro" />
     <meta name="description" content="ParkPro is the #1 Disney planning software for travel agents. The best Disney itinerary generator and travel agent software. Create automated Disney World & Disneyland itineraries in 5 minutes. Save 10+ hours per client, close 3x more bookings with ParkPro travel agent tools." />
     <meta name="keywords" content="ParkPro, ParkPro Itineraries, ParkPro Software, Disney planning software, travel agent software, Disney itinerary generator, automated Disney itineraries, Disney World planning software, Disneyland planning tools, travel agent Disney tools, Disney vacation planning software, best Disney planning software, travel agent productivity tools, Disney planning automation, travel agent business tools, vacation planning software, Disney itinerary software, travel agent software comparison, Disney planning alternatives, travel booking software, client management for travel agents, travel agent tools 2024, Disney planning software reviews, automated vacation planning, travel agent workflow tools" />
@@ -58,17 +58,15 @@
     <!-- Safari-specific favicon -->
     <link rel="shortcut icon" href="/favicon.png" />
     <link rel="icon" href="/favicon.png" />
-    <meta name="msapplication-TileColor" content="#C9A227" />
+    <meta name="msapplication-TileColor" content="#3B82F6" />
     <meta name="msapplication-TileImage" content="/android-chrome-192x192.png" />
     
     <!-- Additional favicon formats for better compatibility -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#C9A227" />
     
     <!-- Google Knowledge Graph and Logo Optimization -->
     <meta name="application-name" content="ParkPro" />
     <meta name="apple-mobile-web-app-title" content="ParkPro" />
-    <meta name="msapplication-TileColor" content="#C9A227" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
     
     <!-- Additional logo meta tags for search engines -->
@@ -79,10 +77,13 @@
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     
-    <!-- Fonts -->
+    <!-- Fonts - Optimized for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Urbanist:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Preload critical fonts for hero section (LCP optimization) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Urbanist:wght@700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Urbanist:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Urbanist:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -104,9 +105,10 @@
         "url": "https://parkproit.com"
       },
       "offers": {
-        "@type": "Offer",
-        "price": "97",
+        "@type": "AggregateOffer",
         "priceCurrency": "USD",
+        "lowPrice": "147",
+        "highPrice": "297",
         "availability": "https://schema.org/InStock",
         "validFrom": "2024-01-01"
       },
@@ -195,6 +197,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script src="https://kit.fontawesome.com/5511e8388f.js" crossorigin="anonymous"></script>
+    <!-- Defer non-critical icon library (TBT optimization) -->
+    <script defer src="https://kit.fontawesome.com/5511e8388f.js" crossorigin="anonymous"></script>
   </body>
 </html>
