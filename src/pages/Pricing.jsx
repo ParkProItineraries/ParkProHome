@@ -21,6 +21,7 @@ import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import { flexCenter, flexColumnCenter } from "../styles/mixins";
 import TrustBar from "../components/TrustBar";
+import { copy } from "../content/strings";
 
 // Enhanced Pricing Page with proper tiers, decoy pricing, and FAQ
 const PricingWrapper = styled.div`
@@ -415,10 +416,10 @@ const Pricing = () => {
   return (
     <PricingWrapper>
       <Helmet>
-        <title>ParkPro Pricing | Disney Planning Software from $147/month</title>
+        <title>{copy.pages.pricing.title}</title>
         <meta 
           name="description" 
-          content="Flexible pricing for Disney planning automation. Plans start at $147/mo for 5 itineraries. Save 10+ hours per client. 14-day money-back guarantee." 
+          content={copy.pages.pricing.description} 
         />
         <link rel="canonical" href="https://parkproit.com/pricing" />
         
@@ -444,14 +445,14 @@ const Pricing = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Simple, Transparent Pricing
+              {copy.pages.pricing.h1}
             </PricingTitle>
             <PricingSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Choose the plan that fits your business. All plans include our core Disney planning features with no hidden fees.
+              {copy.pages.pricing.sub}
             </PricingSubtitle>
             <motion.p
               initial={{ opacity: 0 }}

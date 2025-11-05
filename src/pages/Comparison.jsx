@@ -23,6 +23,7 @@ import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Button from "../components/ui/Button";
 import TrustBar from "../components/TrustBar";
+import { copy } from "../content/strings";
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -583,10 +584,10 @@ const Comparison = () => {
   return (
     <PageWrapper>
       <Helmet>
-        <title>ParkPro vs Manual Disney Planning | Save 10+ Hours Per Client</title>
+        <title>{copy.pages.comparison.title}</title>
         <meta 
           name="description" 
-          content="Manual Disney planning takes 8-12 hours per client. ParkPro does it in 15 minutes. See the side-by-side comparison and calculate your time savings." 
+          content={copy.pages.comparison.description} 
         />
         <meta 
           name="keywords" 
@@ -603,14 +604,14 @@ const Comparison = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Manual Planning vs ParkPro: The Real Comparison
+              {copy.pages.comparison.h1}
             </HeroTitle>
             <HeroSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              See exactly how much time, money, and sanity you'll save by automating your Disney itinerary planning.
+              {copy.pages.comparison.sub}
             </HeroSubtitle>
             
             <HighlightBox
@@ -620,9 +621,7 @@ const Comparison = () => {
             >
               <HighlightTitle>The Bottom Line</HighlightTitle>
               <HighlightText>
-                Manual planning: 8-12 hours per itinerary. ParkPro: 15-30 minutes.
-                <br />
-                <strong>That's a 95% time reduction.</strong>
+                {copy.pages.comparison.bottomLine}
               </HighlightText>
             </HighlightBox>
           </HeroContent>
