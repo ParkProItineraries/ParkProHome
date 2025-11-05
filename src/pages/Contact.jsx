@@ -531,15 +531,15 @@ const Contact = () => {
                       required
                     >
                       <option value="">Select a topic...</option>
-                      <option value="demo">💡 I want to see a demo</option>
-                      <option value="pricing">💰 I have questions about pricing</option>
-                      <option value="features">✨ I want to know about features</option>
-                      <option value="onboarding">🚀 Help with getting started</option>
-                      <option value="technical">🔧 Technical support</option>
-                      <option value="billing">💳 Billing or subscription question</option>
-                      <option value="partnership">🤝 Partnership opportunity</option>
-                      <option value="feedback">💬 I have feedback or a suggestion</option>
-                      <option value="other">📝 Something else</option>
+                      <option value="demo">I want to see a demo</option>
+                      <option value="pricing">I have questions about pricing</option>
+                      <option value="features">I want to know about features</option>
+                      <option value="onboarding">Help with getting started</option>
+                      <option value="technical">Technical support</option>
+                      <option value="billing">Billing or subscription question</option>
+                      <option value="partnership">Partnership opportunity</option>
+                      <option value="feedback">I have feedback or a suggestion</option>
+                      <option value="other">Something else</option>
                     </Select>
                   </FormGroup>
 
