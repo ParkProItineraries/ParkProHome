@@ -1,19 +1,23 @@
 // Design System Theme - Enhanced with new design tokens
 export const theme = {
   colors: {
-    // Primary Brand Colors
+    // Primary Brand Colors (Matches ParkProUI)
     black: '#0B0B0C',
     white: '#FFFFFF',
-    gold: '#C9A227',
-    'gold-muted': '#AD8F2D',
+    primary: '#3B82F6',           // Blue - Main brand color
+    'primary-dark': '#2563EB',    // Darker blue for hover states
+    'primary-light': '#60A5FA',   // Lighter blue for backgrounds
     
-    // Accent Colors (as requested)
-    teal: '#14B8A6',
-    'teal-muted': '#0F766E',
-    purple: '#8B5CF6',
-    'purple-muted': '#7C3AED',
+    // Accent Colors
+    accent: '#10B981',            // Green - Success/accent color
+    'accent-dark': '#059669',     // Darker green
+    'accent-light': '#34D399',    // Lighter green
     
-    // Gray Scale - Enhanced
+    // Legacy gold (deprecated - keeping for gradual migration)
+    gold: '#3B82F6',              // Alias to primary for compatibility
+    'gold-muted': '#2563EB',      // Alias to primary-dark
+    
+    // Gray Scale (Matches ParkProUI)
     'gray-50': '#F9FAFB',
     'gray-100': '#F3F4F6',
     'gray-200': '#E5E7EB',
@@ -33,8 +37,11 @@ export const theme = {
     overlay: 'rgba(0,0,0,0.6)',
     green: '#10B981',
     red: '#EF4444',
+    blue: '#3B82F6',
     
     // Background Colors
+    background: '#F4F6F8',        // Matches ParkProUI
+    surface: '#FFFFFF',
     'bg-primary': '#FFFFFF',
     'bg-secondary': '#F9FAFB',
     'bg-tertiary': '#F3F4F6',
@@ -43,21 +50,18 @@ export const theme = {
     'bg-overlay-light': 'rgba(0,0,0,0.3)',
     
     // Text Colors
-    'text-primary': '#0B0B0C',
-    'text-secondary': '#4B5563',
-    'text-tertiary': '#6B7280',
+    'text-primary': '#1F2937',    // Matches ParkProUI
+    'text-secondary': '#6B7280',  // Matches ParkProUI
+    'text-tertiary': '#9CA3AF',
     'text-light': '#FFFFFF',
-    'text-gold': '#C9A227',
-    'text-teal': '#14B8A6',
-    'text-purple': '#8B5CF6',
+    textPrimary: '#1F2937',       // Alias for compatibility
+    textSecondary: '#6B7280',     // Alias for compatibility
     
     // Border Colors
+    border: '#E5E7EB',            // Matches ParkProUI
     'border-light': '#E5E7EB',
     'border-medium': '#D1D5DB',
     'border-dark': '#9CA3AF',
-    'border-gold': '#C9A227',
-    'border-teal': '#14B8A6',
-    'border-purple': '#8B5CF6',
   },
   
   typography: {
@@ -116,8 +120,10 @@ export const theme = {
     lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    gold: '0 8px 25px rgba(201, 162, 39, 0.3)',
-    'gold-lg': '0 12px 35px rgba(201, 162, 39, 0.4)',
+    gold: '0 8px 25px rgba(59, 130, 246, 0.2)',      // Blue shadow (legacy name)
+    'gold-lg': '0 12px 35px rgba(59, 130, 246, 0.25)',  // Blue shadow (legacy name)
+    primary: '0 8px 25px rgba(59, 130, 246, 0.2)',   // Blue shadow
+    'primary-lg': '0 12px 35px rgba(59, 130, 246, 0.25)', // Blue shadow
   },
   
   containerWidths: {
