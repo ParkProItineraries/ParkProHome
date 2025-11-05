@@ -110,13 +110,22 @@ const Footer = () => {
             </FooterText>
           </FooterColumn>
 
-          {/* Quick Links column */}
+          {/* Product column */}
           <FooterColumn>
-            <FooterTitle>Quick Links</FooterTitle>
-            <FooterLink to="/about">About</FooterLink>
+            <FooterTitle>Product</FooterTitle>
+            <FooterLink to="/pricing">Pricing</FooterLink>
+            <FooterLink to="/features">Features</FooterLink>
+            <FooterLink to="/solutions">Solutions</FooterLink>
+            <FooterLink to="/comparison">Why ParkPro</FooterLink>
+          </FooterColumn>
+
+          {/* Resources column */}
+          <FooterColumn>
+            <FooterTitle>Resources</FooterTitle>
             <FooterLink to="/demo">Demo</FooterLink>
+            <FooterLink to="/faq">FAQ</FooterLink>
             <FooterLink to="/contact">Contact</FooterLink>
-            <FooterLink to="/request-access">Request Access</FooterLink>
+            <FooterLink to="/request-access">Get Started</FooterLink>
           </FooterColumn>
 
           {/* Contact Column */}

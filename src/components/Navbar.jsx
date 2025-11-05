@@ -226,8 +226,11 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { to: "/about", label: "About" },
-    { to: "/demo", label: "Demo" },
+    { to: "/pricing", label: "Pricing" },
+    { to: "/features", label: "Features" },
+    { to: "/solutions", label: "Solutions" },
+    { to: "/comparison", label: "Why ParkPro" },
+    { to: "/faq", label: "FAQ" },
     { to: "/contact", label: "Contact" },
   ];
 
