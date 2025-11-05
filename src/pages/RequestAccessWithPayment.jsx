@@ -591,20 +591,6 @@ const RequestAccessWithPayment = () => {
   // Available plans (fetch from backend in production)
   const allPlans = [
     {
-      id: "admin_test",
-      name: "Admin Test (Free)",
-      price: 0,
-      interval: "month",
-      features: [
-        "Full platform access",
-        "All features enabled",
-        "For testing purposes only",
-        "No payment required"
-      ],
-      isTest: true,
-      roles: ["solo-agent", "agency-owner", "agency-manager", "travel-consultant", "other"]
-    },
-    {
       id: "itinerary_starter_tier1",
       name: "Itinerary Starter",
       price: 147,
