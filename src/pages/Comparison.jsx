@@ -148,7 +148,7 @@ const TableHeader = styled.div`
 `;
 
 const TableHeaderCell = styled.div`
-  color: ${({ $isHighlight }) => $isHighlight ? '#3B82F6' : 'rgba(255, 255, 255, 0.7)'};
+  color: ${({ $isHighlight, theme }) => $isHighlight ? theme.colors.primary : 'rgba(255, 255, 255, 0.7)'};
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   text-align: center;

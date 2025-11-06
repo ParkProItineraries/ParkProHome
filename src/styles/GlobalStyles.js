@@ -289,7 +289,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors['primary-dark']});
+    background: linear-gradient(135deg, ${theme.colors['primary-dark']}, ${theme.colors['primary-light']});
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -368,7 +368,7 @@ const GlobalStyles = createGlobalStyle`
     :root {
       --pp-black: #000000;
       --pp-white: #ffffff;
-      --pp-gold: #1D4ED8; // Blue for high contrast
+      --pp-gold: #E9B029; // Dark gold for high contrast
     }
   }
 `;

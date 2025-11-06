@@ -171,7 +171,7 @@ const FAQAnswer = styled(motion.div)`
 `;
 
 const CTASection = styled(Section)`
-  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  background: ${({ theme }) => theme.colors.backgroundDark};
   color: white;
   text-align: center;
   position: relative;

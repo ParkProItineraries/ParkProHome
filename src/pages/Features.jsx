@@ -350,7 +350,7 @@ const Features = () => {
           title: 'Global Expansion',
           description: 'Planning for international destinations including European theme parks, Asian resorts, and cruise lines.',
           outcomes: ['European theme parks', 'Asian resort planning', 'Global cruise integration'],
-          badge: '2025'
+          badge: '2027'
         },
         {
           icon: <Target size={32} />,

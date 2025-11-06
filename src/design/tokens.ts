@@ -4,11 +4,12 @@
 export const designTokens = {
   // Brand Colors - Enhanced with teal/purple accents
   colors: {
-    // Primary Brand Colors
+    // Primary Brand Colors - Premium Midnight + Gold
     black: '#0B0B0C',
     white: '#FFFFFF',
-    gold: '#3B82F6',
-    'gold-muted': '#2563EB',
+    gold: '#F5C249',
+    'gold-muted': '#F8D86B',
+    'gold-dark': '#E9B029',
     
     // Accent Colors (as requested)
     teal: '#14B8A6',
@@ -32,7 +33,7 @@ export const designTokens = {
     success: '#10B981',
     warning: '#F59E0B',
     error: '#EF4444',
-    info: '#3B82F6',
+    info: '#F5C249',
     
     // Background Colors
     'bg-primary': '#FFFFFF',
@@ -47,7 +48,7 @@ export const designTokens = {
     'text-secondary': '#4B5563',
     'text-tertiary': '#6B7280',
     'text-light': '#FFFFFF',
-    'text-gold': '#3B82F6',
+    'text-gold': '#F5C249',
     'text-teal': '#14B8A6',
     'text-purple': '#8B5CF6',
     
@@ -55,7 +56,7 @@ export const designTokens = {
     'border-light': '#E5E7EB',
     'border-medium': '#D1D5DB',
     'border-dark': '#9CA3AF',
-    'border-gold': '#3B82F6',
+    'border-gold': '#F5C249',
     'border-teal': '#14B8A6',
     'border-purple': '#8B5CF6',
   },
@@ -289,7 +290,7 @@ export const designTokens = {
       },
       variants: {
         primary: {
-          background: '#3B82F6',
+          background: '#F5C249',
           color: '#0B0B0C',
           border: 'none',
         },
@@ -334,7 +335,7 @@ export const designTokens = {
         },
         outlined: {
           background: 'transparent',
-          border: '2px solid #3B82F6',
+          border: '2px solid #F5C249',
           borderRadius: '0.75rem',
           padding: '1.5rem',
         },

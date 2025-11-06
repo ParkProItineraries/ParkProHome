@@ -1150,7 +1150,7 @@ const RequestAccessWithPayment = () => {
                     <span style={{ 
                       marginLeft: '0.5rem', 
                       padding: '0.25rem 0.5rem', 
-                      background: 'linear-gradient(135deg, #3B82F6, #1D4ED8)', 
+                      background: 'linear-gradient(135deg, #F5C249, #F8D86B)', 
                       color: '#000', 
                       fontSize: '0.75rem', 
                       borderRadius: '9999px',

@@ -286,8 +286,6 @@ const Hero = () => {
               variant="gold" 
               size="lg"
               style={{ 
-                background: '#3B82F6', 
-                color: '#0B0B0C', 
                 padding: '16px 32px',
                 borderRadius: '16px',
                 fontWeight: '600',

@@ -1,21 +1,28 @@
 // Design System Theme - Enhanced with new design tokens
 export const theme = {
   colors: {
-    // Primary Brand Colors (Matches ParkProUI)
+    // Premium Midnight + Gold Palette
     black: '#0B0B0C',
     white: '#FFFFFF',
-    primary: '#3B82F6',           // Blue - Main brand color
-    'primary-dark': '#2563EB',    // Darker blue for hover states
-    'primary-light': '#60A5FA',   // Lighter blue for backgrounds
+    
+    // Primary Gold Colors
+    primary: '#F5C249',           // Main gold accent
+    'primary-light': '#F8D86B',   // Hover gold
+    'primary-dark': '#E9B029',    // Pressed state
+    primaryGradient: 'linear-gradient(90deg, #E9B029 0%, #F8D86B 100%)',
+    
+    // Gold aliases for compatibility
+    gold: '#F5C249',              // Main gold
+    'gold-muted': '#F8D86B',      // Light gold
+    'gold-dark': '#E9B029',       // Dark gold
+    hover: '#F8D86B',
+    focus: '#FFD870',
+    active: '#E9B029',
     
     // Accent Colors
     accent: '#10B981',            // Green - Success/accent color
     'accent-dark': '#059669',     // Darker green
     'accent-light': '#34D399',    // Lighter green
-    
-    // Legacy gold (deprecated - keeping for gradual migration)
-    gold: '#3B82F6',              // Alias to primary for compatibility
-    'gold-muted': '#2563EB',      // Alias to primary-dark
     
     // Gray Scale (Matches ParkProUI)
     'gray-50': '#F9FAFB',
@@ -33,35 +40,41 @@ export const theme = {
     success: '#10B981',
     warning: '#F59E0B',
     error: '#EF4444',
-    info: '#3B82F6',
+    info: '#F5C249',
     overlay: 'rgba(0,0,0,0.6)',
     green: '#10B981',
     red: '#EF4444',
-    blue: '#3B82F6',
+    blue: '#3B82F6', // Legacy blue kept for semantic use (not brand)
     
-    // Background Colors
-    background: '#F4F6F8',        // Matches ParkProUI
+    // Midnight Backgrounds
+    backgroundDark: '#0A0A0F',    // Hero/section backgrounds
+    backgroundLight: '#111317',   // Surface panels/cards
+    background: '#F4F6F8',        // Light mode background
     surface: '#FFFFFF',
     'bg-primary': '#FFFFFF',
     'bg-secondary': '#F9FAFB',
     'bg-tertiary': '#F3F4F6',
-    'bg-dark': '#0B0B0C',
+    'bg-dark': '#0A0A0F',
+    'bg-surface-dark': '#111317',
     'bg-overlay': 'rgba(0,0,0,0.6)',
     'bg-overlay-light': 'rgba(0,0,0,0.3)',
     
     // Text Colors
-    'text-primary': '#1F2937',    // Matches ParkProUI
-    'text-secondary': '#6B7280',  // Matches ParkProUI
+    'text-primary': '#1F2937',    // Light mode text
+    'text-secondary': '#6B7280',  // Light mode secondary
     'text-tertiary': '#9CA3AF',
-    'text-light': '#FFFFFF',
+    'text-light': '#FFFFFF',      // Dark mode text
+    'text-dark-secondary': '#B3B3B3', // Dark mode secondary
     textPrimary: '#1F2937',       // Alias for compatibility
     textSecondary: '#6B7280',     // Alias for compatibility
     
     // Border Colors
-    border: '#E5E7EB',            // Matches ParkProUI
+    border: '#E5E7EB',            // Light mode border
     'border-light': '#E5E7EB',
     'border-medium': '#D1D5DB',
     'border-dark': '#9CA3AF',
+    'border-gold': 'rgba(245, 194, 73, 0.4)', // Gold border
+    'border-dark-mode': 'rgba(255, 255, 255, 0.08)', // Dark mode border
   },
   
   typography: {
@@ -120,10 +133,11 @@ export const theme = {
     lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    gold: '0 8px 25px rgba(59, 130, 246, 0.2)',      // Blue shadow (legacy name)
-    'gold-lg': '0 12px 35px rgba(59, 130, 246, 0.25)',  // Blue shadow (legacy name)
-    primary: '0 8px 25px rgba(59, 130, 246, 0.2)',   // Blue shadow
-    'primary-lg': '0 12px 35px rgba(59, 130, 246, 0.25)', // Blue shadow
+    gold: '0 8px 25px rgba(245, 194, 73, 0.3)',      // Gold glow
+    'gold-lg': '0 12px 35px rgba(245, 194, 73, 0.35)', // Large gold glow
+    shadowGlow: '0 0 16px rgba(245, 194, 73, 0.35)', // Premium gold glow
+    primary: '0 8px 25px rgba(245, 194, 73, 0.3)',   // Gold shadow
+    'primary-lg': '0 12px 35px rgba(245, 194, 73, 0.35)', // Large gold shadow
   },
   
   containerWidths: {
