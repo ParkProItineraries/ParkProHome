@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet-async";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Button from "../components/ui/Button";
-import { flexCenter } from "../styles/mixins";
 import { copy } from "../content/strings";
 
 const PageWrapper = styled.div`

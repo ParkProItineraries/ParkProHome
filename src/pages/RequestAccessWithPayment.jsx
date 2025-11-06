@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { 
   Check,
   Users,
@@ -454,7 +453,7 @@ const SecurityBadge = styled.div`
 `;
 
 // Payment Form Component
-const PaymentForm = ({ onSuccess, selectedPlan }) => {
+const PaymentForm = ({ onSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -558,11 +557,7 @@ const RequestAccessWithPayment = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [setupIntentClientSecret, setSetupIntentClientSecret] = useState(null);
-  const [paymentMethodId, setPaymentMethodId] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-  const [configLoaded, setConfigLoaded] = useState(false);
   const [loadingPlan, setLoadingPlan] = useState(false);
 
   // Fetch ALL configuration from backend on mount (from AWS SSM)
@@ -577,7 +572,6 @@ const RequestAccessWithPayment = () => {
         // Initialize Stripe with the publishable key from backend
         stripePromise = loadStripe(config.stripePublishableKey);
         
-        setConfigLoaded(true);
         console.log('✅ All configuration loaded from backend (AWS SSM)');
       } catch (error) {
         console.error('❌ Failed to load configuration:', error);
@@ -749,12 +743,10 @@ const RequestAccessWithPayment = () => {
   };
 
   const handleFreeSignup = async (plan) => {
-    setIsSubmitting(true);
     setErrorMessage("");
 
     if (!apiUrl) {
       setErrorMessage('Configuration not loaded. Please refresh the page.');
-      setIsSubmitting(false);
       return;
     }
 
@@ -775,27 +767,20 @@ const RequestAccessWithPayment = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitStatus('success');
         setCurrentStep(4);
       } else {
         throw new Error(data.message || "Signup failed");
       }
     } catch (error) {
       setErrorMessage(error.message);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   const handlePaymentSuccess = async (paymentMethodId) => {
-    setPaymentMethodId(paymentMethodId);
-    setIsSubmitting(true);
     setErrorMessage("");
 
     if (!apiUrl) {
       setErrorMessage('Configuration not loaded. Please refresh the page.');
-      setIsSubmitting(false);
       return;
     }
 
@@ -816,16 +801,12 @@ const RequestAccessWithPayment = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitStatus('success');
         setCurrentStep(4);
       } else {
         throw new Error(data.message || "Signup failed");
       }
     } catch (error) {
       setErrorMessage(error.message);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -1330,11 +1311,7 @@ const RequestAccessWithPayment = () => {
           </Header>
 
           <FormContainer>
-            <FormCard
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <FormCard>
               {/* Step Indicator */}
               <StepIndicator>
                 <Step>

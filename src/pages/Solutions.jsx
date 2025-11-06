@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import SEO, { SEOConfigs } from '../components/seo/SEO';
 import { motion } from "framer-motion";
@@ -24,7 +24,7 @@ import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
-import { flexCenter, flexColumnCenter } from "../styles/mixins";
+import { flexCenter } from "../styles/mixins";
 
 // Enhanced Solutions Page with Target Audience Focus
 const SolutionsWrapper = styled.div`
