@@ -37,12 +37,12 @@ export const copy = {
 
   // Hero Section
   hero: {
-    h1: "Create premium Disney itineraries in under 60 minutes.",
-    sub: "ParkPro helps travel agents turn 8–12 hours of manual Disney planning into a 15–30 minute workflow. Capture client details once, generate a clean day-by-day plan, and export a premium itinerary your clients actually use.",
+    h1: "Travel agent itinerary software built for Disney trips.",
+    sub: "ParkPro helps Disney-focused travel agents turn client intake forms into clean, day-by-day itineraries in a fraction of the time, without changing how they serve their clients.",
     ctaPrimary: "Get a demo",
     ctaSecondary: "See pricing",
-    proof: "Built with Disney-focused travel agents to save 5–10+ hours per client.",
-    badge: "Founding Member Access"
+    proof: "Built with Disney-focused travel agents to save hours per client.",
+    badge: "Early Access"
   },
 
   // Main Value Propositions
