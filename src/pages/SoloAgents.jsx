@@ -313,7 +313,7 @@ const AuthorCompany = styled.div`
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -730,7 +730,7 @@ const SoloAgents = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Ready to Scale Your Solo Disney Business?
+              Ready to scale your solo Disney business?
             </CTATitle>
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -738,8 +738,7 @@ const SoloAgents = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join hundreds of solo travel agents who've already revolutionized their Disney planning process 
-              and increased their bookings by 3x with ParkPro.
+              We're inviting a small group of Disney-focused travel agents and agencies into early access. Join early access to save hours on each itinerary and handle more trips without adding more late nights.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -747,16 +746,9 @@ const SoloAgents = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <ButtonGroup>
-                <Button variant="primary" size="lg" to="/request-access">
-                  <Star size={20} />
-                  Start Free Trial
-                </Button>
-                <Button variant="secondary" size="lg" to="/demo">
-                  <Play size={20} />
-                  Watch Demo
-                </Button>
-              </ButtonGroup>
+              <Button variant="primary" size="lg" to="/request-access">
+                Join Early Access →
+              </Button>
             </motion.div>
           </CTAContent>
         </Container>

@@ -98,9 +98,10 @@ const SectionText = styled(motion.p).withConfig({
 `;
 
 const CTASection = styled(Section)`
-  background: ${({ theme }) => theme.colors['gray-50']};
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
 `;
 
 const CTATitle = styled(motion.h2).withConfig({
@@ -108,7 +109,7 @@ const CTATitle = styled(motion.h2).withConfig({
 })`
   font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
@@ -117,7 +118,7 @@ const CTAText = styled(motion.p).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition'].includes(prop)
 })`
   font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   max-width: 600px;
   margin-left: auto;
@@ -202,15 +203,14 @@ const TravelAgentWorkflowSoftware = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Ready to Optimize Your Workflow?
+            Ready to optimize your workflow?
           </CTATitle>
           <CTAText
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Join travel agents who are saving hours per client with ParkPro's workflow software. 
-            Request early access to get started.
+            We're inviting a small group of Disney-focused travel agents and agencies into early access. Join travel agents who are saving hours per client with ParkPro's workflow software.
           </CTAText>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -222,8 +222,7 @@ const TravelAgentWorkflowSoftware = () => {
               variant="primary"
               size="lg"
             >
-              Request Access
-              <ArrowRight size={20} />
+              Request Early Access →
             </Button>
           </motion.div>
         </Container>

@@ -33,7 +33,14 @@ export const fetchConfig = async () => {
 
   try {
     const apiUrl = getApiUrl();
-    const response = await fetch(`${apiUrl}/api/config`);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+    
+    const response = await fetch(`${apiUrl}/api/config`, {
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch config: ${response.status}`);
@@ -54,6 +61,17 @@ export const fetchConfig = async () => {
     console.log('✅ Configuration loaded from backend (AWS SSM)');
     return configCache;
   } catch (error) {
+    // In development, log warning but don't throw - allow app to continue
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      console.warn('⚠️ Backend not available. Some features may not work. Error:', error.message);
+      // Return a fallback config for development
+      configCache = {
+        apiUrl: 'http://localhost:3001',
+        stripePublishableKey: null // Will need to be set manually if Stripe is needed
+      };
+      return configCache;
+    }
+    // In production, throw the error
     console.error('❌ Failed to load configuration:', error);
     throw error;
   }

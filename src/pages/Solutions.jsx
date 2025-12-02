@@ -8,9 +8,7 @@ import {
   Building2, 
   Crown, 
   ArrowRight,
-  CheckCircle,
-  Star,
-  Zap
+  CheckCircle
 } from "lucide-react";
 import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
@@ -202,7 +200,7 @@ const SolutionButtonWrapper = styled.div`
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -236,17 +234,6 @@ const CTASubtitle = styled(motion.p)`
   }
 `;
 
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
-  justify-content: center;
-  flex-wrap: wrap;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
 
 const Solutions = () => {
   const solutions = [
@@ -395,7 +382,7 @@ const Solutions = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Ready to Transform How Your Agency Plans Disney Trips?
+              Ready to see how ParkPro fits your agency?
             </CTATitle>
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -403,7 +390,7 @@ const Solutions = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              ParkPro is rolling out with a small group of Disney-focused agents and agencies. Join early access to save hours on every trip and help shape the future Agency OS for travel.
+              We're inviting a small group of Disney-focused travel agents and agencies into early access. Choose the plan that fits you, then use ParkPro to standardize itineraries, save hours, and get ready for the future Agency OS for travel.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -411,16 +398,9 @@ const Solutions = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <ButtonGroup>
-                <Button variant="primary" size="lg" to="/request-access">
-                  <Star size={20} />
-                  Join Early Access
-                </Button>
-                <Button variant="secondary" size="lg" to="/demo">
-                  <Zap size={20} />
-                  Watch Demo
-                </Button>
-              </ButtonGroup>
+              <Button variant="primary" size="lg" to="/request-access">
+                Request Early Access →
+              </Button>
             </motion.div>
           </CTAContent>
         </Container>

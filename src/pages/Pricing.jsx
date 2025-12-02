@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import SEO from "../components/seo/SEO";
 import { SEOConfigs } from "../components/seo/SEOConfigs";
 import {
@@ -479,9 +480,31 @@ const FAQAnswer = styled(motion.div)`
 `;
 
 const Pricing = () => {
+  const location = useLocation();
   const [isAnnual, setIsAnnual] = useState(false);
   const [openFAQ, setOpenFAQ] = useState(null);
   const [viewType, setViewType] = useState("solo"); // "solo" or "agency"
+
+  // Handle hash navigation on mount and when location changes
+  useEffect(() => {
+    const hash = location.hash.replace("#", "");
+    if (hash === "solo" || hash === "agency") {
+      setViewType(hash);
+      // Scroll to pricing section after a brief delay to ensure toggle is set and DOM is updated
+      setTimeout(() => {
+        const pricingSection = document.getElementById("pricing-section");
+        if (pricingSection) {
+          const offset = 120; // Account for fixed navbar (88px) + some padding
+          const elementPosition = pricingSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 150);
+    }
+  }, [location.hash, location.pathname]);
 
   const pricingPlans = [
     {
@@ -717,14 +740,15 @@ const Pricing = () => {
             </motion.p>
           </PricingHeader>
 
-          <ToggleWrapper>
-            <ToggleLabel>Solo Agent</ToggleLabel>
-            <PrimaryToggle onClick={() => setViewType(viewType === "solo" ? "agency" : "solo")}>
-              <PrimaryToggleOption active={viewType === "solo"}>Solo Agent</PrimaryToggleOption>
-              <PrimaryToggleOption active={viewType === "agency"}>Agency</PrimaryToggleOption>
-            </PrimaryToggle>
-            <ToggleLabel>Agency</ToggleLabel>
-          </ToggleWrapper>
+          <div id="pricing-section">
+            <ToggleWrapper>
+              <ToggleLabel>Solo Agent</ToggleLabel>
+              <PrimaryToggle onClick={() => setViewType(viewType === "solo" ? "agency" : "solo")}>
+                <PrimaryToggleOption active={viewType === "solo"}>Solo Agent</PrimaryToggleOption>
+                <PrimaryToggleOption active={viewType === "agency"}>Agency</PrimaryToggleOption>
+              </PrimaryToggle>
+              <ToggleLabel>Agency</ToggleLabel>
+            </ToggleWrapper>
 
           <SecondaryToggleWrapper>
             <ToggleLabel>Monthly</ToggleLabel>
@@ -866,6 +890,7 @@ const Pricing = () => {
               </PricingCard>
             ))}
           </PricingGrid>
+          </div>
         </Container>
       </Section>
 

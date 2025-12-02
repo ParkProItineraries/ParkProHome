@@ -476,8 +476,9 @@ const PlaceholderSubtitle = styled.p`
 // ============================================================================
 
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.spacing.xl} 0;
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;
 
@@ -640,7 +641,7 @@ const Features = () => {
     },
     {
       icon: Settings,
-      number: '1 workspace',
+      number: '1 unified workspace',
       label: 'Everything in one place',
       description: 'Intake forms, trip details, and itineraries live in a single system instead of being scattered across spreadsheets, docs, and email threads.'
     },
@@ -807,9 +808,10 @@ const Features = () => {
         <Container>
           <CTAContent>
             <SectionHeader
-              title="Ready to Build the Operating System for Your Agency?"
-              subtitle="Start with Disney trip automation today and grow into a full Agency OS as ParkPro rolls out CRM, commissions, and multi-destination features."
+              title="Ready to build the operating system for your agency?"
+              subtitle="We're inviting a small group of Disney-focused travel agents and agencies into early access. Start with Disney trip automation today and grow into a full Agency OS as ParkPro rolls out CRM, commissions, and multi-destination features."
               delay={0}
+              dark={true}
             />
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -817,16 +819,9 @@ const Features = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <ButtonGroup>
-                <Button variant="primary" size="lg" to="/request-access">
-                  <Star size={20} />
-                  Join Early Access
-                </Button>
-                <Button variant="secondary" size="lg" to="/demo">
-                  <Play size={20} />
-                  Watch Demo
-                </Button>
-              </ButtonGroup>
+              <Button variant="primary" size="lg" to="/request-access">
+                Request Early Access →
+              </Button>
             </motion.div>
           </CTAContent>
         </Container>

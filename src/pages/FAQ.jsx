@@ -410,8 +410,7 @@ const FAQ = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            The best way to see if ParkPro is right for you is to try it. 
-            During early access you can adjust your plan or cancel as your agency grows, and we'll work closely with you to make sure it's a great fit.
+            We're inviting a small group of Disney-focused travel agents and agencies into early access. The best way to see if ParkPro is right for you is to join early access—you can adjust your plan or cancel as your agency grows, and we'll work closely with you to make sure it's a great fit.
           </CTASubtitle>
           
           <motion.div
@@ -422,22 +421,10 @@ const FAQ = () => {
           >
             <Button
               to="/request-access"
-              variant="secondary"
+              variant="primary"
               size="lg"
-              style={{
-                background: '#0B0B0C',
-                color: theme.colors.primary,
-                padding: '16px 32px',
-                borderRadius: '16px',
-                fontWeight: '600',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
             >
-              Get Started Today
-              <ArrowRight size={20} />
+              Request Early Access →
             </Button>
           </motion.div>
         </Container>

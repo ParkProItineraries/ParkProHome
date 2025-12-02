@@ -222,7 +222,7 @@ const SectionSubtitle = styled(motion.p)`
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -586,7 +586,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                Ready to Save 5–10+ Hours Per Client?
+                Ready to save 5–10+ hours per client?
               </CTATitle>
               
               <CTASubtitle
@@ -595,8 +595,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Join the founding member program and start creating premium Disney itineraries in under 60 minutes instead of spending 8–12 hours per client. 
-                Limited spots available for exclusive pricing and priority support.
+                ParkPro is rolling out with a small group of Disney-focused travel agents and agencies. Join early access to start creating premium Disney itineraries in under 60 minutes instead of spending 8–12 hours per client.
               </CTASubtitle>
               
               <CTAButtonsWrapper
@@ -606,12 +605,7 @@ const Home = () => {
                 viewport={{ once: true }}
               >
                 <Button to="/request-access" variant="primary" size="lg">
-                  {copy.ctas.becomeFoundingMember}
-                  <ArrowRight size={20} />
-                </Button>
-                <Button to="/demo" variant="secondary" size="lg">
-                  <Play size={20} />
-                  {copy.ctas.seeTimeSavings}
+                  Join Early Access →
                 </Button>
               </CTAButtonsWrapper>
             </CTAContent>

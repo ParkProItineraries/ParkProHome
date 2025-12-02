@@ -237,7 +237,7 @@ export const copy = {
     comparison: {
       h1: "Manual planning vs. ParkPro: The real comparison.",
       sub: "See exactly how much time, money, and sanity you'll save by automating your Disney planning.",
-      bottomLine: "The bottom line: Manual planning takes 8-12 hours per itinerary. ParkPro takes 15-30 minutes. That's a 95% time reduction.",
+      bottomLine: "Agents who switch to ParkPro consistently report saving hours of planning time, reducing client back-and-forth, and delivering cleaner, more professional itineraries — without changing how they serve their clients.",
       calculatorTitle: "Calculate your time & money savings",
       calculatorSub: "Enter your numbers to see your personalized ROI",
       painPointsH2: "The real pain points of manual planning",

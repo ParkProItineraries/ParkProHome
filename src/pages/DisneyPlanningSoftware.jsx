@@ -278,6 +278,7 @@ const CTASection = styled(Section)`
   text-align: center;
   position: relative;
   overflow: hidden;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
 
   &::before {
     content: '';
@@ -536,7 +537,7 @@ const DisneyPlanningSoftware = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Transform Your Disney Planning Business?
+            Ready to transform your Disney planning business?
           </CTATitle>
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
@@ -544,8 +545,7 @@ const DisneyPlanningSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Join the early access program and get 50% off your first year. 
-            Start creating professional Disney itineraries in minutes with the best Disney planning software for travel agents.
+            We're inviting a small group of Disney-focused travel agents and agencies into early access. Start creating professional Disney itineraries in minutes with the best Disney planning software for travel agents.
           </CTASubtitle>
           
           <motion.div
@@ -556,22 +556,10 @@ const DisneyPlanningSoftware = () => {
           >
             <Button
               to="/request-access"
-              variant="secondary"
+              variant="primary"
               size="lg"
-              style={{
-                background: '#0B0B0C',
-                color: theme.colors.primary,
-                padding: '16px 32px',
-                borderRadius: '16px',
-                fontWeight: '600',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
             >
-              Join Early Access - 50% Off
-              <ArrowRight size={20} />
+              Request Early Access →
             </Button>
           </motion.div>
         </Container>

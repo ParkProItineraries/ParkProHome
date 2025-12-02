@@ -321,7 +321,7 @@ const AuthorCompany = styled.div`
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -737,7 +737,7 @@ const Enterprise = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Ready to Transform Your Enterprise?
+              Ready to transform your enterprise?
             </CTATitle>
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -745,8 +745,7 @@ const Enterprise = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Contact our enterprise team to discuss your specific requirements and get a custom solution 
-              that meets your organization's unique needs.
+              We're inviting a small group of Disney-focused travel agents and agencies into early access. Contact our enterprise team to discuss your specific requirements and get a custom solution that meets your organization's unique needs.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -754,16 +753,9 @@ const Enterprise = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <ButtonGroup>
-                <Button variant="primary" size="lg" to="/request-access">
-                  <Star size={20} />
-                  Contact Sales
-                </Button>
-                <Button variant="secondary" size="lg" to="/demo">
-                  <Play size={20} />
-                  Watch Demo
-                </Button>
-              </ButtonGroup>
+              <Button variant="primary" size="lg" to="/request-access">
+                Request Early Access →
+              </Button>
             </motion.div>
           </CTAContent>
         </Container>

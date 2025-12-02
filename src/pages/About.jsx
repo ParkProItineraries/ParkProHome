@@ -356,17 +356,17 @@ const StatLabel = styled.div`
 
 const CTASection = styled.div`
   text-align: center;
-  padding: ${({ theme }) => theme.spacing['3xl']};
-  background: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.spacing.xl};
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.lg};
   box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 1px solid ${({ theme }) => theme.colors['gray-300']};
 `;
 
 const CTATitle = styled.h2`
   font-size: ${({ theme }) => theme.typography.sizes['4xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
@@ -377,7 +377,7 @@ const CTATitle = styled.h2`
 
 const CTASubtitle = styled.p`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   max-width: 600px;
   margin-left: auto;
@@ -583,18 +583,13 @@ const About = () => {
           </StatsSection>
 
           <CTASection>
-            <CTATitle>Ready to Join the Revolution?</CTATitle>
+            <CTATitle>Ready to join the revolution?</CTATitle>
             <CTASubtitle>
-              Be part of the future of Disney travel planning. Join hundreds of agents who've already transformed their business with ParkPro.
+              We're inviting a small group of Disney-focused travel agents and agencies into early access. Be part of the future of Disney travel planning and transform your business with ParkPro.
             </CTASubtitle>
-            <ButtonGroup>
-              <Button variant="gold" size="lg" to="/request-access">
-                Request Early Access
-              </Button>
-              <Button variant="outline" size="lg" to="/features">
-                Explore Features
-              </Button>
-            </ButtonGroup>
+            <Button variant="primary" size="lg" to="/request-access">
+              Request Early Access →
+            </Button>
           </CTASection>
         </Container>
       </Section>

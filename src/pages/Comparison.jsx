@@ -14,6 +14,8 @@ import {
   RefreshCw,
   Building2,
   Crown,
+  Timer,
+  LayoutGrid,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/seo/SEO";
@@ -33,7 +35,7 @@ const HeroSection = styled(Section)`
   background: linear-gradient(135deg, #0b0b0c 0%, #1a1a1a 100%);
   color: white;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing["3xl"]} 0;
   position: relative;
   overflow: hidden;
 
@@ -58,7 +60,7 @@ const HeroTitle = styled(motion.h1)`
   font-size: ${({ theme }) => theme.typography.sizes["5xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -72,6 +74,7 @@ const HeroSubtitle = styled(motion.p)`
   max-width: 800px;
   margin: 0 auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
 
 const HighlightBox = styled(motion.div)`
@@ -82,8 +85,8 @@ const HighlightBox = styled(motion.div)`
   );
   border: 2px solid ${({ theme }) => theme.colors.gold};
   border-radius: ${({ theme }) => theme.radius.xl};
-  padding: ${({ theme }) => theme.spacing.xl};
-  margin: ${({ theme }) => theme.spacing["3xl"]} auto;
+  padding: ${({ theme }) => theme.spacing.lg};
+  margin: ${({ theme }) => theme.spacing["2xl"]} auto;
   max-width: 600px;
   text-align: center;
 `;
@@ -92,7 +95,7 @@ const HighlightTitle = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.gold};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 const HighlightText = styled.p`
@@ -103,27 +106,27 @@ const HighlightText = styled.p`
 
 // Section Wrappers with Alternating Backgrounds
 const StatsSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   background: ${({ theme }) => theme.colors["gray-50"]};
 `;
 
 const AudienceSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   background: ${({ theme }) => theme.colors.white};
 `;
 
 const ComparisonSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   background: ${({ theme }) => theme.colors.white};
 `;
 
 const ROISection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   background: ${({ theme }) => theme.colors["gray-50"]};
 `;
 
 const PainSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   background: ${({ theme }) => theme.colors.white};
 `;
 
@@ -132,7 +135,7 @@ const SectionTitle = styled.h2`
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -141,12 +144,17 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
   color: ${({ theme }) => theme.colors["gray-600"]};
   text-align: center;
   max-width: 700px;
-  margin: 0 auto ${({ theme }) => theme.spacing.lg} auto;
+  margin: 0 auto ${({ theme }) => theme.spacing.xl} auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+  }
 `;
 
 // Comparison Matrix Components
@@ -170,10 +178,14 @@ const MatrixHeaderRow = styled.div`
   grid-template-columns: 2fr 1fr 1fr 1fr;
   padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
   gap: ${({ theme }) => theme.spacing.sm};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, #1a1a1a 100%);
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.black} 0%,
+    #1a1a1a 100%
+  );
   align-items: center;
   border-bottom: 2px solid ${({ theme }) => theme.colors["gray-200"]};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
     padding: ${({ theme }) => theme.spacing.md};
@@ -195,16 +207,17 @@ const ParkProHeaderCell = styled(MatrixHeaderCell)`
   color: ${({ theme }) => theme.colors.gold};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   position: relative;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -${({ theme }) => theme.spacing.lg};
     left: 0;
     right: 0;
     height: 3px;
     background: ${({ theme }) => theme.colors.gold};
-    border-radius: ${({ theme }) => theme.radius.full} ${({ theme }) => theme.radius.full} 0 0;
+    border-radius: ${({ theme }) => theme.radius.full}
+      ${({ theme }) => theme.radius.full} 0 0;
   }
 `;
 
@@ -212,21 +225,22 @@ const MatrixRow = styled(motion.div)`
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.sm};
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
   border-bottom: 1px solid ${({ theme }) => theme.colors["gray-100"]};
-  background: ${({ $isEven, theme }) => $isEven ? theme.colors.white : theme.colors["gray-50"]};
+  background: ${({ $isEven, theme }) =>
+    $isEven ? theme.colors.white : theme.colors["gray-50"]};
   transition: all 0.2s ease;
   align-items: center;
-  
+
   &:hover {
     background: ${({ theme }) => theme.colors["gray-50"]};
     transform: translateX(2px);
   }
-  
+
   &:last-child {
     border-bottom: none;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
     padding: ${({ theme }) => theme.spacing.md};
@@ -241,7 +255,7 @@ const MatrixFeatureCell = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   text-align: left;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
     margin-bottom: ${({ theme }) => theme.spacing.xs};
@@ -262,12 +276,12 @@ const MatrixCell = styled.div`
   line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   min-height: 44px;
   padding: ${({ theme }) => theme.spacing.xs} 0;
-  
+
   span {
     max-width: 100%;
     word-wrap: break-word;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     align-items: flex-start;
     text-align: left;
@@ -277,14 +291,18 @@ const MatrixCell = styled.div`
 `;
 
 const ParkProMatrixCell = styled(MatrixCell)`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}15, ${({ theme }) => theme.colors["gold-muted"]}10);
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.gold}15,
+    ${({ theme }) => theme.colors["gold-muted"]}10
+  );
   border-left: 3px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0;
   padding: ${({ theme }) => theme.spacing.xs};
   margin: 0;
   color: ${({ theme }) => theme.colors.black};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     border-left: none;
     border-top: 3px solid ${({ theme }) => theme.colors.gold};
@@ -293,7 +311,7 @@ const ParkProMatrixCell = styled(MatrixCell)`
 `;
 
 const MatrixLegend = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   color: ${({ theme }) => theme.colors["gray-600"]};
   text-align: center;
@@ -318,7 +336,7 @@ const MatrixBadge = styled.div`
   color: ${({ theme }) => theme.colors["gray-700"]};
   white-space: nowrap;
   border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
-  
+
   span {
     line-height: 1.2;
   }
@@ -341,40 +359,60 @@ const MatrixNoneSymbol = styled.span`
 
 const StatsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: ${({ theme }) => theme.spacing.xl};
-  margin-top: ${({ theme }) => theme.spacing["3xl"]};
+  grid-template-columns: repeat(4, 1fr);
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.lg};
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${({ theme }) => theme.spacing.sm};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StatCard = styled(motion.div)`
   background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.xl};
-  padding: ${({ theme }) => theme.spacing.xl};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  padding: ${({ theme }) => theme.spacing.lg};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   text-align: center;
   border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 200px;
+  gap: 0;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.md};
     border-color: ${({ theme }) => theme.colors.gold};
   }
 `;
 
 const StatIcon = styled.div`
-  width: 64px;
-  height: 64px;
-  margin: 0 auto ${({ theme }) => theme.spacing.md} auto;
+  width: 56px;
+  height: 56px;
+  margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.gold}20,
-    ${({ theme }) => theme.colors["gold-muted"]}20
+    ${({ theme }) => theme.colors.gold}15,
+    ${({ theme }) => theme.colors["gold-muted"]}10
   );
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  flex-grow: 0;
 
   svg {
     color: ${({ theme }) => theme.colors.gold};
@@ -382,23 +420,40 @@ const StatIcon = styled.div`
 `;
 
 const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
+  font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  min-height: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+  }
 `;
 
 const StatLabel = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
   color: ${({ theme }) => theme.colors["gray-600"]};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  font-weight: ${({ theme }) => theme.typography.weights.normal};
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  max-width: 100%;
+  margin: 0;
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 `;
 
 const ROICard = styled(motion.div)`
   max-width: 800px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing["2xl"]};
+  padding: ${({ theme }) => theme.spacing.xl};
   border-radius: ${({ theme }) => theme.radius.lg};
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.lg};
@@ -407,7 +462,7 @@ const ROICard = styled(motion.div)`
 
 const ROICardHeader = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
 
 const ROICardTitle = styled.h3`
@@ -425,7 +480,7 @@ const ROICardSubtitle = styled.p`
 `;
 
 const InputGroup = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
 const InputLabel = styled.label`
@@ -452,9 +507,9 @@ const InputField = styled.input`
 const ResultsBox = styled.div`
   background: ${({ theme }) => theme.colors.black};
   color: white;
-  padding: ${({ theme }) => theme.spacing.xl};
+  padding: ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.lg};
-  margin-top: ${({ theme }) => theme.spacing.xl};
+  margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
 const ResultItem = styled.div`
@@ -503,8 +558,8 @@ const ResultValue = styled.div`
 const PainPointsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-top: ${({ theme }) => theme.spacing["2xl"]};
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.lg};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
@@ -541,7 +596,7 @@ const PainPointIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
   flex-shrink: 0;
 
   svg {
@@ -553,7 +608,7 @@ const PainPointTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.sizes.base};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
   min-height: 3em;
@@ -573,8 +628,8 @@ const PainPointSolution = styled.p`
 const AudienceGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-top: ${({ theme }) => theme.spacing["2xl"]};
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
 const AudienceCard = styled(motion.div)`
@@ -605,7 +660,7 @@ const AudienceIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto ${({ theme }) => theme.spacing.md};
+  margin: 0 auto ${({ theme }) => theme.spacing.sm};
   color: ${({ theme }) => theme.colors.black};
 `;
 
@@ -613,7 +668,7 @@ const AudienceTitle = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
 
@@ -625,7 +680,7 @@ const AudienceBody = styled.p`
 `;
 
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: ${({ theme }) => theme.colors.black};
   color: white;
   text-align: center;
@@ -635,7 +690,7 @@ const CTATitle = styled.h2`
   font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: white;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -647,7 +702,7 @@ const CTAText = styled.p`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
-  margin: 0 auto ${({ theme }) => theme.spacing.xl} auto;
+  margin: 0 auto ${({ theme }) => theme.spacing.lg} auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 `;
 
@@ -669,122 +724,122 @@ const Comparison = () => {
       feature: "Built specifically for Disney",
       parkpro: {
         label: "Designed for Disney parks",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "General travel templates",
-        level: "partial"
+        level: "partial",
       },
       docs: {
         label: "No built-in logic",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Intelligent park-day logic",
       parkpro: {
         label: "Optimized park flow, hopping, pacing",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "Not theme-park aware",
-        level: "none"
+        level: "none",
       },
       docs: {
         label: "Fully manual",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Time from intake → working plan",
       parkpro: {
         label: "Minutes",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "Hours",
-        level: "partial"
+        level: "partial",
       },
       docs: {
         label: "Many hours",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Intake → itinerary linking",
       parkpro: {
         label: "Automatically mapped",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "Basic forms",
-        level: "partial"
+        level: "partial",
       },
       docs: {
         label: "Manual entry",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Client-facing deliverables",
       parkpro: {
         label: "Branded PDFs / slides / mobile view",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "Basic PDFs",
-        level: "partial"
+        level: "partial",
       },
       docs: {
         label: "Inconsistent & unbranded",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Support for newer agents",
       parkpro: {
         label: "Guided workflows",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "General templates",
-        level: "partial"
+        level: "partial",
       },
       docs: {
         label: "High learning curve",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Scalability for agencies",
       parkpro: {
         label: "Tiered seats & volume support",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "Limited scaling",
-        level: "partial"
+        level: "partial",
       },
       docs: {
         label: "Hard cap on agent hours",
-        level: "none"
-      }
+        level: "none",
+      },
     },
     {
       feature: "Future vision (Agency OS)",
       parkpro: {
         label: "Planned Agency OS roadmap",
-        level: "full"
+        level: "full",
       },
       generic: {
         label: "Not CRM-focused",
-        level: "none"
+        level: "none",
       },
       docs: {
         label: "Not possible",
-        level: "none"
-      }
-    }
+        level: "none",
+      },
+    },
   ];
 
   const audienceData = [
@@ -872,7 +927,7 @@ const Comparison = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <HighlightTitle>The Bottom Line</HighlightTitle>
+              <HighlightTitle>The Real Difference</HighlightTitle>
               <HighlightText>{copy.pages.comparison.bottomLine}</HighlightText>
             </HighlightBox>
           </HeroContent>
@@ -907,6 +962,13 @@ const Comparison = () => {
       {/* Stats Section */}
       <StatsSection>
         <Container>
+          <SectionTitle>
+            Why ParkPro feels different for Disney travel agents
+          </SectionTitle>
+          <SectionSubtitle>
+            These are the shifts agents experience when they move from manual
+            planning to a dedicated itinerary workspace.
+          </SectionSubtitle>
           <StatsGrid>
             <StatCard
               initial={{ opacity: 0, y: 30 }}
@@ -915,9 +977,9 @@ const Comparison = () => {
               transition={{ duration: 0.6 }}
             >
               <StatIcon>
-                <Clock size={32} />
+                <Clock size={28} />
               </StatIcon>
-              <StatNumber>5–10+ hrs</StatNumber>
+              <StatNumber>Save 5–10+ hours</StatNumber>
               <StatLabel>Planning time saved per trip (goal)</StatLabel>
             </StatCard>
 
@@ -928,10 +990,10 @@ const Comparison = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <StatIcon>
-                <TrendingUp size={32} />
+                <TrendingUp size={28} />
               </StatIcon>
-              <StatNumber>More trips</StatNumber>
-              <StatLabel>Handled per agent, same hours</StatLabel>
+              <StatNumber>Handle more trips</StatNumber>
+              <StatLabel>Same working hours, more clients served</StatLabel>
             </StatCard>
 
             <StatCard
@@ -941,10 +1003,10 @@ const Comparison = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <StatIcon>
-                <DollarSign size={32} />
+                <Zap size={28} />
               </StatIcon>
-              <StatNumber>Minutes</StatNumber>
-              <StatLabel>From intake to working plan</StatLabel>
+              <StatNumber>Speed up planning</StatNumber>
+              <StatLabel>Go from intake to working itinerary faster</StatLabel>
             </StatCard>
 
             <StatCard
@@ -954,10 +1016,10 @@ const Comparison = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <StatIcon>
-                <Zap size={32} />
+                <LayoutGrid size={28} />
               </StatIcon>
-              <StatNumber>1 workspace</StatNumber>
-              <StatLabel>For all your Disney trips</StatLabel>
+              <StatNumber>One unified workspace</StatNumber>
+              <StatLabel>Manage all your Disney trips in one place</StatLabel>
             </StatCard>
           </StatsGrid>
         </Container>
@@ -968,7 +1030,8 @@ const Comparison = () => {
         <Container>
           <SectionTitle>How ParkPro Compares to Other Tools</SectionTitle>
           <SectionSubtitle>
-            A clear look at how ParkPro stacks up against generic trip builders and manual methods.
+            A clear look at how ParkPro stacks up against generic trip builders
+            and manual methods.
           </SectionSubtitle>
 
           <MatrixLegend>
@@ -1003,12 +1066,10 @@ const Comparison = () => {
                   transition={{ duration: 0.4, delay: index * 0.04 }}
                 >
                   <MatrixFeatureCell>{row.feature}</MatrixFeatureCell>
-                  
+
                   {/* Generic builders */}
                   <MatrixCell>
-                    {row.generic.level === "full" && (
-                      <MatrixIcon size={16} />
-                    )}
+                    {row.generic.level === "full" && <MatrixIcon size={16} />}
                     {row.generic.level === "partial" && (
                       <MatrixPartialSymbol>~</MatrixPartialSymbol>
                     )}
@@ -1017,12 +1078,10 @@ const Comparison = () => {
                     )}
                     <span>{row.generic.label}</span>
                   </MatrixCell>
-                  
+
                   {/* Spreadsheets & Docs */}
                   <MatrixCell>
-                    {row.docs.level === "full" && (
-                      <MatrixIcon size={16} />
-                    )}
+                    {row.docs.level === "full" && <MatrixIcon size={16} />}
                     {row.docs.level === "partial" && (
                       <MatrixPartialSymbol>~</MatrixPartialSymbol>
                     )}
@@ -1031,7 +1090,7 @@ const Comparison = () => {
                     )}
                     <span>{row.docs.label}</span>
                   </MatrixCell>
-                  
+
                   {/* ParkPro */}
                   <ParkProMatrixCell>
                     <MatrixIcon size={16} />
@@ -1176,11 +1235,9 @@ const Comparison = () => {
       {/* CTA Section */}
       <CTASection>
         <Container>
-          <CTATitle>Ready to Transform How You Plan Disney Trips?</CTATitle>
+          <CTATitle>Ready to plan Disney trips the way you just saw?</CTATitle>
           <CTAText>
-            ParkPro is rolling out with a small group of Disney-focused agents
-            and agencies. Join early access to save hours on every trip and help
-            shape the future Agency OS for travel.
+            ParkPro is rolling out with a small group of Disney-focused travel agents and agencies. Join early access to save hours on each itinerary and replace the manual workflows you saw in the comparison above.
           </CTAText>
           <Button
             to="/request-access"
@@ -1188,8 +1245,7 @@ const Comparison = () => {
             size="lg"
             fullWidth={false}
           >
-            Join Early Access
-            <ArrowRight size={20} />
+            Join Early Access →
           </Button>
         </Container>
       </CTASection>

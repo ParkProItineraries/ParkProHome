@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from "react";
+import theme from '../styles/theme';
 import styled from "styled-components";
 import { 
   Check,
-  Users,
-  Clock,
-  Star,
-  Shield,
-  Zap,
-  Mail,
-  Phone,
-  Building,
-  User,
-  MessageSquare,
   ArrowRight,
-  CreditCard,
-  Lock,
   AlertCircle,
   CheckCircle,
   Loader,
@@ -210,6 +199,37 @@ const Input = styled.input`
   
   &::placeholder {
     color: ${({ theme }) => theme.colors['gray-400']};
+  }
+`;
+
+const PasswordWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const EyeButton = styled.button`
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: ${({ theme }) => theme.colors['gray-600']};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: ${({ theme }) => theme.colors['gray-800']};
+  }
+  
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.gold};
+    outline-offset: 2px;
+    border-radius: ${({ theme }) => theme.radius.sm};
   }
 `;
 
@@ -572,12 +592,19 @@ const RequestAccessWithPayment = () => {
         apiUrl = config.apiUrl;
         
         // Initialize Stripe with the publishable key from backend
-        stripePromise = loadStripe(config.stripePublishableKey);
+        if (config.stripePublishableKey) {
+          stripePromise = loadStripe(config.stripePublishableKey);
+        } else {
+          console.warn('⚠️ Stripe publishable key not available');
+        }
         
         console.log('✅ All configuration loaded from backend (AWS SSM)');
       } catch (error) {
         console.error('❌ Failed to load configuration:', error);
-        setErrorMessage('Failed to load application configuration. Please try again later.');
+        // Only show error message in production, in dev just warn
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+          setErrorMessage('Failed to load application configuration. Please try again later.');
+        }
       }
     };
 
@@ -877,7 +904,7 @@ const RequestAccessWithPayment = () => {
       <FormRow>
         <FormGroup>
           <Label htmlFor="password">Password *</Label>
-          <div style={{ position: 'relative' }}>
+          <PasswordWrapper>
             <Input
               type={showPassword ? "text" : "password"}
               id="password"
@@ -887,31 +914,16 @@ const RequestAccessWithPayment = () => {
               required
               placeholder="Min 8 characters"
               minLength="8"
-              style={{ paddingRight: '2.5rem' }}
+              style={{ paddingRight: '3rem' }}
             />
-            <button
+            <EyeButton
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              style={{
-                position: 'absolute',
-                right: '0.5rem',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: '0.5rem',
-                color: '#6b7280',
-                display: 'flex',
-                alignItems: 'center',
-                transition: 'color 0.2s'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#374151'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
+              aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </EyeButton>
+          </PasswordWrapper>
           <p style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '0.25rem' }}>
             Must include uppercase, lowercase, and number
           </p>
@@ -919,7 +931,7 @@ const RequestAccessWithPayment = () => {
 
         <FormGroup>
           <Label htmlFor="confirmPassword">Confirm Password *</Label>
-          <div style={{ position: 'relative' }}>
+          <PasswordWrapper>
             <Input
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
@@ -929,31 +941,16 @@ const RequestAccessWithPayment = () => {
               required
               placeholder="Confirm password"
               minLength="8"
-              style={{ paddingRight: '2.5rem' }}
+              style={{ paddingRight: '3rem' }}
             />
-            <button
+            <EyeButton
               type="button"
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              style={{
-                position: 'absolute',
-                right: '0.5rem',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: '0.5rem',
-                color: '#6b7280',
-                display: 'flex',
-                alignItems: 'center',
-                transition: 'color 0.2s'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#374151'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}
+              aria-label={showConfirmPassword ? "Hide password" : "Show password"}
             >
-              {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </EyeButton>
+          </PasswordWrapper>
         </FormGroup>
       </FormRow>
 

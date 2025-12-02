@@ -309,6 +309,7 @@ const CTASection = styled(Section)`
   text-align: center;
   position: relative;
   overflow: hidden;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
 
   &::before {
     content: '';
@@ -546,7 +547,7 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Ready to Transform Your Travel Agent Business?
+            Ready to transform your travel agent business?
           </CTATitle>
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
@@ -554,8 +555,7 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Join hundreds of successful travel agents who've revolutionized their Disney planning business. 
-            Get 50% off your first year and start saving 10+ hours per client today.
+            We're inviting a small group of Disney-focused travel agents and agencies into early access. Join successful travel agents who've revolutionized their Disney planning business and start saving 10+ hours per client today.
           </CTASubtitle>
           
           <motion.div
@@ -566,22 +566,10 @@ const TravelAgentSoftware = () => {
           >
             <Button
               to="/request-access"
-              variant="secondary"
+              variant="primary"
               size="lg"
-              style={{
-                background: '#0B0B0C',
-                color: theme.colors.primary,
-                padding: '16px 32px',
-                borderRadius: '16px',
-                fontWeight: '600',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
             >
-              Join Early Access - 50% Off
-              <ArrowRight size={20} />
+              Request Early Access →
             </Button>
           </motion.div>
         </Container>

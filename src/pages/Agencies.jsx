@@ -316,7 +316,7 @@ const AuthorCompany = styled.div`
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -732,7 +732,7 @@ const Agencies = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Ready to Scale Your Agency?
+              Ready to scale your agency?
             </CTATitle>
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -740,8 +740,7 @@ const Agencies = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join hundreds of travel agencies who've already revolutionized their Disney planning process 
-              and increased their team efficiency by 2x with ParkPro.
+              We're inviting a small group of Disney-focused travel agents and agencies into early access. Use ParkPro to standardize itineraries, save hours, and get ready for the future Agency OS for travel.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -749,16 +748,9 @@ const Agencies = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <ButtonGroup>
-                <Button variant="primary" size="lg" to="/request-access">
-                  <Star size={20} />
-                  Schedule Demo
-                </Button>
-                <Button variant="secondary" size="lg" to="/demo">
-                  <Play size={20} />
-                  Watch Demo
-                </Button>
-              </ButtonGroup>
+              <Button variant="primary" size="lg" to="/request-access">
+                Request Early Access →
+              </Button>
             </motion.div>
           </CTAContent>
         </Container>
