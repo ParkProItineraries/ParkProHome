@@ -37,12 +37,12 @@ export const copy = {
 
   // Hero Section
   hero: {
-    h1: "Itineraries in minutes. Operations in one place.",
-    sub: "Create beautiful, accurate Disney itineraries in minutes, track clients and bookings, and give your team a shared workspace that just works.",
+    h1: "Create premium Disney itineraries in under 60 minutes.",
+    sub: "ParkPro helps travel agents turn 8–12 hours of manual Disney planning into a 15–30 minute workflow. Capture client details once, generate a clean day-by-day plan, and export a premium itinerary your clients actually use.",
     ctaPrimary: "Get a demo",
     ctaSecondary: "See pricing",
-    proof: "Trusted by 500+ travel agents across the U.S.",
-    badge: "Early Access Program"
+    proof: "Built with Disney-focused travel agents to save 5–10+ hours per client.",
+    badge: "Founding Member Access"
   },
 
   // Main Value Propositions
@@ -92,9 +92,9 @@ export const copy = {
       ]
     },
     timeSavings: {
-      h2: "Save 10+ hours per client.",
-      sub: "What used to take half a day now takes 15-30 minutes.",
-      stat1: "10+ hrs",
+      h2: "Save 5–10+ hours per client.",
+      sub: "What used to take 8–12 hours now takes 15–60 minutes. Free up time to serve more families without burning out.",
+      stat1: "5–10+ hrs",
       stat1Label: "Saved Per Client",
       stat2: "3x",
       stat2Label: "More Bookings",
@@ -134,7 +134,10 @@ export const copy = {
     contactSales: "Contact sales",
     requestAccess: "Request access",
     signUp: "Sign up",
-    tryFree: "Try free"
+    tryFree: "Try free",
+    seeTimeSavings: "See How Much Time You'll Save",
+    becomeFoundingMember: "Become a Founding Member",
+    getConciergeItinerary: "Get a Concierge Itinerary"
   },
 
   // Microcopy (UI elements, states, feedback)
@@ -163,20 +166,20 @@ export const copy = {
   // Page-Specific Copy
   pages: {
     home: {
-      title: "ParkPro | Automated Disney Planning Software for Travel Agents",
-      description: "Create Disney itineraries in 15-30 minutes instead of 10+ hours. Trusted by 500+ travel agents. Professional planning software that scales with your business.",
-      keywords: "Disney planning software, travel agent software, automated Disney itineraries, Disney World planning, itinerary builder"
+      title: "ParkPro | Disney Itinerary Software for Travel Agents | Save 5–10+ Hours Per Client",
+      description: "ParkPro is Disney planning software for travel agents that turns 8–12 hours of manual work into a 15–30 minute workflow. Build premium Disney itineraries, keep trip details in one place, and serve more clients without burning out.",
+      keywords: "Disney planning software, travel agent software, automated Disney itineraries, Disney World planning, itinerary builder, save hours Disney planning"
     },
     
     pricing: {
       h1: "Simple, transparent pricing",
-      sub: "Choose the plan that fits your business. All plans include our core Disney planning features with no hidden fees.",
+      sub: "Every plan is designed around one promise: help you save 5–10+ hours per Disney client. Start with the plan that fits your current bookings and scale up as your agency grows.",
       faqIntro: "Common questions about pricing",
       bottomCta: "Still comparing tools? Book a 15-minute walkthrough.",
       guarantee: "14-day money-back guarantee on all plans.",
       taxNote: "Prices exclude applicable sales tax or VAT, calculated at checkout.",
       title: "ParkPro Pricing | Disney Planning Software from $147/month",
-      description: "Flexible pricing for Disney planning automation. Plans start at $147/mo for 5 itineraries. Save 10+ hours per client. 14-day money-back guarantee."
+      description: "Flexible pricing for Disney planning automation. Plans start at $147/mo for 5 itineraries. Save 5–10+ hours per client. 14-day money-back guarantee."
     },
 
     features: {
@@ -188,16 +191,16 @@ export const copy = {
 
     agencies: {
       h1: "Run your agency on one platform.",
-      sub: "Replace spreadsheets and scattered tools with a single workspace for planners, leads, and reporting.",
+      sub: "Multiply your team's capacity. If each agent saves 5–10+ hours per client, your agency can handle more bookings without hiring extra staff. Replace spreadsheets and scattered tools with a single workspace for planners, leads, and reporting.",
       title: "For Agencies | Team Management & Collaboration Tools",
-      description: "Multi-agent features, shared workspace, branding, and team management. Scale your Disney planning agency."
+      description: "Multi-agent features, shared workspace, branding, and team management. Each agent saves 5–10+ hours per client. Scale your Disney planning agency."
     },
 
     solo: {
       h1: "Spend time with clients—not spreadsheets.",
-      sub: "Build polished itineraries in minutes and deliver faster turnarounds.",
+      sub: "Free up 5–10+ hours per client so you can serve more families without burning out. Build polished itineraries in 15–60 minutes instead of spending entire days on manual planning.",
       title: "For Solo Agents | Disney Planning Software",
-      description: "Perfect for independent travel agents. Save 10+ hours per client and take on 3x more bookings."
+      description: "Perfect for independent travel agents. Save 5–10+ hours per client and take on 3x more bookings without burning out."
     },
 
     enterprise: {
@@ -269,7 +272,8 @@ export const copy = {
 
   // Trust & Social Proof
   trust: {
-    socialProof: "Trusted by 500+ travel agents who've saved over 50,000 hours in Disney planning"
+    socialProof: "Trusted by 500+ travel agents who've saved over 50,000 hours in Disney planning",
+    concierge: "Concierge Itineraries: For busy agents, we can personally build 1–2 premium Disney itineraries with you using ParkPro so you see exactly how much time it saves."
   },
 
   // Forms

@@ -84,7 +84,7 @@ const ErrorMsg = styled.div`
 `;
 
 const SuccessMsg = styled.div`
-  color: #059669;
+  color: ${({ theme }) => theme.colors.gold};
   font-size: 1.125rem;
   text-align: center;
   margin: 2rem 0;
@@ -142,7 +142,7 @@ const PlanFeatures = styled.ul`
     padding: 0.25rem 0;
     &:before {
       content: "✓";
-      color: #10b981;
+      color: ${({ theme }) => theme.colors.gold};
       font-weight: bold;
       margin-right: 0.5rem;
     }

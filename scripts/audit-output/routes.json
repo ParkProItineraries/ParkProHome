@@ -10,12 +10,6 @@
   },
   "routes": [
     {
-      "path": "/demo-itinerary",
-      "component": "DemoItinerary",
-      "file": "./pages/DemoItinerary",
-      "lazy": true
-    },
-    {
       "path": "/",
       "component": "Home",
       "file": "./pages/Home",
@@ -155,11 +149,6 @@
       "file": "pages/Demo.jsx",
       "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/Demo.jsx",
       "name": "Demo"
-    },
-    {
-      "file": "pages/DemoItinerary.jsx",
-      "absolutePath": "/Users/ktodoran/Dev/ParkProHome/src/pages/DemoItinerary.jsx",
-      "name": "DemoItinerary"
     },
     {
       "file": "pages/DisneyPlanningSoftware.jsx",

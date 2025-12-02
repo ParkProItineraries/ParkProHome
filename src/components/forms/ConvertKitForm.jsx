@@ -69,9 +69,9 @@ const StatusMessage = styled(motion.div)`
 `;
 
 const SuccessMessage = styled(StatusMessage)`
-  background: ${({ theme }) => theme.colors.success}20;
-  color: ${({ theme }) => theme.colors.success};
-  border: 1px solid ${({ theme }) => theme.colors.success}40;
+  background: ${({ theme }) => theme.colors.gold}20;
+  color: ${({ theme }) => theme.colors.black};
+  border: 1px solid ${({ theme }) => theme.colors.gold}40;
 `;
 
 const ErrorMessage = styled(StatusMessage)`

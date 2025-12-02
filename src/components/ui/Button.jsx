@@ -1,280 +1,293 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { focusRing, buttonReset } from '../../styles/mixins';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
+import tokens from '../../design-system/tokens';
 
-const getButtonStyles = (variant, size) => {
-  const baseStyles = `
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${({ theme }) => theme.spacing.sm};
-    font-weight: ${({ theme }) => theme.typography.weights.semibold};
-    text-decoration: none;
-    border-radius: ${({ theme }) => theme.radius.md};
-    border: none;
-    cursor: pointer;
-    transition: ${({ theme }) => theme.transitions.normal};
-    position: relative;
-    overflow: hidden;
-    font-family: ${({ theme }) => theme.typography.fontBody};
-    letter-spacing: -0.01em;
-    ${focusRing}
-  `;
-
-  const sizeStyles = {
-    sm: `
-      padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-      font-size: ${({ theme }) => theme.typography.sizes.sm};
-    `,
-    md: `
-      padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xl};
-      font-size: ${({ theme }) => theme.typography.sizes.base};
-    `,
-    lg: `
-      padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing['2xl']};
-      font-size: ${({ theme }) => theme.typography.sizes.lg};
-    `,
-  };
-
-  const variantStyles = {
-    primary: `
-      background: ${({ theme }) => theme.colors.black};
-      color: ${({ theme }) => theme.colors.white};
-      box-shadow: ${({ theme }) => theme.shadows.lg};
-      
-      &:hover {
-        background: ${({ theme }) => theme.colors['gray-900']};
-        transform: translateY(-2px);
-        box-shadow: ${({ theme }) => theme.shadows.xl};
-      }
-      
-      &:active {
-        transform: translateY(0);
-      }
-    `,
-    secondary: `
-      background: ${({ theme }) => theme.colors.white};
-      color: ${({ theme }) => theme.colors.black};
-      border: 2px solid ${({ theme }) => theme.colors.black};
-      box-shadow: ${({ theme }) => theme.shadows.md};
-      
-      &:hover {
-        background: ${({ theme }) => theme.colors.black};
-        color: ${({ theme }) => theme.colors.white};
-        transform: translateY(-2px);
-        box-shadow: ${({ theme }) => theme.shadows.xl};
-      }
-    `,
-    ghost: `
-      background: transparent;
-      color: ${({ theme }) => theme.colors['gray-600']};
-      box-shadow: ${({ theme }) => theme.shadows.sm};
-      
-      &:hover {
-        background: ${({ theme }) => theme.colors['gray-100']};
-        color: ${({ theme }) => theme.colors.black};
-        transform: translateY(-1px);
-        box-shadow: ${({ theme }) => theme.shadows.md};
-      }
-    `,
-    gold: `
-      background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-      color: ${({ theme }) => theme.colors.black};
-      box-shadow: ${({ theme }) => theme.shadows.gold};
-      
-      &:hover {
-        background: linear-gradient(135deg, ${({ theme }) => theme.colors['gold-muted']}, ${({ theme }) => theme.colors.gold});
-        transform: translateY(-2px);
-        box-shadow: ${({ theme }) => theme.shadows['gold-lg']};
-      }
-    `,
-    outline: `
-      background: transparent;
-      color: ${({ theme }) => theme.colors.black};
-      border: 2px solid ${({ theme }) => theme.colors.black};
-      box-shadow: ${({ theme }) => theme.shadows.sm};
-      
-      &:hover {
-        background: ${({ theme }) => theme.colors.black};
-        color: ${({ theme }) => theme.colors.white};
-        transform: translateY(-2px);
-        box-shadow: ${({ theme }) => theme.shadows.md};
-      }
-    `,
-  };
-
-  return `
-    ${baseStyles}
-    ${sizeStyles[size || 'md']}
-    ${variantStyles[variant || 'primary']}
-  `;
-};
-
-const ShimmerEffect = styled.div`
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transition: left 0.6s ease;
-`;
-
-export const StyledButton = styled.button`
-  ${({ $variant, $size }) => getButtonStyles($variant, $size)}
-  ${buttonReset}
+// Premium Button Component - Enterprise Grade
+const StyledButton = styled(motion.button).withConfig({
+  shouldForwardProp: (prop) => !['variant', 'size', 'fullWidth', 'loading'].includes(prop)
+})`
+  /* Base Styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${tokens.spacing[2]};
+  border: none;
+  border-radius: ${tokens.radius.md};
+  font-family: ${tokens.typography.fontBody};
+  font-weight: ${tokens.typography.weights.semibold};
+  text-decoration: none;
+  cursor: pointer;
+  transition: ${tokens.transitions.default};
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
   
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &:hover ${ShimmerEffect} {
-    left: 100%;
-  }
-
-  &:disabled {
+  /* Size Variants */
+  ${({ size }) => {
+    switch (size) {
+      case 'xs':
+        return css`
+          padding: ${tokens.spacing[2]} ${tokens.spacing[3]};
+          font-size: ${tokens.typography.sizes.sm};
+          height: 2rem;
+          min-height: 2rem;
+        `;
+      case 'sm':
+        return css`
+          padding: ${tokens.spacing[2.5]} ${tokens.spacing[4]};
+          font-size: ${tokens.typography.sizes.sm};
+          height: 2.5rem;
+          min-height: 2.5rem;
+        `;
+      case 'md':
+        return css`
+          padding: ${tokens.spacing[3]} ${tokens.spacing[6]};
+          font-size: ${tokens.typography.sizes.base};
+          height: 3rem;
+          min-height: 3rem;
+        `;
+      case 'lg':
+        return css`
+          padding: ${tokens.spacing[4]} ${tokens.spacing[8]};
+          font-size: ${tokens.typography.sizes.lg};
+          height: 3.5rem;
+          min-height: 3.5rem;
+        `;
+      default:
+        return css`
+          padding: ${tokens.spacing[3]} ${tokens.spacing[6]};
+          font-size: ${tokens.typography.sizes.base};
+          height: 3rem;
+          min-height: 3rem;
+        `;
+    }
+  }}
+  
+  /* Full Width */
+  ${({ fullWidth }) => fullWidth && css`
+    width: 100%;
+  `}
+  
+  /* Variant Styles */
+  ${({ variant }) => {
+    switch (variant) {
+      case 'primary':
+        return css`
+          background: ${tokens.colors.gold};
+          color: ${tokens.colors.black};
+          box-shadow: ${tokens.shadows.gold};
+          
+          &:hover:not(:disabled) {
+            background: ${tokens.colors['gold-dark']};
+            color: ${tokens.colors.black};
+            transform: translateY(-2px);
+            box-shadow: ${tokens.shadows['gold-lg']};
+          }
+          
+          &:active:not(:disabled) {
+            transform: translateY(0);
+            color: ${tokens.colors.black};
+          }
+        `;
+        
+      case 'secondary':
+        return css`
+          background: ${tokens.colors.white};
+          color: ${tokens.colors.black};
+          border: 2px solid ${tokens.colors.black};
+          
+          &:hover:not(:disabled) {
+            background: ${tokens.colors.black};
+            color: ${tokens.colors.white};
+            transform: translateY(-2px);
+          }
+          
+          &:active:not(:disabled) {
+            transform: translateY(0);
+          }
+        `;
+        
+      case 'ghost':
+        return css`
+          background: transparent;
+          color: ${tokens.colors['text-secondary']};
+          
+          &:hover:not(:disabled) {
+            background: ${tokens.colors['gray-100']};
+            color: ${tokens.colors.black};
+          }
+        `;
+        
+      case 'gold':
+        return css`
+          background: ${tokens.colors.gold};
+          color: ${tokens.colors.black};
+          box-shadow: ${tokens.shadows.gold};
+          
+          &:hover:not(:disabled) {
+            background: ${tokens.colors['gold-dark']};
+            transform: translateY(-2px);
+            box-shadow: ${tokens.shadows['gold-lg']};
+          }
+        `;
+        
+      case 'purple':
+        return css`
+          background: ${tokens.colors.purple};
+          color: ${tokens.colors.white};
+          box-shadow: ${tokens.shadows.purple};
+          
+          &:hover:not(:disabled) {
+            background: ${tokens.colors['purple-dark']};
+            transform: translateY(-2px);
+            box-shadow: ${tokens.shadows['purple-lg']};
+          }
+        `;
+        
+      case 'outline':
+        return css`
+          background: transparent;
+          color: ${tokens.colors.gold};
+          border: 2px solid ${tokens.colors.gold};
+          
+          &:hover:not(:disabled) {
+            background: ${tokens.colors.gold};
+            color: ${tokens.colors.black};
+            transform: translateY(-2px);
+          }
+        `;
+        
+      case 'link':
+        return css`
+          background: transparent;
+          color: ${tokens.colors.gold};
+          padding: 0;
+          height: auto;
+          min-height: auto;
+          text-decoration: underline;
+          
+          &:hover:not(:disabled) {
+            color: ${tokens.colors['gold-dark']};
+            text-decoration: none;
+          }
+        `;
+        
+      default:
+        return css`
+          background: ${tokens.colors.gold};
+          color: ${tokens.colors.black};
+        `;
+    }
+  }}
+  
+  /* Disabled State */
+  ${({ disabled, loading }) => (disabled || loading) && css`
     opacity: 0.6;
     cursor: not-allowed;
-    transform: none !important;
-  }
-
-  &.loading {
     pointer-events: none;
-    opacity: 0.8;
-  }
-
-  &.success {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-  }
-
-  &.error {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    color: white;
-  }
-`;
-
-export const StyledLink = styled(Link)`
-  ${({ $variant, $size }) => getButtonStyles($variant, $size)}
+  `}
   
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  /* Focus Styles */
+  &:focus-visible {
+    outline: 2px solid ${tokens.colors.gold};
+    outline-offset: 2px;
   }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &:hover ${ShimmerEffect} {
-    left: 100%;
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-  }
-
-  &.loading {
-    pointer-events: none;
-    opacity: 0.8;
-  }
-
-  &.success {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-  }
-
-  &.error {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    color: white;
+  
+  /* Loading State */
+  ${({ loading }) => loading && css`
+    &::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  `}
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 `;
 
-const Button = ({ 
-  variant = 'primary', 
-  size = 'md', 
-  children, 
-  to, 
-  href, 
-  target, 
-  rel, 
-  onClick, 
-  disabled, 
+const ButtonContent = styled.span`
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing[2]};
+  opacity: ${({ loading }) => loading ? 0 : 1};
+  transition: opacity ${tokens.transitions.normal};
+`;
+
+const Button = ({
+  children,
+  variant = 'primary',
+  size = 'md',
+  disabled = false,
+  loading = false,
+  fullWidth = false,
+  href,
+  to,
+  target,
+  rel,
+  onClick,
+  type = 'button',
   className,
-  type,
-  ...props 
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy,
+  ...props
 }) => {
-  if (to) {
-    return (
-      <StyledLink 
-        to={to} 
-        $variant={variant} 
-        $size={size} 
-        className={className}
-        {...props}
-      >
-        {children}
-        <ShimmerEffect />
-      </StyledLink>
-    );
-  }
+  const handleClick = () => {
+    if (loading || disabled) return;
+    
+    if (onClick) {
+      onClick();
+    }
+    
+    if (href) {
+      window.open(href, target || '_self');
+    }
+    
+    if (to) {
+      window.location.href = to;
+    }
+  };
 
-  if (href) {
-    return (
-      <StyledLink 
-        as="a" 
-        href={href} 
-        target={target} 
-        rel={rel} 
-        $variant={variant} 
-        $size={size} 
-        className={className}
-        {...props}
-      >
-        {children}
-        <ShimmerEffect />
-      </StyledLink>
-    );
-  }
+  const buttonVariants = {
+    initial: { scale: 1 },
+    hover: { scale: 1.02 },
+    tap: { scale: 0.98 },
+  };
 
   return (
-    <StyledButton 
-      onClick={onClick} 
-      disabled={disabled} 
-      $variant={variant} 
-      $size={size} 
+    <StyledButton
+      as={href || to ? 'a' : 'button'}
+      variant={variant}
+      size={size}
+      fullWidth={fullWidth}
+      disabled={disabled}
+      loading={loading}
+      onClick={handleClick}
+      type={href || to ? undefined : type}
+      href={href}
+      target={target}
+      rel={rel}
       className={className}
-      type={type}
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedBy}
+      variants={buttonVariants}
+      initial="initial"
+      whileHover="hover"
+      whileTap="tap"
+      transition={tokens.transitions.spring}
       {...props}
     >
-      {children}
-      <ShimmerEffect />
+      <ButtonContent loading={loading}>
+        {children}
+      </ButtonContent>
     </StyledButton>
   );
 };

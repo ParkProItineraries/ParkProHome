@@ -2,49 +2,10 @@ import React, { useState, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, Search, X } from 'lucide-react';
-import { designTokens } from '../tokens';
-
-// Input types
-type InputType = 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
-
-// Input sizes
-type InputSize = 'sm' | 'md' | 'lg';
-
-// Input variants
-type InputVariant = 'default' | 'error' | 'success' | 'warning';
-
-// Input props interface
-interface InputProps {
-  type?: InputType;
-  size?: InputSize;
-  variant?: InputVariant;
-  placeholder?: string;
-  value?: string;
-  defaultValue?: string;
-  disabled?: boolean;
-  required?: boolean;
-  fullWidth?: boolean;
-  label?: string;
-  helperText?: string;
-  errorText?: string;
-  successText?: string;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  clearable?: boolean;
-  showPasswordToggle?: boolean;
-  className?: string;
-  onChange?: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onClear?: () => void;
-  'aria-label'?: string;
-  'aria-describedby'?: string;
-  name?: string;
-  id?: string;
-}
+import { designTokens } from '../tokens.js';
 
 // Input wrapper component
-const InputWrapper = styled.div<{ fullWidth: boolean }>`
+const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${designTokens.spacing[2]};
@@ -60,13 +21,7 @@ const InputLabel = styled.label`
 `;
 
 // Input container component
-const InputContainer = styled.div<{
-  size: InputSize;
-  variant: InputVariant;
-  disabled: boolean;
-  hasIcon: boolean;
-  iconPosition: 'left' | 'right';
-}>`
+const InputContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -102,12 +57,7 @@ const InputContainer = styled.div<{
 // Styled input component
 const StyledInput = styled(motion.input).withConfig({
   shouldForwardProp: (prop) => !['size', 'variant', 'hasIcon', 'iconPosition'].includes(prop)
-})<{
-  size: InputSize;
-  variant: InputVariant;
-  hasIcon: boolean;
-  iconPosition: 'left' | 'right';
-}>`
+})`
   /* Base styles */
   width: 100%;
   border: none;
@@ -202,7 +152,7 @@ const StyledInput = styled(motion.input).withConfig({
 `;
 
 // Input icon component
-const InputIcon = styled.div<{ position: 'left' | 'right' }>`
+const InputIcon = styled.div`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -215,7 +165,7 @@ const InputIcon = styled.div<{ position: 'left' | 'right' }>`
 `;
 
 // Input action button (clear, password toggle)
-const InputAction = styled.button<{ position: 'left' | 'right' }>`
+const InputAction = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -245,7 +195,7 @@ const InputAction = styled.button<{ position: 'left' | 'right' }>`
 `;
 
 // Helper text component
-const HelperText = styled.div<{ variant: InputVariant }>`
+const HelperText = styled.div`
   font-size: ${designTokens.typography.sizes.sm};
   margin-top: ${designTokens.spacing[1]};
   
@@ -272,7 +222,7 @@ const HelperText = styled.div<{ variant: InputVariant }>`
 `;
 
 // Main Input component
-const Input = forwardRef<HTMLInputElement, InputProps>(({
+const Input = forwardRef(({
   type = 'text',
   size = 'md',
   variant = 'default',
@@ -310,7 +260,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   const hasIcon = !!icon;
   const hasAction = clearable || showPasswordToggle;
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     const newValue = e.target.value;
     setInternalValue(newValue);
     onChange?.(newValue);
@@ -421,7 +371,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
 Input.displayName = 'Input';
 
 // Search input component
-const SearchInput = forwardRef<HTMLInputElement, Omit<InputProps, 'type' | 'icon'>>((props, ref) => (
+const SearchInput = forwardRef((props, ref) => (
   <Input
     ref={ref}
     type="search"
@@ -433,7 +383,7 @@ const SearchInput = forwardRef<HTMLInputElement, Omit<InputProps, 'type' | 'icon
 SearchInput.displayName = 'SearchInput';
 
 // Password input component
-const PasswordInput = forwardRef<HTMLInputElement, Omit<InputProps, 'type' | 'showPasswordToggle'>>((props, ref) => (
+const PasswordInput = forwardRef((props, ref) => (
   <Input
     ref={ref}
     type="password"
@@ -447,3 +397,4 @@ PasswordInput.displayName = 'PasswordInput';
 // Export components
 export { Input, SearchInput, PasswordInput };
 export default Input;
+

@@ -1,43 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { designTokens } from '../tokens';
-
-// Button size variants
-type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-// Button style variants
-type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'teal' | 'purple' | 'outline' | 'link';
-
-// Button props interface
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  disabled?: boolean;
-  loading?: boolean;
-  fullWidth?: boolean;
-  href?: string;
-  to?: string;
-  target?: string;
-  rel?: string;
-  onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
-  className?: string;
-  'aria-label'?: string;
-  'aria-describedby'?: string;
-}
+import { designTokens } from '../tokens.js';
 
 // Styled button component
 const StyledButton = styled(motion.button).withConfig({
   shouldForwardProp: (prop) => !['variant', 'size', 'fullWidth', 'loading', 'variant'].includes(prop)
-})<{
-  variant: ButtonVariant;
-  size: ButtonSize;
-  fullWidth: boolean;
-  disabled: boolean;
-  loading: boolean;
-}>`
+})`
   /* Base styles */
   display: inline-flex;
   align-items: center;
@@ -254,7 +223,7 @@ const LoadingSpinner = styled.div`
 `;
 
 // Button content wrapper
-const ButtonContent = styled.span<{ loading: boolean }>`
+const ButtonContent = styled.span`
   display: flex;
   align-items: center;
   gap: ${designTokens.spacing[2]};
@@ -263,7 +232,7 @@ const ButtonContent = styled.span<{ loading: boolean }>`
 `;
 
 // Main Button component
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   variant = 'primary',
   size = 'md',
@@ -339,7 +308,7 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 // Button group component for multiple buttons
-const ButtonGroup = styled.div<{ orientation?: 'horizontal' | 'vertical' }>`
+const ButtonGroup = styled.div`
   display: flex;
   gap: ${designTokens.spacing[3]};
   flex-direction: ${({ orientation }) => orientation === 'vertical' ? 'column' : 'row'};
@@ -354,3 +323,4 @@ const ButtonGroup = styled.div<{ orientation?: 'horizontal' | 'vertical' }>`
 // Export components
 export { Button, ButtonGroup, LoadingSpinner };
 export default Button;
+

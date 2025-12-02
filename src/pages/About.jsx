@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SEO, { SEOConfigs } from '../components/seo/SEO';
+import SEO from '../components/seo/SEO';
+import { SEOConfigs } from '../components/seo/SEOConfigs';
 import { motion } from "framer-motion";
 import { 
   Target, 

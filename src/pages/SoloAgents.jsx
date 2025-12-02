@@ -1,6 +1,7 @@
 import React from "react";
 import theme from '../styles/theme';
-import SEO, { SEOConfigs } from '../components/seo/SEO';
+import SEO from '../components/seo/SEO';
+import { SEOConfigs } from '../components/seo/SEOConfigs';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { 
@@ -372,7 +373,7 @@ const SoloAgents = () => {
       icon: <Zap size={32} />,
       title: "Lightning-Fast Automation",
       description: "Generate complete Disney itineraries in under 30 seconds. Our AI considers crowd levels, wait times, and client preferences.",
-      outcomes: ["Save 10+ hours per client", "3x faster than manual planning", "98% client satisfaction rate"]
+      outcomes: ["Save 5–10+ hours per client", "3x faster than manual planning", "98% client satisfaction rate"]
     },
     {
       icon: <FileText size={32} />,
@@ -429,7 +430,7 @@ const SoloAgents = () => {
 
   return (
     <SoloAgentsWrapper>
-      <SEO {...SEOConfigs['solo-agents']} />
+      <SEO {...SEOConfigs['solo-agents']} schemaType="SoftwareApplication" />
       {/* Hero Section */}
       <HeroSection>
         <Container>
@@ -568,7 +569,7 @@ const SoloAgents = () => {
                 ParkPro Solution
               </div>
               <div style={{ fontSize: '18px', opacity: 0.9, lineHeight: '1.6' }}>
-                Automated Disney planning that saves you 10+ hours per client and helps you serve 3x more clients
+                Automated Disney planning that saves you 5–10+ hours per client and helps you serve 3x more clients
               </div>
             </SolutionVisual>
           </ProblemGrid>

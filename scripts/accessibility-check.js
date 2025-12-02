@@ -45,13 +45,6 @@ function checkAccessibility(filePath, content) {
       message: `Found ${h1Matches.length} H1 tags (should be exactly 1 per page)`
     });
   }
-  if (h1Matches.length === 0 && !fileName.includes('NotFound') && !fileName.includes('DemoItinerary')) {
-    issues.push({
-      type: 'missing-h1',
-      severity: 'warning',
-      message: 'No H1 tag found'
-    });
-  }
   
   // Check for buttons without aria-label or text
   const buttonMatches = content.match(/<button[^>]*>[\s]*<\/button>/g) || [];

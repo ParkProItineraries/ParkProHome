@@ -30,7 +30,7 @@ export const designTokens = {
     'gray-900': '#111827',
     
     // Semantic Colors
-    success: '#10B981',
+    success: '#F5C249', // Changed from green to gold
     warning: '#F59E0B',
     error: '#EF4444',
     info: '#F5C249',
@@ -511,9 +511,9 @@ export const animations = designTokens.animations;
 export const media = designTokens.media;
 
 // Utility functions for token usage
-export const getColor = (colorPath: string) => {
+export const getColor = (colorPath) => {
   const keys = colorPath.split('.');
-  let value: any = designTokens.colors;
+  let value = designTokens.colors;
   
   for (const key of keys) {
     value = value?.[key];
@@ -522,16 +522,17 @@ export const getColor = (colorPath: string) => {
   return value || colorPath;
 };
 
-export const getSpacing = (size: keyof typeof designTokens.spacing) => {
+export const getSpacing = (size) => {
   return designTokens.spacing[size];
 };
 
-export const getBreakpoint = (size: keyof typeof designTokens.breakpoints) => {
+export const getBreakpoint = (size) => {
   return designTokens.breakpoints[size];
 };
 
-export const getMediaQuery = (size: keyof typeof designTokens.media) => {
+export const getMediaQuery = (size) => {
   return designTokens.media[size];
 };
 
 export default designTokens;
+

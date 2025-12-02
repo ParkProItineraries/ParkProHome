@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SEO, { SEOConfigs } from '../components/seo/SEO';
+import SEO from '../components/seo/SEO';
+import { SEOConfigs } from '../components/seo/SEOConfigs';
 import { motion } from "framer-motion";
 import { 
   Users, 
@@ -9,16 +10,7 @@ import {
   ArrowRight,
   CheckCircle,
   Star,
-  TrendingUp,
-  Clock,
-  Shield,
-  Smartphone,
-  Headphones,
-  Globe,
-  Target,
-  Award,
-  Zap,
-  BarChart3
+  Zap
 } from "lucide-react";
 import { copy } from "../content/strings";
 import { Button, Card, CardGrid } from "../design";
@@ -28,7 +20,7 @@ import { flexCenter } from "../styles/mixins";
 
 // Enhanced Solutions Page with Target Audience Focus
 const SolutionsWrapper = styled.div`
-  padding-top: 88px; // Account for fixed navbar
+  padding-top: 88px; /* Account for fixed navbar */
   background: ${({ theme }) => theme.colors.white};
 `;
 
@@ -79,16 +71,18 @@ const SolutionsSubtitle = styled(motion.p)`
 const SolutionCard = styled(motion.div)`
   background: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.xl};
-  padding: ${({ theme }) => theme.spacing['3xl']};
+  padding: ${({ theme }) => theme.spacing.xl};
   box-shadow: ${({ theme }) => theme.shadows.lg};
   border: 2px solid ${({ theme }) => theme.colors['border-light']};
   position: relative;
   overflow: hidden;
   transition: ${({ theme }) => theme.transitions.normal};
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   
   &:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     box-shadow: ${({ theme }) => theme.shadows.xl};
     border-color: ${({ theme }) => theme.colors.gold};
   }
@@ -105,38 +99,48 @@ const SolutionCard = styled(motion.div)`
 `;
 
 const SolutionIcon = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: ${({ theme }) => theme.radius.lg};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
   ${flexCenter}
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   transition: ${({ theme }) => theme.transitions.normal};
   
   ${SolutionCard}:hover & {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `;
 
 const SolutionTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
 `;
 
 const SolutionDescription = styled.p`
   color: ${({ theme }) => theme.colors['gray-600']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
 `;
 
 const SolutionFeatures = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  flex: 1;
+`;
+
+const FeaturesHeading = styled.h4`
+  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors.black};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
 
 const FeatureList = styled.ul`
@@ -149,9 +153,10 @@ const FeatureItem = styled.li`
   display: flex;
   align-items: flex-start;
   gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   color: ${({ theme }) => theme.colors['gray-600']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   
   svg {
     color: ${({ theme }) => theme.colors.gold};
@@ -163,29 +168,36 @@ const FeatureItem = styled.li`
 const SolutionStats = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
 
 const StatItem = styled.div`
   text-align: center;
-  padding: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xs};
   background: ${({ theme }) => theme.colors['gray-50']};
   border-radius: ${({ theme }) => theme.radius.md};
 `;
 
 const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.gold};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   margin-bottom: ${({ theme }) => theme.spacing.xs};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
 `;
 
 const StatLabel = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   color: ${({ theme }) => theme.colors['text-secondary']};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+`;
+
+const SolutionButtonWrapper = styled.div`
+  width: 100%;
+  margin-top: auto;
 `;
 
 // CTA Section
@@ -239,64 +251,64 @@ const ButtonGroup = styled.div`
 const Solutions = () => {
   const solutions = [
     {
-      icon: <Users size={40} />,
-      title: "For Solo Travel Agents",
-      description: "Perfect for independent travel agents who want to scale their Disney business and serve more clients without burning out.",
+      icon: <Users size={32} />,
+      title: "For Solo Disney Travel Agents",
+      description: "Built for independent Disney-focused agents who want to handle more trips without adding more late nights.",
       features: [
-        "Save 10+ hours per client",
-        "Professional branded itineraries",
-        "Mobile-optimized client portal",
-        "Basic analytics and reporting",
-        "Email support"
+        "Turn detailed Disney intake forms into day-by-day itineraries in minutes",
+        "Branded PDF or slide exports you can send straight to clients",
+        "Simple workspace to see which trips still need itineraries",
+        "Done-with-you onboarding during early access",
+        "Email support from the ParkPro team"
       ],
       stats: [
-        { number: "5min", label: "Creation Time" },
-        { number: "3x", label: "More Clients" }
+        { number: "5–10+ hrs", label: "Planning time saved per trip (goal)" },
+        { number: "More trips", label: "Handled per agent, same hours" }
       ],
-      cta: "Start Your Free Trial",
-      href: "/solutions/solo-agents"
+      cta: "Start with Solo",
+      href: "/pricing#solo"
     },
     {
-      icon: <Building2 size={40} />,
-      title: "For Travel Agencies",
-      description: "Ideal for multi-agent agencies looking to standardize their Disney planning process and improve team collaboration.",
+      icon: <Building2 size={32} />,
+      title: "For Disney-Focused Agencies",
+      description: "Ideal for small to mid-size agencies that want one consistent way every agent plans Disney trips.",
       features: [
-        "Team collaboration tools",
-        "Centralized client management",
-        "Advanced analytics dashboard",
-        "White-label branding options",
-        "Priority support & training"
+        "Shared view of every Disney trip your agents are working on",
+        "Standardized workflows so new and senior agents follow the same playbook",
+        "Branded itineraries that look consistent across your entire team",
+        "Support for multi-seat plans and itinerary limits by tier",
+        "Guided onboarding for your first agents on ParkPro"
       ],
       stats: [
-        { number: "50%", label: "Time Saved" },
-        { number: "2x", label: "Team Efficiency" }
+        { number: "1 workflow", label: "For every Disney trip" },
+        { number: "Faster ramp", label: "For new or part-time agents" }
       ],
-      cta: "Schedule Demo",
-      href: "/solutions/agencies"
+      cta: "Explore Agency Plans",
+      href: "/pricing#agency"
     },
     {
-      icon: <Crown size={40} />,
-      title: "For Enterprise",
-      description: "Comprehensive solution for large travel organizations with custom integrations, dedicated support, and advanced security.",
+      icon: <Crown size={32} />,
+      title: "For Large & Enterprise Agencies",
+      description: "For larger agencies that want to shape ParkPro's roadmap, explore higher itinerary volumes, and plan for integrations and API access.",
       features: [
-        "Custom integrations & API",
-        "Dedicated account manager",
-        "Advanced security & compliance",
-        "Custom reporting & analytics",
-        "24/7 priority support"
+        "Custom seat and itinerary packages for high-volume teams",
+        "Early input into enterprise features like CRM, commissions, and reporting",
+        "Conversations around future integrations and API access",
+        "Security-first architecture with encryption in transit and at rest",
+        "Dedicated point of contact as we roll out enterprise capabilities"
       ],
       stats: [
-        { number: "99.9%", label: "Uptime" },
-        { number: "24/7", label: "Support" }
+        { number: "Custom", label: "Pricing & itinerary volume" },
+        { number: "Roadmap", label: "Influence on enterprise features" }
       ],
-      cta: "Contact Sales",
-      href: "/solutions/enterprise"
+      cta: "Talk to Us",
+      href: "/contact"
     }
   ];
 
   return (
     <SolutionsWrapper>
-      <SEO {...SEOConfigs.solutions} />
+      <SEO {...SEOConfigs.solutions} schemaType="SoftwareApplication" />
       <Section>
         <Container>
           <SolutionsHeader>
@@ -337,19 +349,11 @@ const Solutions = () => {
                 <SolutionDescription>{solution.description}</SolutionDescription>
                 
                 <SolutionFeatures>
-                  <h4 style={{
-                    fontSize: '18px',
-                    fontWeight: '600',
-                    color: '#0B0B0C',
-                    marginBottom: '16px',
-                    fontFamily: "'Urbanist', 'DM Sans', sans-serif"
-                  }}>
-                    Key Features:
-                  </h4>
+                  <FeaturesHeading>Key Features:</FeaturesHeading>
                   <FeatureList>
                     {solution.features.map((feature, featureIndex) => (
                       <FeatureItem key={featureIndex}>
-                        <CheckCircle size={16} />
+                        <CheckCircle size={14} />
                         {feature}
                       </FeatureItem>
                     ))}
@@ -365,15 +369,17 @@ const Solutions = () => {
                   ))}
                 </SolutionStats>
 
-                <Button 
-                  variant="primary" 
-                  size="lg" 
-                  to={solution.href}
-                  style={{ width: '100%' }}
-                >
-                  {solution.cta}
-                  <ArrowRight size={20} />
-                </Button>
+                <SolutionButtonWrapper>
+                  <Button 
+                    variant="primary" 
+                    size="md" 
+                    to={solution.href}
+                    fullWidth
+                  >
+                    {solution.cta}
+                    <ArrowRight size={18} />
+                  </Button>
+                </SolutionButtonWrapper>
               </SolutionCard>
             ))}
           </CardGrid>
@@ -389,7 +395,7 @@ const Solutions = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Ready to Transform Your Disney Business?
+              Ready to Transform How Your Agency Plans Disney Trips?
             </CTATitle>
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -397,8 +403,7 @@ const Solutions = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join hundreds of travel professionals who've already revolutionized their Disney planning process 
-              and increased their bookings by 3x with ParkPro.
+              ParkPro is rolling out with a small group of Disney-focused agents and agencies. Join early access to save hours on every trip and help shape the future Agency OS for travel.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}

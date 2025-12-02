@@ -286,9 +286,9 @@ const Alert = styled.div`
   ${({ $variant, theme }) => {
     if ($variant === 'success') {
       return `
-        background: ${theme.colors.green}10;
-        color: ${theme.colors.green};
-        border: 1px solid ${theme.colors.green}30;
+        background: ${theme.colors.gold}20;
+        color: ${theme.colors.black};
+        border: 1px solid ${theme.colors.gold}40;
       `;
     }
     if ($variant === 'error') {
@@ -402,13 +402,6 @@ const Contact = () => {
       link: "tel:+12604144644",
       description: "Mon-Fri, 9AM-5PM EST"
     },
-    {
-      icon: <MapPin size={24} />,
-      title: "Visit Us",
-      detail: "Fort Wayne, IN",
-      link: null,
-      description: "Proudly serving travel agents nationwide"
-    }
   ];
 
   return (

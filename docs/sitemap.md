@@ -194,7 +194,6 @@ const routes = [
   { path: '/disney-planning-software', component: 'DisneyPlanningSoftware' },
   { path: '/travel-agent-software', component: 'TravelAgentSoftware' },
   { path: '/faq', component: 'FAQ' },
-  { path: '/demo-itinerary', component: 'DemoItinerary' },
   { path: '/business/terms-of-service', component: 'TermsOfService' },
   { path: '/business/privacy-policy', component: 'PrivacyPolicy' },
   { path: '/business/cookie-policy', component: 'CookiePolicy' },

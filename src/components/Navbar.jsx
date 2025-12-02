@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
-import ParkProLogo from "../assets/Park Pro Black_Long.svg";
+import ParkProLogo from "../assets/Park Pro Black_Long.svg?url";
 
 const Nav = styled(motion.nav).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
@@ -282,7 +282,6 @@ const Navbar = () => {
     { to: "/solutions", label: "Solutions" },
     { to: "/comparison", label: "Why ParkPro" },
     { to: "/faq", label: "FAQ" },
-    { to: "/contact", label: "Contact" },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -312,13 +311,13 @@ const Navbar = () => {
         </NavLinks>
 
         <ButtonGroup>
-          <Button variant="ghost" size="sm" href="https://app.parkproit.com/login" target="_blank">
+          <Button variant="ghost" size="sm" href="https://app.parkproit.com/agent/login" target="_blank">
             Log In
           </Button>
           {/*<Button variant="outline" size="sm" to="/signup">
             Sign Up
           </Button>*/}
-          <Button variant="gold" size="sm" to="/request-access">
+          <Button variant="primary" size="sm" to="/request-access">
             Request Access
             <Badge>Early Access</Badge>
           </Button>
@@ -356,13 +355,13 @@ const Navbar = () => {
               </MobileNavLink>
             ))}
             <MobileNavLink 
-              href="https://app.parkproit.com/login" 
+              href="https://app.parkproit.com/agent/login" 
               target="_blank"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Log In
             </MobileNavLink>
-            <Button variant="gold" size="sm" to="/request-access" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button variant="primary" size="sm" to="/request-access" onClick={() => setIsMobileMenuOpen(false)}>
               Request Access
               <Badge>Early Access</Badge>
             </Button>

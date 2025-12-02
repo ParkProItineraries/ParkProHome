@@ -1,38 +1,27 @@
 import React, { useState, useEffect } from "react";
-import theme from '../styles/theme';
-import SEO, { SEOConfigs } from '../components/seo/SEO';
+import SEO from '../components/seo/SEO';
+import { SEOConfigs } from '../components/seo/SEOConfigs';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Sparkles,
-  Loader2,
-  AlertTriangle,
-  Sun,
-  Moon,
-  Utensils,
-  Lightbulb,
   Heart,
-  Star,
-  Zap,
   Calendar,
   Users,
-  MapPin,
-  Clock,
-  ArrowRight,
   Check,
   Play,
   Pause,
-  RotateCcw
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight
 } from "lucide-react";
 import Button from "../components/ui/Button";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
-import Card from "../components/ui/Card";
 import { copy } from "../content/strings";
-import { flexCenter, flexColumnCenter } from "../styles/mixins";
 
 const DemoWrapper = styled.div`
-  padding-top: 88px; // Account for fixed navbar
+  padding-top: 88px; /* Account for fixed navbar */
   background: ${({ theme }) => theme.colors.white};
 `;
 
@@ -40,25 +29,25 @@ const DemoWrapper = styled.div`
 const DemoFlow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing['2xl']};
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
+  gap: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 `;
 
 const StepIndicator = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   flex-wrap: wrap;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: ${({ theme }) => theme.spacing.md};
-    margin-bottom: ${({ theme }) => theme.spacing.xl};
+    gap: ${({ theme }) => theme.spacing.xs};
+    margin-bottom: ${({ theme }) => theme.spacing.md};
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    gap: ${({ theme }) => theme.spacing.sm};
+    gap: ${({ theme }) => theme.spacing.xs};
     flex-direction: column;
     align-items: stretch;
   }
@@ -67,8 +56,8 @@ const StepIndicator = styled.div`
 const Step = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.xs};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.radius.full};
   background: ${({ $active, $completed, theme }) => 
     $completed ? theme.colors.gold : 
@@ -78,7 +67,7 @@ const Step = styled.div`
     $completed ? theme.colors.black : 
     $active ? theme.colors.black : 
     theme.colors['gray-500']};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   transition: ${({ theme }) => theme.transitions.normal};
   border: 2px solid ${({ $active, $completed, theme }) => 
@@ -92,14 +81,14 @@ const Step = styled.div`
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     justify-content: center;
-    padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
-    font-size: ${({ theme }) => theme.typography.sizes.base};
+    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
 const StepNumber = styled.div`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: ${({ $active, $completed, theme }) => 
     $completed ? theme.colors.black : 
@@ -109,13 +98,16 @@ const StepNumber = styled.div`
     $completed ? theme.colors.gold : 
     $active ? theme.colors.gold : 
     theme.colors['gray-500']};
-  ${flexCenter}
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   border: 2px solid ${({ $active, $completed, theme }) => 
     $completed ? theme.colors.gold : 
     $active ? theme.colors.gold : 
     'transparent'};
+  flex-shrink: 0;
 `;
 
 const DemoStep = styled(motion.div).withConfig({
@@ -123,7 +115,7 @@ const DemoStep = styled(motion.div).withConfig({
 })`
   background: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['2xl']};
+  padding: ${({ theme }) => theme.spacing.lg};
   box-shadow: ${({ theme }) => theme.shadows.md};
   border: 2px solid ${({ $isActive, theme }) => 
     $isActive ? theme.colors.gold : theme.colors['gray-200']};
@@ -133,143 +125,92 @@ const DemoStep = styled(motion.div).withConfig({
 const StepHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
 const StepIcon = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: ${({ theme }) => theme.radius.md};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  ${flexCenter}
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: ${({ theme }) => theme.colors.black};
+  flex-shrink: 0;
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 const StepTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.typography.fontHeading};
+  margin: 0;
 `;
 
 const StepContent = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
 
 const StepDescription = styled.p`
   color: ${({ theme }) => theme.colors['gray-600']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
 `;
 
 const InteractiveDemo = styled.div`
   background: ${({ theme }) => theme.colors['gray-50']};
   border-radius: ${({ theme }) => theme.radius.md};
-  padding: ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.md};
   border: 1px solid ${({ theme }) => theme.colors['gray-200']};
 `;
 
 const DemoControls = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-top: ${({ theme }) => theme.spacing.md};
+  padding-top: ${({ theme }) => theme.spacing.md};
+  border-top: 1px solid ${({ theme }) => theme.colors['gray-200']};
 `;
 
 const ControlButton = styled.button`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  border: none;
+  gap: 4px;
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  border: 1px solid ${({ theme }) => theme.colors['gray-300']};
   border-radius: ${({ theme }) => theme.radius.md};
-  background: ${({ $variant, theme }) => 
-    $variant === 'primary' ? theme.colors.gold : 
-    $variant === 'secondary' ? theme.colors['gray-200'] : 
-    'transparent'};
-  color: ${({ $variant, theme }) => 
-    $variant === 'primary' ? theme.colors.black : 
-    $variant === 'secondary' ? theme.colors.black : 
-    theme.colors['gray-600']};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  background: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors['gray-700']};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
   
-  &:hover {
-    background: ${({ $variant, theme }) => 
-      $variant === 'primary' ? theme.colors['gold-muted'] : 
-      $variant === 'secondary' ? theme.colors['gray-300'] : 
-      theme.colors['gray-100']};
+  &:hover:not(:disabled) {
+    background: ${({ theme }) => theme.colors['gray-50']};
+    border-color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.black};
   }
   
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
-`;
-
-const SampleItinerary = styled.div`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.md};
-  padding: ${({ theme }) => theme.spacing.lg};
-  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
-  margin-top: ${({ theme }) => theme.spacing.lg};
-`;
-
-const ItineraryDay = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
   
-  &:last-child {
-    margin-bottom: 0;
+  svg {
+    width: 14px;
+    height: 14px;
   }
-`;
-
-const DayHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  padding-bottom: ${({ theme }) => theme.spacing.sm};
-  border-bottom: 1px solid ${({ theme }) => theme.colors['gray-200']};
-`;
-
-const DayTitle = styled.h4`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-`;
-
-const DaySchedule = styled.div`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const ScheduleItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  padding: ${({ theme }) => theme.spacing.sm};
-  background: ${({ theme }) => theme.colors['gray-50']};
-  border-radius: ${({ theme }) => theme.radius.sm};
-`;
-
-const TimeBadge = styled.span`
-  background: ${({ theme }) => theme.colors.gold};
-  color: ${({ theme }) => theme.colors.black};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.radius.sm};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  min-width: 60px;
-  text-align: center;
-`;
-
-const ActivityText = styled.span`
-  color: ${({ theme }) => theme.colors['gray-700']};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
 `;
 
 // Add CSS animations for spinning loader and pulse
@@ -295,248 +236,28 @@ const GlobalStyles = styled.div`
 
 const DemoHeader = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 `;
 
 const DemoBadge = styled.div`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
+  padding: 4px ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   box-shadow: ${({ theme }) => theme.shadows.gold};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
 
 const DemoTitle = styled.h1`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  }
-`;
-
-const DemoSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
-  }
-`;
-
-const DemoGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing['3xl']};
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing['2xl']};
-  }
-`;
-
-const FormCard = styled(Card)`
-  padding: ${({ theme }) => theme.spacing['3xl']};
-`;
-
-const FormTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-`;
-
-const FormGroup = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-`;
-
-const Label = styled.label`
-  display: block;
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  color: ${({ theme }) => theme.colors['gray-900']};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-`;
-
-const Select = styled.select`
-  width: 100%;
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  padding-right: ${({ theme }) => theme.spacing.xl};
-  border: 1px solid ${({ theme }) => theme.colors['gray-300']};
-  border-radius: ${({ theme }) => theme.radius.md};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  background: ${({ theme }) => theme.colors.white};
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right ${({ theme }) => theme.spacing.sm} center;
-  background-repeat: no-repeat;
-  background-size: 16px 12px;
-  transition: ${({ theme }) => theme.transitions.normal};
-  cursor: pointer;
-  height: 44px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233B82F6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  }
-  
-  &:hover {
-    border-color: ${({ theme }) => theme.colors['gray-400']};
-  }
-  
-  option {
-    padding: ${({ theme }) => theme.spacing.sm};
-    background: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors['gray-900']};
-  }
-`;
-
-const GenerateButton = styled.button`
-  width: 100%;
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing['2xl']};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
-  border: none;
-  border-radius: ${({ theme }) => theme.radius.lg};
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  font-family: ${({ theme }) => theme.typography.fontBody};
-  cursor: pointer;
-  transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s ease;
-  }
-  
-  &:hover:not(:disabled) {
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors['gold-muted']}, ${({ theme }) => theme.colors.gold});
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows['gold-lg']};
-    
-    &::before {
-      left: 100%;
-    }
-  }
-  
-  &:active:not(:disabled) {
-    transform: translateY(0);
-  }
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-  }
-  
-  &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.colors.gold};
-    outline-offset: 2px;
-  }
-`;
-
-const ResultCard = styled(Card)`
-  padding: ${({ theme }) => theme.spacing['3xl']};
-  min-height: 400px;
-  ${flexColumnCenter}
-`;
-
-const LoadingState = styled.div`
-  ${flexColumnCenter}
-  gap: ${({ theme }) => theme.spacing.lg};
-  text-align: center;
-`;
-
-const LoadingText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  color: ${({ theme }) => theme.colors['gray-600']};
-`;
-
-const LoadingSubtext = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: ${({ theme }) => theme.colors['gray-500']};
-`;
-
-const ErrorState = styled.div`
-  ${flexColumnCenter}
-  gap: ${({ theme }) => theme.spacing.lg};
-  text-align: center;
-  color: ${({ theme }) => theme.colors.red};
-`;
-
-const ErrorText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-`;
-
-const ErrorSubtext = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-const EmptyState = styled.div`
-  ${flexColumnCenter}
-  gap: ${({ theme }) => theme.spacing.lg};
-  text-align: center;
-  color: ${({ theme }) => theme.colors['gray-500']};
-`;
-
-const EmptyIcon = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  color: ${({ theme }) => theme.colors['gray-400']};
-`;
-
-const EmptyTitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  color: ${({ theme }) => theme.colors['gray-600']};
-`;
-
-const EmptySubtext = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-const FeaturesSection = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
-`;
-
-const FeaturesTitle = styled.h2`
   font-size: ${({ theme }) => theme.typography.sizes['4xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -544,63 +265,78 @@ const FeaturesTitle = styled.h2`
   }
 `;
 
-const FeaturesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: ${({ theme }) => theme.spacing['2xl']};
+const DemoSubtitle = styled.p`
+  font-size: ${({ theme }) => theme.typography.sizes.base};
+  color: ${({ theme }) => theme.colors['gray-600']};
+  max-width: 700px;
+  margin: 0 auto ${({ theme }) => theme.spacing.md} auto;
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.xl};
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
-const FeatureCard = styled(motion.div).withConfig({
-  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit', 'whileInView', 'viewport'].includes(prop)
-})`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  text-align: center;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 1px solid ${({ theme }) => theme.colors['gray-300']};
-  transition: ${({ theme }) => theme.transitions.normal};
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
-    border-color: ${({ theme }) => theme.colors.gold};
-  }
-`;
-
-const FeatureIcon = styled.div`
-  width: 64px;
-  height: 64px;
-  border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  ${flexCenter}
-  margin: 0 auto ${({ theme }) => theme.spacing.lg};
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  transition: ${({ theme }) => theme.transitions.normal};
+const DemoHighlights = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+  flex-wrap: wrap;
+  margin-top: ${({ theme }) => theme.spacing.md};
   
-  ${FeatureCard}:hover & {
-    transform: scale(1.1);
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
+    align-items: center;
+    gap: ${({ theme }) => theme.spacing.xs};
   }
 `;
 
-const FeatureTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
+const DemoHighlightItem = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px ${({ theme }) => theme.spacing.sm};
+  background: ${({ theme }) => theme.colors['gray-50']};
+  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
+  border-radius: ${({ theme }) => theme.radius.full};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  color: ${({ theme }) => theme.colors['gray-700']};
+  
+  svg {
+    color: ${({ theme }) => theme.colors.gold};
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+  }
 `;
 
-const FeatureDescription = styled.p`
-  color: ${({ theme }) => theme.colors['gray-600']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+const DemoBulletList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: ${({ theme }) => theme.spacing.sm} 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xs};
 `;
+
+const DemoBulletItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.xs};
+  color: ${({ theme }) => theme.colors['gray-600']};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  
+  &::before {
+    content: '•';
+    color: ${({ theme }) => theme.colors.gold};
+    font-weight: ${({ theme }) => theme.typography.weights.bold};
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+`;
+
 
 const CTASection = styled.div`
   text-align: center;
@@ -652,213 +388,118 @@ const ButtonGroup = styled.div`
 const Demo = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [formData, setFormData] = useState({
-    familySize: "4",
-    ages: "Adults with kids",
-    interests: "Thrill rides, Character meets",
-    dining: "Table service",
-    days: "4"
-  });
 
   const steps = [
     {
       id: 0,
-      title: "Client Questionnaire",
+      title: "Your client fills out a guided intake form",
       icon: <Users size={20} />,
-      description: "Your client fills out a comprehensive questionnaire about their family, preferences, travel dates, and Disney experience level.",
+      description: "Start with a link you send your client. They answer a friendly, guided questionnaire about their family, travel dates, parks, and must-do priorities.",
       content: (
         <InteractiveDemo>
           <StepDescription>
-            Your client completes a detailed questionnaire covering all aspects of their Disney vacation preferences.
+            No more back-and-forth emails or scattered notes. ParkPro pulls everything into one clean intake that you can reuse for every Disney booking.
           </StepDescription>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Family: {formData.familySize} people ({formData.ages})</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Interests: {formData.interests}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Dining: {formData.dining}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Trip: {formData.days} days at Disney World</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Experience Level: First-time visitors</span>
-            </div>
-          </div>
+          <DemoBulletList>
+            <DemoBulletItem>Party size, ages, mobility, and special occasions</DemoBulletItem>
+            <DemoBulletItem>Park-day preferences and hopper options</DemoBulletItem>
+            <DemoBulletItem>Ride intensity, characters, and dining style</DemoBulletItem>
+            <DemoBulletItem>Trip budget and must-do experiences</DemoBulletItem>
+          </DemoBulletList>
         </InteractiveDemo>
       )
     },
     {
       id: 1,
-      title: "Smart Analysis",
-      icon: <Zap size={20} />,
-      description: "Our system analyzes historical data, crowd patterns, and your client's preferences to create the optimal Disney experience.",
+      title: "ParkPro builds the day-by-day itinerary",
+      icon: <Calendar size={20} />,
+      description: "Behind the scenes, ParkPro applies destination-specific rules and best practices to turn that intake form into a structured plan for each day.",
       content: (
         <InteractiveDemo>
           <StepDescription>
-            Our intelligent system processes your client's preferences and Disney data to create a personalized plan.
+            Instead of staring at a blank screen, you get a working draft in minutes—organized by park, time of day, and meals.
           </StepDescription>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Analyzing crowd patterns for {formData.days} days</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Matching rides to family preferences</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Optimizing park order and timing</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Loader2 size={16} style={{ color: theme.colors.primary, animation: 'spin 1s linear infinite' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Creating personalized recommendations</span>
-            </div>
-          </div>
+          <DemoBulletList>
+            <DemoBulletItem>Each day matched to the right park and pace</DemoBulletItem>
+            <DemoBulletItem>Morning, afternoon, and evening blocks laid out</DemoBulletItem>
+            <DemoBulletItem>Slots reserved for dining and breaks</DemoBulletItem>
+            <DemoBulletItem>Arrival and departure days handled gracefully</DemoBulletItem>
+          </DemoBulletList>
         </InteractiveDemo>
       )
     },
     {
       id: 2,
-      title: "Itinerary Generation",
+      title: "You refine, personalize, and brand it",
       icon: <Sparkles size={20} />,
-      description: "We create a comprehensive, personalized itinerary with park recommendations, ride priorities, dining suggestions, and optimal timing.",
+      description: "You stay in control. Adjust park days, tweak suggestions, and add your own expertise before sending the final plan.",
       content: (
         <InteractiveDemo>
           <StepDescription>
-            Your personalized Disney itinerary is ready! Here's what your client will receive.
+            ParkPro does the heavy lifting; you add the Disney magic your clients pay you for.
           </StepDescription>
-          <SampleItinerary>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <Calendar size={16} style={{ color: theme.colors.primary }} />
-              <span style={{ fontWeight: '600', color: '#0B0B0C' }}>4-Day Disney World Itinerary</span>
-            </div>
-            
-            <ItineraryDay>
-              <DayHeader>
-                <Sun size={16} style={{ color: theme.colors.primary }} />
-                <DayTitle>Day 1 - Magic Kingdom</DayTitle>
-              </DayHeader>
-              <DaySchedule>
-                <ScheduleItem>
-                  <ActivityText>• Arrive at Magic Kingdom, head to Seven Dwarfs Mine Train</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Space Mountain (Genie+ recommended)</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Lunch at Be Our Guest Restaurant</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Character meet & greet at Town Square</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Big Thunder Mountain Railroad</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Dinner at Cinderella's Royal Table</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Happily Ever After Fireworks</ActivityText>
-                </ScheduleItem>
-              </DaySchedule>
-            </ItineraryDay>
-
-            <ItineraryDay>
-              <DayHeader>
-                <Sun size={16} style={{ color: theme.colors.primary }} />
-                <DayTitle>Day 2 - EPCOT</DayTitle>
-              </DayHeader>
-              <DaySchedule>
-                <ScheduleItem>
-                  <ActivityText>• Test Track (Genie+ recommended)</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Soarin' Around the World</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Lunch at Le Cellier Steakhouse</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• World Showcase exploration</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• Dinner at Via Napoli</ActivityText>
-                </ScheduleItem>
-                <ScheduleItem>
-                  <ActivityText>• EPCOT Forever Fireworks</ActivityText>
-                </ScheduleItem>
-              </DaySchedule>
-            </ItineraryDay>
-          </SampleItinerary>
+          <DemoBulletList>
+            <DemoBulletItem>Swap parks or reorder days without starting over</DemoBulletItem>
+            <DemoBulletItem>Add your own notes, tips, and reminders</DemoBulletItem>
+            <DemoBulletItem>Export to your premium PDF or slide templates</DemoBulletItem>
+            <DemoBulletItem>Deliver a polished, on-brand itinerary every time</DemoBulletItem>
+          </DemoBulletList>
         </InteractiveDemo>
       )
     },
     {
       id: 3,
-      title: "Client Delivery",
+      title: "You deliver and reuse what works",
       icon: <Heart size={20} />,
-      description: "Your client receives a beautiful, detailed itinerary they can access on their phone, with real-time updates and modifications.",
+      description: "Turn every itinerary into repeatable systems and better client relationships instead of one-off, exhausting projects.",
       content: (
         <InteractiveDemo>
           <StepDescription>
-            Your client receives a professional, mobile-friendly itinerary that they can access anytime, anywhere.
+            The more trips you build, the more ParkPro becomes your agency's Disney playbook.
           </StepDescription>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Mobile-optimized itinerary</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Real-time wait time updates</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Dining reservation confirmations</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>FastPass+ selections included</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Check size={16} style={{ color: '#10B981' }} />
-              <span style={{ fontSize: '0.875rem', color: '#6B7280' }}>Easy modifications and updates</span>
-            </div>
-          </div>
+          <DemoBulletList>
+            <DemoBulletItem>Send itineraries digitally or as PDFs/slides</DemoBulletItem>
+            <DemoBulletItem>Reuse successful patterns for similar families</DemoBulletItem>
+            <DemoBulletItem>Spend more time selling and serving, less time building</DemoBulletItem>
+            <DemoBulletItem>Lay the foundation for your future Agency OS</DemoBulletItem>
+          </DemoBulletList>
         </InteractiveDemo>
       )
     }
   ];
 
-  // Auto-play effect that starts when component mounts
+  // Auto-play effect that only runs when isPlaying is true
   useEffect(() => {
+    if (!isPlaying) return;
+
     const interval = setInterval(() => {
       setCurrentStep(prev => {
         if (prev >= steps.length - 1) {
-          // Loop back to the beginning for continuous demo
           return 0;
         }
         return prev + 1;
       });
-    }, 8000); // 8 seconds per step for comfortable reading time
+    }, 12000); // 12 seconds per step for comfortable reading time
 
     return () => clearInterval(interval);
-  }, [steps.length]);
+  }, [isPlaying, steps.length]);
+
+  const handlePrevious = () => {
+    setCurrentStep(prev => (prev === 0 ? steps.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentStep(prev => (prev >= steps.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePlayPause = () => {
+    setIsPlaying(prev => !prev);
+  };
 
 
   return (
     <DemoWrapper>
-      <SEO {...SEOConfigs.demo} />
+      <SEO {...SEOConfigs.demo} schemaType="SoftwareApplication" />
       <GlobalStyles />
             <Section>
     <Container>
@@ -866,8 +507,34 @@ const Demo = () => {
             <DemoBadge>{copy.pages.demo.badge}</DemoBadge>
             <DemoTitle>{copy.pages.demo.h1}</DemoTitle>
             <DemoSubtitle>
-              {copy.pages.demo.sub}
+              In a few minutes, see exactly how ParkPro turns a 10-hour Disney itinerary into a 20–30 minute workflow—without changing how you serve your clients.
             </DemoSubtitle>
+            <DemoHighlights>
+              <DemoHighlightItem
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <Check size={16} />
+                <span>Save 5–10+ hours per Disney trip</span>
+              </DemoHighlightItem>
+              <DemoHighlightItem
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Check size={16} />
+                <span>Go from intake form to day-by-day plan in minutes</span>
+              </DemoHighlightItem>
+              <DemoHighlightItem
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <Check size={16} />
+                <span>Deliver a premium, branded itinerary every time</span>
+              </DemoHighlightItem>
+            </DemoHighlights>
           </DemoHeader>
 
           <StepIndicator>
@@ -906,6 +573,18 @@ const Demo = () => {
                 </StepContent>
 
                 <DemoControls>
+                  <ControlButton onClick={handlePrevious} disabled={false}>
+                    <ChevronLeft size={16} />
+                    Previous
+                  </ControlButton>
+                  <ControlButton onClick={handlePlayPause}>
+                    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+                    {isPlaying ? 'Pause' : 'Play'}
+                  </ControlButton>
+                  <ControlButton onClick={handleNext} disabled={false}>
+                    Next
+                    <ChevronRight size={16} />
+                  </ControlButton>
                 </DemoControls>
               </DemoStep>
             </AnimatePresence>
@@ -916,17 +595,17 @@ const Demo = () => {
       <Section>
         <Container>
           <CTASection>
-            <CTATitle>Ready to Transform Your Disney Business?</CTATitle>
+            <CTATitle>Ready to see ParkPro with your own clients?</CTATitle>
             <CTASubtitle>
-              Join the early access program and start saving 10+ hours per client while increasing your bookings. 
-              Limited spots available for exclusive pricing and priority support.
+              Request early access and we'll walk you through a live demo using your agency's Disney scenarios.
             </CTASubtitle>
             <ButtonGroup>
-              <Button variant="gold" size="lg" to="/request-access">
-                Join Early Access Program
+              <Button variant="primary" size="lg" to="/request-access">
+                Request Early Access
+                <ArrowRight size={20} />
               </Button>
-              <Button variant="outline" size="lg" to="/about">
-                Learn More
+              <Button variant="outline" size="lg" to="/pricing">
+                See Pricing
               </Button>
             </ButtonGroup>
           </CTASection>

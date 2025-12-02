@@ -13,6 +13,8 @@ import {
   Play
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import SEO from "../components/seo/SEO";
+import { SEOConfigs } from "../components/seo/SEOConfigs";
 import { Button, Card, CardGrid } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -275,18 +277,18 @@ const Home = () => {
   const features = [
     {
       icon: <Clock size={32} />,
-      title: "Save 10+ Hours Per Client",
-      description: "Generate complete Disney itineraries in minutes, not hours. Our automated system handles everything from park schedules to dining reservations."
+      title: "Save 5–10+ Hours Per Client",
+      description: "Turn 8–12 hours of manual Disney planning into a 15–60 minute workflow. Generate complete premium itineraries with park schedules, dining reservations, and crowd-avoidance strategies."
     },
     {
       icon: <TrendingUp size={32} />,
       title: "3x More Bookings",
-      description: "With more time on your hands, take on more clients and increase your revenue. Our system scales with your business."
+      description: "With 5–10+ hours saved per client, take on more families without burning out. Our system scales with your business so you can serve more clients in the same time."
     },
     {
       icon: <Users size={32} />,
-      title: "Impress Every Client",
-      description: "Deliver restaurant recommendations, optimal schedules, and crowd-avoidance strategies that make you look like a Disney expert."
+      title: "Premium Itineraries That Impress",
+      description: "Deliver professional, day-by-day plans with live wait times, dining recommendations, and export-ready formats that make you look like a Disney expert."
     },
     {
       icon: <Shield size={32} />,
@@ -300,15 +302,15 @@ const Home = () => {
     },
     {
       icon: <Star size={32} />,
-      title: "Early Access Benefits",
+      title: "Founding Member Benefits",
       description: "Get exclusive pricing, priority support, and direct access to our development team for feature requests."
     }
   ];
 
   const stats = [
-    { number: "5min", label: "Itinerary Creation" },
-    { number: "3x", label: "More Bookings" },
-    { number: "50", label: "Agent Spots Left" }
+    { number: "15–60 min", label: "Per Itinerary" },
+    { number: "5–10+ hrs", label: "Saved Per Client" },
+    { number: "3x", label: "More Bookings" }
   ];
 
   // SEO Schema Markup for better Google visibility
@@ -318,7 +320,7 @@ const Home = () => {
     "name": "ParkPro",
     "url": "https://parkproit.com",
     "logo": "https://parkproit.com/assets/logo.png",
-    "description": "Automated Disney itinerary planning software for travel agents. Save 10+ hours per client and increase bookings by 3x.",
+    "description": "Automated Disney itinerary planning software for travel agents. Save 5–10+ hours per client and increase bookings by 3x.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-260-312-0506",
@@ -357,17 +359,13 @@ const Home = () => {
       "bestRating": "5",
       "worstRating": "1"
     },
-    "description": "Automated Disney itinerary builder for travel agents. Create professional Disney World and Disneyland itineraries in 15-30 minutes. Pricing starts at $147/month for 5 itineraries, with plans up to $297/month for 16 itineraries."
+    "description": "Automated Disney itinerary builder for travel agents. Create premium Disney World and Disneyland itineraries in 15–60 minutes instead of 8–12 hours. Save 5–10+ hours per client. Pricing starts at $147/month for 5 itineraries, with plans up to $297/month for 16 itineraries."
   };
 
   return (
     <HomeWrapper>
+      <SEO {...SEOConfigs.home} schemaType="SoftwareApplication" />
       <Helmet>
-        <title>{copy.pages.home.title}</title>
-        <meta 
-          name="description" 
-          content={copy.pages.home.description} 
-        />
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>
@@ -493,20 +491,27 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  style={{ height: '100%', display: 'flex' }}
                 >
-                  <Card variant="elevated" hover>
-                    <div style={{ textAlign: 'center' }}>
+                  <Card variant="elevated" hover style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ 
+                      textAlign: 'center', 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      height: '100%',
+                      padding: theme.spacing.xl
+                    }}>
                       <div style={{
                         width: '80px',
                         height: '80px',
                         borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors['primary-dark']})`,
+                        background: `linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-muted']})`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         margin: '0 auto 24px',
                         color: '#0B0B0C',
-                        fontSize: '32px'
+                        flexShrink: 0
                       }}>
                         {feature.icon}
                       </div>
@@ -515,14 +520,16 @@ const Home = () => {
                         fontWeight: '600',
                         color: '#0B0B0C',
                         marginBottom: '16px',
-                        fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+                        fontFamily: "'Urbanist', 'DM Sans', sans-serif",
+                        lineHeight: '1.3'
                       }}>
                         {feature.title}
                       </h3>
                       <p style={{
                         color: '#6B7280',
                         lineHeight: '1.6',
-                        margin: 0
+                        margin: 0,
+                        flex: 1
                       }}>
                         {feature.description}
                       </p>
@@ -537,6 +544,39 @@ const Home = () => {
         {/* Testimonials Section */}
         <Testimonials />
 
+        {/* Concierge Section */}
+        <FeaturesSection style={{ background: theme.colors.white, paddingTop: theme.spacing['2xl'] }}>
+          <Container>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <Card variant="elevated" style={{ maxWidth: '800px', margin: '0 auto', padding: theme.spacing['2xl'], textAlign: 'center' }}>
+                <Star size={32} style={{ color: theme.colors.gold, marginBottom: theme.spacing.md }} />
+                <h3 style={{
+                  fontSize: '24px',
+                  fontWeight: '600',
+                  color: '#0B0B0C',
+                  marginBottom: '16px',
+                  fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+                }}>
+                  Concierge Itineraries
+                </h3>
+                <p style={{
+                  color: '#6B7280',
+                  lineHeight: '1.6',
+                  margin: 0,
+                  fontSize: '16px'
+                }}>
+                  {copy.trust.concierge}
+                </p>
+              </Card>
+            </motion.div>
+          </Container>
+        </FeaturesSection>
+
         <CTASection>
           <Container>
             <CTAContent>
@@ -546,7 +586,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                Ready to Scale Your Disney Business?
+                Ready to Save 5–10+ Hours Per Client?
               </CTATitle>
               
               <CTASubtitle
@@ -555,7 +595,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Join the early access program and start saving 10+ hours per client while increasing your bookings. 
+                Join the founding member program and start creating premium Disney itineraries in under 60 minutes instead of spending 8–12 hours per client. 
                 Limited spots available for exclusive pricing and priority support.
               </CTASubtitle>
               
@@ -566,12 +606,12 @@ const Home = () => {
                 viewport={{ once: true }}
               >
                 <Button to="/request-access" variant="primary" size="lg">
-                  Join Early Access Program
+                  {copy.ctas.becomeFoundingMember}
                   <ArrowRight size={20} />
                 </Button>
                 <Button to="/demo" variant="secondary" size="lg">
                   <Play size={20} />
-                  See How It Works
+                  {copy.ctas.seeTimeSavings}
                 </Button>
               </CTAButtonsWrapper>
             </CTAContent>

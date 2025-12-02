@@ -77,20 +77,6 @@
       "usesContainer": true
     },
     {
-      "file": "DemoItinerary.jsx",
-      "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/DemoItinerary.jsx",
-      "importsCopy": false,
-      "usesCopyPages": false,
-      "usesCopyHero": false,
-      "usesCopySections": false,
-      "usesCopyCtas": false,
-      "hasHardcodedStrings": false,
-      "potentialHardcodedCount": 0,
-      "hasHelmet": false,
-      "usesSection": true,
-      "usesContainer": true
-    },
-    {
       "file": "DisneyPlanningSoftware.jsx",
       "path": "/Users/ktodoran/Dev/ParkProHome/src/pages/DisneyPlanningSoftware.jsx",
       "importsCopy": false,
@@ -304,13 +290,6 @@
     ],
     "partiallyCompliant": [],
     "needsWork": [
-      {
-        "file": "DemoItinerary.jsx",
-        "issues": [
-          "no copy import",
-          "hardcoded text"
-        ]
-      },
       {
         "file": "DisneyPlanningSoftware.jsx",
         "issues": [

@@ -26,9 +26,15 @@ const Container = styled.div`
 
 const TrustGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: ${({ theme }) => theme.spacing.lg};
-  align-items: center;
+  align-items: start;
+  justify-items: center;
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
@@ -42,12 +48,55 @@ const TrustGrid = styled.div`
 
 const TrustItem = styled(motion.div)`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: ${({ theme }) => theme.spacing.sm};
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 200px;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     justify-content: flex-start;
+    max-width: 100%;
+  }
+`;
+
+const LastItemWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: ${({ theme }) => theme.spacing.lg};
+  align-items: start;
+  justify-items: center;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const TrustItemLast = styled(motion.div)`
+  display: flex;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.sm};
+  justify-content: flex-start;
+  grid-column: 3;
+  width: 100%;
+  max-width: 200px;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-column: 2;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-column: 1;
+    max-width: 100%;
   }
 `;
 
@@ -114,40 +163,43 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
     {
       icon: <Lock size={20} />,
       label: "SSL Secure",
-      subtext: "256-bit Encryption"
+      subtext: "256-bit encryption on all pages"
     },
     {
       icon: <Shield size={20} />,
-      label: "Stripe Verified",
-      subtext: "Secure Payments"
+      label: "Secure Payments",
+      subtext: "Payments handled through Stripe"
     },
     {
       icon: <CheckCircle size={20} />,
-      label: "GDPR Compliant",
-      subtext: "Data Protected"
+      label: "Built for Travel Agents",
+      subtext: "Designed specifically for Disney-focused agencies"
     },
     {
       icon: <Award size={20} />,
-      label: "Money-Back Guarantee",
-      subtext: "14-Day Guarantee"
+      label: "Early Access Program",
+      subtext: "Real agencies helping shape the roadmap"
     },
     {
       icon: <Users size={20} />,
-      label: "500+ Agents",
-      subtext: "Trusted Worldwide"
+      label: "No Long-Term Contracts",
+      subtext: "Upgrade, downgrade, or cancel as you grow"
     },
     {
       icon: <Star size={20} />,
-      label: "5-Star Rated",
-      subtext: "95% Satisfaction"
+      label: "Human Support",
+      subtext: "Direct email support from the founder"
     }
   ];
+
+  const firstFiveItems = trustItems.slice(0, 5);
+  const lastItem = trustItems[5];
 
   return (
     <TrustBarWrapper $variant={variant}>
       <Container>
         <TrustGrid>
-          {trustItems.map((item, index) => (
+          {firstFiveItems.map((item, index) => (
             <TrustItem
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -166,9 +218,29 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
           ))}
         </TrustGrid>
         
+        {lastItem && (
+          <LastItemWrapper>
+            <TrustItemLast
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <IconWrapper $variant={variant}>
+                {lastItem.icon}
+              </IconWrapper>
+              <TrustText>
+                <TrustLabel $variant={variant}>{lastItem.label}</TrustLabel>
+                <TrustSubtext $variant={variant}>{lastItem.subtext}</TrustSubtext>
+              </TrustText>
+            </TrustItemLast>
+          </LastItemWrapper>
+        )}
+        
         {showSocialProof && (
           <SocialProofText $variant={variant}>
-            Trusted by <strong>500+ travel agents</strong> who've saved over <strong>50,000 hours</strong> in Disney planning
+            Built specifically for <strong>Disney-focused travel agents and agencies</strong>, 
+            and currently rolling out with a small group of early access partners.
           </SocialProofText>
         )}
       </Container>

@@ -1,36 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { designTokens } from '../tokens';
-
-// Card variants
-type CardVariant = 'default' | 'elevated' | 'outlined' | 'glass' | 'gradient';
-
-// Card sizes
-type CardSize = 'sm' | 'md' | 'lg' | 'xl';
-
-// Card props interface
-interface CardProps {
-  children: React.ReactNode;
-  variant?: CardVariant;
-  size?: CardSize;
-  hover?: boolean;
-  clickable?: boolean;
-  className?: string;
-  onClick?: () => void;
-  'aria-label'?: string;
-  'aria-describedby'?: string;
-}
+import { designTokens } from '../tokens.js';
 
 // Styled card component
 const StyledCard = styled(motion.div).withConfig({
   shouldForwardProp: (prop) => !['variant', 'size', 'hover', 'clickable'].includes(prop)
-})<{
-  variant: CardVariant;
-  size: CardSize;
-  hover: boolean;
-  clickable: boolean;
-}>`
+})`
   /* Base styles */
   position: relative;
   border-radius: ${designTokens.radius.xl};
@@ -184,7 +160,7 @@ const CardFooter = styled.div`
 `;
 
 // Card image component
-const CardImage = styled.div<{ src?: string; alt?: string }>`
+const CardImage = styled.div`
   width: 100%;
   height: 200px;
   background: ${({ src }) => src ? `url(${src})` : designTokens.colors['gray-100']};
@@ -200,7 +176,7 @@ const CardImage = styled.div<{ src?: string; alt?: string }>`
 `;
 
 // Card badge component
-const CardBadge = styled.div<{ variant?: 'gold' | 'teal' | 'purple' }>`
+const CardBadge = styled.div`
   position: absolute;
   top: ${designTokens.spacing[4]};
   right: ${designTokens.spacing[4]};
@@ -272,7 +248,7 @@ const CardStatLabel = styled.div`
 `;
 
 // Main Card component
-const Card: React.FC<CardProps> = ({
+const Card = ({
   children,
   variant = 'default',
   size = 'md',
@@ -316,7 +292,7 @@ const Card: React.FC<CardProps> = ({
 };
 
 // Card grid component
-const CardGrid = styled.div<{ columns?: number; gap?: keyof typeof designTokens.spacing }>`
+const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(${({ columns = 3 }) => columns}, 1fr);
   gap: ${({ gap = 6 }) => designTokens.spacing[gap]};
@@ -348,3 +324,4 @@ export {
 };
 
 export default Card;
+

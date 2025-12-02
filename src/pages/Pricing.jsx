@@ -1,29 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { 
-  Star, 
-  Clock, 
-  Users, 
-  Zap, 
-  Check, 
-  X, 
-  ChevronDown, 
+import SEO from "../components/seo/SEO";
+import { SEOConfigs } from "../components/seo/SEOConfigs";
+import {
+  Star,
+  Check,
+  X,
+  ChevronDown,
   ChevronUp,
-  Shield,
   Award,
-  Headphones,
-  Rocket
 } from "lucide-react";
-import { Button, Card, CardGrid } from "../design";
+import { Button } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
-import { flexCenter, flexColumnCenter } from "../styles/mixins";
+import { flexCenter } from "../styles/mixins";
 import TrustBar from "../components/TrustBar";
 import { copy } from "../content/strings";
 
-// Enhanced Pricing Page with proper tiers, decoy pricing, and FAQ
+// Pricing Page - Transparent pricing focused on time savings for Disney travel agents
+//
+// PRICING MODEL:
+// - All prices are per seat per month (annual = monthlyPrice * 10, equivalent to "2 months free")
+// - Solo/Solo+: 1 seat, itineraries per seat/month
+// - Agency Lite: Minimum 3 seats, 10 itineraries per seat/month
+// - Agency: Minimum 5 seats, 12 itineraries per seat/month
+// - Agency+: Minimum 10 seats, 16 itineraries per seat/month
+// - Enterprise: Custom per-seat pricing, 25–30 itineraries per seat/month, no hard seat cap
+// - Enterprise is a real, clickable plan (not a decoy) that routes to /contact
 const PricingWrapper = styled.div`
   padding-top: 88px; // Account for fixed navbar
   background: ${({ theme }) => theme.colors.white};
@@ -31,30 +36,30 @@ const PricingWrapper = styled.div`
 
 const PricingHeader = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
+  margin-bottom: ${({ theme }) => theme.spacing["4xl"]};
 `;
 
 const PricingTitle = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["5xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
   }
 `;
 
 const PricingSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
+  margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.lg};
   }
@@ -63,184 +68,368 @@ const PricingSubtitle = styled(motion.p)`
 const ToggleWrapper = styled.div`
   ${flexCenter}
   gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+`;
+
+const SecondaryToggleWrapper = styled.div`
+  ${flexCenter}
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-left: ${({ theme }) => theme.spacing["2xl"]};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-left: 0;
+  }
 `;
 
 const ToggleLabel = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
 `;
 
-const Toggle = styled.div`
+// Primary toggle for Solo Agent / Agency (prominent with gold accent)
+const PrimaryToggle = styled.div`
   display: flex;
-  background: ${({ theme }) => theme.colors['gray-100']};
+  background: ${({ theme }) => theme.colors["gray-100"]};
   border-radius: ${({ theme }) => theme.radius.full};
   padding: ${({ theme }) => theme.spacing.xs};
   position: relative;
   cursor: pointer;
+  border: 2px solid ${({ theme }) => theme.colors["gray-200"]};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
 `;
 
-const ToggleOption = styled.button`
+const PrimaryToggleOption = styled.button`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
   border: none;
-  background: ${({ active, theme }) => 
-    active ? theme.colors.white : 'transparent'};
-  color: ${({ active, theme }) => 
-    active ? theme.colors.black : theme.colors['gray-600']};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  background: ${({ active, theme }) =>
+    active ? theme.colors.gold : "transparent"};
+  color: ${({ active, theme }) =>
+    active ? theme.colors.black : theme.colors["gray-600"]};
+  font-weight: ${({ active, theme }) =>
+    active ? theme.typography.weights.semibold : theme.typography.weights.medium};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ active, theme }) => 
-    active ? theme.shadows.md : 'none'};
+  box-shadow: ${({ active, theme }) => (active ? theme.shadows.gold : "none")};
+  z-index: 1;
+  position: relative;
+  min-width: 120px;
+  text-align: center;
+`;
+
+// Secondary toggle for Monthly / Annual (subtle styling, smaller)
+const SecondaryToggle = styled.div`
+  display: flex;
+  background: ${({ theme }) => theme.colors["gray-50"]};
+  border-radius: ${({ theme }) => theme.radius.full};
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
+`;
+
+const SecondaryToggleOption = styled.button`
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.radius.full};
+  border: none;
+  background: ${({ active, theme }) =>
+    active ? theme.colors.white : "transparent"};
+  color: ${({ active, theme }) =>
+    active ? theme.colors.black : theme.colors["gray-600"]};
+  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  cursor: pointer;
+  transition: ${({ theme }) => theme.transitions.normal};
+  box-shadow: ${({ active, theme }) => (active ? theme.shadows.sm : "none")};
   z-index: 1;
   position: relative;
 `;
 
 const PricingGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: ${({ theme }) => theme.spacing['2xl']};
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
-  
+  grid-template-columns: ${({ $isSoloView }) => 
+    $isSoloView ? 'repeat(3, 1fr)' : 'repeat(4, 1fr)'};
+  gap: ${({ theme }) => theme.spacing.lg};
+  margin-top: ${({ theme }) => theme.spacing["1xl"]};
+  margin-bottom: ${({ theme }) => theme.spacing["4xl"]};
+  max-width: ${({ $isSoloView }) => $isSoloView ? '1200px' : '100%'};
+  margin-left: ${({ $isSoloView }) => $isSoloView ? 'auto' : '0'};
+  margin-right: ${({ $isSoloView }) => $isSoloView ? 'auto' : '0'};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.xl};
+    gap: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
+
 const PricingCard = styled(motion.div).withConfig({
-  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit', 'whileInView', 'viewport', 'isPopular', 'isDecoy'].includes(prop)
+  shouldForwardProp: (prop) =>
+    ![
+      "initial",
+      "animate",
+      "transition",
+      "exit",
+      "whileInView",
+      "viewport",
+      "isPopular",
+      "isAgencyPlus",
+      "isEnterprise",
+    ].includes(prop),
 })`
   background: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  border: 2px solid ${({ theme, isPopular, isDecoy }) => 
-    isPopular ? theme.colors.gold : isDecoy ? theme.colors['gray-300'] : theme.colors['gray-300']};
-  box-shadow: ${({ theme, isPopular, isDecoy }) => 
-    isPopular ? theme.shadows.gold : isDecoy ? theme.shadows.sm : theme.shadows.md};
+  padding: ${({ theme }) => theme.spacing.xl};
+  border: 2px solid
+    ${({ theme, isPopular, isAgencyPlus, isEnterprise }) =>
+      isEnterprise
+        ? theme.colors["gray-800"]
+        : isPopular || isAgencyPlus
+        ? theme.colors.gold
+        : theme.colors["gray-300"]};
+  box-shadow: ${({ theme, isPopular, isAgencyPlus, isEnterprise }) =>
+    isEnterprise
+      ? `0 4px 12px rgba(0, 0, 0, 0.15)`
+      : isPopular || isAgencyPlus
+      ? theme.shadows.gold
+      : theme.shadows.md};
   position: relative;
   transition: ${({ theme }) => theme.transitions.normal};
-  opacity: ${({ isDecoy }) => isDecoy ? 0.6 : 1};
-  
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 600px;
+  min-width: 0;
+  overflow: visible;
+
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${({ theme, isPopular, isDecoy }) => 
-      isPopular ? theme.shadows['gold-lg'] : isDecoy ? theme.shadows.sm : theme.shadows.xl};
+    transform: translateY(-4px);
+    box-shadow: ${({ theme, isPopular, isAgencyPlus, isEnterprise }) =>
+      isEnterprise
+        ? `0 8px 24px rgba(0, 0, 0, 0.2)`
+        : isPopular || isAgencyPlus
+        ? theme.shadows["gold-lg"]
+        : theme.shadows.xl};
+    z-index: 5;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    min-height: auto;
   }
 `;
 
 const PopularBadge = styled.div`
   position: absolute;
-  top: -12px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.gold},
+    ${({ theme }) => theme.colors["gold-muted"]}
+  );
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   text-transform: uppercase;
   letter-spacing: 0.05em;
   box-shadow: ${({ theme }) => theme.shadows.gold};
+  z-index: 20;
+  white-space: nowrap;
+  pointer-events: none;
 `;
 
-const DecoyBadge = styled.div`
+const EnterpriseBadge = styled.div`
   position: absolute;
-  top: -12px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: ${({ theme }) => theme.colors['gray-400']};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.gold},
+    ${({ theme }) => theme.colors["gold-muted"]}
+  );
+  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  box-shadow: ${({ theme }) => theme.shadows.gold};
+  z-index: 20;
+  white-space: nowrap;
+  pointer-events: none;
+`;
+
+const PlanAudienceTag = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: ${({ theme }) => theme.colors["gray-600"]};
+  background: ${({ theme }) => theme.colors["gray-100"]};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.radius.full};
+  text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  display: inline-block;
+  width: 100%;
 `;
 
 const PlanName = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   text-align: center;
 `;
 
 const PlanPrice = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0;
 `;
 
 const PriceAmount = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme, isDecoy }) => isDecoy ? theme.colors['gray-400'] : theme.colors.gold};
+  color: ${({ theme }) => theme.colors.gold};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: 1;
+  margin-right: -2px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+  }
 `;
 
-const PricePeriod = styled.div`
+const PricePeriod = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
+  margin-left: 0;
+`;
+
+const AnnualDiscount = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: ${({ theme }) => theme.colors["gray-600"]};
+  text-align: center;
+  margin-top: 2px;
+`;
+
+const PriceFrom = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: ${({ theme }) => theme.colors["gray-500"]};
+  text-align: center;
   margin-top: ${({ theme }) => theme.spacing.xs};
+  font-style: italic;
+`;
+
+const AdditionalSeatText = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: ${({ theme }) => theme.colors["gray-500"]};
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  font-style: italic;
 `;
 
 const PlanDescription = styled.p`
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+`;
+
+const PlanGrowthNote = styled.div`
+  background: ${({ theme }) => theme.colors["gray-50"]};
+  border-left: 3px solid ${({ theme }) => theme.colors.gold};
+  padding: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: ${({ theme }) => theme.colors["gray-700"]};
+  text-align: left;
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+`;
+
+const TimeSavings = styled.p`
+  color: ${({ theme }) => theme.colors.gold};
+  text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
 `;
 
 const FeatureList = styled.ul`
   list-style: none;
-  margin: 0 0 ${({ theme }) => theme.spacing.xl} 0;
+  margin: 0 0 ${({ theme }) => theme.spacing.lg} 0;
   padding: 0;
+  flex: 1;
 `;
 
 const FeatureItem = styled.li`
   display: flex;
   align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  color: ${({ theme }) => theme.colors['gray-600']};
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  color: ${({ theme, $isHighlight }) =>
+    $isHighlight ? theme.colors.gold : theme.colors["gray-600"]};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-weight: ${({ $isHighlight }) => ($isHighlight ? "600" : "400")};
+
   svg {
-    color: ${({ theme, isDecoy }) => isDecoy ? theme.colors['gray-400'] : theme.colors.gold};
+    color: ${({ theme, $isHighlight }) =>
+      $isHighlight ? theme.colors.gold : theme.colors.gold};
     flex-shrink: 0;
     margin-top: 2px;
+    width: 14px;
+    height: 14px;
   }
 `;
 
 const CardButton = styled(Button)`
   width: 100%;
   justify-content: center;
-  opacity: ${({ isDecoy }) => isDecoy ? 0.5 : 1};
-  cursor: ${({ isDecoy }) => isDecoy ? 'not-allowed' : 'pointer'};
+  margin-top: auto;
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
 `;
 
 // FAQ Section
 const FAQSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
+  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
+  background: ${({ theme }) => theme.colors["gray-50"]};
 `;
 
 const FAQTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   text-align: center;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
   }
 `;
 
@@ -248,7 +437,7 @@ const FAQGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: ${({ theme }) => theme.spacing.lg};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
   }
@@ -259,7 +448,7 @@ const FAQItem = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   padding: ${({ theme }) => theme.spacing.lg};
   box-shadow: ${({ theme }) => theme.shadows.sm};
-  border: 1px solid ${({ theme }) => theme.colors['border-light']};
+  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
 `;
 
 const FAQQuestion = styled.button`
@@ -270,21 +459,21 @@ const FAQQuestion = styled.button`
   background: none;
   border: none;
   padding: 0;
-  margin-bottom: ${({ theme, isOpen }) => isOpen ? theme.spacing.md : 0};
+  margin-bottom: ${({ theme, isOpen }) => (isOpen ? theme.spacing.md : 0)};
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   color: ${({ theme }) => theme.colors.black};
   text-align: left;
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
-  
+
   &:hover {
     color: ${({ theme }) => theme.colors.gold};
   }
 `;
 
 const FAQAnswer = styled(motion.div)`
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   overflow: hidden;
 `;
@@ -292,121 +481,198 @@ const FAQAnswer = styled(motion.div)`
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const [openFAQ, setOpenFAQ] = useState(null);
+  const [viewType, setViewType] = useState("solo"); // "solo" or "agency"
 
   const pricingPlans = [
     {
-      id: 'starter',
-      name: 'Starter',
-      description: 'Perfect for solo agents just getting started',
-      monthlyPrice: 97,
-      annualPrice: 87,
+      id: "solo",
+      name: "Solo",
+      description: "Perfect for independent agents managing a few clients.",
+      monthlyPrice: 147,
+      annualPrice: 1470, // monthlyPrice * 10 (2 months free)
+      minSeats: 1,
+      audience: "For solo agents",
       isPopular: false,
       isDecoy: false,
+      cta: "Request Solo access",
       features: [
-        '2 itineraries per month',
-        '1 user seat',
-        'Basic client intake forms',
-        'Email support',
-        'Mobile app access'
+        "1 seat · 5 itineraries per seat/month",
+        "Smart Disney intake form and itinerary builder",
+        "Single dashboard for all trips and clients",
+        "Exportable, client-ready PDF itineraries",
+        "Standard email support",
       ],
       limitations: [
-        'No branding customization',
-        'No API access',
-        'No priority support'
-      ]
+        "No team collaboration (single user only)",
+        "No advanced branding (available in Solo+)",
+      ],
     },
     {
-      id: 'professional',
-      name: 'Professional',
-      description: 'Most popular choice for growing agents',
+      id: "solo-plus",
+      name: "Solo+",
+      description:
+        "For experienced solo agents ready to scale their volume and brand.",
       monthlyPrice: 197,
-      annualPrice: 177,
+      annualPrice: 1970, // monthlyPrice * 10 (2 months free)
+      minSeats: 1,
+      audience: "For solo agents",
       isPopular: true,
       isDecoy: false,
+      cta: "Request Solo+ access",
       features: [
-        '5 itineraries per month',
-        '2 user seats',
-        'Advanced client intake forms',
-        'Template library',
-        'Priority email support',
-        'Basic branding options'
+        "Everything in Solo",
+        "1 seat · 8 itineraries per seat/month",
+        "Advanced itinerary templates and day-by-day layouts",
+        "Branding controls: add your logo and contact details",
+        "Priority email support",
       ],
       limitations: [
-        'No API access',
-        'Limited customization'
-      ]
+        "No team collaboration (single user only)",
+        "No API access",
+      ],
     },
     {
-      id: 'agency',
-      name: 'Agency',
-      description: 'For small agencies and teams',
-      monthlyPrice: 397,
-      annualPrice: 357,
+      id: "agency-lite",
+      name: "Agency Lite",
+      monthlyPrice: 227,
+      annualPrice: 2270, // monthlyPrice * 10 (2 months free)
+      minSeats: 3,
+      additionalSeatPrice: 197, // discounted from 227
+      audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
+      cta: "Request Agency Lite access",
       features: [
-        '15 itineraries per month',
-        '5 user seats',
-        'Full branding customization',
-        'Team collaboration tools',
-        'Advanced analytics',
-        'Phone support',
-        'API access'
+        "Everything in Solo+",
+        "Minimum 3 seats · 10 itineraries per seat/month",
+        "Shared team workspace for trips and clients",
+        "Reusable itinerary templates, tags, and trip notes",
+        "Early CRM-style client profiles for Disney travelers",
       ],
-      limitations: [
-        'No dedicated account manager'
-      ]
+      limitations: ["No API access", "No dedicated account manager"],
     },
     {
-      id: 'enterprise',
-      name: 'Enterprise',
-      description: 'For large agencies and franchises',
-      monthlyPrice: 797,
-      annualPrice: 717,
+      id: "agency",
+      name: "Agency",
+      monthlyPrice: 247,
+      annualPrice: 2470, // monthlyPrice * 10 (2 months free)
+      minSeats: 5,
+      additionalSeatPrice: 217, // discounted from 247
+      audience: "For agencies & teams",
       isPopular: false,
-      isDecoy: true,
+      isDecoy: false,
+      cta: "Request Agency access",
       features: [
-        'Unlimited itineraries',
-        'Unlimited users',
-        'White-label solution',
-        'Dedicated account manager',
-        'Custom integrations',
-        '24/7 phone support',
-        'SLA guarantees'
+        "Everything in Agency Lite",
+        "Minimum 5 seats · 12 itineraries per seat/month",
+        "Agency-level dashboard across all agents and trips",
+        "Simple reporting on volume, itineraries, and active clients",
+        "Priority support for agency admins",
       ],
-      limitations: []
-    }
+      limitations: ["No API access", "No dedicated account manager"],
+    },
+    {
+      id: "agency-plus",
+      name: "Agency+",
+      monthlyPrice: 297,
+      annualPrice: 2970, // monthlyPrice * 10 (2 months free)
+      minSeats: 10,
+      additionalSeatPrice: 267, // discounted from 297
+      audience: "For agencies & teams",
+      isPopular: false,
+      isDecoy: false,
+      cta: "Request Agency+ access",
+      features: [
+        "Everything in Agency",
+        "Minimum 10 seats · 16 itineraries per seat/month",
+        "Guided onboarding and rollout support for your team",
+        "Access to advanced automation and CRM beta features",
+        "Enhanced priority support for high-volume agencies",
+      ],
+      limitations: [
+        "Full API access available with Enterprise",
+        "No dedicated account manager (available in Enterprise)",
+      ],
+    },
+    {
+      id: "enterprise",
+      name: "Enterprise",
+      customPricing: "Custom",
+      audience: "For large agencies",
+      isPopular: false,
+      isDecoy: false, // Enterprise is a real, clickable plan
+      cta: "Talk to us",
+      features: [
+        "Everything in Agency+",
+        "Custom seat count · 25–30 itineraries per seat/month",
+        "Scales to hundreds of users with role-based access",
+        "Full API access for forms, CRM, and internal tools",
+        "Dedicated account manager and custom SLAs",
+      ],
+      limitations: [],
+    },
   ];
+
+  // Filter plans based on view type
+  const filteredPlans = pricingPlans.filter((plan) => {
+    if (viewType === "solo") {
+      return plan.id === "solo" || plan.id === "solo-plus" || plan.id === "agency-lite";
+    } else {
+      return (
+        plan.id === "agency-lite" ||
+        plan.id === "agency" ||
+        plan.id === "agency-plus" ||
+        plan.id === "enterprise"
+      );
+    }
+  });
 
   const faqs = [
     {
-      question: "What's included in the early access program?",
-      answer: "Early access members get 50% off their first year, priority support, direct access to our development team, and exclusive features before general release."
+      question: "How many itineraries can I create per month?",
+      answer:
+        "It depends on your plan and seat count: Solo (5 per seat/month), Solo+ (8 per seat/month), Agency Lite (10 per seat/month, minimum 3 seats), Agency (12 per seat/month, minimum 5 seats), Agency+ (16 per seat/month, minimum 10 seats), and Enterprise (25–30 per seat/month). Each itinerary saves you 5–10+ hours compared to manual Disney planning.",
+    },
+    {
+      question: "How much time does ParkPro typically save per client?",
+      answer:
+        "Most travel agents save 5–10+ hours per Disney client. What used to take 8–12 hours of manual planning now takes 15–60 minutes with ParkPro. This means you can serve more clients without burning out.",
+    },
+    {
+      question: "What's included in the founding member program?",
+      answer:
+        "Founding members get exclusive pricing, priority support, direct access to our development team, and early access to new features. Plus, you'll save 5–10+ hours per client from day one.",
     },
     {
       question: "Are taxes included in the price?",
-      answer: "Prices shown are before applicable sales tax or VAT. Like Netflix, Spotify, and other online services, we're required to collect tax based on your billing address. The exact tax amount will be calculated and displayed at checkout before you confirm your subscription. Tax rates vary by location (0% to ~10% in the US, 19-27% VAT in the EU)."
+      answer:
+        "Prices shown are before applicable sales tax or VAT. Like Netflix, Spotify, and other online services, we're required to collect tax based on your billing address. The exact tax amount will be calculated and displayed at checkout before you confirm your subscription. Tax rates vary by location (0% to ~10% in the US, 19-27% VAT in the EU).",
     },
     {
       question: "Can I change plans later?",
-      answer: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any differences."
+      answer:
+        "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any differences.",
     },
     {
       question: "What happens if I exceed my itinerary limit?",
-      answer: "You can purchase additional itineraries at $50 each, or upgrade to a higher plan. We'll notify you when you're approaching your limit."
+      answer:
+        "During the ParkPro Founding Member phase, we'll work directly with you on overages. You can also upgrade to a higher plan. We'll notify you when you're approaching your limit. Remember, each itinerary saves you 5–10+ hours compared to manual planning.",
     },
     {
       question: "Is there a free trial?",
-      answer: "Yes! We offer a 14-day free trial with full access to all features. No credit card required to start."
+      answer:
+        "We're planning to roll out a free trial — join the waitlist or request access to be notified when it's available.",
     },
     {
       question: "What support do you offer?",
-      answer: "All plans include email support. Professional and above get priority support. Agency and Enterprise plans include phone support and dedicated account managers."
+      answer:
+        "All plans include email support. Solo+ and above get priority email support. Agency+ includes onboarding support. Enterprise plans include priority support and custom contract terms.",
     },
     {
       question: "Can I cancel anytime?",
-      answer: "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period."
-    }
+      answer:
+        "Yes, you can cancel your subscription at any time. You'll retain access until the end of your billing period.",
+    },
   ];
 
   const toggleFAQ = (index) => {
@@ -415,27 +681,7 @@ const Pricing = () => {
 
   return (
     <PricingWrapper>
-      <Helmet>
-        <title>{copy.pages.pricing.title}</title>
-        <meta 
-          name="description" 
-          content={copy.pages.pricing.description} 
-        />
-        <link rel="canonical" href="https://parkproit.com/pricing" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="ParkPro Pricing | Disney Planning Software" />
-        <meta property="og:description" content="Flexible pricing for Disney planning automation. Plans from $147-$297/month. Save 10+ hours per client." />
-        <meta property="og:url" content="https://parkproit.com/pricing" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://parkproit.com/og-pricing.png" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ParkPro Pricing | Disney Planning Software" />
-        <meta name="twitter:description" content="Flexible pricing for Disney planning automation. Save 10+ hours per client." />
-        <meta name="twitter:image" content="https://parkproit.com/og-pricing.png" />
-      </Helmet>
+      <SEO {...SEOConfigs.pricing} schemaType="SoftwareApplication" />
 
       <Section>
         <Container>
@@ -459,81 +705,163 @@ const Pricing = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               style={{
-                fontSize: '0.875rem',
-                color: '#6b7280',
-                textAlign: 'center',
-                marginTop: '1rem',
-                fontStyle: 'italic'
+                fontSize: "0.875rem",
+                color: "#6b7280",
+                textAlign: "center",
+                marginTop: "1rem",
+                fontStyle: "italic",
               }}
             >
-              * Prices shown exclude applicable sales tax or VAT, which will be calculated based on your billing address at checkout.
+              * Prices shown exclude applicable sales tax or VAT, which will be
+              calculated based on your billing address at checkout.
             </motion.p>
           </PricingHeader>
 
           <ToggleWrapper>
-            <ToggleLabel>Monthly</ToggleLabel>
-            <Toggle onClick={() => setIsAnnual(!isAnnual)}>
-              <ToggleOption active={!isAnnual}>Monthly</ToggleOption>
-              <ToggleOption active={isAnnual}>Annual</ToggleOption>
-            </Toggle>
-            <ToggleLabel>Annual (Save 20%)</ToggleLabel>
+            <ToggleLabel>Solo Agent</ToggleLabel>
+            <PrimaryToggle onClick={() => setViewType(viewType === "solo" ? "agency" : "solo")}>
+              <PrimaryToggleOption active={viewType === "solo"}>Solo Agent</PrimaryToggleOption>
+              <PrimaryToggleOption active={viewType === "agency"}>Agency</PrimaryToggleOption>
+            </PrimaryToggle>
+            <ToggleLabel>Agency</ToggleLabel>
           </ToggleWrapper>
 
-          <PricingGrid>
-            {pricingPlans.map((plan, index) => (
+          <SecondaryToggleWrapper>
+            <ToggleLabel>Monthly</ToggleLabel>
+            <SecondaryToggle onClick={() => setIsAnnual(!isAnnual)}>
+              <SecondaryToggleOption active={!isAnnual}>Monthly</SecondaryToggleOption>
+              <SecondaryToggleOption active={isAnnual}>Annual</SecondaryToggleOption>
+            </SecondaryToggle>
+            <ToggleLabel>Annual (2 months free)</ToggleLabel>
+          </SecondaryToggleWrapper>
+
+          <PricingGrid $isSoloView={viewType === "solo"}>
+            {filteredPlans.map((plan, index) => (
               <PricingCard
                 key={plan.id}
                 isPopular={plan.isPopular}
-                isDecoy={plan.isDecoy}
+                isAgencyPlus={plan.id === "agency-plus"}
+                isEnterprise={plan.id === "enterprise"}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 {plan.isPopular && (
                   <PopularBadge>
-                    <Star size={12} style={{ marginRight: '4px' }} />
-                    Most Popular
+                    <Star size={12} style={{ marginRight: "4px" }} />
+                    Most Popular for Solo Agents
                   </PopularBadge>
                 )}
-                {plan.isDecoy && (
-                  <DecoyBadge>
-                    <Award size={12} style={{ marginRight: '4px' }} />
-                    Enterprise
-                  </DecoyBadge>
+                {plan.id === "agency-plus" && (
+                  <PopularBadge>
+                    <Star size={12} style={{ marginRight: "4px" }} />
+                    Most Popular for Agencies
+                  </PopularBadge>
                 )}
-                
+                {plan.id === "enterprise" && (
+                  <EnterpriseBadge>
+                    <Award size={12} style={{ marginRight: "4px" }} />
+                    Custom
+                  </EnterpriseBadge>
+                )}
+
+                {plan.audience && (
+                  <PlanAudienceTag>{plan.audience}</PlanAudienceTag>
+                )}
                 <PlanName>{plan.name}</PlanName>
                 <PlanPrice>
-                  <PriceAmount isDecoy={plan.isDecoy}>
-                    ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
-                  </PriceAmount>
-                  <PricePeriod>/month {isAnnual && '(billed annually)'}</PricePeriod>
+                  {plan.customPricing ? (
+                    <PriceAmount style={{ fontSize: "1.5rem" }}>
+                      {plan.customPricing}
+                    </PriceAmount>
+                  ) : (
+                    <>
+                      <PriceAmount>
+                        {isAnnual
+                          ? `$${plan.annualPrice.toLocaleString()}`
+                          : `$${plan.monthlyPrice}`}
+                      </PriceAmount>
+                      <PricePeriod>
+                        {(() => {
+                          const isSolo =
+                            !plan.minSeats || plan.minSeats === 1;
+                          if (isAnnual) {
+                            return isSolo ? "/year" : "/year per seat";
+                          } else {
+                            return isSolo ? "/month" : "/month per seat";
+                          }
+                        })()}
+                      </PricePeriod>
+                    </>
+                  )}
                 </PlanPrice>
-                <PlanDescription>{plan.description}</PlanDescription>
-                
+                {isAnnual && !plan.customPricing && (
+                  <AnnualDiscount>(2 months free)</AnnualDiscount>
+                )}
+                {plan.minSeats && plan.minSeats > 1 && (
+                  <>
+                    {plan.additionalSeatPrice && (
+                      <AdditionalSeatText>
+                        {isAnnual ? (
+                          <>
+                            Each additional seat: $
+                            {(
+                              plan.additionalSeatPrice * 10
+                            ).toLocaleString()}
+                            /year (2 months free)
+                          </>
+                        ) : (
+                          <>
+                            Each additional seat: $
+                            {plan.additionalSeatPrice}/mo
+                          </>
+                        )}
+                      </AdditionalSeatText>
+                    )}
+                  </>
+                )}
+                {plan.description && (
+                  <PlanDescription>{plan.description}</PlanDescription>
+                )}
+                {viewType === "solo" && plan.id === "agency-lite" && (
+                  <PlanGrowthNote>
+                    Growing your business? Choose Agency Lite to add more seats and team collaboration.
+                  </PlanGrowthNote>
+                )}
                 <FeatureList>
-                  {plan.features.map((feature, featureIndex) => (
-                    <FeatureItem key={featureIndex} isDecoy={plan.isDecoy}>
-                      <Check size={16} />
-                      {feature}
-                    </FeatureItem>
-                  ))}
+                  {plan.features.map((feature, featureIndex) => {
+                    const isEverythingIn =
+                      feature.startsWith("Everything in");
+                    return (
+                      <FeatureItem
+                        key={featureIndex}
+                        $isHighlight={isEverythingIn}
+                      >
+                        <Check size={16} />
+                        {feature}
+                      </FeatureItem>
+                    );
+                  })}
                   {plan.limitations.map((limitation, limitIndex) => (
-                    <FeatureItem key={`limit-${limitIndex}`} isDecoy={plan.isDecoy}>
+                    <FeatureItem key={`limit-${limitIndex}`}>
                       <X size={16} />
                       {limitation}
                     </FeatureItem>
                   ))}
                 </FeatureList>
-                
-                <CardButton 
-                  variant={plan.isPopular ? 'primary' : 'secondary'} 
-                  size="lg" 
-                  to="/request-access"
-                  isDecoy={plan.isDecoy}
-                  disabled={plan.isDecoy}
+
+                <CardButton
+                  variant={plan.isPopular || plan.id === "agency-plus" ? "primary" : "secondary"}
+                  size="lg"
+                  to={
+                    plan.id === "enterprise"
+                      ? "/contact"
+                      : "/request-access"
+                  }
+                  isDecoy={false}
+                  disabled={false}
                 >
-                  {plan.isDecoy ? 'Contact Sales' : 'Get Started'}
+                  {plan.cta || "Get Started"}
                 </CardButton>
               </PricingCard>
             ))}
@@ -554,7 +882,7 @@ const Pricing = () => {
           >
             Frequently Asked Questions
           </FAQTitle>
-          
+
           <FAQGrid>
             {faqs.map((faq, index) => (
               <motion.div
@@ -565,18 +893,22 @@ const Pricing = () => {
                 viewport={{ once: true }}
               >
                 <FAQItem>
-                  <FAQQuestion 
+                  <FAQQuestion
                     isOpen={openFAQ === index}
                     onClick={() => toggleFAQ(index)}
                   >
                     {faq.question}
-                    {openFAQ === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    {openFAQ === index ? (
+                      <ChevronUp size={20} />
+                    ) : (
+                      <ChevronDown size={20} />
+                    )}
                   </FAQQuestion>
-                  
+
                   {openFAQ === index && (
                     <FAQAnswer
                       initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
+                      animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                     >

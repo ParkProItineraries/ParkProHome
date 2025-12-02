@@ -19,10 +19,22 @@ export const theme = {
     focus: '#FFD870',
     active: '#E9B029',
     
-    // Accent Colors
-    accent: '#10B981',            // Green - Success/accent color
-    'accent-dark': '#059669',     // Darker green
-    'accent-light': '#34D399',    // Lighter green
+    // Primary Accent - Teal (main accent color)
+    teal: '#14B8A6',
+    'teal-light': '#5EEAD4',
+    'teal-dark': '#0F766E',
+    'teal-muted': 'rgba(20, 184, 166, 0.1)',
+    
+    // Secondary Accent - Purple
+    purple: '#8B5CF6',
+    'purple-light': '#A78BFA',
+    'purple-dark': '#7C3AED',
+    'purple-muted': 'rgba(139, 92, 246, 0.1)',
+    
+    // Accent Colors (legacy compatibility)
+    accent: '#14B8A6',            // Teal - Primary accent
+    'accent-dark': '#0F766E',     // Darker teal
+    'accent-light': '#5EEAD4',   // Lighter teal
     
     // Gray Scale (Matches ParkProUI)
     'gray-50': '#F9FAFB',
@@ -37,12 +49,12 @@ export const theme = {
     'gray-900': '#111827',
     
     // Semantic Colors
-    success: '#10B981',
+    success: '#F5C249', // Changed from green to gold
     warning: '#F59E0B',
     error: '#EF4444',
     info: '#F5C249',
     overlay: 'rgba(0,0,0,0.6)',
-    green: '#10B981',
+    green: '#F5C249', // Changed from green to gold for consistency
     red: '#EF4444',
     blue: '#3B82F6', // Legacy blue kept for semantic use (not brand)
     
@@ -120,24 +132,31 @@ export const theme = {
   },
   
   radius: {
-    sm: '8px',
-    md: '16px',
-    lg: '24px',
-    xl: '32px',
+    sm: '0.5rem',      // 8px
+    md: '1rem',        // 16px - Standard premium
+    lg: '1.5rem',      // 24px - Premium
+    xl: '2rem',        // 32px
+    '2xl': '2.5rem',   // 40px
     full: '9999px',
   },
   
   shadows: {
-    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    xs: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    sm: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
     md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    gold: '0 8px 25px rgba(245, 194, 73, 0.3)',      // Gold glow
-    'gold-lg': '0 12px 35px rgba(245, 194, 73, 0.35)', // Large gold glow
-    shadowGlow: '0 0 16px rgba(245, 194, 73, 0.35)', // Premium gold glow
-    primary: '0 8px 25px rgba(245, 194, 73, 0.3)',   // Gold shadow
-    'primary-lg': '0 12px 35px rgba(245, 194, 73, 0.35)', // Large gold shadow
+    // Premium Brand Shadows
+    teal: '0 8px 25px rgba(20, 184, 166, 0.25)',
+    'teal-lg': '0 12px 35px rgba(20, 184, 166, 0.3)',
+    purple: '0 8px 25px rgba(139, 92, 246, 0.25)',
+    'purple-lg': '0 12px 35px rgba(139, 92, 246, 0.3)',
+    gold: '0 8px 25px rgba(245, 194, 73, 0.25)',      // Gold glow (used sparingly)
+    'gold-lg': '0 12px 35px rgba(245, 194, 73, 0.3)', // Large gold glow
+    shadowGlow: '0 0 16px rgba(20, 184, 166, 0.35)', // Premium teal glow
+    primary: '0 8px 25px rgba(20, 184, 166, 0.25)',   // Teal shadow (primary)
+    'primary-lg': '0 12px 35px rgba(20, 184, 166, 0.3)', // Large teal shadow
   },
   
   containerWidths: {

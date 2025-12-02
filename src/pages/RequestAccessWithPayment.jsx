@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import SEO from "../components/seo/SEO";
+import { SEOConfigs } from "../components/seo/SEOConfigs";
 import Button from "../components/ui/Button";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -117,7 +119,7 @@ const StepNumber = styled.div`
   ${({ $active, $completed, theme }) => {
     if ($completed) {
       return `
-        background: ${theme.colors.green};
+        background: ${theme.colors.gold};
         color: white;
       `;
     }
@@ -144,7 +146,7 @@ const StepLabel = styled.div`
 const StepConnector = styled.div`
   width: 60px;
   height: 2px;
-  background: ${({ $completed, theme }) => $completed ? theme.colors.green : theme.colors['gray-300']};
+  background: ${({ $completed, theme }) => $completed ? theme.colors.gold : theme.colors['gray-300']};
   margin-top: -20px;
 `;
 
@@ -298,9 +300,9 @@ const Alert = styled.div`
   ${({ $variant, theme }) => {
     if ($variant === 'success') {
       return `
-        background: ${theme.colors.green}10;
-        color: ${theme.colors.green};
-        border: 1px solid ${theme.colors.green}20;
+        background: ${theme.colors.gold}20;
+        color: ${theme.colors.black};
+        border: 1px solid ${theme.colors.gold}40;
       `;
     }
     if ($variant === 'error') {
@@ -443,9 +445,9 @@ const SecurityBadge = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
   padding: ${({ theme }) => theme.spacing.sm};
-  background: linear-gradient(to right, #10b98110, #3b82f610);
+  background: linear-gradient(to right, ${({ theme }) => theme.colors.gold}20, ${({ theme }) => theme.colors.gold}10);
   border-radius: ${({ theme }) => theme.radius.md};
-  border: 1px solid #10b98120;
+  border: 1px solid ${({ theme }) => theme.colors.gold}40;
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   color: ${({ theme }) => theme.colors['gray-700']};
@@ -1163,7 +1165,7 @@ const RequestAccessWithPayment = () => {
               </div>
               <PlanPrice>
                 {plan.price === 0 ? (
-                  <span style={{ color: '#10b981' }}>FREE</span>
+                  <span style={{ color: theme.colors.gold }}>FREE</span>
                 ) : (
                   <>
                     ${plan.price}<span>/{plan.interval}</span>
@@ -1174,7 +1176,7 @@ const RequestAccessWithPayment = () => {
             <PlanFeatures>
               {plan.features.map((feature, idx) => (
                 <PlanFeature key={idx}>
-                  <Check size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                  <Check size={16} style={{ color: theme.colors.gold, flexShrink: 0 }} />
                   <span>{feature}</span>
                 </PlanFeature>
               ))}
@@ -1252,7 +1254,7 @@ const RequestAccessWithPayment = () => {
           width: '80px', 
           height: '80px', 
           margin: '0 auto 1.5rem', 
-          background: 'linear-gradient(135deg, #10b981, #059669)', 
+          background: `linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-dark']})`, 
           borderRadius: '50%', 
           display: 'flex', 
           alignItems: 'center', 
@@ -1300,6 +1302,7 @@ const RequestAccessWithPayment = () => {
 
   return (
     <RequestAccessWrapper>
+      <SEO {...SEOConfigs['request-access']} schemaType="WebPage" />
       <Section>
         <Container>
           <Header>

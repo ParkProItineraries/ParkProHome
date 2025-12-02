@@ -3,6 +3,8 @@ import styled, { useTheme } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, HelpCircle, ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import SEO from "../components/seo/SEO";
+import { SEOConfigs } from "../components/seo/SEOConfigs";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import Button from "../components/ui/Button";
@@ -237,11 +239,11 @@ const FAQ = () => {
     },
     {
       question: "How much does ParkPro cost?",
-      answer: "We offer six tiers: Solo ($147/month for 5 itineraries), Solo+ ($197/month for 8 itineraries), Agency Lite ($167/month for 10 itineraries with CRM), Agency ($247/month for 12 itineraries and 3 users), Agency+ ($297/month for 16 itineraries and 5 users), and Enterprise (custom pricing at $99-$147 per seat for 25-30 itineraries per seat). All plans offer annual pricing with 2 months free (for example, Solo annual is $1,569/year instead of $1,764). You can also purchase add-on itinerary bundles: 5 extra ($160/mo), 10 extra ($300/mo), or 20 extra ($560/mo). We offer a 14-day money-back guarantee if you're not satisfied."
+      answer: "We offer six tiers: Solo ($147/month for 5 itineraries), Solo+ ($197/month for 8 itineraries), Agency Lite ($167/month for 10 itineraries with CRM), Agency ($247/month for 12 itineraries and 3 users), Agency+ ($297/month for 16 itineraries and 5 users), and Enterprise (Custom). All plans offer annual pricing with 2 months free (for example, Solo annual is $1,569/year instead of $1,764). You can also purchase add-on itinerary bundles: 5 extra ($160/mo), 10 extra ($300/mo), or 20 extra ($560/mo). During early access, you can adjust your plan or cancel as your agency grows."
     },
     {
       question: "Is there a free trial?",
-      answer: "We currently don't offer a traditional free trial, but we do provide a comprehensive video demo and a 14-day money-back guarantee. If ParkPro doesn't save you significant time or meet your needs within the first two weeks, just let us know and we'll issue a full refund—no questions asked."
+      answer: "We currently don't offer a traditional free trial, but we do provide a comprehensive video demo. During early access, we work closely with agencies to ensure ParkPro is a great fit. You can adjust your plan or cancel as your agency grows, and we'll work with you to make sure it meets your needs."
     },
     {
       question: "Can I cancel my subscription anytime?",
@@ -281,7 +283,7 @@ const FAQ = () => {
     },
     {
       question: "How is my client data protected?",
-      answer: "We take data security seriously. All data is encrypted in transit (SSL/TLS) and at rest (AES-256). We're hosted on enterprise-grade AWS infrastructure with automatic backups. We never sell or share your client information with third parties, and you can delete client data at any time. We're also compliant with GDPR and CCPA privacy regulations."
+      answer: "We take data security seriously. All data is encrypted in transit (SSL/TLS) and at rest (AES-256). We're hosted on enterprise-grade AWS infrastructure with automatic backups. We never sell or share your client information with third parties, and you can delete client data at any time. We follow security best practices and are committed to protecting your data."
     },
     {
       question: "Can I see a demo before signing up?",
@@ -297,7 +299,7 @@ const FAQ = () => {
     },
     {
       question: "What if ParkPro doesn't work for my agency?",
-      answer: "We offer a 14-day money-back guarantee on all plans. If you decide ParkPro isn't the right fit within your first two weeks, just contact us and we'll process a full refund. We've found that most agents see immediate value, but we want you to feel confident in your investment. No hard feelings if it's not a good match!"
+      answer: "During early access, we work closely with agencies to ensure ParkPro is a great fit. You can adjust your plan or cancel as your agency grows, and we'll work with you to make sure it meets your needs. We've found that most agents see immediate value, and we want you to feel confident in your investment."
     },
     {
       question: "How many itineraries can I create per month?",
@@ -321,12 +323,8 @@ const FAQ = () => {
 
   return (
     <PageWrapper>
+      <SEO {...SEOConfigs.faq} schemaType="WebPage" />
       <Helmet>
-        <title>{copy.pages.faq.title}</title>
-        <meta 
-          name="description" 
-          content={copy.pages.faq.description} 
-        />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>
@@ -413,7 +411,7 @@ const FAQ = () => {
             viewport={{ once: true }}
           >
             The best way to see if ParkPro is right for you is to try it. 
-            Start your subscription today with our 14-day money-back guarantee.
+            During early access you can adjust your plan or cancel as your agency grows, and we'll work closely with you to make sure it's a great fit.
           </CTASubtitle>
           
           <motion.div

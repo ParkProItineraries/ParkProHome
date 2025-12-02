@@ -155,8 +155,8 @@ export const CTAButton = styled(Link)`
   }
 
   &.success {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+    color: var(--color-black);
   }
 
   &.error {
@@ -206,8 +206,8 @@ export const Button = styled.button`
   }
 
   &.success {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+    color: var(--color-black);
   }
 
   &.error {

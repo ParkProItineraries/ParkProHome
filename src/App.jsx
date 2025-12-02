@@ -23,12 +23,15 @@ const Agencies = React.lazy(() => import("./pages/Agencies"));
 const Enterprise = React.lazy(() => import("./pages/Enterprise"));
 const About = React.lazy(() => import("./pages/About"));
 const Demo = React.lazy(() => import("./pages/Demo"));
-const DemoItinerary = React.lazy(() => import("./pages/DemoItinerary"));
 const RequestAccess = React.lazy(() => import("./pages/RequestAccessWithPayment"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Signup = React.lazy(() => import("./pages/Signup"));
 const DisneyPlanningSoftware = React.lazy(() => import("./pages/DisneyPlanningSoftware"));
 const TravelAgentSoftware = React.lazy(() => import("./pages/TravelAgentSoftware"));
+const TravelAgentItinerarySoftware = React.lazy(() => import("./pages/TravelAgentItinerarySoftware"));
+const DisneyTravelAgentSoftware = React.lazy(() => import("./pages/DisneyTravelAgentSoftware"));
+const TravelAgentWorkflowSoftware = React.lazy(() => import("./pages/TravelAgentWorkflowSoftware"));
+const TravelAgencySoftware = React.lazy(() => import("./pages/TravelAgencySoftware"));
 const FAQ = React.lazy(() => import("./pages/FAQ"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Comparison = React.lazy(() => import("./pages/Comparison"));
@@ -62,10 +65,7 @@ const App = () => {
                 <ScrollToTop />
                 <GlobalStyle />
                 <Suspense fallback={<LoadingSpinner />}>
-                  <Routes>
-                    {/* Standalone itinerary page without navbar/footer */}
-                    <Route path="/demo-itinerary" element={<DemoItinerary />} />
-                    
+                  <Routes>                    
                     {/* Regular pages with navbar and footer */}
                     <Route path="/*" element={
                       <>
@@ -89,6 +89,10 @@ const App = () => {
                           <Route path="/signup" element={<Signup />} />
                           <Route path="/disney-planning-software" element={<DisneyPlanningSoftware />} />
                           <Route path="/travel-agent-software" element={<TravelAgentSoftware />} />
+                          <Route path="/travel-agent-itinerary-software" element={<TravelAgentItinerarySoftware />} />
+                          <Route path="/disney-travel-agent-software" element={<DisneyTravelAgentSoftware />} />
+                          <Route path="/travel-agent-workflow-software" element={<TravelAgentWorkflowSoftware />} />
+                          <Route path="/travel-agency-software" element={<TravelAgencySoftware />} />
                           <Route path="/faq" element={<FAQ />} />
                           <Route path="/contact" element={<Contact />} />
                           <Route path="/comparison" element={<Comparison />} />

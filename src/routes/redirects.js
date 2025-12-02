@@ -10,6 +10,9 @@ export const redirectMap = {
   '/terms': '/business/terms-of-service',
   '/privacy': '/business/privacy-policy',
   
+  // SEO redirects
+  '/why-parkpro': '/comparison',
+  
   // Legacy paths (if any are discovered)
   // Add more as needed
 };

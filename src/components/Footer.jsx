@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Container from "./layout/Container";
 import { flexBetween } from "../styles/mixins";
-import ParkProLogo from "../assets/Park Pro White_Long.svg";
+import ParkProLogo from "../assets/Park Pro White_Long.svg?url";
 
 var date = new Date();
 var year = date.getFullYear();
