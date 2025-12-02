@@ -139,50 +139,67 @@ const CTAButtons = styled(motion.div)`
 
 const SocialProof = styled(motion.div)`
   display: flex;
-  gap: ${({ theme }) => theme.spacing['3xl']};
+  gap: ${({ theme }) => theme.spacing.lg};
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: ${({ theme }) => theme.spacing['3xl']};
+  margin-top: ${({ theme }) => theme.spacing['2xl']};
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: ${({ theme }) => theme.spacing['2xl']};
+    gap: ${({ theme }) => theme.spacing.md};
   }
 `;
 
 const StatItem = styled(motion.div)`
   text-align: center;
-  padding: ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
   background: rgba(255, 255, 255, 0.95);
-  border-radius: ${({ theme }) => theme.radius.lg};
+  border-radius: ${({ theme }) => theme.radius.md};
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: ${({ theme }) => theme.shadows.xl};
+  box-shadow: ${({ theme }) => theme.shadows.md};
   transition: ${({ theme }) => theme.transitions.normal};
+  min-width: 200px;
+  flex: 1;
+  max-width: 280px;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: ${({ theme }) => theme.shadows['2xl']};
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.lg};
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    min-width: 150px;
+    max-width: 100%;
   }
 `;
 
 const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
+  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.black}, ${({ theme }) => theme.colors['gray-900']});
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
+  }
 `;
 
 const StatLabel = styled.div`
   color: ${({ theme }) => theme.colors['gray-600']};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
 `;
 
 // Features Section
@@ -277,40 +294,40 @@ const Home = () => {
   const features = [
     {
       icon: <Clock size={32} />,
-      title: "Save hours per itinerary",
-      description: "Agents aim to save 5–10+ hours of manual planning time per Disney trip. Turn intake forms into structured, day-by-day itineraries faster."
+      title: "Save 5–10 hours per itinerary",
+      description: "ParkPro handles the heavy lifting of structuring each Disney day so you can stay focused on the client experience instead of rebuilding schedules from scratch."
     },
     {
       icon: <TrendingUp size={32} />,
-      title: "More trips, less burnout",
-      description: "Serve more Disney clients by cutting the manual planning workload on each itinerary. Handle more trips in the same working hours."
+      title: "Serve more clients without burnout",
+      description: "Grow your business by taking on more trips without extending your workday or sacrificing evenings and weekends."
     },
     {
       icon: <Users size={32} />,
-      title: "Client-ready deliverables",
-      description: "Deliver organized, day-by-day itineraries with park schedules, dining recommendations, and export-ready formats that feel premium."
+      title: "Deliver concierge-grade plans",
+      description: "Present clients with polished, day-by-day itineraries that feel curated, premium, and worthy of the Disney experience."
     },
     {
       icon: <Shield size={32} />,
-      title: "Built for agencies",
-      description: "Modern, secure infrastructure and a roadmap designed for growing travel agencies. Support for multiple seats and team workflows."
+      title: "Optimized for Disney logistics",
+      description: "Leverage Disney-specific rules, timing patterns, and transportation logic so your plans align with how the parks actually work."
     },
     {
       icon: <Smartphone size={32} />,
-      title: "Mobile-friendly workspace",
-      description: "Access your ParkPro workspace from your laptop or on the go, so you're never far from your Disney itineraries."
+      title: "Agency-ready workflows",
+      description: "Lay the foundation for your AgencyOS with multi-seat support, shared workflows, and a roadmap built for growing teams."
     },
     {
       icon: <Star size={32} />,
-      title: "Early access benefits",
-      description: "Join a small group of Disney-focused agents shaping ParkPro's roadmap. Get direct input on features and workflows."
+      title: "Mobile-friendly workspace",
+      description: "Access your ParkPro workspace wherever you are—at your desk, in the parks, or on the go—so you're never far from your clients' plans."
     }
   ];
 
   const stats = [
-    { number: "Save hours", label: "Per itinerary (goal)" },
+    { number: "5–10+ hours", label: "Saved per itinerary" },
     { number: "More capacity", label: "Same working hours" },
-    { number: "Cleaner plans", label: "Premium deliverables" }
+    { number: "Premium plans", label: "Concierge-level deliverables" }
   ];
 
   // SEO Schema Markup for better Google visibility
@@ -320,7 +337,7 @@ const Home = () => {
     "name": "ParkPro",
     "url": "https://parkproit.com",
     "logo": "https://parkproit.com/assets/logo.png",
-    "description": "Travel agent itinerary and workflow software built for Disney-focused travel advisors. Helps agents save hours on Disney trip planning.",
+    "description": "Travel agent itinerary and workflow software built for Disney-focused travel agents. Helps agents save hours on Disney trip planning.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-260-312-0506",
@@ -345,7 +362,7 @@ const Home = () => {
       "availability": "https://schema.org/PreOrder",
       "description": "Subscription pricing available for solo agents and agencies"
     },
-    "description": "ParkPro is travel agent itinerary and workflow software built for Disney-focused travel advisors. It helps agents turn client intake forms into clean, day-by-day itineraries faster, while keeping all trips organized in one workspace."
+    "description": "ParkPro is travel agent itinerary and workflow software built for Disney-focused travel agents. It helps agents turn client intake forms into clean, day-by-day itineraries faster, while keeping all trips organized in one workspace."
   };
 
   return (
@@ -362,7 +379,7 @@ const Home = () => {
 
       <main role="main" aria-label="ParkPro homepage content">
         {/* Hero Section */}
-        <HeroSection role="banner" aria-label="ParkPro - Automated Disney Planning for Travel Agents">
+        <HeroSection role="banner" aria-label="ParkPro - Destination-Smart Disney Planning for Travel Agents">
           <Container>
             <HeroContent>
               <Badge
@@ -370,7 +387,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 role="status"
-                aria-label="Early access program for travel agents"
+                aria-label="Built with Disney-focused travel agents"
               >
                 <Star size={16} aria-hidden="true" />
                 {copy.hero.badge}
@@ -465,7 +482,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Built with Disney-focused travel agents to save hours on planning and deliver cleaner client experiences.
+                Built with Disney-focused travel agents to save hours on planning, increase capacity without burnout, and deliver cleaner client experiences that feel truly concierge-level.
               </SectionSubtitle>
             </SectionHeader>
 
@@ -485,27 +502,27 @@ const Home = () => {
                       display: 'flex', 
                       flexDirection: 'column', 
                       height: '100%',
-                      padding: theme.spacing.xl
+                      padding: theme.spacing.lg
                     }}>
                       <div style={{
-                        width: '80px',
-                        height: '80px',
-                        borderRadius: '16px',
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '12px',
                         background: `linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-muted']})`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 24px',
+                        margin: '0 auto 16px',
                         color: '#0B0B0C',
                         flexShrink: 0
                       }}>
                         {feature.icon}
                       </div>
                       <h3 style={{
-                        fontSize: '24px',
+                        fontSize: '18px',
                         fontWeight: '600',
                         color: '#0B0B0C',
-                        marginBottom: '16px',
+                        marginBottom: '12px',
                         fontFamily: "'Urbanist', 'DM Sans', sans-serif",
                         lineHeight: '1.3'
                       }}>
@@ -515,7 +532,8 @@ const Home = () => {
                         color: '#6B7280',
                         lineHeight: '1.6',
                         margin: 0,
-                        flex: 1
+                        flex: 1,
+                        fontSize: '14px'
                       }}>
                         {feature.description}
                       </p>
@@ -548,7 +566,7 @@ const Home = () => {
                   marginBottom: '16px',
                   fontFamily: "'Urbanist', 'DM Sans', sans-serif"
                 }}>
-                  Concierge Itineraries
+                  Concierge-Level Itineraries
                 </h3>
                 <p style={{
                   color: '#6B7280',
@@ -572,7 +590,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                Ready to plan Disney trips in a fraction of the time?
+                Ready to Plan Disney Trips in a Fraction of the Time?
               </CTATitle>
               
               <CTASubtitle
@@ -581,7 +599,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                We're rolling ParkPro out with a small group of Disney-focused travel agents and agencies. Join early access to save hours on each itinerary and help shape the future Agency OS for travel.
+                We're opening ParkPro to a limited group of Disney-focused travel agents and agencies. Join early access to test faster planning, premium deliverables, and a workflow built for your future AgencyOS.
               </CTASubtitle>
               
               <CTAButtonsWrapper

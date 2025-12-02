@@ -37,12 +37,12 @@ export const copy = {
 
   // Hero Section
   hero: {
-    h1: "Travel agent itinerary software built for Disney trips.",
-    sub: "ParkPro helps Disney-focused travel agents turn client intake forms into clean, day-by-day itineraries in a fraction of the time, without changing how they serve their clients.",
+    h1: "Plan Magical Disney Trips in a Fraction of the Time.",
+    sub: "Most travel agents believe long hours are just part of creating great itineraries. The truth? It only feels that way because the process is outdated — not you. ParkPro gives professional travel agents a destination-smart system that turns intake forms into clean, concierge-level daily plans in minutes.",
     ctaPrimary: "Get a demo",
     ctaSecondary: "See pricing",
     proof: "Built with Disney-focused travel agents to save hours per client.",
-    badge: "Early Access"
+    badge: "Built With Disney-Focused Travel Agents"
   },
 
   // Main Value Propositions
@@ -123,9 +123,9 @@ export const copy = {
 
   // Call to Actions
   ctas: {
-    demo: "Get a demo",
+    demo: "See How ParkPro Works",
     bookDemo: "Book a demo",
-    start: "Get started",
+    start: "Join Early Access",
     startNow: "Start now",
     features: "Explore features",
     pricing: "See pricing",
@@ -273,7 +273,7 @@ export const copy = {
   // Trust & Social Proof
   trust: {
     socialProof: "Trusted by 500+ travel agents who've saved over 50,000 hours in Disney planning",
-    concierge: "Concierge Itineraries: For busy agents, we can personally build 1–2 premium Disney itineraries with you using ParkPro so you see exactly how much time it saves."
+    concierge: "ParkPro itineraries aren't basic timeline lists—they're concierge-level experiences. Each plan is structured, clear, and aligned with how Disney trips actually unfold, so your clients feel taken care of from the moment they arrive until they head home."
   },
 
   // Forms

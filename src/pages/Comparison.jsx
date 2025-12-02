@@ -980,7 +980,7 @@ const Comparison = () => {
                 <Clock size={28} />
               </StatIcon>
               <StatNumber>Save 5–10+ hours</StatNumber>
-              <StatLabel>Planning time saved per trip (goal)</StatLabel>
+              <StatLabel>Planning time saved per trip </StatLabel>
             </StatCard>
 
             <StatCard

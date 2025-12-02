@@ -249,7 +249,7 @@ const Solutions = () => {
         "Email support from the ParkPro team"
       ],
       stats: [
-        { number: "5–10+ hrs", label: "Planning time saved per trip (goal)" },
+        { number: "5–10+ hrs", label: "Planning time saved per trip" },
         { number: "More trips", label: "Handled per agent, same hours" }
       ],
       cta: "Start with Solo",

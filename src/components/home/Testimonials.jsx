@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { useTheme } from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
 
 const TestimonialsWrapper = styled.section`
-  padding: ${({ theme }) => theme.spacing['5xl']} 0;
+  padding: ${({ theme }) => theme.spacing['3xl']} 0;
   background: linear-gradient(135deg, ${({ theme }) => theme.colors['gray-50']} 0%, ${({ theme }) => theme.colors.white} 100%);
   position: relative;
   overflow: hidden;
@@ -18,35 +18,35 @@ const Container = styled.div`
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['4xl']};
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 `;
 
 const Badge = styled.div`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   box-shadow: ${({ theme }) => theme.shadows.gold};
 `;
 
 const Title = styled.h2`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
   color: ${({ theme }) => theme.colors['gray-600']};
   max-width: 600px;
   margin: 0 auto;
@@ -56,8 +56,8 @@ const Subtitle = styled.p`
 const TestimonialGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing.xl};
-  margin-top: ${({ theme }) => theme.spacing['3xl']};
+  gap: ${({ theme }) => theme.spacing.lg};
+  margin-top: ${({ theme }) => theme.spacing.xl};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
@@ -70,61 +70,61 @@ const TestimonialGrid = styled.div`
 
 const TestimonialCard = styled(motion.div)`
   background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.xl};
-  padding: ${({ theme }) => theme.spacing.xl};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  padding: ${({ theme }) => theme.spacing.lg};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   border: 1px solid ${({ theme }) => theme.colors['gray-200']};
   position: relative;
   transition: ${({ theme }) => theme.transitions.normal};
   
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
+    transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.md};
     border-color: ${({ theme }) => theme.colors.gold}40;
   }
 `;
 
 const QuoteIcon = styled.div`
   position: absolute;
-  top: -12px;
-  left: ${({ theme }) => theme.spacing.xl};
+  top: -10px;
+  left: ${({ theme }) => theme.spacing.lg};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.black};
-  box-shadow: ${({ theme }) => theme.shadows.md};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
 `;
 
 const Rating = styled.div`
   display: flex;
-  gap: 4px;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  margin-top: ${({ theme }) => theme.spacing.md};
+  gap: 3px;
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-top: ${({ theme }) => theme.spacing.sm};
 `;
 
 const TestimonialText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
   color: ${({ theme }) => theme.colors['gray-700']};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-style: italic;
 `;
 
 const AuthorSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  padding-top: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.sm};
+  padding-top: ${({ theme }) => theme.spacing.md};
   border-top: 1px solid ${({ theme }) => theme.colors['gray-200']};
 `;
 
 const Avatar = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}20, ${({ theme }) => theme.colors['gray-200']});
   display: flex;
@@ -132,7 +132,7 @@ const Avatar = styled.div`
   justify-content: center;
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.gold};
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
   flex-shrink: 0;
 `;
 
@@ -143,27 +143,27 @@ const AuthorInfo = styled.div`
 const AuthorName = styled.div`
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
 `;
 
 const AuthorTitle = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   color: ${({ theme }) => theme.colors['gray-600']};
 `;
 
 const StatsBar = styled.div`
   display: flex;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing['3xl']};
-  margin-top: ${({ theme }) => theme.spacing['4xl']};
-  padding: ${({ theme }) => theme.spacing.xl};
+  gap: ${({ theme }) => theme.spacing.xl};
+  margin-top: ${({ theme }) => theme.spacing['2xl']};
+  padding: ${({ theme }) => theme.spacing.lg};
   background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.xl};
-  box-shadow: ${({ theme }) => theme.shadows.md};
+  border-radius: ${({ theme }) => theme.radius.lg};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.lg};
+    gap: ${({ theme }) => theme.spacing.md};
     text-align: center;
   }
 `;
@@ -173,15 +173,16 @@ const Stat = styled.div`
 `;
 
 const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
+  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.gold};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   margin-bottom: ${({ theme }) => theme.spacing.xs};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
 `;
 
 const StatLabel = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
   color: ${({ theme }) => theme.colors['gray-600']};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
 `;
@@ -259,14 +260,14 @@ const Testimonials = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <QuoteIcon>
-                <Quote size={24} />
+                <Quote size={18} />
               </QuoteIcon>
               
               <Rating>
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star 
                     key={i} 
-                    size={16} 
+                    size={14} 
                     fill={theme.colors.primary} 
                     stroke={theme.colors.primary}
                   />
@@ -303,14 +304,14 @@ const Testimonials = () => {
               transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
             >
               <QuoteIcon>
-                <Quote size={24} />
+                <Quote size={18} />
               </QuoteIcon>
               
               <Rating>
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star 
                     key={i} 
-                    size={16} 
+                    size={14} 
                     fill={theme.colors.primary} 
                     stroke={theme.colors.primary}
                   />

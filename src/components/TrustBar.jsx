@@ -19,21 +19,22 @@ const TrustBarWrapper = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing.lg};
 `;
 
 const TrustGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: ${({ theme }) => theme.spacing.lg};
+  grid-template-columns: repeat(6, 1fr);
+  gap: ${({ theme }) => theme.spacing.md};
   align-items: start;
   justify-items: center;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(3, 1fr);
+    gap: ${({ theme }) => theme.spacing.lg};
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -56,46 +57,6 @@ const TrustItem = styled(motion.div)`
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     justify-content: flex-start;
-    max-width: 100%;
-  }
-`;
-
-const LastItemWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: ${({ theme }) => theme.spacing.lg};
-  align-items: start;
-  justify-items: center;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: ${({ theme }) => theme.spacing.md};
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const TrustItemLast = styled(motion.div)`
-  display: flex;
-  align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
-  justify-content: flex-start;
-  grid-column: 3;
-  width: 100%;
-  max-width: 200px;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-column: 2;
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-column: 1;
     max-width: 100%;
   }
 `;
@@ -192,14 +153,11 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
     }
   ];
 
-  const firstFiveItems = trustItems.slice(0, 5);
-  const lastItem = trustItems[5];
-
   return (
     <TrustBarWrapper $variant={variant}>
       <Container>
         <TrustGrid>
-          {firstFiveItems.map((item, index) => (
+          {trustItems.map((item, index) => (
             <TrustItem
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -217,25 +175,6 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
             </TrustItem>
           ))}
         </TrustGrid>
-        
-        {lastItem && (
-          <LastItemWrapper>
-            <TrustItemLast
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              <IconWrapper $variant={variant}>
-                {lastItem.icon}
-              </IconWrapper>
-              <TrustText>
-                <TrustLabel $variant={variant}>{lastItem.label}</TrustLabel>
-                <TrustSubtext $variant={variant}>{lastItem.subtext}</TrustSubtext>
-              </TrustText>
-            </TrustItemLast>
-          </LastItemWrapper>
-        )}
         
         {showSocialProof && (
           <SocialProofText $variant={variant}>

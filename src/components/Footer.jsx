@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Container from "./layout/Container";
-import { flexBetween } from "../styles/mixins";
 import ParkProLogo from "../assets/Park Pro White_Long.svg?url";
 
 var date = new Date();
@@ -16,19 +15,22 @@ const FooterWrapper = styled.footer`
 `;
 
 const FooterContent = styled.div`
-  ${flexBetween}
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: ${({ theme }) => theme.spacing['2xl']};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  align-items: start;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
     gap: ${({ theme }) => theme.spacing.xl};
   }
 `;
 
 const FooterColumn = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 const LogoWrapper = styled.div`
@@ -80,6 +82,10 @@ const ContactItem = styled.div`
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    justify-content: center;
+  }
+  
   svg {
     color: ${({ theme }) => theme.colors.gold};
     flex-shrink: 0;
@@ -105,8 +111,8 @@ const Footer = () => {
               <Logo src={ParkProLogo} alt="ParkPro Logo" />
             </LogoWrapper>
             <FooterText>
-              Automated Disney planning platform for travel agents. 
-              Transform your business with automated itineraries.
+            Destination-smart planning for accredited travel agents. 
+            Build concierge-level itineraries in a fraction of the time.
             </FooterText>
           </FooterColumn>
 
