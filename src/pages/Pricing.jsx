@@ -854,7 +854,7 @@ const Pricing = () => {
                 )}
                 <PlanName>{plan.name}</PlanName>
                 <PlanPrice>
-                  <PriceAmount style={{ fontSize: "1.5rem", color: theme.colors.black }}>
+                  <PriceAmount style={{ fontSize: "1.5rem", color: "#0B0B0C" }}>
                     Call for Pricing
                   </PriceAmount>
                 </PlanPrice>
