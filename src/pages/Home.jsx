@@ -154,6 +154,10 @@ const SocialProof = styled(motion.div)`
 `;
 
 const StatItem = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   background: rgba(255, 255, 255, 0.95);
@@ -163,6 +167,7 @@ const StatItem = styled(motion.div)`
   box-shadow: ${({ theme }) => theme.shadows.md};
   transition: ${({ theme }) => theme.transitions.normal};
   min-width: 180px;
+  min-height: 80px;
   flex: 1;
   max-width: 260px;
 
@@ -181,13 +186,13 @@ const StatNumber = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  margin: 0 0 ${({ theme }) => theme.spacing.xs} 0;
   font-family: ${({ theme }) => theme.typography.fontHeading};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.black}, ${({ theme }) => theme.colors['gray-900']});
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  line-height: 1.2;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.lg};
@@ -200,7 +205,8 @@ const StatLabel = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  line-height: 1.4;
+  margin: 0;
 `;
 
 // Features Section

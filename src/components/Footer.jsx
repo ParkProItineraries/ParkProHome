@@ -149,7 +149,8 @@ const Footer = () => {
               <Logo src={ParkProLogo} alt="ParkPro Logo" />
             </LogoWrapper>
             <FooterText>
-              Destination-smart planning for accredited travel agents. Build concierge-level itineraries in a fraction of the time.
+              Destination-smart planning for accredited travel agents.<br />
+              Build concierge-level itineraries in a fraction of the time.
             </FooterText>
             <SocialLinks>
               <SocialLink href="https://www.tiktok.com/@parkproit" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
