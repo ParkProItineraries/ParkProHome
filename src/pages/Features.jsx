@@ -51,6 +51,14 @@ import { SEOConfigs } from "../components/seo/SEOConfigs";
 const FeaturesWrapper = styled.div`
   padding-top: 88px; /* Account for fixed navbar */
   background: ${({ theme }) => theme.colors.white};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const FeaturesHeader = styled.div`
@@ -80,7 +88,11 @@ const FeaturesTitle = styled(motion.h1)`
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
@@ -92,7 +104,12 @@ const FeaturesSubtitle = styled(motion.p)`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
@@ -338,7 +355,7 @@ const SectionHeader = ({ title, subtitle, align = 'center', maxWidth, dark = fal
 
 const MetricsSection = styled.section`
   padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors['gray-200']} 0%, ${({ theme }) => theme.colors['gray-100']} 100%);
 `;
 
 const MetricsGrid = styled.div`
@@ -477,7 +494,7 @@ const PlaceholderSubtitle = styled.p`
 
 const CTASection = styled.section`
   padding: ${({ theme }) => theme.spacing.xl} 0;
-  background: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;

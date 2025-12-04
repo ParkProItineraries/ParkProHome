@@ -33,6 +33,14 @@ import { flexColumnCenter } from "../styles/mixins";
 const SoloAgentsWrapper = styled.div`
   padding-top: 88px; // Account for fixed navbar
   background: ${({ theme }) => theme.colors.white};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const HeroSection = styled.section`

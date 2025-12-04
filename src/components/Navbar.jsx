@@ -31,8 +31,13 @@ const Nav = styled(motion.nav).withConfig({
     $isScrolled ? '0 2px 8px rgba(0, 0, 0, 0.3)' : 'none'};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 0 ${({ theme }) => theme.spacing.lg};
+    padding: 0 ${({ theme }) => theme.spacing.md};
     height: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding: 0 ${({ theme }) => theme.spacing.sm};
+    height: 68px;
   }
 `;
 
@@ -64,6 +69,10 @@ const Logo = styled.img`
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     height: 48px;
+  }
+  
+  @media (max-width: 475px) {
+    height: 42px;
   }
 `;
 
@@ -133,6 +142,8 @@ const MobileMenuButton = styled.button`
   padding: ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.radius.sm};
   transition: ${({ theme }) => theme.transitions.normal};
+  min-width: 44px;
+  min-height: 44px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -143,6 +154,10 @@ const MobileMenuButton = styled.button`
     outline: 2px solid ${({ theme }) => theme.colors.gold};
     outline-offset: 2px;
     border-radius: ${({ theme }) => theme.radius.sm};
+  }
+  
+  &:active {
+    background: rgba(255, 255, 255, 0.15);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -185,10 +200,17 @@ const MobileNavLink = styled(Link)`
   transition: ${({ theme }) => theme.transitions.normal};
   border-left: 3px solid ${({ $isActive, theme }) => 
     $isActive ? theme.colors.gold : 'transparent'};
+  min-height: 48px;
+  display: flex;
+  align-items: center;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
     color: white;
+  }
+  
+  &:active {
+    background: rgba(255, 255, 255, 0.15);
   }
   
   &:focus-visible {
@@ -295,7 +317,7 @@ const Navbar = () => {
         $isScrolled={isScrolled}
       >
         <LogoWrapper to="/" aria-label="ParkPro Home">
-          <Logo src={ParkProLogo} alt="ParkPro Logo" />
+          <Logo src={ParkProLogo} alt="ParkPro Logo" loading="eager" />
         </LogoWrapper>
 
         <NavLinks role="navigation" aria-label="Main navigation">

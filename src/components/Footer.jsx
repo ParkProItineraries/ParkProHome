@@ -13,6 +13,10 @@ const FooterWrapper = styled.footer`
   background: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing['3xl']} 0 ${({ theme }) => theme.spacing['2xl']};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing['2xl']} 0 ${({ theme }) => theme.spacing.xl};
+  }
 `;
 
 const FooterContent = styled.div`
@@ -86,14 +90,24 @@ const ContactItem = styled.div`
   gap: ${({ theme }) => theme.spacing.sm};
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     justify-content: center;
   }
   
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xs};
+    word-break: break-word;
+  }
+  
   svg {
     color: ${({ theme }) => theme.colors.gold};
     flex-shrink: 0;
+  }
+  
+  span {
+    overflow-wrap: break-word;
   }
 `;
 
@@ -146,7 +160,7 @@ const Footer = () => {
           {/* Brand Column */}
           <FooterColumn>
             <LogoWrapper>
-              <Logo src={ParkProLogo} alt="ParkPro Logo" />
+              <Logo src={ParkProLogo} alt="ParkPro Logo" loading="lazy" />
             </LogoWrapper>
             <FooterText>
               Destination-smart planning for accredited travel agents.<br />

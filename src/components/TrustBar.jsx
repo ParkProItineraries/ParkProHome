@@ -16,12 +16,24 @@ const TrustBarWrapper = styled.div`
     $variant === 'dark' ? 'rgba(201, 162, 39, 0.2)' : theme.colors['gray-200']
   };
   padding: ${({ theme }) => theme.spacing.xl} 0;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing.lg} 0;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing.lg};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    padding: 0 ${({ theme }) => theme.spacing.sm};
+  }
 `;
 
 const TrustGrid = styled.div`
@@ -42,8 +54,9 @@ const TrustGrid = styled.div`
     gap: ${({ theme }) => theme.spacing.md};
   }
   
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  @media (max-width: 550px) {
     grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
@@ -58,6 +71,15 @@ const TrustItem = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     justify-content: flex-start;
     max-width: 100%;
+  }
+  
+  @media (max-width: 550px) {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: ${({ theme }) => theme.spacing.xs};
+    padding: ${({ theme }) => theme.spacing.md};
   }
 `;
 
@@ -77,6 +99,16 @@ const IconWrapper = styled.div`
   
   svg {
     color: ${({ theme }) => theme.colors.gold};
+  }
+  
+  @media (max-width: 550px) {
+    width: 48px;
+    height: 48px;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 

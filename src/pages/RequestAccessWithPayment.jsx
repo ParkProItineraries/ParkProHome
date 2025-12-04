@@ -28,6 +28,14 @@ let apiUrl = null;
 const RequestAccessWrapper = styled.div`
   padding-top: 88px;
   background: ${({ theme }) => theme.colors.white};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const Header = styled.div`

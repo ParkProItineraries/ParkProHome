@@ -8,12 +8,24 @@ const TestimonialsWrapper = styled.section`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors['gray-200']} 0%, ${({ theme }) => theme.colors['gray-100']} 100%);
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing.lg};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    padding: 0 ${({ theme }) => theme.spacing.sm};
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -238,6 +250,11 @@ const CarouselButton = styled.button`
     transform: translateY(-50%) scale(0.95);
   }
   
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.gold};
+    outline-offset: 2px;
+  }
+  
   svg {
     color: ${({ theme }) => theme.colors['gray-600']};
     transition: ${({ theme }) => theme.transitions.normal};
@@ -245,14 +262,16 @@ const CarouselButton = styled.button`
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     ${({ $direction }) => $direction === 'left' ? 'left: 10px;' : 'right: 10px;'}
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    ${({ $direction }) => $direction === 'left' ? 'left: 0;' : 'right: 0;'}
-    width: 36px;
-    height: 36px;
+    ${({ $direction }) => $direction === 'left' ? 'left: 4px;' : 'right: 4px;'}
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: ${({ theme }) => theme.shadows.md};
   }
 `;
 
@@ -273,12 +292,36 @@ const Dot = styled.button`
   border: none;
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
+  padding: 8px;
+  min-width: 28px;
+  min-height: 28px;
+  position: relative;
   
-  &:hover {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: ${({ $active, theme }) => 
+      $active ? theme.colors.gold : theme.colors['gray-300']
+    };
+    transition: ${({ theme }) => theme.transitions.normal};
+  }
+  
+  &:hover::after {
     background: ${({ $active, theme }) => 
       $active ? theme.colors['gold-dark'] : theme.colors['gray-400']
     };
-    transform: scale(1.2);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.gold};
+    outline-offset: 2px;
   }
 `;
 

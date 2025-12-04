@@ -263,29 +263,29 @@ export const designTokens = {
     button: {
       sizes: {
         xs: {
-          padding: '0.5rem 0.75rem',
+          padding: '0.625rem 0.875rem',
           fontSize: '0.75rem',
-          height: '1.5rem',
+          height: '2.25rem', // 36px - increased for better touch target
         },
         sm: {
-          padding: '0.5rem 1rem',
+          padding: '0.75rem 1.25rem',
           fontSize: '0.875rem',
-          height: '2rem',
+          height: '2.75rem', // 44px - meets WCAG/iOS minimum
         },
         md: {
-          padding: '0.75rem 1.5rem',
+          padding: '0.875rem 1.5rem',
           fontSize: '1rem',
-          height: '2.5rem',
+          height: '2.75rem', // 44px - meets WCAG/iOS minimum
         },
         lg: {
           padding: '1rem 2rem',
           fontSize: '1.125rem',
-          height: '3rem',
+          height: '3rem', // 48px - comfortable touch target
         },
         xl: {
           padding: '1.25rem 2.5rem',
           fontSize: '1.25rem',
-          height: '3.5rem',
+          height: '3.5rem', // 56px - large touch target
         },
       },
       variants: {

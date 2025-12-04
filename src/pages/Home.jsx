@@ -30,6 +30,14 @@ const HomeWrapper = styled.div`
   font-family: ${({ theme }) => theme.typography.fontBody};
   overflow-x: hidden;
   padding-top: 88px; // Account for fixed navbar
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 // Hero Section
@@ -66,7 +74,13 @@ const HeroContent = styled.div`
   position: relative;
   z-index: 2;
   max-width: 1000px;
+  width: 100%;
   ${flexColumnCenter}
+  padding: 0 ${({ theme }) => theme.spacing.md};
+  
+  @media (max-width: 475px) {
+    padding: 0 ${({ theme }) => theme.spacing.sm};
+  }
 `;
 
 const Badge = styled(motion.div)`
@@ -83,6 +97,13 @@ const Badge = styled(motion.div)`
   box-shadow: ${({ theme }) => theme.shadows.gold};
   backdrop-filter: blur(10px);
   border: 1px solid rgba(201, 162, 39, 0.3);
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.typography.sizes.xs};
+    padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
+    gap: ${({ theme }) => theme.spacing.xs};
+    margin-bottom: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const Title = styled(motion.h1)`
@@ -110,7 +131,7 @@ const Title = styled(motion.h1)`
 `;
 
 const Subtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-size: ${({ theme }) => theme.typography.sizes.xl};
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: ${({ theme }) => theme.spacing.xl};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
@@ -120,7 +141,13 @@ const Subtitle = styled(motion.p)`
   font-weight: ${({ theme }) => theme.typography.weights.normal};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+  }
+  
+  @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
+    padding: 0 ${({ theme }) => theme.spacing.sm};
   }
 `;
 
@@ -134,7 +161,13 @@ const CTAButtons = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
     align-items: center;
-    gap: ${({ theme }) => theme.spacing.sm};
+    gap: ${({ theme }) => theme.spacing.md};
+    width: 100%;
+    
+    > * {
+      width: 100%;
+      max-width: 320px;
+    }
   }
 `;
 
@@ -150,6 +183,11 @@ const SocialProof = styled(motion.div)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     gap: ${({ theme }) => theme.spacing.sm};
+  }
+  
+  @media (max-width: 475px) {
+    gap: ${({ theme }) => theme.spacing.xs};
+    margin-top: ${({ theme }) => theme.spacing.md};
   }
 `;
 
@@ -179,6 +217,13 @@ const StatItem = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     min-width: 140px;
     max-width: 100%;
+    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    min-width: 120px;
+    min-height: 70px;
+    padding: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
@@ -197,6 +242,10 @@ const StatNumber = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.lg};
   }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
 `;
 
 const StatLabel = styled.div`
@@ -207,6 +256,11 @@ const StatLabel = styled.div`
   letter-spacing: 0.05em;
   line-height: 1.4;
   margin: 0;
+  
+  @media (max-width: 475px) {
+    font-size: 0.6875rem;
+    letter-spacing: 0.03em;
+  }
 `;
 
 // Features Section
@@ -214,6 +268,14 @@ const FeaturesSection = styled.section`
   padding: ${({ theme }) => theme.spacing['3xl']} 0;
   background: ${({ $alternate }) => 
     $alternate ? '#f9fafb' : 'white'};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+  }
+  
+  @media (max-width: 475px) {
+    padding: ${({ theme }) => theme.spacing.xl} 0;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -241,16 +303,92 @@ const SectionSubtitle = styled(motion.p)`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    max-width: 100%;
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
+  }
+`;
+
+// Feature Card Components
+const FeatureCard = styled(Card)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const FeatureCardContent = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: ${({ theme }) => theme.spacing.lg};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing.md};
+  }
+`;
+
+const FeatureIconWrapper = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  margin: 0 auto ${({ theme }) => theme.spacing.md};
+  color: ${({ theme }) => theme.colors.black};
+  flex-shrink: 0;
+  
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors.black};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
+`;
+
+const FeatureDescription = styled.p`
+  color: ${({ theme }) => theme.colors['gray-600']};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  margin: 0;
+  flex: 1;
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.xs};
   }
 `;
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['2xl']} 0;
+  padding: ${({ theme }) => theme.spacing['3xl']} 0;
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+  }
+  
+  @media (max-width: 475px) {
+    padding: ${({ theme }) => theme.spacing.xl} 0;
+  }
 `;
 
 const CTAContent = styled.div`
@@ -267,7 +405,12 @@ const CTATitle = styled(motion.h2)`
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    margin-bottom: ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
@@ -281,7 +424,12 @@ const CTASubtitle = styled(motion.p)`
   margin-right: auto;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
@@ -295,6 +443,54 @@ const CTAButtonsWrapper = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing.md};
+    width: 100%;
+    
+    > * {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+`;
+
+const ConciergCard = styled(Card)`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: ${({ theme }) => theme.spacing['2xl']};
+  text-align: center;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing.xl};
+  }
+  
+  @media (max-width: 475px) {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
+`;
+
+const ConciergeTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors.black};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.lg};
+  }
+`;
+
+const ConciergeText = styled.p`
+  color: ${({ theme }) => theme.colors['gray-600']};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  margin: 0;
+  font-size: ${({ theme }) => theme.typography.sizes.base};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
@@ -504,49 +700,19 @@ const Home = () => {
                   viewport={{ once: true }}
                   style={{ height: '100%', display: 'flex' }}
                 >
-                  <Card variant="elevated" hover style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ 
-                      textAlign: 'center', 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      height: '100%',
-                      padding: theme.spacing.md
-                    }}>
-                      <div style={{
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: '10px',
-                        background: `linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-muted']})`,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 12px',
-                        color: '#0B0B0C',
-                        flexShrink: 0
-                      }}>
+                  <FeatureCard variant="elevated" hover>
+                    <FeatureCardContent>
+                      <FeatureIconWrapper>
                         {feature.icon}
-                      </div>
-                      <h3 style={{
-                        fontSize: '17px',
-                        fontWeight: '600',
-                        color: '#0B0B0C',
-                        marginBottom: '10px',
-                        fontFamily: "'Urbanist', 'DM Sans', sans-serif",
-                        lineHeight: '1.3'
-                      }}>
+                      </FeatureIconWrapper>
+                      <FeatureTitle>
                         {feature.title}
-                      </h3>
-                      <p style={{
-                        color: '#6B7280',
-                        lineHeight: '1.6',
-                        margin: 0,
-                        flex: 1,
-                        fontSize: '14px'
-                      }}>
+                      </FeatureTitle>
+                      <FeatureDescription>
                         {feature.description}
-                      </p>
-                    </div>
-                  </Card>
+                      </FeatureDescription>
+                    </FeatureCardContent>
+                  </FeatureCard>
                 </motion.div>
               ))}
             </CardGrid>
@@ -565,26 +731,15 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Card variant="elevated" style={{ maxWidth: '800px', margin: '0 auto', padding: theme.spacing['2xl'], textAlign: 'center' }}>
+              <ConciergCard variant="elevated">
                 <Star size={32} style={{ color: theme.colors.gold, marginBottom: theme.spacing.md }} />
-                <h3 style={{
-                  fontSize: '24px',
-                  fontWeight: '600',
-                  color: '#0B0B0C',
-                  marginBottom: '16px',
-                  fontFamily: "'Urbanist', 'DM Sans', sans-serif"
-                }}>
+                <ConciergeTitle>
                   Concierge-Level Itineraries
-                </h3>
-                <p style={{
-                  color: '#6B7280',
-                  lineHeight: '1.6',
-                  margin: 0,
-                  fontSize: '16px'
-                }}>
+                </ConciergeTitle>
+                <ConciergeText>
                   {copy.trust.concierge}
-                </p>
-              </Card>
+                </ConciergeText>
+              </ConciergCard>
             </motion.div>
           </Container>
         </FeaturesSection>

@@ -23,6 +23,14 @@ const ContactWrapper = styled.div`
   padding-top: 88px;
   background: ${({ theme }) => theme.colors.white};
   min-height: 100vh;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const Header = styled.div`
@@ -52,7 +60,11 @@ const Title = styled.h1`
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
@@ -62,6 +74,15 @@ const Subtitle = styled.p`
   max-width: 600px;
   margin: 0 auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
+  }
 `;
 
 const ContentGrid = styled.div`

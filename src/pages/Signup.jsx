@@ -9,12 +9,30 @@ const Container = styled.div`
   background: ${({ theme }) => theme.colors['gray-100']};
   padding-top: 120px;
   padding-bottom: 80px;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 96px;
+    padding-bottom: 64px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 88px;
+    padding-bottom: 48px;
+  }
 `;
 
 const Content = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing['2xl']};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0 ${({ theme }) => theme.spacing.lg};
+  }
+  
+  @media (max-width: 475px) {
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const Card = styled.div`
@@ -32,6 +50,14 @@ const Title = styled.h1`
   text-align: center;
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   font-family: ${({ theme }) => theme.typography.fontHeading};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
+  }
 `;
 
 const Form = styled.form`

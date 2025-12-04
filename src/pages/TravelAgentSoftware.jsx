@@ -12,6 +12,14 @@ const PageWrapper = styled.div`
   min-height: 100vh;
   background: ${({ theme }) => theme.colors.white};
   padding-top: 88px; // Account for fixed navbar
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const HeroSection = styled(Section)`
@@ -54,6 +62,10 @@ const HeroTitle = styled(motion.h1).withConfig({
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 

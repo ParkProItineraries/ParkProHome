@@ -20,6 +20,14 @@ import { flexCenter } from "../styles/mixins";
 const SolutionsWrapper = styled.div`
   padding-top: 88px; /* Account for fixed navbar */
   background: ${({ theme }) => theme.colors.white};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const SolutionsHeader = styled.div`
@@ -49,7 +57,11 @@ const SolutionsTitle = styled(motion.h1)`
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
@@ -61,7 +73,12 @@ const SolutionsSubtitle = styled(motion.p)`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 

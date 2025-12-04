@@ -12,6 +12,14 @@ const PageWrapper = styled.div`
   min-height: 100vh;
   background: ${({ theme }) => theme.colors.white};
   padding-top: 88px;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 72px;
+  }
+  
+  @media (max-width: 475px) {
+    padding-top: 68px;
+  }
 `;
 
 const HeroSection = styled(Section)`
@@ -51,7 +59,12 @@ const HeroTitle = styled(motion.h1).withConfig({
   z-index: 1;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+    padding: 0 ${({ theme }) => theme.spacing.sm};
   }
 `;
 
