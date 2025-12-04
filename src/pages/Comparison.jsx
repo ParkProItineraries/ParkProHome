@@ -147,7 +147,12 @@ const SectionTitle = styled.h2`
   font-family: ${({ theme }) => theme.typography.fontHeading};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
+    padding: 0 ${({ theme }) => theme.spacing.sm};
   }
 `;
 
@@ -162,6 +167,11 @@ const SectionSubtitle = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
     margin-bottom: ${({ theme }) => theme.spacing.lg};
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xs};
   }
 `;
 
@@ -174,6 +184,17 @@ const ComparisonMatrixWrapper = styled.div`
   background: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
   overflow: hidden;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    border-radius: ${({ theme }) => theme.radius.md};
+  }
+  
+  @media (max-width: 475px) {
+    margin: 0 -${({ theme }) => theme.spacing.sm};
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 `;
 
 const MatrixGrid = styled.div`
@@ -195,9 +216,7 @@ const MatrixHeaderRow = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.colors["gray-200"]};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    padding: ${({ theme }) => theme.spacing.md};
-    gap: ${({ theme }) => theme.spacing.sm};
+    display: none; // Hide header row on mobile - each row will show its own context
   }
 `;
 
@@ -250,10 +269,13 @@ const MatrixRow = styled(motion.div)`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
+    display: block;
+    padding: ${({ theme }) => theme.spacing.lg};
+    border-bottom: 2px solid ${({ theme }) => theme.colors["gray-200"]};
+  }
+  
+  @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.md};
-    gap: ${({ theme }) => theme.spacing.md};
-    align-items: flex-start;
   }
 `;
 
@@ -265,10 +287,12 @@ const MatrixFeatureCell = styled.div`
   text-align: left;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.sm};
-    margin-bottom: ${({ theme }) => theme.spacing.xs};
-    padding-bottom: ${({ theme }) => theme.spacing.xs};
-    border-bottom: 1px solid ${({ theme }) => theme.colors["gray-200"]};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+    font-weight: ${({ theme }) => theme.typography.weights.bold};
+    margin-bottom: ${({ theme }) => theme.spacing.md};
+    padding-bottom: ${({ theme }) => theme.spacing.sm};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 
@@ -291,10 +315,22 @@ const MatrixCell = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     text-align: left;
-    padding-left: ${({ theme }) => theme.spacing.sm};
+    padding: ${({ theme }) => theme.spacing.sm} 0;
+    margin-bottom: ${({ theme }) => theme.spacing.xs};
     min-height: auto;
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
+    gap: ${({ theme }) => theme.spacing.sm};
+    
+    &::before {
+      content: attr(data-label);
+      font-weight: ${({ theme }) => theme.typography.weights.semibold};
+      color: ${({ theme }) => theme.colors["gray-700"]};
+      min-width: 140px;
+      flex-shrink: 0;
+    }
   }
 `;
 
@@ -309,12 +345,19 @@ const ParkProMatrixCell = styled(MatrixCell)`
   padding: ${({ theme }) => theme.spacing.xs};
   margin: 0;
   color: ${({ theme }) => theme.colors.black};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    border-left: none;
-    border-top: 3px solid ${({ theme }) => theme.colors.gold};
-    margin: ${({ theme }) => theme.spacing.xs} 0;
+    border-left: 4px solid ${({ theme }) => theme.colors.gold};
+    border-top: none;
+    margin: ${({ theme }) => theme.spacing.sm} 0;
+    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    border-radius: ${({ theme }) => theme.radius.sm};
+    
+    &::before {
+      content: "ParkPro: ";
+      color: ${({ theme }) => theme.colors.gold};
+    }
   }
 `;
 
@@ -1076,7 +1119,7 @@ const Comparison = () => {
                   <MatrixFeatureCell>{row.feature}</MatrixFeatureCell>
 
                   {/* Generic builders */}
-                  <MatrixCell>
+                  <MatrixCell data-label="Generic Builders">
                     {row.generic.level === "full" && <MatrixIcon size={16} />}
                     {row.generic.level === "partial" && (
                       <MatrixPartialSymbol>~</MatrixPartialSymbol>
@@ -1088,7 +1131,7 @@ const Comparison = () => {
                   </MatrixCell>
 
                   {/* Spreadsheets & Docs */}
-                  <MatrixCell>
+                  <MatrixCell data-label="Spreadsheets">
                     {row.docs.level === "full" && <MatrixIcon size={16} />}
                     {row.docs.level === "partial" && (
                       <MatrixPartialSymbol>~</MatrixPartialSymbol>
