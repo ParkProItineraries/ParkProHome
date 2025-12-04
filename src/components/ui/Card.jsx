@@ -161,11 +161,11 @@ const CardGrid = styled.div`
   grid-template-columns: repeat(${({ columns = 3 }) => columns}, 1fr);
   gap: ${({ gap = 6 }) => tokens.spacing[gap]};
   
-  @media (max-width: ${tokens.breakpoints.lg}) {
+  @media (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  @media (max-width: ${tokens.breakpoints.md}) {
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
 `;

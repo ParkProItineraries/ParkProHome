@@ -96,7 +96,7 @@ const TestimonialGrid = styled(motion.div)`
 const TestimonialCard = styled.div`
   background: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.xl};
   box-shadow: ${({ theme }) => theme.shadows.sm};
   border: 1px solid ${({ theme }) => theme.colors['gray-200']};
   position: relative;
@@ -111,39 +111,70 @@ const TestimonialCard = styled.div`
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
+  
+  @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.md};
   }
 `;
 
 const QuoteIcon = styled.div`
   position: absolute;
-  top: -8px;
+  top: -10px;
   left: ${({ theme }) => theme.spacing.lg};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.colors.black};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 36px;
+    height: 36px;
+    top: -8px;
+    left: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const Rating = styled.div`
   display: flex;
-  gap: 3px;
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  margin-top: ${({ theme }) => theme.spacing.sm};
+  gap: 4px;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.md};
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: 3px;
+    margin-bottom: ${({ theme }) => theme.spacing.sm};
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 `;
 
 const TestimonialText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
   color: ${({ theme }) => theme.colors['gray-700']};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-style: italic;
   flex: 1;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
+    margin-bottom: ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const AuthorSection = styled.div`

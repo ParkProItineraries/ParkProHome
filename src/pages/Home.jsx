@@ -339,19 +339,20 @@ const FeatureIconWrapper = styled.div`
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
   display: flex;
   align-items: center;
-  justifyContent: center;
+  justify-content: center;
   margin: 0 auto ${({ theme }) => theme.spacing.md};
   color: ${({ theme }) => theme.colors.black};
   flex-shrink: 0;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
+    display: block;
   }
 `;
 
 const FeatureTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: ${({ theme }) => theme.spacing.sm};

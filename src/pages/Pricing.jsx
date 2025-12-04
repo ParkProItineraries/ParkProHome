@@ -87,16 +87,28 @@ const ToggleWrapper = styled.div`
   ${flexCenter}
   gap: ${({ theme }) => theme.spacing.md};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  flex-wrap: wrap;
+  
+  @media (max-width: 475px) {
+    gap: ${({ theme }) => theme.spacing.sm};
+  }
 `;
 
 const SecondaryToggleWrapper = styled.div`
   ${flexCenter}
   gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
   margin-left: ${({ theme }) => theme.spacing["2xl"]};
+  flex-wrap: wrap;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     margin-left: 0;
+    margin-bottom: ${({ theme }) => theme.spacing.lg};
+  }
+  
+  @media (max-width: 475px) {
+    gap: ${({ theme }) => theme.spacing.sm};
+    flex-direction: column;
   }
 `;
 
@@ -135,7 +147,17 @@ const PrimaryToggleOption = styled.button`
   z-index: 1;
   position: relative;
   min-width: 120px;
+  min-height: 44px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 475px) {
+    min-width: 100px;
+    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    font-size: ${({ theme }) => theme.typography.sizes.xs};
+  }
 `;
 
 // Secondary toggle for Monthly / Annual (subtle styling, smaller)
@@ -244,6 +266,12 @@ const PricingCard = styled(motion.div).withConfig({
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     min-height: auto;
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
+  
+  @media (max-width: 475px) {
+    padding: ${({ theme }) => theme.spacing.md};
+    border-radius: ${({ theme }) => theme.radius.md};
   }
 `;
 
@@ -334,6 +362,10 @@ const PriceAmount = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
     font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
   }
 `;
 
@@ -447,7 +479,12 @@ const FAQTitle = styled(motion.h2)`
   text-align: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+    margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
+  }
+  
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
   }
 `;
 
@@ -458,6 +495,12 @@ const FAQGrid = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.md};
+  }
+  
+  @media (max-width: 475px) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.sm};
   }
 `;
 

@@ -297,12 +297,14 @@ const CardGrid = styled.div`
   grid-template-columns: repeat(${({ columns = 3 }) => columns}, 1fr);
   gap: ${({ gap = 6 }) => designTokens.spacing[gap]};
   
-  ${designTokens.media.maxLg} {
+  @media (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: ${({ gap = 6 }) => designTokens.spacing[Math.max(4, gap - 2)]};
   }
   
-  ${designTokens.media.maxMd} {
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
+    gap: ${({ gap = 6 }) => designTokens.spacing[Math.max(4, gap - 1)]};
   }
 `;
 
