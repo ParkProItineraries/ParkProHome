@@ -854,56 +854,10 @@ const Pricing = () => {
                 )}
                 <PlanName>{plan.name}</PlanName>
                 <PlanPrice>
-                  {plan.customPricing ? (
-                    <PriceAmount style={{ fontSize: "1.5rem" }}>
-                      {plan.customPricing}
-                    </PriceAmount>
-                  ) : (
-                    <>
-                      <PriceAmount>
-                        {isAnnual
-                          ? `$${plan.annualPrice.toLocaleString()}`
-                          : `$${plan.monthlyPrice}`}
-                      </PriceAmount>
-                      <PricePeriod>
-                        {(() => {
-                          const isSolo =
-                            !plan.minSeats || plan.minSeats === 1;
-                          if (isAnnual) {
-                            return isSolo ? "/year" : "/year per seat";
-                          } else {
-                            return isSolo ? "/month" : "/month per seat";
-                          }
-                        })()}
-                      </PricePeriod>
-                    </>
-                  )}
+                  <PriceAmount style={{ fontSize: "1.5rem", color: theme.colors.black }}>
+                    Call for Pricing
+                  </PriceAmount>
                 </PlanPrice>
-                {isAnnual && !plan.customPricing && (
-                  <AnnualDiscount>(2 months free)</AnnualDiscount>
-                )}
-                {plan.minSeats && plan.minSeats > 1 && (
-                  <>
-                    {plan.additionalSeatPrice && (
-                      <AdditionalSeatText>
-                        {isAnnual ? (
-                          <>
-                            Each additional seat: $
-                            {(
-                              plan.additionalSeatPrice * 10
-                            ).toLocaleString()}
-                            /year (2 months free)
-                          </>
-                        ) : (
-                          <>
-                            Each additional seat: $
-                            {plan.additionalSeatPrice}/mo
-                          </>
-                        )}
-                      </AdditionalSeatText>
-                    )}
-                  </>
-                )}
                 {plan.description && (
                   <PlanDescription>{plan.description}</PlanDescription>
                 )}
