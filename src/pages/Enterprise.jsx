@@ -745,7 +745,7 @@ const Enterprise = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              We're inviting a small group of Disney-focused travel agents and agencies into early access. Contact our enterprise team to discuss your specific requirements and get a custom solution that meets your organization's unique needs.
+              We're inviting a small group of destination-focused travel agents and agencies into early access. Contact our enterprise team to discuss your specific requirements and get a custom solution that meets your organization's unique needs.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Button from "./ui/Button";
-import ParkProLogo from "../assets/Park Pro Black_Long.svg?url";
+import ParkProLogo from "../assets/Park Pro White_Long.svg?url";
 
 const Nav = styled(motion.nav).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
@@ -16,10 +16,10 @@ const Nav = styled(motion.nav).withConfig({
   z-index: ${({ theme }) => theme.zIndex.fixed};
   background: ${({ $isScrolled }) => 
     $isScrolled 
-      ? 'rgba(255, 255, 255, 0.98)' 
-      : 'rgba(255, 255, 255, 0.95)'};
+      ? 'rgba(0, 0, 0, 0.98)' 
+      : 'rgba(0, 0, 0, 0.95)'};
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid ${({ theme }) => theme.colors['gray-300']};
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0 ${({ theme }) => theme.spacing['2xl']};
   height: 88px;
   display: flex;
@@ -28,7 +28,7 @@ const Nav = styled(motion.nav).withConfig({
   font-family: ${({ theme }) => theme.typography.fontBody};
   transition: ${({ theme }) => theme.transitions.normal};
   box-shadow: ${({ $isScrolled }) => 
-    $isScrolled ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none'};
+    $isScrolled ? '0 2px 8px rgba(0, 0, 0, 0.3)' : 'none'};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: 0 ${({ theme }) => theme.spacing.lg};
@@ -79,8 +79,8 @@ const NavLinks = styled.div`
 
 const NavLink = styled(Link)`
   font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: ${({ theme, $isActive }) => 
-    $isActive ? theme.colors.black : theme.colors['gray-600']};
+  color: ${({ $isActive }) => 
+    $isActive ? 'white' : 'rgba(255, 255, 255, 0.8)'};
   text-decoration: none;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   transition: ${({ theme }) => theme.transitions.normal};
@@ -88,7 +88,7 @@ const NavLink = styled(Link)`
   padding: ${({ theme }) => theme.spacing.sm} 0;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.black};
+    color: white;
   }
 
   &::after {
@@ -127,7 +127,7 @@ const MobileMenuButton = styled.button`
   display: none;
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.5rem;
   cursor: pointer;
   padding: ${({ theme }) => theme.spacing.sm};
@@ -135,8 +135,8 @@ const MobileMenuButton = styled.button`
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    background: ${({ theme }) => theme.colors['gray-100']};
-    color: ${({ theme }) => theme.colors.black};
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
   }
   
   &:focus-visible {
@@ -159,15 +159,15 @@ const MobileMenu = styled(motion.div).withConfig({
   top: 72px;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(0, 0, 0, 0.98);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid ${({ theme }) => theme.colors['gray-300']};
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: ${({ theme }) => theme.spacing.lg};
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
   z-index: ${({ theme }) => theme.zIndex.dropdown};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
@@ -176,19 +176,19 @@ const MobileMenu = styled(motion.div).withConfig({
 
 const MobileNavLink = styled(Link)`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme, $isActive }) => 
-    $isActive ? theme.colors.black : theme.colors['gray-600']};
+  color: ${({ $isActive }) => 
+    $isActive ? 'white' : 'rgba(255, 255, 255, 0.8)'};
   text-decoration: none;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.md};
   transition: ${({ theme }) => theme.transitions.normal};
-  border-left: 3px solid ${({ theme, $isActive }) => 
+  border-left: 3px solid ${({ $isActive, theme }) => 
     $isActive ? theme.colors.gold : 'transparent'};
 
   &:hover {
-    background: ${({ theme }) => theme.colors['gray-100']};
-    color: ${({ theme }) => theme.colors.black};
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
   }
   
   &:focus-visible {
@@ -311,7 +311,7 @@ const Navbar = () => {
         </NavLinks>
 
         <ButtonGroup>
-          <Button variant="ghost" size="sm" href="https://app.parkproit.com/agent/login" target="_blank">
+          <Button variant="outline" size="sm" href="https://app.parkproit.com/agent/login" target="_blank" style={{ borderColor: 'white', color: 'white' }}>
             Log In
           </Button>
           {/*<Button variant="outline" size="sm" to="/signup">

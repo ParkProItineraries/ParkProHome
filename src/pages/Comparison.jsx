@@ -939,7 +939,7 @@ const Comparison = () => {
         <Container>
           <SectionTitle>Who ParkPro is For</SectionTitle>
           <SectionSubtitle>
-            Built for Disney-focused travel agents and agencies at every stage
+            Built for destination-focused travel agents and agencies at every stage
           </SectionSubtitle>
           <AudienceGrid>
             {audienceData.map((audience, index) => (
@@ -1237,7 +1237,7 @@ const Comparison = () => {
         <Container>
           <CTATitle>Ready to plan Disney trips the way you just saw?</CTATitle>
           <CTAText>
-            ParkPro is rolling out with a small group of Disney-focused travel agents and agencies. Join early access to save hours on each itinerary and replace the manual workflows you saw in the comparison above.
+            ParkPro is rolling out with a small group of destination-focused travel agents and agencies. Join early access to save hours on each itinerary and replace the manual workflows you saw in the comparison above.
           </CTAText>
           <Button
             to="/request-access"

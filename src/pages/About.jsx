@@ -585,7 +585,7 @@ const About = () => {
           <CTASection>
             <CTATitle>Ready to join the revolution?</CTATitle>
             <CTASubtitle>
-              We're inviting a small group of Disney-focused travel agents and agencies into early access. Be part of the future of Disney travel planning and transform your business with ParkPro.
+              We're inviting a small group of destination-focused travel agents and agencies into early access. Be part of the future of Disney travel planning and transform your business with ParkPro.
             </CTASubtitle>
             <Button variant="primary" size="lg" to="/request-access">
               Request Early Access →

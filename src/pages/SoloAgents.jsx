@@ -738,7 +738,7 @@ const SoloAgents = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              We're inviting a small group of Disney-focused travel agents and agencies into early access. Join early access to save hours on each itinerary and handle more trips without adding more late nights.
+              We're inviting a small group of destination-focused travel agents and agencies into early access. Join early access to save hours on each itinerary and handle more trips without adding more late nights.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}

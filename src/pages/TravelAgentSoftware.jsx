@@ -555,7 +555,7 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            We're inviting a small group of Disney-focused travel agents and agencies into early access. Join successful travel agents who've revolutionized their Disney planning business and start saving 10+ hours per client today.
+            We're inviting a small group of destination-focused travel agents and agencies into early access. Join successful travel agents who've revolutionized their Disney planning business and start saving 10+ hours per client today.
           </CTASubtitle>
           
           <motion.div

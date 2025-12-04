@@ -545,7 +545,7 @@ const DisneyPlanningSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            We're inviting a small group of Disney-focused travel agents and agencies into early access. Start creating professional Disney itineraries in minutes with the best Disney planning software for travel agents.
+            We're inviting a small group of destination-focused travel agents and agencies into early access. Start creating professional Disney itineraries in minutes with the best Disney planning software for travel agents.
           </CTASubtitle>
           
           <motion.div

@@ -390,7 +390,7 @@ const Solutions = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              We're inviting a small group of Disney-focused travel agents and agencies into early access. Choose the plan that fits you, then use ParkPro to standardize itineraries, save hours, and get ready for the future Agency OS for travel.
+              We're inviting a small group of destination-focused travel agents and agencies into early access. Choose the plan that fits you, then use ParkPro to standardize itineraries, save hours, and get ready for the future Agency OS for travel.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}

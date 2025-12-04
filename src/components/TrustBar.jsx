@@ -4,10 +4,10 @@ import { Shield, Lock, CheckCircle, Award, Users, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const TrustBarWrapper = styled.div`
-  background: ${({ $variant }) => 
+  background: ${({ $variant, theme }) => 
     $variant === 'dark' 
       ? 'linear-gradient(135deg, #0B0B0C 0%, #1a1a1a 100%)' 
-      : 'linear-gradient(135deg, #f9fafb 0%, #ffffff 100%)'
+      : `linear-gradient(135deg, ${theme.colors['gray-200']} 0%, ${theme.colors['gray-100']} 100%)`
   };
   border-top: 1px solid ${({ theme, $variant }) => 
     $variant === 'dark' ? 'rgba(201, 162, 39, 0.2)' : theme.colors['gray-200']
@@ -111,7 +111,10 @@ const SocialProofText = styled.div`
   margin-top: ${({ theme }) => theme.spacing.md};
   
   strong {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ $variant, theme }) => 
+      $variant === 'dark' ? theme.colors.gold : theme.colors['gold-dark']
+    };
+    font-weight: ${({ theme }) => theme.typography.weights.semibold};
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -178,7 +181,7 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
         
         {showSocialProof && (
           <SocialProofText $variant={variant}>
-            Built specifically for <strong>Disney-focused travel agents and agencies</strong>, 
+            Built specifically for <strong>destination-focused travel agents and agencies</strong>, 
             and currently rolling out with a small group of early access partners.
           </SocialProofText>
         )}

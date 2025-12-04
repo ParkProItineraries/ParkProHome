@@ -209,7 +209,7 @@ const TravelAgencySoftware = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We're inviting a small group of Disney-focused travel agents and agencies into early access. Join travel agencies that are standardizing their Disney planning with ParkPro.
+            We're inviting a small group of destination-focused travel agents and agencies into early access. Join travel agencies that are standardizing their Disney planning with ParkPro.
           </CTAText>
           <motion.div
             initial={{ opacity: 0, y: 30 }}

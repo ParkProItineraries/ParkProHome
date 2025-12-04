@@ -728,7 +728,7 @@ const Features = () => {
         <Container>
           <SectionHeader
             title="What ParkPro is Built to Do for Your Agency"
-            subtitle="Key outcomes ParkPro is designed to help Disney-focused travel agents and agencies achieve in their day-to-day workflow."
+            subtitle="Key outcomes ParkPro is designed to help destination-focused travel agents and agencies achieve in their day-to-day workflow."
             delay={0}
           />
 
@@ -809,7 +809,7 @@ const Features = () => {
           <CTAContent>
             <SectionHeader
               title="Ready to build the operating system for your agency?"
-              subtitle="We're inviting a small group of Disney-focused travel agents and agencies into early access. Start with Disney trip automation today and grow into a full Agency OS as ParkPro rolls out CRM, commissions, and multi-destination features."
+              subtitle="We're inviting a small group of destination-focused travel agents and agencies into early access. Start with Disney trip automation today and grow into a full Agency OS as ParkPro rolls out CRM, commissions, and multi-destination features."
               delay={0}
               dark={true}
             />

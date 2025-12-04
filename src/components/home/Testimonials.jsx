@@ -5,7 +5,7 @@ import { Star, Quote } from "lucide-react";
 
 const TestimonialsWrapper = styled.section`
   padding: ${({ theme }) => theme.spacing['3xl']} 0;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors['gray-50']} 0%, ${({ theme }) => theme.colors.white} 100%);
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors['gray-200']} 0%, ${({ theme }) => theme.colors['gray-100']} 100%);
   position: relative;
   overflow: hidden;
 `;

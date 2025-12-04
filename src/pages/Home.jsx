@@ -204,24 +204,25 @@ const StatLabel = styled.div`
 
 // Features Section
 const FeaturesSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.spacing['3xl']} 0;
+  background: ${({ $alternate }) => 
+    $alternate ? '#f9fafb' : 'white'};
 `;
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 `;
 
 const SectionTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
@@ -465,7 +466,7 @@ const Home = () => {
         <TrustBar variant="light" showSocialProof={true} />
 
         {/* Features Section */}
-        <FeaturesSection>
+        <FeaturesSection $alternate={false}>
           <Container>
             <SectionHeader>
               <SectionTitle
@@ -486,7 +487,7 @@ const Home = () => {
               </SectionSubtitle>
             </SectionHeader>
 
-            <CardGrid columns={3} gap={6}>
+            <CardGrid columns={3} gap={4}>
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
@@ -502,27 +503,27 @@ const Home = () => {
                       display: 'flex', 
                       flexDirection: 'column', 
                       height: '100%',
-                      padding: theme.spacing.lg
+                      padding: theme.spacing.md
                     }}>
                       <div style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: '12px',
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '10px',
                         background: `linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-muted']})`,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 16px',
+                        margin: '0 auto 12px',
                         color: '#0B0B0C',
                         flexShrink: 0
                       }}>
                         {feature.icon}
                       </div>
                       <h3 style={{
-                        fontSize: '18px',
+                        fontSize: '17px',
                         fontWeight: '600',
                         color: '#0B0B0C',
-                        marginBottom: '12px',
+                        marginBottom: '10px',
                         fontFamily: "'Urbanist', 'DM Sans', sans-serif",
                         lineHeight: '1.3'
                       }}>
@@ -549,7 +550,7 @@ const Home = () => {
         <Testimonials />
 
         {/* Concierge Section */}
-        <FeaturesSection style={{ background: theme.colors.white, paddingTop: theme.spacing['2xl'] }}>
+        <FeaturesSection $alternate={true} style={{ paddingTop: theme.spacing['2xl'] }}>
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -599,7 +600,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                We're opening ParkPro to a limited group of Disney-focused travel agents and agencies. Join early access to test faster planning, premium deliverables, and a workflow built for your future AgencyOS.
+                We're opening ParkPro to a limited group of destination-focused travel agents and agencies. Join early access to test faster planning, premium deliverables, and a workflow built for your future AgencyOS.
               </CTASubtitle>
               
               <CTAButtonsWrapper
