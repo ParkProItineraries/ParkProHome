@@ -41,8 +41,8 @@ export const copy = {
     sub: "Most travel agents believe long hours are just part of creating great itineraries. The truth? It only feels that way because the process is outdated — not you. ParkPro gives professional travel agents a destination-smart system that turns intake forms into clean, concierge-level daily plans in minutes.",
     ctaPrimary: "Get a demo",
     ctaSecondary: "See pricing",
-    proof: "Built with Disney-focused travel agents to save hours per client.",
-    badge: "Built With Disney-Focused Travel Agents"
+    proof: "Built for destination-focused travel agents to save hours per client.",
+    badge: "Built For Destination-Focused Travel Agents"
   },
 
   // Main Value Propositions

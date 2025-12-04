@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
 import Container from "./layout/Container";
 import ParkProLogo from "../assets/Park Pro White_Long.svg?url";
 
@@ -16,15 +17,19 @@ const FooterWrapper = styled.footer`
 
 const FooterContent = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing['2xl']};
+  grid-template-columns: 2fr 0.8fr 0.8fr 0.8fr;
+  gap: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   align-items: start;
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: 0;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
     text-align: center;
     gap: ${({ theme }) => theme.spacing.xl};
+    margin-left: auto;
   }
 `;
 
@@ -59,8 +64,8 @@ const FooterTitle = styled.h3`
 
 const FooterText = styled.p`
   color: rgba(255, 255, 255, 0.7);
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  line-height: 1.6;
+  margin: 0 0 ${({ theme }) => theme.spacing.lg} 0;
 `;
 
 const FooterLink = styled(Link)`
@@ -92,6 +97,39 @@ const ContactItem = styled.div`
   }
 `;
 
+const SocialLinks = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.md};
+  align-items: center;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    justify-content: center;
+  }
+`;
+
+const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  transition: ${({ theme }) => theme.transitions.normal};
+  
+  &:hover {
+    background: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.black};
+    transform: translateY(-2px);
+  }
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
 const FooterBottom = styled.div`
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: ${({ theme }) => theme.spacing.lg};
@@ -111,9 +149,19 @@ const Footer = () => {
               <Logo src={ParkProLogo} alt="ParkPro Logo" />
             </LogoWrapper>
             <FooterText>
-            Destination-smart planning for accredited travel agents. 
-            Build concierge-level itineraries in a fraction of the time.
+              Destination-smart planning for accredited travel agents. Build concierge-level itineraries in a fraction of the time.
             </FooterText>
+            <SocialLinks>
+              <SocialLink href="https://www.tiktok.com/@parkproit" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <FaTiktok />
+              </SocialLink>
+              <SocialLink href="https://www.instagram.com/parkproit" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <Instagram />
+              </SocialLink>
+              <SocialLink href="https://www.linkedin.com/company/parkproit/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <Linkedin />
+              </SocialLink>
+            </SocialLinks>
           </FooterColumn>
 
           {/* Product column */}

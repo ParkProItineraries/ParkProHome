@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { useTheme } from "styled-components";
-import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TestimonialsWrapper = styled.section`
   padding: ${({ theme }) => theme.spacing['3xl']} 0;
@@ -53,11 +53,24 @@ const Subtitle = styled.p`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 `;
 
-const TestimonialGrid = styled.div`
+const CarouselWrapper = styled.div`
+  position: relative;
+  margin-top: ${({ theme }) => theme.spacing.xl};
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const CarouselContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  padding: ${({ theme }) => theme.spacing.md} 0;
+`;
+
+const TestimonialGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: ${({ theme }) => theme.spacing.lg};
-  margin-top: ${({ theme }) => theme.spacing.xl};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
@@ -68,29 +81,35 @@ const TestimonialGrid = styled.div`
   }
 `;
 
-const TestimonialCard = styled(motion.div)`
+const TestimonialCard = styled.div`
   background: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.radius.lg};
   padding: ${({ theme }) => theme.spacing.lg};
   box-shadow: ${({ theme }) => theme.shadows.sm};
   border: 1px solid ${({ theme }) => theme.colors['gray-200']};
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   transition: ${({ theme }) => theme.transitions.normal};
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadows.md};
-    border-color: ${({ theme }) => theme.colors.gold}40;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing.md};
   }
 `;
 
 const QuoteIcon = styled.div`
   position: absolute;
-  top: -10px;
+  top: -8px;
   left: ${({ theme }) => theme.spacing.lg};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -112,6 +131,7 @@ const TestimonialText = styled.p`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-style: italic;
+  flex: 1;
 `;
 
 const AuthorSection = styled.div`
@@ -187,29 +207,106 @@ const StatLabel = styled.div`
   font-weight: ${({ theme }) => theme.typography.weights.medium};
 `;
 
+const CarouselButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  ${({ $direction }) => $direction === 'left' ? 'left: -60px;' : 'right: -60px;'}
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.white};
+  border: 2px solid ${({ theme }) => theme.colors['gray-200']};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: ${({ theme }) => theme.transitions.normal};
+  z-index: 10;
+  
+  &:hover {
+    background: ${({ theme }) => theme.colors.gold};
+    border-color: ${({ theme }) => theme.colors.gold};
+    transform: translateY(-50%) scale(1.1);
+    
+    svg {
+      color: ${({ theme }) => theme.colors.black};
+    }
+  }
+  
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  svg {
+    color: ${({ theme }) => theme.colors['gray-600']};
+    transition: ${({ theme }) => theme.transitions.normal};
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    ${({ $direction }) => $direction === 'left' ? 'left: 10px;' : 'right: 10px;'}
+    width: 40px;
+    height: 40px;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    ${({ $direction }) => $direction === 'left' ? 'left: 0;' : 'right: 0;'}
+    width: 36px;
+    height: 36px;
+  }
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+  margin-top: ${({ theme }) => theme.spacing.xl};
+`;
+
+const Dot = styled.button`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: ${({ $active, theme }) => 
+    $active ? theme.colors.gold : theme.colors['gray-300']
+  };
+  border: none;
+  cursor: pointer;
+  transition: ${({ theme }) => theme.transitions.normal};
+  
+  &:hover {
+    background: ${({ $active, theme }) => 
+      $active ? theme.colors['gold-dark'] : theme.colors['gray-400']
+    };
+    transform: scale(1.2);
+  }
+`;
+
 const Testimonials = () => {
   const theme = useTheme();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   
   const testimonials = [
     {
       id: 1,
-      text: "ParkPro has completely transformed how I plan Disney vacations for my clients. What used to take me 12+ hours now takes less than 30 minutes. My clients love the detailed itineraries and I've been able to take on 3x more bookings!",
+      text: "What used to take 12+ hours now takes 30 minutes. My clients love the detailed itineraries and I've taken on 3x more bookings!",
       author: "Sarah Martinez",
-      title: "Solo Travel Agent, Dream Destinations",
+      title: "Solo Travel Agent",
       rating: 5,
       initials: "SM"
     },
     {
       id: 2,
-      text: "As an agency owner, standardizing our Disney planning process was critical. ParkPro gave us consistency across all our agents, and our client satisfaction scores have never been higher. The ROI was immediate.",
+      text: "ParkPro gave us consistency across all our agents. Client satisfaction scores have never been higher. The ROI was immediate.",
       author: "Michael Chen",
-      title: "Owner, Premier Travel Agency",
+      title: "Agency Owner",
       rating: 5,
       initials: "MC"
     },
     {
       id: 3,
-      text: "I was skeptical about automated planning, but ParkPro's customization options are incredible. Every itinerary feels personal and tailored. My clients can't believe I create these so quickly while maintaining such high quality.",
+      text: "Every itinerary feels personal and tailored. My clients can't believe I create these so quickly while maintaining such high quality.",
       author: "Jennifer Williams",
       title: "Senior Travel Consultant",
       rating: 5,
@@ -217,19 +314,27 @@ const Testimonials = () => {
     },
     {
       id: 4,
-      text: "The time savings are unbelievable. I used to dread the planning phase, but now it's my favorite part. ParkPro handles all the tedious details while I focus on the creative aspects and client relationships.",
+      text: "The time savings are unbelievable. ParkPro handles all the tedious details while I focus on client relationships.",
       author: "David Thompson",
-      title: "Disney Specialist, Magic Moments Travel",
+      title: "Disney Specialist",
       rating: 5,
       initials: "DT"
     },
     {
       id: 5,
-      text: "My booking conversion rate went from 40% to 85% after using ParkPro. The professional itineraries give clients confidence, and the speed means I can respond to inquiries same-day. Game changer for my business.",
+      text: "My conversion rate went from 40% to 85%. The professional itineraries give clients confidence. Game changer for my business.",
       author: "Amanda Rodriguez",
-      title: "Independent Travel Advisor",
+      title: "Independent Advisor",
       rating: 5,
       initials: "AR"
+    },
+    {
+      id: 6,
+      text: "I can now respond to inquiries same-day with fully customized plans. Clients are amazed by the turnaround time.",
+      author: "Lisa Patterson",
+      title: "Vacation Planner",
+      rating: 5,
+      initials: "LP"
     }
   ];
 
@@ -238,6 +343,56 @@ const Testimonials = () => {
     { number: "10hrs", label: "Average Time Saved Per Client" },
     { number: "95%", label: "Client Satisfaction Rating" }
   ];
+
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+  const nextTestimonial = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevTestimonial = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const goToTestimonial = (index) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  // Auto-advance carousel every 7 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % totalPages);
+    }, 7000);
+
+    return () => clearInterval(timer);
+  }, [totalPages]);
+
+  const getCurrentTestimonials = () => {
+    const start = currentIndex * itemsPerPage;
+    return testimonials.slice(start, start + itemsPerPage);
+  };
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
 
   return (
     <TestimonialsWrapper>
@@ -250,88 +405,82 @@ const Testimonials = () => {
           </Subtitle>
         </SectionHeader>
 
-        <TestimonialGrid>
-          {testimonials.slice(0, 3).map((testimonial, index) => (
-            <TestimonialCard
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <QuoteIcon>
-                <Quote size={18} />
-              </QuoteIcon>
-              
-              <Rating>
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={14} 
-                    fill={theme.colors.primary} 
-                    stroke={theme.colors.primary}
-                  />
+        <CarouselWrapper>
+          <CarouselButton 
+            $direction="left" 
+            onClick={prevTestimonial}
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft size={24} />
+          </CarouselButton>
+          
+          <CarouselContainer>
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <TestimonialGrid
+                key={currentIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+              >
+                {getCurrentTestimonials().map((testimonial) => (
+                  <TestimonialCard key={testimonial.id}>
+                    <QuoteIcon>
+                      <Quote size={16} />
+                    </QuoteIcon>
+                    
+                    <Rating>
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          size={14} 
+                          fill={theme.colors.primary} 
+                          stroke={theme.colors.primary}
+                        />
+                      ))}
+                    </Rating>
+
+                    <TestimonialText>
+                      "{testimonial.text}"
+                    </TestimonialText>
+
+                    <AuthorSection>
+                      <Avatar>{testimonial.initials}</Avatar>
+                      <AuthorInfo>
+                        <AuthorName>{testimonial.author}</AuthorName>
+                        <AuthorTitle>{testimonial.title}</AuthorTitle>
+                      </AuthorInfo>
+                    </AuthorSection>
+                  </TestimonialCard>
                 ))}
-              </Rating>
-
-              <TestimonialText>
-                "{testimonial.text}"
-              </TestimonialText>
-
-              <AuthorSection>
-                <Avatar>{testimonial.initials}</Avatar>
-                <AuthorInfo>
-                  <AuthorName>{testimonial.author}</AuthorName>
-                  <AuthorTitle>{testimonial.title}</AuthorTitle>
-                </AuthorInfo>
-              </AuthorSection>
-            </TestimonialCard>
-          ))}
-        </TestimonialGrid>
-
-        {/* Second Row - 2 testimonials centered */}
-        <TestimonialGrid style={{ 
-          gridTemplateColumns: 'repeat(2, 1fr)', 
-          maxWidth: '900px', 
-          margin: '2rem auto 0',
-        }}>
-          {testimonials.slice(3, 5).map((testimonial, index) => (
-            <TestimonialCard
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
-            >
-              <QuoteIcon>
-                <Quote size={18} />
-              </QuoteIcon>
-              
-              <Rating>
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={14} 
-                    fill={theme.colors.primary} 
-                    stroke={theme.colors.primary}
-                  />
-                ))}
-              </Rating>
-
-              <TestimonialText>
-                "{testimonial.text}"
-              </TestimonialText>
-
-              <AuthorSection>
-                <Avatar>{testimonial.initials}</Avatar>
-                <AuthorInfo>
-                  <AuthorName>{testimonial.author}</AuthorName>
-                  <AuthorTitle>{testimonial.title}</AuthorTitle>
-                </AuthorInfo>
-              </AuthorSection>
-            </TestimonialCard>
-          ))}
-        </TestimonialGrid>
+              </TestimonialGrid>
+            </AnimatePresence>
+          </CarouselContainer>
+          
+          <CarouselButton 
+            $direction="right" 
+            onClick={nextTestimonial}
+            aria-label="Next testimonial"
+          >
+            <ChevronRight size={24} />
+          </CarouselButton>
+          
+          <DotsContainer>
+            {[...Array(totalPages)].map((_, index) => (
+              <Dot
+                key={index}
+                $active={index === currentIndex}
+                onClick={() => goToTestimonial(index)}
+                aria-label={`Go to page ${index + 1}`}
+              />
+            ))}
+          </DotsContainer>
+        </CarouselWrapper>
 
         {/* Stats Bar */}
         <StatsBar>

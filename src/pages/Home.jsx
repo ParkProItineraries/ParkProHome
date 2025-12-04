@@ -34,13 +34,13 @@ const HomeWrapper = styled.div`
 
 // Hero Section
 const HeroSection = styled.section`
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing['3xl']} 0;
+  padding: ${({ theme }) => theme.spacing.xl} 0;
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   position: relative;
   overflow: visible;
@@ -57,7 +57,8 @@ const HeroSection = styled.section`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+    padding: ${({ theme }) => theme.spacing.lg} 0;
+    min-height: auto;
   }
 `;
 
@@ -73,22 +74,22 @@ const Badge = styled(motion.div)`
   color: ${({ theme }) => theme.colors.gold};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   box-shadow: ${({ theme }) => theme.shadows.gold};
   backdrop-filter: blur(10px);
   border: 1px solid rgba(201, 162, 39, 0.3);
 `;
 
 const Title = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['7xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
   color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   
@@ -100,70 +101,70 @@ const Title = styled(motion.h1)`
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
 const Subtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  max-width: 700px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
   font-weight: ${({ theme }) => theme.typography.weights.normal};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
 const CTAButtons = styled(motion.div)`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.md};
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
     align-items: center;
-    gap: ${({ theme }) => theme.spacing.md};
+    gap: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
 const SocialProof = styled(motion.div)`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.md};
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: ${({ theme }) => theme.spacing['2xl']};
+  margin-top: ${({ theme }) => theme.spacing.lg};
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: ${({ theme }) => theme.spacing.md};
+    gap: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
 const StatItem = styled(motion.div)`
   text-align: center;
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   background: rgba(255, 255, 255, 0.95);
   border-radius: ${({ theme }) => theme.radius.md};
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: ${({ theme }) => theme.shadows.md};
   transition: ${({ theme }) => theme.transitions.normal};
-  min-width: 200px;
+  min-width: 180px;
   flex: 1;
-  max-width: 280px;
+  max-width: 260px;
 
   &:hover {
     transform: translateY(-2px);
@@ -171,13 +172,13 @@ const StatItem = styled(motion.div)`
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    min-width: 150px;
+    min-width: 140px;
     max-width: 100%;
   }
 `;
 
 const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-size: ${({ theme }) => theme.typography.sizes.xl};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: ${({ theme }) => theme.spacing.xs};
@@ -189,7 +190,7 @@ const StatNumber = styled.div`
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.xl};
+    font-size: ${({ theme }) => theme.typography.sizes.lg};
   }
 `;
 
@@ -241,7 +242,7 @@ const SectionSubtitle = styled(motion.p)`
 // CTA Section
 const CTASection = styled.section`
   padding: ${({ theme }) => theme.spacing['2xl']} 0;
-  background: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
 `;
