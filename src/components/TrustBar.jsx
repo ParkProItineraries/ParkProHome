@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Shield, Lock, CheckCircle, Award, Users, Star } from "lucide-react";
+import { Shield, Lock, CheckCircle, Users, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const TrustBarWrapper = styled.div`
@@ -37,26 +37,28 @@ const Container = styled.div`
 `;
 
 const TrustGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: ${({ theme }) => theme.spacing.md};
+  display: flex;
+  justify-content: space-between;
   align-items: start;
-  justify-items: center;
+  flex-wrap: nowrap;
+  gap: ${({ theme }) => theme.spacing.lg};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: ${({ theme }) => theme.spacing.lg};
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: repeat(2, 1fr);
     gap: ${({ theme }) => theme.spacing.md};
   }
   
-  @media (max-width: 550px) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.lg};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: ${({ theme }) => theme.spacing['2xl']};
+    column-gap: ${({ theme }) => theme.spacing.xl};
+  }
+  
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+    gap: ${({ theme }) => theme.spacing.xl};
   }
 `;
 
@@ -65,21 +67,24 @@ const TrustItem = styled(motion.div)`
   align-items: flex-start;
   gap: ${({ theme }) => theme.spacing.sm};
   justify-content: flex-start;
-  width: 100%;
-  max-width: 200px;
+  flex: 1 1 0;
+  min-width: 0;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    justify-content: flex-start;
-    max-width: 100%;
+    flex: 0 1 calc(50% - ${({ theme }) => theme.spacing.lg});
+    min-width: 200px;
   }
   
-  @media (max-width: 550px) {
+  @media (max-width: 640px) {
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.xs};
+    gap: ${({ theme }) => theme.spacing.sm};
     padding: ${({ theme }) => theme.spacing.md};
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: auto;
   }
 `;
 
@@ -101,7 +106,7 @@ const IconWrapper = styled.div`
     color: ${({ theme }) => theme.colors.gold};
   }
   
-  @media (max-width: 550px) {
+  @media (max-width: 640px) {
     width: 48px;
     height: 48px;
     
@@ -124,6 +129,11 @@ const TrustLabel = styled.div`
   color: ${({ theme, $variant }) => 
     $variant === 'dark' ? theme.colors.white : theme.colors.black
   };
+  white-space: nowrap;
+  
+  @media (max-width: 640px) {
+    white-space: normal;
+  }
 `;
 
 const TrustSubtext = styled.div`
@@ -172,11 +182,6 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
       subtext: "Designed specifically for Disney-focused agencies"
     },
     {
-      icon: <Award size={20} />,
-      label: "Early Access Program",
-      subtext: "Real agencies helping shape the roadmap"
-    },
-    {
       icon: <Users size={20} />,
       label: "No Long-Term Contracts",
       subtext: "Upgrade, downgrade, or cancel as you grow"
@@ -196,9 +201,8 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
             <TrustItem
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: "easeOut" }}
             >
               <IconWrapper $variant={variant}>
                 {item.icon}
