@@ -153,8 +153,8 @@ const Rating = styled.div`
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: 3px;
-    margin-bottom: ${({ theme }) => theme.spacing.sm};
+  gap: 3px;
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
     
     svg {
       width: 16px;

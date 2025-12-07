@@ -211,8 +211,8 @@ export const copy = {
     },
 
     solutions: {
-      h1: "Solutions for every type of agency.",
-      sub: "From solo agents to national brands—we have a plan that fits.",
+      h1: "Solutions for Solo Agents, Growing Agencies, and Enterprise Teams",
+      sub: "Whether you're a solo Disney travel agent, a growing destination-focused agency, or an enterprise team planning thousands of trips a year, ParkPro gives each stage a clear path: automate Disney itineraries now, and grow into a full Agency OS over time.",
       title: "Solutions | Solo Agents, Agencies, and Enterprise",
       description: "Tailored solutions for solo travel agents, small agencies, and enterprise organizations."
     },

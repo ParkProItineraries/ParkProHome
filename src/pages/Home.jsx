@@ -1,16 +1,16 @@
 import React from "react";
-import theme from '../styles/theme';
+import theme from "../styles/theme";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { 
-  Star, 
-  Clock, 
-  Users, 
-  TrendingUp, 
-  Shield, 
+import {
+  Star,
+  Clock,
+  Users,
+  TrendingUp,
+  Shield,
   Smartphone,
   ArrowRight,
-  Play
+  Play,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/seo/SEO";
@@ -30,11 +30,11 @@ const HomeWrapper = styled.div`
   font-family: ${({ theme }) => theme.typography.fontBody};
   overflow-x: hidden;
   padding-top: 88px; // Account for fixed navbar
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: 72px;
   }
-  
+
   @media (max-width: 475px) {
     padding-top: 68px;
   }
@@ -49,7 +49,11 @@ const HeroSection = styled.section`
   align-items: center;
   text-align: center;
   padding: ${({ theme }) => theme.spacing.xl} 0;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.black} 0%,
+    ${({ theme }) => theme.colors["gray-900"]} 100%
+  );
   position: relative;
   overflow: visible;
 
@@ -77,7 +81,7 @@ const HeroContent = styled.div`
   width: 100%;
   ${flexColumnCenter}
   padding: 0 ${({ theme }) => theme.spacing.md};
-  
+
   @media (max-width: 475px) {
     padding: 0 ${({ theme }) => theme.spacing.sm};
   }
@@ -97,36 +101,41 @@ const Badge = styled(motion.div)`
   box-shadow: ${({ theme }) => theme.shadows.gold};
   backdrop-filter: blur(10px);
   border: 1px solid rgba(201, 162, 39, 0.3);
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.sizes.xs};
-    padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
+    padding: ${({ theme }) => theme.spacing.xs}
+      ${({ theme }) => theme.spacing.md};
     gap: ${({ theme }) => theme.spacing.xs};
     margin-bottom: ${({ theme }) => theme.spacing.md};
   }
 `;
 
 const Title = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["5xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  
+
   .gradient-text {
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+    background: linear-gradient(
+      135deg,
+      ${({ theme }) => theme.colors.gold},
+      ${({ theme }) => theme.colors["gold-muted"]}
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   }
 `;
 
@@ -139,12 +148,12 @@ const Subtitle = styled(motion.p)`
   margin-left: auto;
   margin-right: auto;
   font-weight: ${({ theme }) => theme.typography.weights.normal};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
     margin-bottom: ${({ theme }) => theme.spacing.lg};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
     padding: 0 ${({ theme }) => theme.spacing.sm};
@@ -163,7 +172,7 @@ const CTAButtons = styled(motion.div)`
     align-items: center;
     gap: ${({ theme }) => theme.spacing.md};
     width: 100%;
-    
+
     > * {
       width: 100%;
       max-width: 320px;
@@ -184,7 +193,7 @@ const SocialProof = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     gap: ${({ theme }) => theme.spacing.sm};
   }
-  
+
   @media (max-width: 475px) {
     gap: ${({ theme }) => theme.spacing.xs};
     margin-top: ${({ theme }) => theme.spacing.md};
@@ -213,13 +222,14 @@ const StatItem = styled(motion.div)`
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadows.lg};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     min-width: 140px;
     max-width: 100%;
-    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    padding: ${({ theme }) => theme.spacing.sm}
+      ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: 475px) {
     min-width: 120px;
     min-height: 70px;
@@ -233,30 +243,34 @@ const StatNumber = styled.div`
   color: ${({ theme }) => theme.colors.black};
   margin: 0 0 ${({ theme }) => theme.spacing.xs} 0;
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black}, ${({ theme }) => theme.colors['gray-900']});
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.black},
+    ${({ theme }) => theme.colors["gray-900"]}
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.lg};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
 const StatLabel = styled.div`
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   text-transform: uppercase;
   letter-spacing: 0.05em;
   line-height: 1.4;
   margin: 0;
-  
+
   @media (max-width: 475px) {
     font-size: 0.6875rem;
     letter-spacing: 0.03em;
@@ -265,14 +279,13 @@ const StatLabel = styled.div`
 
 // Features Section
 const FeaturesSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['3xl']} 0;
-  background: ${({ $alternate }) => 
-    $alternate ? '#f9fafb' : 'white'};
-  
+  padding: ${({ theme }) => theme.spacing["3xl"]} 0;
+  background: ${({ $alternate }) => ($alternate ? "#f9fafb" : "white")};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+    padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   }
-  
+
   @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.xl} 0;
   }
@@ -280,34 +293,34 @@ const FeaturesSection = styled.section`
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
 `;
 
 const SectionTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   }
 `;
 
 const SectionSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   max-width: 600px;
   margin: 0 auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
     max-width: 100%;
     padding: 0 ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
@@ -326,7 +339,7 @@ const FeatureCardContent = styled.div`
   flex-direction: column;
   height: 100%;
   padding: ${({ theme }) => theme.spacing.lg};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: ${({ theme }) => theme.spacing.md};
   }
@@ -336,14 +349,18 @@ const FeatureIconWrapper = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.gold},
+    ${({ theme }) => theme.colors["gold-muted"]}
+  );
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto ${({ theme }) => theme.spacing.md};
   color: ${({ theme }) => theme.colors.black};
   flex-shrink: 0;
-  
+
   svg {
     width: 28px;
     height: 28px;
@@ -352,25 +369,25 @@ const FeatureIconWrapper = styled.div`
 `;
 
 const FeatureTitle = styled.h3`
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
 const FeatureDescription = styled.p`
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   margin: 0;
   flex: 1;
   font-size: ${({ theme }) => theme.typography.sizes.sm};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.xs};
   }
@@ -378,15 +395,19 @@ const FeatureDescription = styled.p`
 
 // CTA Section
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing['3xl']} 0;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
+  padding: ${({ theme }) => theme.spacing["3xl"]} 0;
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.black} 0%,
+    ${({ theme }) => theme.colors["gray-900"]} 100%
+  );
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+    padding: ${({ theme }) => theme.spacing["2xl"]} 0;
   }
-  
+
   @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.xl} 0;
   }
@@ -399,19 +420,19 @@ const CTAContent = styled.div`
 `;
 
 const CTATitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["5xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
     margin-bottom: ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: 475px) {
-    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   }
 `;
 
@@ -423,12 +444,12 @@ const CTASubtitle = styled(motion.p)`
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
     margin-bottom: ${({ theme }) => theme.spacing.lg};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
@@ -445,7 +466,7 @@ const CTAButtonsWrapper = styled(motion.div)`
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing.md};
     width: 100%;
-    
+
     > * {
       width: 100%;
       max-width: 320px;
@@ -456,40 +477,40 @@ const CTAButtonsWrapper = styled(motion.div)`
 const ConciergCard = styled(Card)`
   max-width: 800px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing['2xl']};
+  padding: ${({ theme }) => theme.spacing["2xl"]};
   text-align: center;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: ${({ theme }) => theme.spacing.xl};
   }
-  
+
   @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.lg};
   }
 `;
 
 const ConciergeTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.xl};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.lg};
   }
 `;
 
 const ConciergeText = styled.p`
-  color: ${({ theme }) => theme.colors['gray-600']};
+  color: ${({ theme }) => theme.colors["gray-600"]};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   margin: 0;
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
@@ -499,75 +520,84 @@ const Home = () => {
   const features = [
     {
       icon: <Clock size={32} />,
-      title: "Save 5–10 hours per itinerary",
-      description: "ParkPro handles the heavy lifting of structuring each Disney day so you can stay focused on the client experience instead of rebuilding schedules from scratch."
+      title: "Stop rebuilding every park day from scratch",
+      description:
+        "Turn messy, manual planning into a repeatable system. ParkPro structures each day across your park and resort trips so you’re never staring at a blank page again.",
     },
     {
       icon: <TrendingUp size={32} />,
-      title: "Serve more clients without burnout",
-      description: "Grow your business by taking on more trips without extending your workday or sacrificing evenings and weekends."
+      title: "Make your commission feel worth the work",
+      description:
+        "Compress 5–10+ hours of park and resort planning into minutes so the time you invest finally matches the commission you earn on each trip.",
     },
     {
       icon: <Users size={32} />,
-      title: "Deliver concierge-grade plans",
-      description: "Present clients with polished, day-by-day itineraries that feel curated, premium, and worthy of the Disney experience."
+      title: "Look as professional behind the scenes as you do to clients",
+      description:
+        "Deliver clean, easy-to-read park-day plans while ParkPro keeps your workflow organized, consistent, and under control.",
     },
     {
       icon: <Shield size={32} />,
-      title: "Optimized for Disney logistics",
-      description: "Leverage Disney-specific rules, timing patterns, and transportation logic so your plans align with how the parks actually work."
+      title: "Built around how complex parks actually work",
+      description:
+        "Baked-in patterns for park flow, transportation, and timing at destinations like Walt Disney World today, with Disneyland and Universal support on the way.",
     },
     {
       icon: <Smartphone size={32} />,
-      title: "Agency-ready workflows",
-      description: "Lay the foundation for your AgencyOS with multi-seat support, shared workflows, and a roadmap built for growing teams."
+      title: "Designed for busy, growing agents and agencies",
+      description:
+        "A workspace built for more clients, more agents, and more trips—without more late nights, weekend marathons, or burnout.",
     },
     {
       icon: <Star size={32} />,
-      title: "Mobile-friendly workspace",
-      description: "Access your ParkPro workspace wherever you are—at your desk, in the parks, or on the go—so you're never far from your clients' plans."
-    }
+      title: "From overwhelmed planner to confident travel CEO",
+      description:
+        "Shift from reactive, last-minute park planning to a calm, controlled system that lets you run your business like the professional you are.",
+    },
   ];
 
   const stats = [
-    { number: "5–10+ hours", label: "Saved per itinerary" },
-    { number: "More capacity", label: "Same working hours" },
-    { number: "Premium plans", label: "Concierge-level deliverables" }
+    { number: "5–10+ hours", label: "Planning time saved per trip" },
+    { number: "2–3x", label: "More trips with same hours" },
+    { number: "1 workspace", label: "For every park & resort itinerary" },
   ];
 
   // SEO Schema Markup for better Google visibility
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "ParkPro",
-    "url": "https://parkproit.com",
-    "logo": "https://parkproit.com/assets/logo.png",
-    "description": "Travel agent itinerary and workflow software built for Disney-focused travel agents. Helps agents save hours on Disney trip planning.",
-    "contactPoint": {
+    name: "ParkPro",
+    url: "https://parkproit.com",
+    logo: "https://parkproit.com/assets/logo.png",
+    description:
+      "ParkPro is destination-smart itinerary and workflow software for travel agents who plan complex park and resort vacations, including Walt Disney World and beyond. It helps overworked agents turn client intake forms into structured, day-by-day plans in minutes instead of hours.",
+    contactPoint: {
       "@type": "ContactPoint",
-      "telephone": "+1-260-312-0506",
-      "contactType": "Customer Service",
-      "email": "support@parkproit.com"
+      telephone: "+1-260-312-0506",
+      contactType: "Customer Service",
+      email: "support@parkproit.com",
     },
-    "sameAs": [
+    sameAs: [
       "https://www.facebook.com/parkproit",
-      "https://www.instagram.com/parkproit"
-    ]
+      "https://www.instagram.com/parkproit",
+    ],
   };
 
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "ParkPro",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web-based",
-    "offers": {
+    name: "ParkPro",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web-based",
+    offers: {
       "@type": "Offer",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/PreOrder",
-      "description": "Subscription pricing available for solo agents and agencies"
+      priceCurrency: "USD",
+      availability: "https://schema.org/PreOrder",
+      description:
+        "Subscription pricing available for solo agents and agencies",
     },
-    "description": "ParkPro is travel agent itinerary and workflow software built for Disney-focused travel agents. It helps agents turn client intake forms into clean, day-by-day itineraries faster, while keeping all trips organized in one workspace."
+    description:
+      "ParkPro is a destination-smart planning engine for travel agents who build park and resort itineraries. It reduces manual planning time, brings structure to every trip, and lets agents scale bookings without scaling burnout.",
   };
 
   return (
@@ -582,9 +612,15 @@ const Home = () => {
         </script>
       </Helmet>
 
-      <main role="main" aria-label="ParkPro homepage content">
+      <main
+        role="main"
+        aria-label="ParkPro homepage content for travel agents who plan park and resort vacations"
+      >
         {/* Hero Section */}
-        <HeroSection role="banner" aria-label="ParkPro - Destination-Smart Disney Planning for Travel Agents">
+        <HeroSection
+          role="banner"
+          aria-label="ParkPro - Destination-smart park and resort planning for overworked but all-in travel agents"
+        >
           <Container>
             <HeroContent>
               <Badge
@@ -592,12 +628,12 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 role="status"
-                aria-label="Built with Disney-focused travel agents"
+                aria-label="Built with park and resort-focused travel agents"
               >
                 <Star size={16} aria-hidden="true" />
                 {copy.hero.badge}
               </Badge>
-              
+
               <Title
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -605,15 +641,18 @@ const Home = () => {
               >
                 {copy.hero.h1}
               </Title>
-              
+
               <Subtitle
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               >
-                {copy.hero.sub}
+                You don’t have a time problem — you have a system problem.
+                ParkPro was built for the advisor who gives everything to their
+                clients, but is tired of rebuilding every park and resort
+                itinerary from scratch and feeling behind.
               </Subtitle>
-              
+
               <CTAButtons
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -621,18 +660,18 @@ const Home = () => {
                 role="group"
                 aria-label="Call to action buttons"
               >
-                <Button 
-                  to="/request-access" 
-                  variant="primary" 
+                <Button
+                  to="/request-access"
+                  variant="primary"
                   size="lg"
                   aria-label="Join early access program for travel agents"
                 >
                   {copy.ctas.start}
                   <ArrowRight size={20} />
                 </Button>
-                <Button 
-                  to="/demo" 
-                  variant="secondary" 
+                <Button
+                  to="/demo"
+                  variant="secondary"
                   size="lg"
                   aria-label="See how ParkPro works - Watch demo"
                 >
@@ -640,7 +679,7 @@ const Home = () => {
                   {copy.ctas.demo}
                 </Button>
               </CTAButtons>
-              
+
               <SocialProof
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -657,7 +696,9 @@ const Home = () => {
                     role="article"
                     aria-label={`${stat.number} ${stat.label}`}
                   >
-                    <StatNumber aria-label={stat.number}>{stat.number}</StatNumber>
+                    <StatNumber aria-label={stat.number}>
+                      {stat.number}
+                    </StatNumber>
                     <StatLabel>{stat.label}</StatLabel>
                   </StatItem>
                 ))}
@@ -679,7 +720,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                Why Travel Agents Choose ParkPro
+                Why Travel Advisors Choose ParkPro
               </SectionTitle>
               <SectionSubtitle
                 initial={{ opacity: 0, y: 30 }}
@@ -687,7 +728,10 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Built with Disney-focused travel agents to save hours on planning, increase capacity without burnout, and deliver cleaner client experiences that feel truly concierge-level.
+                If you’ve ever thought “I love my clients, but this shouldn’t
+                take this long,” ParkPro is your missing system. It was built
+                for agents handling complex park and resort trips who want their
+                commissions, workflow, and time to finally make sense together.
               </SectionSubtitle>
             </SectionHeader>
 
@@ -699,16 +743,12 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  style={{ height: '100%', display: 'flex' }}
+                  style={{ height: "100%", display: "flex" }}
                 >
                   <FeatureCard variant="elevated" hover>
                     <FeatureCardContent>
-                      <FeatureIconWrapper>
-                        {feature.icon}
-                      </FeatureIconWrapper>
-                      <FeatureTitle>
-                        {feature.title}
-                      </FeatureTitle>
+                      <FeatureIconWrapper>{feature.icon}</FeatureIconWrapper>
+                      <FeatureTitle>{feature.title}</FeatureTitle>
                       <FeatureDescription>
                         {feature.description}
                       </FeatureDescription>
@@ -724,7 +764,10 @@ const Home = () => {
         <Testimonials />
 
         {/* Concierge Section */}
-        <FeaturesSection $alternate={true} style={{ paddingTop: theme.spacing['2xl'] }}>
+        <FeaturesSection
+          $alternate={true}
+          style={{ paddingTop: theme.spacing["2xl"] }}
+        >
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -733,13 +776,17 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <ConciergCard variant="elevated">
-                <Star size={32} style={{ color: theme.colors.gold, marginBottom: theme.spacing.md }} />
+                <Star
+                  size={32}
+                  style={{
+                    color: theme.colors.gold,
+                    marginBottom: theme.spacing.md,
+                  }}
+                />
                 <ConciergeTitle>
-                  Concierge-Level Itineraries
+                  Concierge-Level Park & Resort Itineraries
                 </ConciergeTitle>
-                <ConciergeText>
-                  {copy.trust.concierge}
-                </ConciergeText>
+                <ConciergeText>{copy.trust.concierge}</ConciergeText>
               </ConciergCard>
             </motion.div>
           </Container>
@@ -754,18 +801,21 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                Ready to Plan Disney Trips in a Fraction of the Time?
+                Ready for your planning to finally feel in control?
               </CTATitle>
-              
+
               <CTASubtitle
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                We're opening ParkPro to a limited group of destination-focused travel agents and agencies. Join early access to test faster planning, premium deliverables, and a workflow built for your future AgencyOS.
+                If you’re the advisor who cares deeply but feels buried in park
+                and resort planning, ParkPro was built for you. Join early
+                access to test a destination-smart planning engine that turns
+                long, manual days into calm, repeatable workflows.
               </CTASubtitle>
-              
+
               <CTAButtonsWrapper
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
