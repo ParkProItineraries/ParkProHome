@@ -16,6 +16,7 @@ import {
   Crown,
   Timer,
   LayoutGrid,
+  HelpCircle,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/seo/SEO";
@@ -29,11 +30,11 @@ const PageWrapper = styled.div`
   min-height: 100vh;
   background: ${({ theme }) => theme.colors.white};
   padding-top: 88px;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: 72px;
   }
-  
+
   @media (max-width: 475px) {
     padding-top: 68px;
   }
@@ -149,7 +150,7 @@ const SectionTitle = styled.h2`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.xl};
     padding: 0 ${({ theme }) => theme.spacing.sm};
@@ -163,13 +164,13 @@ const SectionSubtitle = styled.p`
   max-width: 700px;
   margin: 0 auto ${({ theme }) => theme.spacing.xl} auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
     margin-bottom: ${({ theme }) => theme.spacing.lg};
     padding: 0 ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.xs};
   }
@@ -178,19 +179,20 @@ const SectionSubtitle = styled.p`
 // Comparison Matrix Components
 const ComparisonMatrixWrapper = styled.div`
   max-width: 1100px;
-  margin: 0 auto;
+  margin: ${({ theme }) => theme.spacing.xl} auto;
   border-radius: ${({ theme }) => theme.radius.xl};
   box-shadow: ${({ theme }) => theme.shadows.lg};
   background: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
   overflow: hidden;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     border-radius: ${({ theme }) => theme.radius.md};
+    margin: ${({ theme }) => theme.spacing.lg} auto;
   }
-  
+
   @media (max-width: 475px) {
-    margin: 0 -${({ theme }) => theme.spacing.sm};
+    margin: ${({ theme }) => theme.spacing.md} -${({ theme }) => theme.spacing.sm};
     border-radius: 0;
     border-left: none;
     border-right: none;
@@ -204,9 +206,10 @@ const MatrixGrid = styled.div`
 
 const MatrixHeaderRow = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
-  gap: ${({ theme }) => theme.spacing.sm};
+  grid-template-columns: 1.5fr 1.2fr 1.2fr 1.2fr;
+  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.xl};
+  column-gap: ${({ theme }) => theme.spacing.lg};
+  row-gap: ${({ theme }) => theme.spacing.xs};
   background: linear-gradient(
     135deg,
     ${({ theme }) => theme.colors.black} 0%,
@@ -228,6 +231,7 @@ const MatrixHeaderCell = styled.div`
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  padding: ${({ theme }) => theme.spacing.xs} 0;
 `;
 
 const ParkProHeaderCell = styled(MatrixHeaderCell)`
@@ -250,18 +254,22 @@ const ParkProHeaderCell = styled(MatrixHeaderCell)`
 
 const MatrixRow = styled(motion.div)`
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing.sm};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  grid-template-columns: 1.5fr 1.2fr 1.2fr 1.2fr;
+  column-gap: ${({ theme }) => theme.spacing.lg};
+  row-gap: ${({ theme }) => theme.spacing.xs};
+  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
   border-bottom: 1px solid ${({ theme }) => theme.colors["gray-100"]};
   background: ${({ $isEven, theme }) =>
     $isEven ? theme.colors.white : theme.colors["gray-50"]};
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
+  position: relative;
 
   &:hover {
-    background: ${({ theme }) => theme.colors["gray-50"]};
-    transform: translateX(2px);
+    background: ${({ $isEven, theme }) =>
+      $isEven ? theme.colors["gray-50"] : theme.colors["gray-100"]};
+    transform: translateX(4px);
+    box-shadow: ${({ theme }) => theme.shadows.sm};
   }
 
   &:last-child {
@@ -273,7 +281,7 @@ const MatrixRow = styled(motion.div)`
     padding: ${({ theme }) => theme.spacing.lg};
     border-bottom: 2px solid ${({ theme }) => theme.colors["gray-200"]};
   }
-  
+
   @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.md};
   }
@@ -283,8 +291,12 @@ const MatrixFeatureCell = styled.div`
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
-  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   text-align: left;
+  padding: ${({ theme }) => theme.spacing.xs} 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
@@ -293,43 +305,53 @@ const MatrixFeatureCell = styled.div`
     padding-bottom: ${({ theme }) => theme.spacing.sm};
     border-bottom: 2px solid ${({ theme }) => theme.colors.gold};
     color: ${({ theme }) => theme.colors.black};
+    min-height: auto;
   }
 `;
 
 const MatrixCell = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  width: 100%;
   gap: 4px;
+  text-align: left;
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   color: ${({ theme }) => theme.colors["gray-600"]};
   line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   min-height: 44px;
-  padding: ${({ theme }) => theme.spacing.xs} 0;
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
 
   span {
-    max-width: 100%;
-    word-wrap: break-word;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    text-align: left;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
     padding: ${({ theme }) => theme.spacing.sm} 0;
     margin-bottom: ${({ theme }) => theme.spacing.xs};
     min-height: auto;
     font-size: ${({ theme }) => theme.typography.sizes.sm};
     gap: ${({ theme }) => theme.spacing.sm};
-    
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+
+    span {
+      white-space: normal;
+      flex: 1;
+      text-align: left;
+    }
+
     &::before {
       content: attr(data-label);
       font-weight: ${({ theme }) => theme.typography.weights.semibold};
       color: ${({ theme }) => theme.colors["gray-700"]};
       min-width: 140px;
       flex-shrink: 0;
+      margin-right: ${({ theme }) => theme.spacing.sm};
     }
   }
 `;
@@ -342,18 +364,23 @@ const ParkProMatrixCell = styled(MatrixCell)`
   );
   border-left: 3px solid ${({ theme }) => theme.colors.gold};
   border-radius: 0;
-  padding: ${({ theme }) => theme.spacing.xs};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md}
+    ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xs};
   margin: 0;
   color: ${({ theme }) => theme.colors.black};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  transition: all 0.2s ease;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     border-left: 4px solid ${({ theme }) => theme.colors.gold};
     border-top: none;
     margin: ${({ theme }) => theme.spacing.sm} 0;
-    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+    padding: ${({ theme }) => theme.spacing.sm}
+      ${({ theme }) => theme.spacing.md};
     border-radius: ${({ theme }) => theme.radius.sm};
-    
+    justify-content: flex-start;
+    text-align: left;
+
     &::before {
       content: "ParkPro: ";
       color: ${({ theme }) => theme.colors.gold};
@@ -362,16 +389,16 @@ const ParkProMatrixCell = styled(MatrixCell)`
 `;
 
 const MatrixLegend = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   color: ${({ theme }) => theme.colors["gray-600"]};
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
+  gap: ${({ theme }) => theme.spacing.md};
   flex-wrap: wrap;
-  padding: ${({ theme }) => theme.spacing.sm} 0;
+  padding: ${({ theme }) => theme.spacing.md} 0;
 `;
 
 const MatrixBadge = styled.div`
@@ -396,16 +423,36 @@ const MatrixBadge = styled.div`
 const MatrixIcon = styled(CheckCircle)`
   color: ${({ theme }) => theme.colors.gold};
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MatrixPartialSymbol = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.colors["gray-500"]};
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; // NEW: match MatrixIcon width
+  text-align: center;
 `;
 
 const MatrixNoneSymbol = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.colors["gray-400"]};
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; // NEW: match MatrixIcon width
+  text-align: center;
 `;
 
 const StatsGrid = styled.div`
@@ -502,13 +549,17 @@ const StatLabel = styled.div`
 `;
 
 const ROICard = styled(motion.div)`
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.xl};
+  padding: ${({ theme }) => theme.spacing["2xl"]};
   border-radius: ${({ theme }) => theme.radius.lg};
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.lg};
   border: 1px solid ${({ theme }) => theme.colors["border-light"]};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
 `;
 
 const ROICardHeader = styled.div`
@@ -530,8 +581,51 @@ const ROICardSubtitle = styled.p`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 `;
 
+const ROILayout = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: ${({ theme }) => theme.spacing["2xl"]};
+  align-items: flex-start;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
+  }
+`;
+
+const ROIInputsColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const ROIResultsColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const InputHint = styled.p`
+  margin-top: ${({ theme }) => theme.spacing.xs};
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: ${({ theme }) => theme.colors["gray-500"]};
+  text-align: center;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const ResultsHeader = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  color: ${({ theme }) => theme.colors["gray-500"]};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+`;
+
 const InputGroup = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 const InputLabel = styled.label`
@@ -543,10 +637,11 @@ const InputLabel = styled.label`
 
 const InputField = styled.input`
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.md};
-  border: 2px solid ${({ theme }) => theme.colors["gray-300"]};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
+  border-radius: ${({ theme }) => theme.radius.md};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  max-height: 48px;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -598,12 +693,66 @@ const ResultLabel = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xs};
+  justify-content: flex-start;
 `;
 
 const ResultValue = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.gold};
+`;
+
+const ResultInfoIcon = styled(HelpCircle)`
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+`;
+
+const InfoWrapper = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+
+  &:hover .roi-tooltip {
+    opacity: 1;
+    transform: translateY(-50%) translateY(0);
+    pointer-events: auto;
+  }
+`;
+
+const InfoTooltip = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 115%;
+  transform: translateY(-50%) translateY(4px);
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.95) transparent transparent;
+  }
 `;
 
 const PainPointsGrid = styled.div`
@@ -762,98 +911,111 @@ const Comparison = () => {
   const [hours, setHours] = useState(12);
   const [rate, setRate] = useState(40);
 
-  // Calculator logic
-  const manualHours = clients * hours;
-  const parkproHours = clients * 0.5; // 30 minutes = 0.5 hours
-  const savedHours = manualHours - parkproHours;
+  // ---- Calculator assumptions (easy to tweak) ----
+  const PARKPRO_HOURS_PER_TRIP = 0.5; // hours per itinerary using ParkPro (30 minutes)
+  const REVENUE_PER_TRIP = 150; // example average commission per trip
+  const REINVESTMENT_FACTOR = 0.5; // % of saved time you actually put into extra trips
+
+  // ---- Calculator logic ----
+  const manualHoursPerMonth = clients * hours;
+  const parkproHoursPerMonth = clients * PARKPRO_HOURS_PER_TRIP;
+
+  const savedHours = Math.max(manualHoursPerMonth - parkproHoursPerMonth, 0);
   const savedMoney = savedHours * rate;
-  const extraClients = Math.floor(savedHours / 0.5);
-  const extraRevenue = extraClients * 150; // Assume $150 commission per booking
+
+  const capacityHoursForNewClients = savedHours * REINVESTMENT_FACTOR;
+
+  const extraClients = Math.max(
+    Math.floor(capacityHoursForNewClients / PARKPRO_HOURS_PER_TRIP),
+    0
+  );
+
+  const extraRevenue = extraClients * REVENUE_PER_TRIP;
 
   const matrixRows = [
     {
-      feature: "Built specifically for Disney",
+      feature: "Disney-first, theme-park specific",
       parkpro: {
-        label: "Designed for Disney parks",
+        label: "Disney-first, park-smart",
         level: "full",
       },
       generic: {
-        label: "General travel templates",
+        label: "Generic, non-park tools",
         level: "partial",
       },
       docs: {
-        label: "No built-in logic",
+        label: "No logic, just docs",
         level: "none",
       },
     },
     {
       feature: "Intelligent park-day logic",
       parkpro: {
-        label: "Optimized park flow, hopping, pacing",
+        label: "Built-in flow & pacing",
         level: "full",
       },
       generic: {
-        label: "Not theme-park aware",
+        label: "Not park-day aware",
         level: "none",
       },
       docs: {
-        label: "Fully manual",
+        label: "Fully manual setup",
         level: "none",
       },
     },
     {
       feature: "Time from intake → working plan",
       parkpro: {
-        label: "Minutes",
+        label: "Minutes, not days",
         level: "full",
       },
       generic: {
-        label: "Hours",
+        label: "Hours of tweaking",
         level: "partial",
       },
       docs: {
-        label: "Many hours",
+        label: "Many hours, always",
         level: "none",
       },
     },
     {
       feature: "Intake → itinerary linking",
       parkpro: {
-        label: "Automatically mapped",
+        label: "Answers auto-mapped",
         level: "full",
       },
       generic: {
-        label: "Basic forms",
+        label: "Basic forms, manual",
         level: "partial",
       },
       docs: {
-        label: "Manual entry",
+        label: "Re-typing everything",
         level: "none",
       },
     },
     {
       feature: "Client-facing deliverables",
       parkpro: {
-        label: "Branded PDFs / slides / mobile view",
+        label: "Branded PDFs & slides",
         level: "full",
       },
       generic: {
-        label: "Basic PDFs",
+        label: "Bare-bones exports",
         level: "partial",
       },
       docs: {
-        label: "Inconsistent & unbranded",
+        label: "Inconsistent & off-brand",
         level: "none",
       },
     },
     {
       feature: "Support for newer agents",
       parkpro: {
-        label: "Guided workflows",
+        label: "Guided flows & rails",
         level: "full",
       },
       generic: {
-        label: "General templates",
+        label: "Template-only support",
         level: "partial",
       },
       docs: {
@@ -864,30 +1026,30 @@ const Comparison = () => {
     {
       feature: "Scalability for agencies",
       parkpro: {
-        label: "Tiered seats & volume support",
+        label: "Seat tiers, more volume",
         level: "full",
       },
       generic: {
-        label: "Limited scaling",
+        label: "Limited team visibility",
         level: "partial",
       },
       docs: {
-        label: "Hard cap on agent hours",
+        label: "Hard cap on hours",
         level: "none",
       },
     },
     {
       feature: "Future vision (Agency OS)",
       parkpro: {
-        label: "Planned Agency OS roadmap",
+        label: "Clear Agency OS path",
         level: "full",
       },
       generic: {
-        label: "Not CRM-focused",
+        label: "Not workflow-focused",
         level: "none",
       },
       docs: {
-        label: "Not possible",
+        label: "Static docs only",
         level: "none",
       },
     },
@@ -897,17 +1059,17 @@ const Comparison = () => {
     {
       icon: <Users size={24} />,
       title: "Solo Disney Travel Agents",
-      body: "You want to spend less time building itineraries and more time booking and serving clients.",
+      body: "You're the one doing it all yourself—and you want Disney and park itineraries done in minutes instead of late-night marathons, without losing the magic or the details.",
     },
     {
       icon: <Building2 size={24} />,
-      title: "Disney-Focused Agencies",
-      body: "You need a consistent way every agent plans Disney trips, without everyone reinventing the wheel.",
+      title: "Disney-First Agencies",
+      body: "You want every agent planning Disney and other parks the same way—one consistent, scalable system instead of everyone rebuilding their own templates from scratch.",
     },
     {
       icon: <Crown size={24} />,
       title: "Growing & Enterprise Agencies",
-      body: "You're thinking ahead to volume, workflows, and a platform that can grow into an Agency OS.",
+      body: "You're thinking beyond one-off trips—toward workflows, reporting, and a true Agency OS that can handle more agents, more destinations, and more volume without chaos.",
     },
   ];
 
@@ -916,37 +1078,37 @@ const Comparison = () => {
       icon: <Clock size={20} />,
       title: "You spend all day building one itinerary",
       solution:
-        "ParkPro gives you a working Disney trip plan in minutes so you can refine, not start from a blank page.",
+        "ParkPro gives you a working Disney or park trip plan in minutes so you can spend your time refining the magic instead of starting from a blank page.",
     },
     {
       icon: <AlertTriangle size={20} />,
       title: "Late nights and burnout from manual work",
       solution:
-        "Automated planning helps you reclaim evenings and weekends while maintaining quality.",
+        "Automated, park-smart planning helps you reclaim evenings and weekends while keeping the level of detail your clients expect.",
     },
     {
       icon: <Users size={20} />,
       title: "Training new agents takes months",
       solution:
-        "Guided workflows and templates help newer agents produce solid itineraries in days, not months.",
+        "Guided workflows and built-in guardrails help newer agents produce solid Disney itineraries in days—not months—without you hovering over every detail.",
     },
     {
       icon: <RefreshCw size={20} />,
       title: "Client changes mean starting over",
       solution:
-        "Quick adjustments and regenerations when plans change, without rebuilding from scratch.",
+        "Update park days and details directly inside ParkPro so changes feel like small edits—not total rebuilds.",
     },
     {
       icon: <DollarSign size={20} />,
       title: "Too many tools scattered everywhere",
       solution:
-        "A single workspace for intake forms, trip details, and itineraries instead of spreadsheets and email threads.",
+        "A single workspace for intake forms, trip details, and itineraries—so you're not chasing information across spreadsheets, docs, and inboxes.",
     },
     {
       icon: <CheckCircle size={20} />,
       title: "Inconsistent client experience",
       solution:
-        "Every client gets a consistent, branded deliverable that reflects your agency's quality.",
+        "Every client gets a consistent, branded deliverable that looks like your agency on its best day, not whatever template each agent hacked together.",
     },
   ];
 
@@ -988,9 +1150,10 @@ const Comparison = () => {
       {/* Who ParkPro is For Section */}
       <AudienceSection>
         <Container>
-          <SectionTitle>Who ParkPro is For</SectionTitle>
+          <SectionTitle>Who ParkPro Is Really Built For</SectionTitle>
           <SectionSubtitle>
-            Built for destination-focused travel agents and agencies at every stage
+            Built for Disney-first and theme-park-focused travel agents and
+            agencies who want to scale without burning out on manual planning.
           </SectionSubtitle>
           <AudienceGrid>
             {audienceData.map((audience, index) => (
@@ -998,7 +1161,7 @@ const Comparison = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <AudienceIcon>{audience.icon}</AudienceIcon>
@@ -1014,11 +1177,12 @@ const Comparison = () => {
       <StatsSection>
         <Container>
           <SectionTitle>
-            Why ParkPro feels different for Disney travel agents
+            What Changes When You Stop Building Disney Trips by Hand
           </SectionTitle>
           <SectionSubtitle>
-            These are the shifts agents experience when they move from manual
-            planning to a dedicated itinerary workspace.
+            These are the shifts Disney and park-focused agents experience when
+            they move from scattered, manual planning to a dedicated,
+            purpose-built itinerary workspace.
           </SectionSubtitle>
           <StatsGrid>
             <StatCard
@@ -1031,7 +1195,10 @@ const Comparison = () => {
                 <Clock size={28} />
               </StatIcon>
               <StatNumber>Save 5–10+ hours</StatNumber>
-              <StatLabel>Planning time saved per trip </StatLabel>
+              <StatLabel>
+                Planning time saved per trip when you stop rebuilding everything
+                in docs.
+              </StatLabel>
             </StatCard>
 
             <StatCard
@@ -1044,7 +1211,10 @@ const Comparison = () => {
                 <TrendingUp size={28} />
               </StatIcon>
               <StatNumber>Handle more trips</StatNumber>
-              <StatLabel>Same working hours, more clients served</StatLabel>
+              <StatLabel>
+                Same working hours, more clients served—and fewer late-night
+                marathons.
+              </StatLabel>
             </StatCard>
 
             <StatCard
@@ -1057,7 +1227,10 @@ const Comparison = () => {
                 <Zap size={28} />
               </StatIcon>
               <StatNumber>Speed up planning</StatNumber>
-              <StatLabel>Go from intake to working itinerary faster</StatLabel>
+              <StatLabel>
+                Go from intake form to a working ParkPro itinerary in minutes,
+                not days.
+              </StatLabel>
             </StatCard>
 
             <StatCard
@@ -1070,7 +1243,10 @@ const Comparison = () => {
                 <LayoutGrid size={28} />
               </StatIcon>
               <StatNumber>One unified workspace</StatNumber>
-              <StatLabel>Manage all your Disney trips in one place</StatLabel>
+              <StatLabel>
+                Manage all your Disney and park trips in one place instead of
+                juggling docs, spreadsheets, and email threads.
+              </StatLabel>
             </StatCard>
           </StatsGrid>
         </Container>
@@ -1079,22 +1255,27 @@ const Comparison = () => {
       {/* Comparison Matrix Section */}
       <ComparisonSection>
         <Container>
-          <SectionTitle>How ParkPro Compares to Other Tools</SectionTitle>
+          <SectionTitle>
+            How Do Your Current Tools Really Stack Up?
+          </SectionTitle>
           <SectionSubtitle>
-            A clear look at how ParkPro stacks up against generic trip builders
-            and manual methods.
+            Right now you're probably bouncing between a generic itinerary
+            builder, spreadsheets, and docs. When a new Disney or park trip
+            comes in, which column does your process actually live in—and what
+            is that really costing you in time, rework, and capacity to take on
+            more clients?
           </SectionSubtitle>
 
           <MatrixLegend>
             <MatrixBadge>
               <MatrixIcon size={12} />
-              <span>Strong fit</span>
+              <span>Strong fit for that job</span>
             </MatrixBadge>
             <MatrixBadge>
-              <span>~ Partial / workaround</span>
+              <span>~ Workable, but still a workaround</span>
             </MatrixBadge>
             <MatrixBadge>
-              <span>— Not designed for this</span>
+              <span>— Not built for this job</span>
             </MatrixBadge>
           </MatrixLegend>
 
@@ -1171,88 +1352,145 @@ const Comparison = () => {
               </ROICardSubtitle>
             </ROICardHeader>
 
-            <InputGroup>
-              <InputLabel>
-                How many Disney clients do you serve per month?
-              </InputLabel>
-              <InputField
-                type="number"
-                value={clients}
-                onChange={(e) => setClients(Number(e.target.value))}
-                min="1"
-                max="100"
-              />
-            </InputGroup>
+            <ROILayout>
+              <ROIInputsColumn>
+                <InputGroup>
+                  <InputLabel>
+                    How many Disney clients do you serve per month?
+                  </InputLabel>
+                  <InputField
+                    type="number"
+                    value={clients}
+                    onChange={(e) => setClients(Number(e.target.value))}
+                    min="1"
+                    max="100"
+                  />
+                  <InputHint>
+                    Include Disney World, Disneyland, and other park trips you
+                    actively plan each month.
+                  </InputHint>
+                </InputGroup>
 
-            <InputGroup>
-              <InputLabel>
-                How many hours do you spend per itinerary (manual planning)?
-              </InputLabel>
-              <InputField
-                type="number"
-                value={hours}
-                onChange={(e) => setHours(Number(e.target.value))}
-                min="1"
-                max="40"
-              />
-            </InputGroup>
+                <InputGroup>
+                  <InputLabel>
+                    How many hours do you spend per itinerary (manual planning)?
+                  </InputLabel>
+                  <InputField
+                    type="number"
+                    value={hours}
+                    onChange={(e) => setHours(Number(e.target.value))}
+                    min="1"
+                    max="40"
+                  />
+                  <InputHint>
+                    Most agents see 4–12 hours here once you add intake,
+                    planning, changes, and deliverables.
+                  </InputHint>
+                </InputGroup>
 
-            <InputGroup>
-              <InputLabel>
-                What's your hourly rate? (Your time's worth)
-              </InputLabel>
-              <InputField
-                type="number"
-                value={rate}
-                onChange={(e) => setRate(Number(e.target.value))}
-                min="1"
-                max="500"
-              />
-            </InputGroup>
+                <InputGroup>
+                  <InputLabel>
+                    What's your hourly rate? (Your time's worth)
+                  </InputLabel>
+                  <InputField
+                    type="number"
+                    value={rate}
+                    onChange={(e) => setRate(Number(e.target.value))}
+                    min="1"
+                    max="500"
+                  />
+                  <InputHint>
+                    Use the rate you'd pay yourself for focused planning
+                    time—not your commission split.
+                  </InputHint>
+                </InputGroup>
+              </ROIInputsColumn>
 
-            <ResultsBox>
-              <ResultItem>
-                <ResultIcon>
-                  <Clock size={24} />
-                </ResultIcon>
-                <ResultText>
-                  <ResultLabel>Time Saved Per Month</ResultLabel>
-                  <ResultValue>{savedHours.toFixed(0)} hours</ResultValue>
-                </ResultText>
-              </ResultItem>
+              <ROIResultsColumn>
+                <ResultsHeader>
+                  Based on your inputs, here's what you could reclaim each month
+                  with ParkPro:
+                </ResultsHeader>
 
-              <ResultItem>
-                <ResultIcon>
-                  <DollarSign size={24} />
-                </ResultIcon>
-                <ResultText>
-                  <ResultLabel>Value of Time Saved</ResultLabel>
-                  <ResultValue>${savedMoney.toLocaleString()}</ResultValue>
-                </ResultText>
-              </ResultItem>
+                <ResultsBox>
+                  <ResultItem>
+                    <ResultIcon>
+                      <Clock size={24} />
+                    </ResultIcon>
+                    <ResultText>
+                      <ResultLabel>
+                        Time Saved Per Month
+                        <InfoWrapper>
+                          <ResultInfoIcon />
+                          <InfoTooltip className="roi-tooltip">
+                            (Clients × manual hours per itinerary) − (Clients ×
+                            ParkPro hours per itinerary)
+                          </InfoTooltip>
+                        </InfoWrapper>
+                      </ResultLabel>
+                      <ResultValue>{savedHours.toFixed(0)} hours</ResultValue>
+                    </ResultText>
+                  </ResultItem>
 
-              <ResultItem>
-                <ResultIcon>
-                  <Users size={24} />
-                </ResultIcon>
-                <ResultText>
-                  <ResultLabel>Additional Clients You Could Serve</ResultLabel>
-                  <ResultValue>{extraClients} more clients</ResultValue>
-                </ResultText>
-              </ResultItem>
+                  <ResultItem>
+                    <ResultIcon>
+                      <DollarSign size={24} />
+                    </ResultIcon>
+                    <ResultText>
+                      <ResultLabel>
+                        Value of Time Saved
+                        <InfoWrapper>
+                          <ResultInfoIcon />
+                          <InfoTooltip className="roi-tooltip">
+                            Time Saved × Your Hourly Rate
+                          </InfoTooltip>
+                        </InfoWrapper>
+                      </ResultLabel>
+                      <ResultValue>${savedMoney.toLocaleString()}</ResultValue>
+                    </ResultText>
+                  </ResultItem>
 
-              <ResultItem>
-                <ResultIcon>
-                  <TrendingUp size={24} />
-                </ResultIcon>
-                <ResultText>
-                  <ResultLabel>Potential Extra Revenue</ResultLabel>
-                  <ResultValue>
-                    ${extraRevenue.toLocaleString()}/month
-                  </ResultValue>
-                </ResultText>
-              </ResultItem>
-            </ResultsBox>
+                  <ResultItem>
+                    <ResultIcon>
+                      <Users size={24} />
+                    </ResultIcon>
+                    <ResultText>
+                      <ResultLabel>
+                        More Clients You Could Serve
+                        <InfoWrapper>
+                          <ResultInfoIcon />
+                          <InfoTooltip className="roi-tooltip">
+                            (Time Saved × 50% reinvested) ÷ ParkPro hours per
+                            itinerary
+                          </InfoTooltip>
+                        </InfoWrapper>
+                      </ResultLabel>
+                      <ResultValue>{extraClients} more clients</ResultValue>
+                    </ResultText>
+                  </ResultItem>
+
+                  <ResultItem>
+                    <ResultIcon>
+                      <TrendingUp size={24} />
+                    </ResultIcon>
+                    <ResultText>
+                      <ResultLabel>
+                        Potential Extra Revenue
+                        <InfoWrapper>
+                          <ResultInfoIcon />
+                          <InfoTooltip className="roi-tooltip">
+                            Extra Clients × $150 estimated commission (example)
+                          </InfoTooltip>
+                        </InfoWrapper>
+                      </ResultLabel>
+                      <ResultValue>
+                        ${extraRevenue.toLocaleString()}/month
+                      </ResultValue>
+                    </ResultText>
+                  </ResultItem>
+                </ResultsBox>
+              </ROIResultsColumn>
+            </ROILayout>
           </ROICard>
         </Container>
       </ROISection>
@@ -1260,9 +1498,12 @@ const Comparison = () => {
       {/* Pain Points Section */}
       <PainSection>
         <Container>
-          <SectionTitle>The Real Pain Points of Manual Planning</SectionTitle>
+          <SectionTitle>
+            The Hidden Costs of Manual Planning (That Add Up Fast)
+          </SectionTitle>
           <SectionSubtitle>
-            And how ParkPro helps address each one
+            And how ParkPro helps you reclaim your time, energy, and
+            capacity—without lowering your standards.
           </SectionSubtitle>
 
           <PainPointsGrid>
@@ -1286,9 +1527,15 @@ const Comparison = () => {
       {/* CTA Section */}
       <CTASection>
         <Container>
-          <CTATitle>Ready to plan Disney trips the way you just saw?</CTATitle>
+          <CTATitle>
+            Ready to Stop Rebuilding Every Disney Itinerary From Scratch?
+          </CTATitle>
           <CTAText>
-            ParkPro is rolling out with a small group of destination-focused travel agents and agencies. Join early access to save hours on each itinerary and replace the manual workflows you saw in the comparison above.
+            ParkPro is rolling out with a small group of Disney-first and
+            destination-focused travel agents and agencies. Join early access if
+            you want to save hours on every trip, standardize how your team
+            plans, and retire the manual copy-and-paste workflows you saw in the
+            comparison above.
           </CTAText>
           <Button
             to="/request-access"
