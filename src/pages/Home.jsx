@@ -720,7 +720,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                Why Travel Advisors Choose ParkPro
+                Why Travel Agents Choose ParkPro
               </SectionTitle>
               <SectionSubtitle
                 initial={{ opacity: 0, y: 30 }}

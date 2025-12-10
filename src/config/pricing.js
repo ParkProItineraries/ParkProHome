@@ -4,7 +4,8 @@
 // IMPORTANT: 
 // - All prices shown are BEFORE applicable sales tax or VAT
 // - Taxes are calculated automatically at checkout based on customer's billing address
-// - Annual pricing = ~10-11× monthly (equivalent to "2 months free")
+// - Annual plan prices for tiers are ~10-11× the monthly price (equivalent to "2 months free")
+// - Add-on yearly prices are 10× the monthly add-on price and represent the total cost per year
 // - Add-ons must always cost slightly more per itinerary than upgrading a tier
 //
 // TIER LADDER: Solo → Solo+ → Agency Lite → Agency → Agency+ → Enterprise
@@ -69,17 +70,17 @@ export const PRICING_PLANS = {
   agency_lite: {
     id: "basic_crm",
     name: "Agency Lite",
-    price: 227,
-    priceYearly: 2427,
-    priceDisplay: "$227/mo",
-    priceDisplayYearly: "$2,427/yr",
+    price: 167,
+    priceYearly: 1782,
+    priceDisplay: "$167/mo",
+    priceDisplayYearly: "$1,782/yr",
     stripeProductId: "prod_basic_crm",
     description: "Includes CRM tools for small teams without full Agency pricing.",
     itineraries: 10,
-    costPerItinerary: "~$22.70",
+    costPerItinerary: "~$16.70",
     users: 1,
     features: [
-      "10 itineraries/month (~$22.70 each)",
+      "10 itineraries/month (~$16.70 each)",
       "1 user seat",
       "CRM features for client management",
       "Save itinerary templates",
@@ -218,33 +219,34 @@ export const getPlansForDisplay = () => {
 
 // Add-ons pricing
 // NOTE: Add-ons must always cost slightly more per itinerary than upgrading a tier
+// Add-on yearly prices are 10× the monthly add-on price and represent the total cost per year
 export const ADD_ONS = {
   extraItineraries: {
     small: {
       name: "5 Extra Itineraries",
       quantity: 5,
       priceMonthly: 160,
-      priceYearly: 128,
+      priceYearly: 1600,
       priceDisplay: "$160/mo",
-      priceDisplayYearly: "$128/yr",
+      priceDisplayYearly: "$1,600/yr",
       costPerItinerary: "$32/itinerary monthly",
     },
     medium: {
       name: "10 Extra Itineraries",
       quantity: 10,
       priceMonthly: 300,
-      priceYearly: 240,
+      priceYearly: 3000,
       priceDisplay: "$300/mo",
-      priceDisplayYearly: "$240/yr",
+      priceDisplayYearly: "$3,000/yr",
       costPerItinerary: "$30/itinerary monthly",
     },
     large: {
       name: "20 Extra Itineraries",
       quantity: 20,
       priceMonthly: 560,
-      priceYearly: 448,
+      priceYearly: 5600,
       priceDisplay: "$560/mo",
-      priceDisplayYearly: "$448/yr",
+      priceDisplayYearly: "$5,600/yr",
       costPerItinerary: "$28/itinerary monthly",
     },
   },

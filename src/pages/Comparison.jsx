@@ -808,7 +808,7 @@ const PainPointTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.sizes.base};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: 4px;
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
   min-height: 3em;
@@ -819,7 +819,7 @@ const PainPointTitle = styled.h4`
 const PainPointSolution = styled.p`
   color: ${({ theme }) => theme.colors["gray-600"]};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
-  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  line-height: 1.45;
   margin: 0;
   flex: 1;
 `;
