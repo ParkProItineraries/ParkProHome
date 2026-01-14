@@ -97,3 +97,6 @@ temp/
 
 # AWS deployment files
 .aws/
+
+# Generated audit output files
+scripts/audit-output/
