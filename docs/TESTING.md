@@ -83,23 +83,23 @@ After each cleanup phase, re-run:
 3. Verify no routes disappeared
 4. Verify no pages broken
 
-## Automated Test Script (Optional)
+## Automated Baseline Verification Script
 
-Create `scripts/verify-baseline.sh`:
+A baseline verification script is available at `scripts/verify-baseline.sh`:
+
+**Usage**:
 ```bash
-#!/bin/bash
-set -e
-
-echo "🔍 Running baseline verification..."
-
-echo "📦 Installing dependencies..."
-npm install
-
-echo "🏗️  Building..."
-npm run build
-
-echo "✅ Baseline verification complete!"
+./scripts/verify-baseline.sh
 ```
+
+**What it does**:
+1. Installs dependencies (`npm install`)
+2. Runs production build (`npm run build`)
+3. Verifies build completes successfully
+
+**Purpose**: Quick smoke test to verify the repository is in a buildable state after changes.
+
+**Note**: This script does not run tests or linting. Use `npm test` and `npm run lint` separately for full verification.
 
 ## Known Issues
 
@@ -124,6 +124,11 @@ Require stack:
 1. Install missing dependency: `npm install --save-dev @testing-library/dom`
 2. Verify test files are properly configured in `vite.config.js` or `vitest.config.js`
 3. Re-run tests: `npm test -- --run`
+
+**Status**: ✅ **RESOLVED** (2025-01-27)
+- Missing dependency installed: `@testing-library/dom` added to devDependencies
+- Tests now pass: 6 tests passing in 2 test files
+- No additional test failures identified
 
 **Note**: This issue existed before cleanup work began. Cleanup actions did not modify test configuration or dependencies.
 
