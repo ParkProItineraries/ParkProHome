@@ -648,7 +648,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               >
                 You don’t have a time problem — you have a system problem.
-                ParkPro was built for the advisor who gives everything to their
+                ParkPro was built for the agent who gives everything to their
                 clients, but is tired of rebuilding every park and resort
                 itinerary from scratch and feeling behind.
               </Subtitle>
@@ -810,7 +810,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                If you’re the advisor who cares deeply but feels buried in park
+                If you’re the agent who cares deeply but feels buried in park
                 and resort planning, ParkPro was built for you. Join early
                 access to test a destination-smart planning engine that turns
                 long, manual days into calm, repeatable workflows.

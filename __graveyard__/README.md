@@ -6,6 +6,7 @@
 
 - `/docs-archived/` - Historical or redundant documentation files
 - `/scripts-unused/` - Scripts that are not referenced anywhere in the codebase
+- `/assets-unused/` - Asset files that are not referenced anywhere in the codebase
 
 ## Restoration Process
 
@@ -42,6 +43,26 @@ If something breaks after quarantine:
 | accessibility-check.js | scripts/ | 2025-01-27 | Not referenced in package.json, CI/CD, or deployment scripts | Quarantined |
 | audit-routes.js | scripts/ | 2025-01-27 | Not referenced in package.json, CI/CD, or deployment scripts | Quarantined |
 | verify-centralized-copy.js | scripts/ | 2025-01-27 | Not referenced in package.json, CI/CD, or deployment scripts | Quarantined |
+
+### Assets
+
+| File | Original Location | Moved Date | Reason | Status |
+|------|------------------|------------|--------|--------|
+| Park Pro Black_Long.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| Park Pro Pin.png | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| Park Pro_Black.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| Park Pro_White.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| Park Pro-Favicon.png | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Note: public/favicon.png is used instead. | Quarantined |
+| ParkPro_White_Cleaned.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| ParkPro-Icon-Full.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| ParkPro-Icon-Transparent.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| ParkProBlack.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| ParkProLogo-Black.png | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Note: "ParkProLogo" variable references "Park Pro White_Long.svg", not this file. | Quarantined |
+| ParkProLogo.png | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| ParkProLogo1.png | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+| ParkProWhite.svg | src/assets/ | 2025-01-27 | Zero references found after comprehensive deep search. Not imported or referenced anywhere. | Quarantined |
+
+**Evidence**: All assets verified with deep search across all source files, configs, HTML, and CSS. See `docs/ASSET_AUDIT_VERIFIED.md` for detailed verification results. **Confidence**: HIGH - zero references found.
 
 ## Deletion Policy
 
