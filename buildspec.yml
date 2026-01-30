@@ -1,0 +1,33 @@
+version: 0.2
+
+env:
+  variables:
+    NODE_ENV: qa
+
+phases:
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - npm ci
+  build:
+    commands:
+      - echo "Building marketing site..."
+      - npm run build
+      - echo "Build completed on `date`"
+  post_build:
+    commands:
+      - echo "Preparing deployment package..."
+      - |
+        mkdir -p deploy
+        cp -r dist/* deploy/
+        cd deploy
+        tar -czf ../parkpro-home-$CODEBUILD_BUILD_NUMBER.tar.gz .
+        cd ..
+      - echo "Uploading artifact to S3..."
+      - |
+        aws s3 cp parkpro-home-$CODEBUILD_BUILD_NUMBER.tar.gz \
+          s3://$ARTIFACT_BUCKET/frontend/home/$CODEBUILD_BUILD_NUMBER.tar.gz
+artifacts:
+  files:
+    - parkpro-home-$CODEBUILD_BUILD_NUMBER.tar.gz
+  name: parkpro-home-$CODEBUILD_BUILD_NUMBER
