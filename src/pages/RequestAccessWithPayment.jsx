@@ -342,9 +342,9 @@ const Alert = styled.div`
     }
     if ($variant === 'info') {
       return `
-        background: #3b82f610;
-        color: #3b82f6;
-        border: 1px solid #3b82f620;
+        background: #F5C24910;
+        color: #F5C249;
+        border: 1px solid #F5C24920;
       `;
     }
   }}

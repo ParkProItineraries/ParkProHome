@@ -11,6 +11,7 @@ import {
   Smartphone,
   ArrowRight,
   Play,
+  Monitor,
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/seo/SEO";
@@ -393,6 +394,53 @@ const FeatureDescription = styled.p`
   }
 `;
 
+// Product Preview Section
+const PreviewSection = styled.section`
+  padding: ${({ theme }) => theme.spacing["3xl"]} 0;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors["gray-900"]} 100%);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing["2xl"]} 0;
+  }
+`;
+
+const PreviewContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const PreviewPlaceholder = styled(motion.div)`
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: ${({ theme }) => theme.radius.lg};
+  border: 2px dashed rgba(245, 194, 73, 0.3);
+  background: rgba(245, 194, 73, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.xl};
+`;
+
+const PreviewIconWrapper = styled.div`
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors["gold-muted"]});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.black};
+`;
+
+const PreviewLabel = styled.p`
+  color: rgba(255, 255, 255, 0.6);
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  font-weight: ${({ theme }) => theme.typography.weights.medium};
+`;
+
 // CTA Section
 const CTASection = styled.section`
   padding: ${({ theme }) => theme.spacing["3xl"]} 0;
@@ -661,10 +709,10 @@ const Home = () => {
                 aria-label="Call to action buttons"
               >
                 <Button
-                  to="/request-access"
+                  to="/demo"
                   variant="primary"
                   size="lg"
-                  aria-label="Join early access program for travel agents"
+                  aria-label="Book a demo of ParkPro for travel agents"
                 >
                   {copy.ctas.start}
                   <ArrowRight size={20} />
@@ -760,7 +808,44 @@ const Home = () => {
           </Container>
         </FeaturesSection>
 
-        {/* Testimonials Section */}
+        {/* Product Preview Section */}
+        <PreviewSection>
+          <Container>
+            <PreviewContainer>
+              <SectionTitle
+                style={{ color: "white" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                See What You'll Be Working With
+              </SectionTitle>
+              <SectionSubtitle
+                style={{ color: "rgba(255,255,255,0.7)" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                A clean, intuitive dashboard designed around how travel agents actually work.
+              </SectionSubtitle>
+              <PreviewPlaceholder
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <PreviewIconWrapper>
+                  <Monitor size={28} />
+                </PreviewIconWrapper>
+                <PreviewLabel>Product screenshots coming soon</PreviewLabel>
+              </PreviewPlaceholder>
+            </PreviewContainer>
+          </Container>
+        </PreviewSection>
+
+        {/* Testimonials / Founding Partners Section */}
         <Testimonials />
 
         {/* Concierge Section */}
@@ -811,8 +896,8 @@ const Home = () => {
                 viewport={{ once: true }}
               >
                 If you’re the agent who cares deeply but feels buried in park
-                and resort planning, ParkPro was built for you. Join early
-                access to test a destination-smart planning engine that turns
+                and resort planning, ParkPro was built for you. Book a demo
+                to see a destination-smart planning engine that turns
                 long, manual days into calm, repeatable workflows.
               </CTASubtitle>
 
@@ -822,8 +907,8 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <Button to="/request-access" variant="primary" size="lg">
-                  Join Early Access →
+                <Button to="/demo" variant="primary" size="lg">
+                  Book a Demo →
                 </Button>
               </CTAButtonsWrapper>
             </CTAContent>

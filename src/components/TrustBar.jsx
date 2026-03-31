@@ -217,8 +217,7 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
         
         {showSocialProof && (
           <SocialProofText $variant={variant}>
-            Built specifically for <strong>destination-focused travel agents and agencies</strong>, 
-            and currently rolling out with a small group of early access partners.
+            Built specifically for <strong>destination-focused travel agents and agencies</strong>.
           </SocialProofText>
         )}
       </Container>

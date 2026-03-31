@@ -81,13 +81,13 @@ const Input = styled.input`
   transition: all 0.2s ease;
   &:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: #F5C249;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 `;
 
 const Button = styled.button`
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: linear-gradient(135deg, #F5C249, #E9B029);
   color: white;
   font-weight: 600;
   font-size: 1.1rem;
@@ -98,7 +98,7 @@ const Button = styled.button`
   box-shadow: 0 4px 16px rgba(30, 41, 59, 0.08);
   transition: background 0.2s, box-shadow 0.2s;
   &:hover {
-    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    background: linear-gradient(135deg, #E9B029, #F5C249);
     box-shadow: 0 8px 24px rgba(30, 41, 59, 0.12);
   }
 `;
@@ -124,7 +124,7 @@ const PlanRow = styled.div`
 `;
 
 const PlanCard = styled.div`
-  border: 2px solid ${props => props.selected ? '#3b82f6' : '#e2e8f0'};
+  border: 2px solid ${props => props.selected ? '#F5C249' : '#e2e8f0'};
   border-radius: 12px;
   padding: 1.5rem;
   cursor: pointer;
@@ -132,7 +132,7 @@ const PlanCard = styled.div`
   background: ${props => props.selected ? '#f0f9ff' : 'white'};
 
   &:hover {
-    border-color: #3b82f6;
+    border-color: #F5C249;
     transform: translateY(-2px);
   }
 `;
@@ -147,7 +147,7 @@ const PlanName = styled.h3`
 const PlanPrice = styled.div`
   font-size: 2rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: #F5C249;
   margin-bottom: 0.5rem;
 `;
 
@@ -186,7 +186,7 @@ const PlanSelectButton = styled.button`
   transition: all 0.2s ease;
 
   ${props => props.selected ? `
-    background: #3b82f6;
+    background: #F5C249;
     color: white;
   ` : `
     background: #f1f5f9;
@@ -456,11 +456,11 @@ const Signup = () => {
               />
               <Label htmlFor="acceptTerms" style={{ margin: 0, fontSize: "0.875rem" }}>
                 I accept the{" "}
-                <a href="/business/terms-of-service" target="_blank" style={{ color: "#3b82f6" }}>
+                <a href="/business/terms-of-service" target="_blank" style={{ color: "#F5C249" }}>
                   Terms and Conditions
                 </a>{" "}
                 and{" "}
-                <a href="/business/privacy-policy" target="_blank" style={{ color: "#3b82f6" }}>
+                <a href="/business/privacy-policy" target="_blank" style={{ color: "#F5C249" }}>
                   Privacy Policy
                 </a>
               </Label>

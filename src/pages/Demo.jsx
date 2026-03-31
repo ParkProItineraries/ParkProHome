@@ -15,6 +15,7 @@ import {
   ChevronRight,
   ArrowRight
 } from "lucide-react";
+import { InlineWidget } from "react-calendly";
 import Button from "../components/ui/Button";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
@@ -346,6 +347,45 @@ const DemoBulletItem = styled.li`
 `;
 
 
+const BookingSection = styled.div`
+  text-align: center;
+  padding: ${({ theme }) => theme.spacing['3xl']} 0;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
+`;
+
+const BookingTitle = styled.h2`
+  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  }
+`;
+
+const BookingSubtitle = styled.p`
+  font-size: ${({ theme }) => theme.typography.sizes.base};
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto ${({ theme }) => theme.spacing.xl};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+`;
+
+const CalendlyContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: ${({ theme }) => theme.radius.lg};
+  overflow: hidden;
+  border: 1px solid rgba(245, 194, 73, 0.2);
+  background: ${({ theme }) => theme.colors.white};
+
+  .calendly-inline-widget {
+    min-width: 320px;
+  }
+`;
+
 const CTASection = styled.div`
   text-align: center;
   padding: ${({ theme }) => theme.spacing['3xl']};
@@ -600,16 +640,40 @@ const Demo = () => {
         </Container>
       </Section>
 
+      {/* Book a Demo Section - Calendly Embed Placeholder */}
+      <BookingSection>
+        <Container>
+          <BookingTitle>Book a Personalized Demo</BookingTitle>
+          <BookingSubtitle>
+            Pick a time that works for you. We'll walk through ParkPro using your agency's real Disney scenarios — so you can see exactly how it fits your workflow.
+          </BookingSubtitle>
+          <CalendlyContainer>
+            <InlineWidget
+              url="https://calendly.com/parkproit/parkpro-demo"
+              styles={{ height: '700px' }}
+              pageSettings={{
+                backgroundColor: 'ffffff',
+                primaryColor: 'F5C249',
+                textColor: '0B0B0C',
+                hideLandingPageDetails: false,
+                hideEventTypeDetails: false,
+                hideGdprBanner: true,
+              }}
+            />
+          </CalendlyContainer>
+        </Container>
+      </BookingSection>
+
       <Section>
         <Container>
           <CTASection>
             <CTATitle>Ready to see ParkPro with your own clients?</CTATitle>
             <CTASubtitle>
-              Request early access and we'll walk you through a live demo using your agency's Disney scenarios.
+              Book a personalized demo and we'll walk you through a live workflow using your agency's Disney scenarios.
             </CTASubtitle>
             <ButtonGroup>
-              <Button variant="primary" size="lg" to="/request-access">
-                Request Early Access
+              <Button variant="primary" size="lg" to="/demo">
+                Book a Demo
                 <ArrowRight size={20} />
               </Button>
               <Button variant="outline" size="lg" to="/pricing">

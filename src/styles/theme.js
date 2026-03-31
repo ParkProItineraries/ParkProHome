@@ -56,7 +56,7 @@ export const theme = {
     overlay: 'rgba(0,0,0,0.6)',
     green: '#F5C249', // Changed from green to gold for consistency
     red: '#EF4444',
-    blue: '#3B82F6', // Legacy blue kept for semantic use (not brand)
+    blue: '#F5C249', // Mapped to gold for brand consistency
     
     // Midnight Backgrounds
     backgroundDark: '#0A0A0F',    // Hero/section backgrounds

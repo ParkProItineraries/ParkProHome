@@ -575,17 +575,8 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <StatNumber>500+</StatNumber>
-                <StatLabel>Itineraries Generated</StatLabel>
-              </StatCard>
-              <StatCard
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <StatNumber>98%</StatNumber>
-                <StatLabel>Client Satisfaction</StatLabel>
+                <StatNumber>1</StatNumber>
+                <StatLabel>Platform for Everything</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -602,10 +593,10 @@ const About = () => {
           <CTASection>
             <CTATitle>Ready to join the revolution?</CTATitle>
             <CTASubtitle>
-              We're inviting a small group of destination-focused travel agents and agencies into early access. Be part of the future of Disney travel planning and transform your business with ParkPro.
+              See how ParkPro was built for agents like you. Book a demo and we'll show you firsthand.
             </CTASubtitle>
-            <Button variant="primary" size="lg" to="/request-access">
-              Request Early Access →
+            <Button variant="primary" size="lg" to="/demo">
+              Book a Demo →
             </Button>
           </CTASection>
         </Container>

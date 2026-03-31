@@ -213,7 +213,7 @@ const AgentBenefits = () => {
               viewport={{ once: true }}
             >
               Join hundreds of successful travel agents who've transformed their Disney planning business with ParkPro travel agent software. 
-              Discover why ParkPro is the leading Disney itinerary generator and travel agent productivity tool. Here's what you'll get when you join our early access program.
+              Discover why ParkPro is the leading Disney itinerary generator and travel agent productivity tool. Here's what you'll get when you discover what you'll get with ParkPro.
             </BenefitsSubtitle>
           </BenefitsHeader>
 

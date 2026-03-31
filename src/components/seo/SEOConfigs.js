@@ -73,11 +73,11 @@ export const SEOConfigs = {
   },
 
   'request-access': {
-    title: 'Request Access – Join ParkPro Early Access for Travel Agents',
+    title: 'Book a Demo – See ParkPro in Action',
     description:
-      'Request early access to ParkPro and be among the first travel agents and agencies to shape the future Agency OS for Disney and destination planning. Get direct onboarding and early pricing.',
+      'Book a personalized ParkPro demo. See how travel agents save 5–10+ hours per Disney client with automated itinerary generation.',
     keywords:
-      'ParkPro early access, travel agent software early access, Disney travel agent software beta, itinerary software preview, ParkPro for Disney agents, travel agency OS early access',
+      'demo, book a demo, ParkPro demo, travel agent software demo',
     url: '/request-access'
   },
 

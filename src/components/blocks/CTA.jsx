@@ -87,8 +87,7 @@ const CTA = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Join the early access program and start saving 10+ hours per client while increasing your bookings. 
-            Limited spots available for exclusive pricing and priority support.
+            Start saving 10+ hours per client while increasing your bookings. See ParkPro in action.
           </CTASubtitle>
           
           <CTAButtons
@@ -97,8 +96,8 @@ const CTA = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Button to="/request-access" variant="gold" size="lg">
-              Join Early Access Program
+            <Button to="/demo" variant="gold" size="lg">
+              Book a Demo
             </Button>
             <Button to="/demo" variant="secondary" size="lg">
               See How It Works

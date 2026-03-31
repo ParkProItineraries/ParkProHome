@@ -802,7 +802,7 @@ const Pricing = () => {
     {
       question: "What's included in the Founding Member program?",
       answer:
-        "Founding Members get locked-in pricing, priority support, direct feedback loops with our product team, and early access to new features like CRM-style tools and agency dashboards. You'll help shape ParkPro's roadmap and keep your rate as we grow.",
+        "Founding Members get locked-in pricing, priority support, direct feedback loops with our product team, and priority access to new features like CRM-style tools and agency dashboards. You'll help shape ParkPro's roadmap and keep your rate as we grow.",
     },
     {
       question: "Will you support destinations beyond Disney?",

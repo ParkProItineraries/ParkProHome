@@ -42,7 +42,7 @@ export const tokens = {
     success: '#F5C249', // Changed from green to gold
     warning: '#F59E0B',
     error: '#EF4444',
-    info: '#3B82F6',
+    info: '#F5C249',
     
     // Background Colors
     'bg-primary': '#FFFFFF',

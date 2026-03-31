@@ -113,10 +113,10 @@ export const copy = {
         gdprSub: "Data Protected",
         guarantee: "Money-Back Guarantee",
         guaranteeSub: "14-Day Guarantee",
-        agents: "500+ Agents",
-        agentsSub: "Trusted Worldwide",
-        rating: "5-Star Rated",
-        ratingSub: "95% Satisfaction"
+        agents: "Built for Agents",
+        agentsSub: "Purpose-Built for Travel",
+        rating: "Premium Quality",
+        ratingSub: "Concierge-Level Output"
       }
     }
   },
@@ -125,7 +125,7 @@ export const copy = {
   ctas: {
     demo: "See How ParkPro Works",
     bookDemo: "Book a demo",
-    start: "Join Early Access",
+    start: "Book a Demo",
     startNow: "Start now",
     features: "Explore features",
     pricing: "See pricing",
@@ -265,14 +265,14 @@ export const copy = {
 
   // Testimonials
   testimonials: {
-    sectionTitle: "What our agents are saying",
-    sectionSub: "Join hundreds of travel agents who have transformed their Disney planning business with ParkPro",
-    badge: "Loved by Travel Agents"
+    sectionTitle: "Be Among Our Founding Partners",
+    sectionSub: "We're launching with a select group of travel agents and agencies who want to shape the future of travel planning.",
+    badge: "Now Accepting Partners"
   },
 
   // Trust & Social Proof
   trust: {
-    socialProof: "Trusted by 500+ travel agents who've saved over 50,000 hours in Disney planning",
+    socialProof: "Built specifically for destination-focused travel agents and agencies.",
     concierge: "ParkPro itineraries aren't basic timeline lists—they're concierge-level experiences. Each plan is structured, clear, and aligned with how Disney trips actually unfold, so your clients feel taken care of from the moment they arrive until they head home."
   },
 
@@ -291,7 +291,7 @@ export const copy = {
     resourcesTitle: "Resources",
     contactTitle: "Contact",
     legalTitle: "Legal",
-    copyright: "© 2025 ParkPro. All rights reserved."
+    copyright: "© 2026 ParkPro. All rights reserved."
   }
 };
 

@@ -43,7 +43,7 @@ const HeroSection = styled(Section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233B82F6" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23F5C249" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
     opacity: 0.5;
   }
 `;
@@ -247,11 +247,11 @@ const FAQ = () => {
     },
     {
       question: "How much does ParkPro cost?",
-      answer: "We offer six tiers: Solo ($147/month for 5 itineraries), Solo+ ($197/month for 8 itineraries), Agency Lite ($167/month for 10 itineraries with CRM), Agency ($247/month for 12 itineraries and 3 users), Agency+ ($297/month for 16 itineraries and 5 users), and Enterprise (Custom). All plans offer annual pricing with 2 months free (for example, Solo annual is $1,569/year instead of $1,764). You can also purchase add-on itinerary bundles: 5 extra ($160/mo), 10 extra ($300/mo), or 20 extra ($560/mo). During early access, you can adjust your plan or cancel as your agency grows."
+      answer: "We offer six tiers: Solo ($147/month for 5 itineraries), Solo+ ($197/month for 8 itineraries), Agency Lite ($167/month for 10 itineraries with CRM), Agency ($247/month for 12 itineraries and 3 users), Agency+ ($297/month for 16 itineraries and 5 users), and Enterprise (Custom). All plans offer annual pricing with 2 months free (for example, Solo annual is $1,569/year instead of $1,764). You can also purchase add-on itinerary bundles: 5 extra ($160/mo), 10 extra ($300/mo), or 20 extra ($560/mo). You can adjust your plan or cancel as your agency grows."
     },
     {
       question: "Is there a free trial?",
-      answer: "We currently don't offer a traditional free trial, but we do provide a comprehensive video demo. During early access, we work closely with agencies to ensure ParkPro is a great fit. You can adjust your plan or cancel as your agency grows, and we'll work with you to make sure it meets your needs."
+      answer: "We currently don't offer a traditional free trial, but we do provide a comprehensive video demo and personalized walkthrough. We work closely with agencies to ensure ParkPro is a great fit. You can adjust your plan or cancel as your agency grows, and we'll work with you to make sure it meets your needs."
     },
     {
       question: "Can I cancel my subscription anytime?",
@@ -307,7 +307,7 @@ const FAQ = () => {
     },
     {
       question: "What if ParkPro doesn't work for my agency?",
-      answer: "During early access, we work closely with agencies to ensure ParkPro is a great fit. You can adjust your plan or cancel as your agency grows, and we'll work with you to make sure it meets your needs. We've found that most agents see immediate value, and we want you to feel confident in your investment."
+      answer: "We work closely with agencies to ensure ParkPro is a great fit. You can adjust your plan or cancel as your agency grows, and we'll work with you to make sure it meets your needs. We've found that most agents see immediate value, and we want you to feel confident in your investment."
     },
     {
       question: "How many itineraries can I create per month?",
@@ -418,7 +418,7 @@ const FAQ = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            We're inviting a small group of destination-focused travel agents and agencies into early access. The best way to see if ParkPro is right for you is to join early access—you can adjust your plan or cancel as your agency grows, and we'll work closely with you to make sure it's a great fit.
+            The best way to see if ParkPro is right for you is to book a demo — we'll walk you through a live workflow and answer all your questions.
           </CTASubtitle>
           
           <motion.div
@@ -428,11 +428,11 @@ const FAQ = () => {
             viewport={{ once: true }}
           >
             <Button
-              to="/request-access"
+              to="/demo"
               variant="primary"
               size="lg"
             >
-              Request Early Access →
+              Book a Demo →
             </Button>
           </motion.div>
         </Container>

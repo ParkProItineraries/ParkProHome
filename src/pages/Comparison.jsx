@@ -55,7 +55,7 @@ const HeroSection = styled(Section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233B82F6" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23F5C249" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
     opacity: 0.5;
   }
 `;
@@ -1531,19 +1531,15 @@ const Comparison = () => {
             Ready to Stop Rebuilding Every Disney Itinerary From Scratch?
           </CTATitle>
           <CTAText>
-            ParkPro is rolling out with a small group of Disney-first and
-            destination-focused travel agents and agencies. Join early access if
-            you want to save hours on every trip, standardize how your team
-            plans, and retire the manual copy-and-paste workflows you saw in the
-            comparison above.
+            ParkPro was built specifically for destination-focused travel agents and agencies. Book a demo to see the difference.
           </CTAText>
           <Button
-            to="/request-access"
+            to="/demo"
             variant="primary"
             size="lg"
             fullWidth={false}
           >
-            Join Early Access →
+            Book a Demo →
           </Button>
         </Container>
       </CTASection>

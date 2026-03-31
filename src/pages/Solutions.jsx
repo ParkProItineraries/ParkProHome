@@ -317,7 +317,7 @@ const Solutions = () => {
         "Turn detailed Disney intake forms into clean, day-by-day itineraries in minutes",
         "Branded PDF or slide exports that look like a premium agency, even if it's just you",
         "Simple workspace to see which trips still need itineraries at a glance",
-        "Done-with-you onboarding during early access so you're never figuring it out alone",
+        "Done-with-you onboarding so you're never figuring it out alone",
         "Email support from the ParkPro team when you get stuck or need ideas",
       ],
       stats: [
@@ -475,11 +475,7 @@ const Solutions = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              We're inviting a small group of destination-focused travel agents
-              and agencies into early access. Choose the path that fits you,
-              start with Disney trip automation today, and grow into the full
-              Agency OS as ParkPro rolls out CRM, commissions, and
-              multi-destination features.
+              Whether you're a solo agent or running a growing team, ParkPro has a plan that fits. Book a demo to see the right solution for your agency.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -487,8 +483,8 @@ const Solutions = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Button variant="primary" size="lg" to="/request-access">
-                Request Early Access →
+              <Button variant="primary" size="lg" to="/demo">
+                Book a Demo →
               </Button>
             </motion.div>
           </CTAContent>

@@ -90,10 +90,10 @@ const LoadingSpinner = styled(Loader)`
 `;
 
 const ConvertKitForm = ({ 
-  title = "Join Early Access",
+  title = "Stay Updated",
   subtitle = "Get exclusive access to ParkPro and start saving 10+ hours per client.",
   formId = "default",
-  buttonText = "Join Early Access",
+  buttonText = "Get Updates",
   showCompany = false,
   showPhone = false,
   className

@@ -961,7 +961,7 @@ const Features = () => {
           <CTAContent>
             <SectionHeader
               title="Ready to Turn ParkPro into Your Agency's Operating System?"
-              subtitle="We're inviting a small group of destination-focused travel agents and agencies into early access. Start with Disney trip automation today, then grow into a full Agency OS as we roll out CRM, commissions, and multi-destination features together."
+              subtitle="See how ParkPro transforms your Disney planning workflow. Book a personalized demo and we'll show you exactly how it works for your agency."
               delay={0}
               dark={true}
             />
@@ -971,8 +971,8 @@ const Features = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Button variant="primary" size="lg" to="/request-access">
-                Request Early Access →
+              <Button variant="primary" size="lg" to="/demo">
+                Book a Demo →
               </Button>
             </motion.div>
           </CTAContent>

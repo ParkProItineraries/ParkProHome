@@ -25,7 +25,7 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
   }
 
@@ -251,10 +251,10 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             role="status"
-            aria-label="Early access program for travel agents"
+            aria-label="Built for travel agents"
           >
             <Star size={16} aria-hidden="true" />
-            Exclusive Early Access for Travel Agents
+            Built for Travel Agents
           </Badge>
           
           <Title
@@ -297,12 +297,12 @@ const Hero = () => {
               See How It Works
             </Button>
             <Button 
-              to="/request-access" 
-              variant="secondary" 
+              to="/demo"
+              variant="secondary"
               size="lg"
-              style={{ 
-                background: '#FFFFFF', 
-                color: '#0B0B0C', 
+              style={{
+                background: '#FFFFFF',
+                color: '#0B0B0C',
                 border: '2px solid #0B0B0C',
                 padding: '16px 32px',
                 borderRadius: '16px',
@@ -310,9 +310,9 @@ const Hero = () => {
                 textDecoration: 'none',
                 display: 'inline-block'
               }}
-              aria-label="Join early access program for travel agents"
+              aria-label="Book a demo for travel agents"
             >
-              Join Early Access
+              Book a Demo
             </Button>
           </CTAButtons>
           

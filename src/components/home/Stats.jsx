@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { 
-  RiUserLine, 
-  RiTimeLine, 
-  RiStarLine, 
-  RiTrendingUpLine 
+import {
+  RiTimeLine,
+  RiStarLine,
+  RiTrendingUpLine
 } from "react-icons/ri";
 
 const StatsSection = styled.section`
@@ -88,9 +87,10 @@ const StatLabel = styled.div`
 const Stats = () => {
   const stats = [
     {
-      icon: <RiUserLine />,
-      number: "500+",
-      label: "Travel Agents"
+      icon: <RiTimeLine />,
+      number: "Minutes",
+      label: "To Build an Itinerary",
+      description: "What used to take 8–12 hours now takes minutes. Focus on clients, not spreadsheets."
     },
     {
       icon: <RiTimeLine />,

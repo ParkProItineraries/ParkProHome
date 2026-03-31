@@ -41,7 +41,7 @@ const HeroSection = styled(Section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233B82F6" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23F5C249" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
     opacity: 0.5;
   }
 `;
@@ -567,7 +567,7 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            We're inviting a small group of destination-focused travel agents and agencies into early access. Join successful travel agents who've revolutionized their Disney planning business and start saving 10+ hours per client today.
+            See how ParkPro saves you 5–10+ hours per client. Book a personalized demo and we'll walk you through a live workflow using your agency's scenarios.
           </CTASubtitle>
           
           <motion.div
@@ -577,11 +577,11 @@ const TravelAgentSoftware = () => {
             viewport={{ once: true }}
           >
             <Button
-              to="/request-access"
+              to="/demo"
               variant="primary"
               size="lg"
             >
-              Request Early Access →
+              Book a Demo →
             </Button>
           </motion.div>
         </Container>

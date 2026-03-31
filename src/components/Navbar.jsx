@@ -339,9 +339,8 @@ const Navbar = () => {
           {/*<Button variant="outline" size="sm" to="/signup">
             Sign Up
           </Button>*/}
-          <Button variant="primary" size="sm" to="/request-access">
-            Request Access
-            <Badge>Early Access</Badge>
+          <Button variant="primary" size="sm" to="/demo">
+            Book a Demo
           </Button>
         </ButtonGroup>
 
@@ -383,9 +382,8 @@ const Navbar = () => {
             >
               Log In
             </MobileNavLink>
-            <Button variant="primary" size="sm" to="/request-access" onClick={() => setIsMobileMenuOpen(false)}>
-              Request Access
-              <Badge>Early Access</Badge>
+            <Button variant="primary" size="sm" to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
+              Book a Demo
             </Button>
           </MobileMenu>
         )}
