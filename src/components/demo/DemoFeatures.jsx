@@ -74,7 +74,7 @@ const DemoFeatures = () => {
     {
       icon: <RiRobot2Line size={40} />,
       title: "Automated Planning",
-      description: "Our advanced automated system analyzes preferences, crowd levels, and ride wait times to create the perfect itinerary."
+      description: "Our advanced automated system analyzes preferences, park hours, and ride wait times to create the perfect itinerary."
     },
     {
       icon: <RiUserHeartLine size={40} />,
@@ -99,7 +99,7 @@ const DemoFeatures = () => {
     {
       icon: <RiShieldCheckLine size={40} />,
       title: "Stress-Free Planning",
-      description: "No more hours of research - get a complete, optimized itinerary in seconds."
+      description: "No more hours of research - get a complete, optimized itinerary in minutes."
     }
   ];
 

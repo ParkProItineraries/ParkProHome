@@ -182,7 +182,7 @@ const DisneyTravelAgentSoftware = () => {
           >
             Disney travel agent software helps agents who specialize in Disney vacations automate their 
             planning process. This type of software understands Disney-specific needs like park hours, 
-            dining reservations, FastPass strategies, and crowd calendars, then generates structured 
+            dining reservations, FastPass strategies, and park schedules, then generates structured 
             itineraries that save agents significant time while maintaining the quality clients expect.
           </SectionText>
 

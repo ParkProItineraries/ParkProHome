@@ -12,9 +12,9 @@ export const SEOConfigs = {
   pricing: {
     title: 'Pricing – ParkPro Travel Agent Itinerary Software',
     description:
-      'Choose the right ParkPro plan for your travel agency. Solo, Solo+, and Agency tiers include monthly itinerary caps and seats designed for Disney-focused agents and growing teams. Save hours per trip while keeping full control of the client experience.',
+      'Choose the right ParkPro plan for your travel agency. Solo Agent, Agent+, Agency, Agency+, and Enterprise tiers include monthly itinerary allocations designed for Disney-focused agents and growing teams. Save hours per trip while keeping full control of the client experience.',
     keywords:
-      'ParkPro pricing, travel agent software pricing, travel agency itinerary software pricing, Disney travel agent software cost, itinerary tool pricing, ParkPro Solo plan, ParkPro Agency plan, travel agent subscription software',
+      'ParkPro pricing, travel agent software pricing, travel agency itinerary software pricing, Disney travel agent software cost, itinerary tool pricing, ParkPro Solo Agent plan, ParkPro Agent+ plan, ParkPro Agency plan, ParkPro Agency+ plan, travel agent subscription software',
     url: '/pricing'
   },
 

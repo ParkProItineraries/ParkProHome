@@ -243,11 +243,11 @@ const FAQ = () => {
   const faqs = [
     {
       question: "What is ParkPro and how does it work?",
-      answer: "ParkPro is an automated itinerary builder designed specifically for travel agents who plan Disney vacations. You simply input your client's preferences (travel dates, party size, ages, interests, budget), and our system generates a complete, day-by-day itinerary in minutes. We handle the tedious research—crowd predictions, wait times, dining availability, show schedules—so you can focus on the creative aspects and client relationships."
+      answer: "ParkPro is an automated itinerary builder designed specifically for travel agents who plan Disney vacations. You simply input your client's preferences (travel dates, party size, ages, interests, budget), and our system generates a complete, day-by-day itinerary in minutes. We handle the tedious research—wait times, park hours, dining availability, show schedules—so you can focus on the creative aspects and client relationships."
     },
     {
       question: "How much does ParkPro cost?",
-      answer: "We offer six tiers: Solo ($147/month for 5 itineraries), Solo+ ($197/month for 8 itineraries), Agency Lite ($167/month for 10 itineraries with CRM), Agency ($247/month for 12 itineraries and 3 users), Agency+ ($297/month for 16 itineraries and 5 users), and Enterprise (Custom). All plans offer annual pricing with 2 months free (for example, Solo annual is $1,569/year instead of $1,764). You can also purchase add-on itinerary bundles: 5 extra ($160/mo), 10 extra ($300/mo), or 20 extra ($560/mo). You can adjust your plan or cancel as your agency grows."
+      answer: "We offer five tiers, all priced per agent per month: Solo Agent ($97/mo for 5 itineraries), Agent+ ($147/mo for 10 itineraries), Agency ($197/mo for 15 itineraries), Agency+ ($247/mo for 20 itineraries), and Enterprise (custom pricing with pooled itineraries). Every plan offers annual pricing at 10x the monthly rate — equivalent to 2 months free. Need more itineraries? You can purchase extras individually or in discounted bundles (5-pack at 10% off, 10-pack at 15% off, 20-pack at 20% off). You can upgrade, downgrade, or cancel at any time."
     },
     {
       question: "Is there a free trial?",
@@ -270,8 +270,8 @@ const FAQ = () => {
       answer: "Absolutely! Our builder includes filters for age groups (toddlers, kids, teens, adults, seniors), mobility considerations, budget levels, interest types (thrill rides, character meets, shows, dining experiences), and special occasions (birthdays, anniversaries, first visits). You can also manually adjust any suggestion—swap attractions, change dining times, add rest breaks, or include special requests."
     },
     {
-      question: "How accurate is your crowd and wait time data?",
-      answer: "We aggregate data from multiple sources including historical park data, Disney's official calendars, special events, and weather patterns. Our predictions are typically accurate within 15-20 minutes for wait times and help clients avoid peak crowds. However, unexpected circumstances (ride breakdowns, weather) can always impact real-time conditions, which is why we also provide mobile access for day-of adjustments."
+      question: "How accurate is your wait time data?",
+      answer: "We pull live wait time data directly from the parks and combine it with Disney's official calendars, park hours, and special event schedules. Wait times are refreshed continuously throughout the day, giving your clients accurate, real-time information. However, unexpected circumstances (ride breakdowns, weather) can always impact conditions, which is why we also provide mobile access for day-of adjustments."
     },
     {
       question: "Do I need to install any software?",
@@ -303,7 +303,7 @@ const FAQ = () => {
     },
     {
       question: "What kind of support do you offer?",
-      answer: "All plans include email support with responses within 24 hours on business days. Team and Enterprise plans also include priority support and optional onboarding calls. We have a comprehensive help center with video tutorials, FAQs, and best practice guides. Our team consists of former travel agents and Disney planning experts who understand your workflow and challenges."
+      answer: "All plans include email support with responses within 24 hours on business days. Agent+ and above get priority email support. Agency+ includes white-glove onboarding and live chat support. Enterprise plans add a dedicated success manager with custom SLAs. We also have a help center with video tutorials, FAQs, and best practice guides."
     },
     {
       question: "What if ParkPro doesn't work for my agency?",
@@ -311,7 +311,7 @@ const FAQ = () => {
     },
     {
       question: "How many itineraries can I create per month?",
-      answer: "All plans include unlimited itinerary creation—there are no caps or per-itinerary fees. Whether you create 5 itineraries or 500, the price stays the same. You also get unlimited updates and revisions to existing itineraries. The only difference between plans is the number of team members and advanced collaboration features."
+      answer: "Each plan includes a monthly itinerary allocation per agent: Solo Agent gets 5, Agent+ gets 10, Agency gets 15, and Agency+ gets 20. Enterprise plans have pooled itineraries negotiated per contract. If you need more, every plan lets you purchase extra itineraries individually or in discounted bundles. We'll notify you as you approach your monthly limit so there are no surprises."
     }
   ];
 

@@ -65,7 +65,7 @@ const Features = () => {
     {
       icon: <RiRobot2Line size={32} />,
       title: "Automated Planning",
-      description: "Our advanced automated system analyzes preferences, crowd levels, and wait times to create optimized itineraries in seconds.",
+      description: "Our advanced automated system analyzes preferences, park hours, and wait times to create optimized itineraries in minutes.",
       badge: "Core Feature"
     },
     {
@@ -77,7 +77,7 @@ const Features = () => {
     {
       icon: <RiTimeLine size={32} />,
       title: "Real-Time Updates",
-      description: "Get live wait times and recommendations that adapt to current park conditions and crowd levels.",
+      description: "Get live wait times and recommendations that adapt to current park conditions.",
       badge: "New"
     },
     {

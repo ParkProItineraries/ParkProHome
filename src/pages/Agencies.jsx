@@ -388,21 +388,21 @@ const Agencies = () => {
     },
     {
       icon: <BarChart3 size={32} />,
-      title: "Advanced Analytics",
-      description: "Comprehensive dashboard to track team performance, client satisfaction, and business metrics across all agents.",
-      outcomes: ["Team performance insights", "Client satisfaction tracking", "Business growth metrics"]
+      title: "Agency Dashboard (Coming Soon)",
+      description: "Agency-wide dashboard to see trip volume, agent activity, and client pipeline across your team.",
+      outcomes: ["Agency overview", "Trip tracking across agents", "Coming in a future update"]
     },
     {
       icon: <Crown size={32} />,
-      title: "White-Label Branding",
-      description: "Customize the entire platform with your agency's branding, colors, and logo for a professional client experience.",
-      outcomes: ["Agency branding", "Professional presentation", "Brand consistency"]
+      title: "Agency Branding",
+      description: "Add your agency's logo to itineraries and client-facing materials for a consistent, professional experience.",
+      outcomes: ["Logo on itineraries", "Professional presentation", "Brand consistency"]
     },
     {
       icon: <Settings size={32} />,
       title: "Admin Controls",
-      description: "Manage user permissions, set up approval workflows, and control access to different features for your team.",
-      outcomes: ["User management", "Permission controls", "Workflow automation"]
+      description: "Manage user permissions and control access to different features for your team.",
+      outcomes: ["User management", "Permission controls", "Role-based access"]
     },
     {
       icon: <Headphones size={32} />,
@@ -412,30 +412,24 @@ const Agencies = () => {
     },
     {
       icon: <Shield size={32} />,
-      title: "Enterprise Security",
-      description: "Advanced security features, compliance tools, and data protection measures designed for larger organizations.",
-      outcomes: ["Advanced security", "Compliance tools", "Data protection"]
+      title: "Secure Infrastructure",
+      description: "Industry-standard security with encryption, role-based access controls, and secure payment processing.",
+      outcomes: ["SSL encryption", "Role-based access", "Data protection"]
     }
   ];
 
-  const testimonials = [
+  const valueProps = [
     {
-      quote: "ParkPro has transformed our agency's Disney planning process. Our agents are now 3x more efficient, and our clients love the consistent, professional experience.",
-      author: "Jennifer Martinez",
-      title: "Agency Owner",
-      company: "Dream Vacations Orlando"
+      title: "Standardize Quality",
+      description: "Every agent on your team uses the same engine and the same workflow, so every client gets a consistent, professional experience."
     },
     {
-      quote: "The team collaboration features are incredible. New agents can learn from our best practices, and we can ensure every client gets the same high-quality experience.",
-      author: "David Thompson",
-      title: "Operations Manager",
-      company: "Magic Moments Travel"
+      title: "Onboard Faster",
+      description: "New agents can start producing quality Disney itineraries in days instead of months, because the system does the heavy lifting."
     },
     {
-      quote: "The analytics dashboard gives us insights we never had before. We can see which agents are performing best and replicate their success across the team.",
-      author: "Sarah Wilson",
-      title: "Agency Director",
-      company: "Luxury Travel Group"
+      title: "Scale Without Burnout",
+      description: "If each agent saves 5–10+ hours per client, your agency can handle more bookings without hiring extra staff."
     }
   ];
 
@@ -497,24 +491,24 @@ const Agencies = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
               >
-                <StatNumber>50%</StatNumber>
-                <StatLabel>Time Saved</StatLabel>
+                <StatNumber>5–10+ hrs</StatNumber>
+                <StatLabel>Saved Per Agent, Per Client</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <StatNumber>2x</StatNumber>
-                <StatLabel>Team Efficiency</StatLabel>
+                <StatNumber>Minutes</StatNumber>
+                <StatLabel>To Build an Itinerary</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.4 }}
               >
-                <StatNumber>99%</StatNumber>
-                <StatLabel>Client Satisfaction</StatLabel>
+                <StatNumber>1</StatNumber>
+                <StatLabel>Workspace for Your Team</StatLabel>
               </StatCard>
             </HeroStats>
           </HeroContent>
@@ -685,7 +679,7 @@ const Agencies = () => {
         </Container>
       </FeaturesSection>
 
-      {/* Testimonials Section */}
+      {/* Value Props Section */}
       <TestimonialsSection>
         <Container>
           <SectionHeader>
@@ -695,7 +689,7 @@ const Agencies = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              What Agency Owners Are Saying
+              Why Agencies Choose ParkPro
             </SectionTitle>
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -703,12 +697,12 @@ const Agencies = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join the growing community of travel agencies who've transformed their Disney planning process.
+              Built for agencies that want a single, standardized system for Disney planning across their team.
             </SectionSubtitle>
           </SectionHeader>
 
           <CardGrid columns={3} gap={6}>
-            {testimonials.map((testimonial, index) => (
+            {valueProps.map((prop, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -716,14 +710,25 @@ const Agencies = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <TestimonialCard>
-                  <TestimonialQuote>{testimonial.quote}</TestimonialQuote>
-                  <TestimonialAuthor>
-                    <AuthorName>{testimonial.author}</AuthorName>
-                    <AuthorTitle>{testimonial.title}</AuthorTitle>
-                    <AuthorCompany>{testimonial.company}</AuthorCompany>
-                  </TestimonialAuthor>
-                </TestimonialCard>
+                <Card variant="elevated" hover>
+                  <div style={{ textAlign: 'center', padding: '16px' }}>
+                    <h3 style={{
+                      fontSize: '24px',
+                      fontWeight: '600',
+                      color: '#0B0B0C',
+                      marginBottom: '16px',
+                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+                    }}>
+                      {prop.title}
+                    </h3>
+                    <p style={{
+                      color: '#6B7280',
+                      lineHeight: '1.6'
+                    }}>
+                      {prop.description}
+                    </p>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </CardGrid>

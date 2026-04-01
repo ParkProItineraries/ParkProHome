@@ -15,12 +15,13 @@ import { copy } from "../content/strings";
 // Pricing Page - Transparent pricing focused on time savings for Disney travel agents
 //
 // PRICING MODEL:
-// - All prices are per seat per month (annual = monthlyPrice * 10, equivalent to "2 months free")
-// - Solo/Solo+: 1 seat, itineraries per seat/month
-// - Agency Lite: Minimum 3 seats, 10 itineraries per seat/month
-// - Agency: Minimum 5 seats, 12 itineraries per seat/month
-// - Agency+: Minimum 10 seats, 16 itineraries per seat/month
-// - Enterprise: Custom per-seat pricing, 25–30 itineraries per seat/month, no hard seat cap
+// - All prices are per agent per month (each agent has their own subscription)
+// - Annual = monthlyPrice * 10 (equivalent to "2 months free")
+// - Solo Agent: $97/agent/mo, 5 itineraries/agent/month
+// - Agent+: $147/agent/mo, 10 itineraries/agent/month
+// - Agency: $197/agent/mo, 15 itineraries/agent/month
+// - Agency+: $247/agent/mo, 20 itineraries/agent/month
+// - Enterprise: Custom pricing, pooled itineraries (negotiated)
 // - Enterprise is a real, clickable plan (not a decoy) that routes to /contact
 const PricingWrapper = styled.div`
   padding-top: 88px; // Account for fixed navbar
@@ -633,136 +634,112 @@ const Pricing = () => {
   const pricingPlans = [
     {
       id: "solo",
-      name: "Solo",
-      description: "Perfect for independent agents managing a few clients.",
-      monthlyPrice: 147,
-      annualPrice: 1470, // monthlyPrice * 10 (2 months free)
-      minSeats: 1,
+      name: "Solo Agent",
+      description: "Perfect for solo agents just getting started or testing the waters.",
+      monthlyPrice: 97,
+      annualPrice: 970, // ~$80.83/mo — 2 months free
       audience: "For solo agents",
       isPopular: false,
       isDecoy: false,
       cta: "Request Solo access",
       features: [
-        "1 seat · 5 itineraries per seat/month",
-        "Smart Disney intake form and itinerary builder",
-        "Single dashboard for all trips and clients",
-        "Exportable, client-ready PDF itineraries",
-        "Standard email support",
+        "5 itineraries/agent/month",
+        "Client intake forms and itinerary builder",
+        "Trip management dashboard",
+        "Email support",
+        "Extra itineraries available at $50 each",
       ],
       limitations: [
-        "No team collaboration (single user only)",
-        "No advanced branding (available in Solo+)",
+        "No branding or templates",
+        "No team collaboration",
       ],
     },
     {
-      id: "solo-plus",
-      name: "Solo+",
-      description:
-        "For experienced solo agents ready to scale their volume and brand.",
-      monthlyPrice: 197,
-      annualPrice: 1970, // monthlyPrice * 10 (2 months free)
-      minSeats: 1,
+      id: "agentplus",
+      name: "Agent+",
+      description: "Built for growing agents who need more volume and flexibility.",
+      monthlyPrice: 147,
+      annualPrice: 1470, // ~$122.50/mo — 2 months free
       audience: "For solo agents",
       isPopular: true,
       isDecoy: false,
-      cta: "Request Solo+ access",
+      cta: "Request Agent+ access",
       features: [
-        "Everything in Solo",
-        "1 seat · 8 itineraries per seat/month",
-        "Advanced itinerary templates and day-by-day layouts",
-        "Branding controls: add your logo and contact details",
+        "Everything in Solo Agent",
+        "10 itineraries/agent/month",
+        "Save itinerary templates",
+        "Custom questionnaire link",
         "Priority email support",
+        "Extra itineraries at $40 each",
       ],
       limitations: [
-        "No team collaboration (single user only)",
+        "No team collaboration",
         "No API access",
       ],
     },
     {
-      id: "agency-lite",
-      name: "Agency Lite",
-      description:
-        "Perfect for small agencies ready to add team collaboration and shared workflows.",
-      monthlyPrice: 227,
-      annualPrice: 2270, // monthlyPrice * 10 (2 months free)
-      minSeats: 3,
-      additionalSeatPrice: 197, // discounted from 227
-      audience: "For agencies & teams",
-      isPopular: false,
-      isDecoy: false,
-      cta: "Request Agency Lite access",
-      features: [
-        "Everything in Solo+",
-        "Minimum 3 seats · 10 itineraries per seat/month",
-        "Shared team workspace for trips and clients",
-        "Reusable itinerary templates, tags, and trip notes",
-        "Early CRM-style client profiles for Disney travelers",
-      ],
-      limitations: ["No API access", "No dedicated account manager"],
-    },
-    {
       id: "agency",
       name: "Agency",
-      description:
-        "Ideal for growing agencies that need better visibility and reporting across their team.",
-      monthlyPrice: 247,
-      annualPrice: 2470, // monthlyPrice * 10 (2 months free)
-      minSeats: 5,
-      additionalSeatPrice: 217, // discounted from 247
+      description: "Ideal for agencies building a steady client base.",
+      monthlyPrice: 197,
+      annualPrice: 1970, // ~$164.17/mo — 2 months free
       audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
       cta: "Request Agency access",
       features: [
-        "Everything in Agency Lite",
-        "Minimum 5 seats · 12 itineraries per seat/month",
-        "Agency-level dashboard across all agents and trips",
-        "Simple reporting on volume, itineraries, and active clients",
-        "Priority support for agency admins",
+        "Everything in Agent+",
+        "15 itineraries/agent/month",
+        "Shared agency dashboard",
+        "Branding: Add your logo to itineraries",
+        "Tags and trip notes",
+        "Extra itineraries at $30 each",
       ],
-      limitations: ["No API access", "No dedicated account manager"],
+      limitations: [
+        "No API access",
+        "No dedicated account manager",
+      ],
     },
     {
-      id: "agency-plus",
+      id: "agencyplus",
       name: "Agency+",
-      description:
-        "For established agencies needing advanced features, onboarding support, and CRM beta.",
-      monthlyPrice: 297,
-      annualPrice: 2970, // monthlyPrice * 10 (2 months free)
-      minSeats: 10,
-      additionalSeatPrice: 267, // discounted from 297
+      description: "For high-performing agencies that need power, scale, and automation.",
+      monthlyPrice: 247,
+      annualPrice: 2470, // ~$205.83/mo — 2 months free
       audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
       cta: "Request Agency+ access",
       features: [
         "Everything in Agency",
-        "Minimum 10 seats · 16 itineraries per seat/month",
-        "Guided onboarding and rollout support for your team",
-        "Access to advanced automation and CRM beta features",
-        "Enhanced priority support for high-volume agencies",
+        "20 itineraries/agent/month",
+        "API access for integrations",
+        "White-glove onboarding",
+        "Early feature access",
+        "Live chat support",
+        "Extra itineraries at $22 each",
       ],
       limitations: [
-        "Full API access available with Enterprise",
         "No dedicated account manager (available in Enterprise)",
       ],
     },
     {
       id: "enterprise",
       name: "Enterprise",
-      description:
-        "For large agencies needing API access, dedicated support, and advanced controls.",
-      customPricing: "Custom",
+      description: "Designed for national brands and high-volume agencies.",
+      customPricing: "Custom Quote",
       audience: "For large agencies",
       isPopular: false,
-      isDecoy: false, // Enterprise is a real, clickable plan
+      isDecoy: false,
       cta: "Talk to us",
       features: [
         "Everything in Agency+",
-        "Custom seat count · 25–30 itineraries per seat/month",
-        "Scales to hundreds of users with role-based access",
-        "Full API access for forms, CRM, and internal tools",
-        "Dedicated account manager and custom SLAs",
+        "Pooled itineraries (negotiated per contract)",
+        "Unlimited agent seats",
+        "Dedicated success manager",
+        "Admin impersonation dashboard",
+        "Custom CRM/API integrations",
+        "SLA-backed priority support",
       ],
       limitations: [],
     },
@@ -771,17 +748,9 @@ const Pricing = () => {
   // Filter plans based on view type
   const filteredPlans = pricingPlans.filter((plan) => {
     if (viewType === "solo") {
-      return (
-        plan.id === "solo" ||
-        plan.id === "solo-plus" ||
-        plan.id === "agency-lite"
-      );
+      return plan.id === "solo" || plan.id === "agentplus";
     } else if (viewType === "agency") {
-      return (
-        plan.id === "agency-lite" ||
-        plan.id === "agency" ||
-        plan.id === "agency-plus"
-      );
+      return plan.id === "agency" || plan.id === "agencyplus";
     } else if (viewType === "enterprise") {
       return plan.id === "enterprise";
     }
@@ -792,7 +761,7 @@ const Pricing = () => {
     {
       question: "How many itineraries can I create each month?",
       answer:
-        "It depends on your plan and seat count: Solo (5 per seat/month), Solo+ (8 per seat/month), Agency Lite (10 per seat/month, minimum 3 seats), Agency (12 per seat/month, minimum 5 seats), Agency+ (16 per seat/month, minimum 10 seats), and Enterprise (25–30 per seat/month). Each itinerary is designed to replace 5–10+ hours of manual planning.",
+        "It depends on your plan. Solo Agent gets 5 itineraries/month, Agent+ gets 10, Agency gets 15, and Agency+ gets 20. Each allocation is per agent per month. Enterprise plans have pooled itineraries negotiated per contract. Need more? Every plan lets you purchase extra itineraries individually or in discounted bundles.",
     },
     {
       question: "How much time does ParkPro typically save per client?",
@@ -807,27 +776,27 @@ const Pricing = () => {
     {
       question: "Will you support destinations beyond Disney?",
       answer:
-        "ParkPro is starting with Walt Disney World, where the planning time drain is highest, but it's being built as a destination-smart platform. Disneyland, Universal, cruises, and other destinations are on our roadmap so agencies can run more of their trip planning from one place.",
+        "ParkPro is starting with Walt Disney World, where the planning time drain is highest, but it's being built as a destination-smart platform. Disneyland and Universal are available as add-ons, and cruises and other destinations are on our roadmap.",
     },
     {
       question: "What happens if I exceed my itinerary limit?",
       answer:
-        "During the ParkPro Founding Member phase, we'll work with you directly on overages. You can upgrade to a higher tier or add more seats so you're never blocked from serving a client. We'll give you a heads-up as you approach your monthly limit.",
+        "You can purchase extra itineraries at any time — individually or in discounted bundles (5-pack at 10% off, 10-pack at 15% off, 20-pack at 20% off). You can also upgrade to a higher tier for more monthly allocation. We'll give you a heads-up as you approach your monthly limit.",
     },
     {
       question: "Is there a free trial?",
       answer:
-        "Not yet. Right now we're onboarding a limited group of Founding Members so we can keep the experience high-touch and gather feedback. A self-serve free trial is on our roadmap—join the waitlist or request access and we'll notify you when it's available.",
+        "Not yet. Right now we're onboarding a limited group of Founding Members so we can keep the experience high-touch and gather feedback. A self-serve free trial is on our roadmap — join the waitlist or request access and we'll notify you when it's available.",
     },
     {
       question: "What support do you offer?",
       answer:
-        "All plans include email support. Solo+ and above get priority support. Agency+ includes guided onboarding for your team, and Enterprise plans add a dedicated account contact and custom SLAs.",
+        "All plans include email support. Agent+ and above get priority support. Agency+ includes white-glove onboarding and live chat support. Enterprise plans add a dedicated success manager and custom SLAs.",
     },
     {
       question: "Can I change plans or cancel later?",
       answer:
-        "Yes. You can upgrade or downgrade between Solo and Agency tiers, or add and remove seats as your team grows. You can also cancel at any time—your access continues until the end of your current billing period.",
+        "Yes. You can upgrade or downgrade at any time. Each agent has their own subscription, so scaling your team is straightforward. You can cancel at any time — your access continues until the end of your current billing period.",
     },
   ];
 
@@ -962,7 +931,7 @@ const Pricing = () => {
                 <PricingCard
                   key={plan.id}
                   isPopular={plan.isPopular}
-                  isAgencyPlus={plan.id === "agency-plus"}
+                  isAgencyPlus={plan.id === "agencyplus"}
                   isEnterprise={plan.id === "enterprise"}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -974,7 +943,7 @@ const Pricing = () => {
                       Most Popular for Solo Agents
                     </PopularBadge>
                   )}
-                  {plan.id === "agency-plus" && (
+                  {plan.id === "agencyplus" && (
                     <PopularBadge>
                       <Star size={12} style={{ marginRight: "4px" }} />
                       Most Popular for Agencies

@@ -118,12 +118,12 @@ const FeatureGridComponent = () => {
     {
       icon: <Zap size={32} />,
       title: "Lightning Fast",
-      description: "Generate complete Disney itineraries for your clients in under 30 seconds, saving hours of manual planning time."
+      description: "Generate complete Disney itineraries for your clients in minutes, saving hours of manual planning time."
     },
     {
       icon: <Clock size={32} />,
-      title: "Real-Time Updates",
-      description: "Get live wait times, crowd levels, and park hours to optimize every moment of your clients' trips."
+      title: "Real-Time Data",
+      description: "Built on live wait times and park hours to help structure every day of your clients' trips."
     },
     {
       icon: <Users size={32} />,
@@ -138,12 +138,12 @@ const FeatureGridComponent = () => {
     {
       icon: <Shield size={32} />,
       title: "Secure & Reliable",
-      description: "Enterprise-grade security with 99.9% uptime ensures your agency data and client itineraries are always safe."
+      description: "Industry-standard security with encryption and Stripe-verified payments keeps your agency data and client itineraries safe."
     },
     {
       icon: <Smartphone size={32} />,
       title: "Mobile Ready",
-      description: "Access your itineraries anywhere with our mobile-optimized platform and offline capabilities for your agency."
+      description: "Your clients get a mobile-optimized portal to view their itinerary, message you, and access trip documents on the go."
     }
   ];
 

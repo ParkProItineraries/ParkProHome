@@ -254,8 +254,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         >
-          Create personalized Disney itineraries in seconds, not hours. 
-          Our automated system analyzes preferences, crowd levels, and wait times to craft 
+          Create personalized Disney itineraries in minutes, not hours.
+          Our automated system analyzes preferences, park hours, and wait times to craft 
           the perfect experience for every family.
         </Subtitle>
         

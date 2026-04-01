@@ -498,7 +498,7 @@ const About = () => {
                   <Clock size={64} />
                 </StoryIcon>
                 <StoryQuote>
-                  "I was spending 20+ hours per week on itinerary planning. Now it takes minutes, and my clients get better plans than ever."
+                  ParkPro turns hours of manual Disney planning into a structured, repeatable workflow that produces concierge-level itineraries in minutes.
                 </StoryQuote>
               </StoryVisual>
             </StoryContent>

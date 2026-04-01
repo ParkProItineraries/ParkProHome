@@ -606,7 +606,7 @@ const Home = () => {
 
   const stats = [
     { number: "5–10+ hours", label: "Planning time saved per trip" },
-    { number: "2–3x", label: "More trips with same hours" },
+    { number: "Minutes", label: "To build an itinerary" },
     { number: "1 workspace", label: "For every park & resort itinerary" },
   ];
 

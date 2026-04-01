@@ -94,18 +94,18 @@ const Stats = () => {
     },
     {
       icon: <RiTimeLine />,
-      number: "10,000+",
-      label: "Itineraries Created"
+      number: "5–10+ hrs",
+      label: "Saved Per Client"
     },
     {
       icon: <RiStarLine />,
-      number: "98%",
-      label: "Client Satisfaction"
+      number: "1",
+      label: "Platform for Everything"
     },
     {
       icon: <RiTrendingUpLine />,
-      number: "5x",
-      label: "Faster Planning"
+      number: "4",
+      label: "Disney World Parks Supported"
     }
   ];
 

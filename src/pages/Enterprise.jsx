@@ -393,15 +393,15 @@ const Enterprise = () => {
     },
     {
       icon: <Lock size={32} />,
-      title: "Advanced Security",
-      description: "Enterprise-grade security with SSO, advanced encryption, audit logs, and compliance certifications.",
-      outcomes: ["SSO integration", "Advanced encryption", "Audit logging"]
+      title: "Security & Audit Logging",
+      description: "Role-based access controls, encryption, comprehensive audit logging, and rate limiting built into the platform.",
+      outcomes: ["Role-based access", "Encryption", "Audit logging"]
     },
     {
       icon: <Server size={32} />,
-      title: "Dedicated Infrastructure",
-      description: "Private cloud deployment with dedicated resources, custom SLAs, and priority performance guarantees.",
-      outcomes: ["Private cloud", "Dedicated resources", "Custom SLAs"]
+      title: "Priority Infrastructure",
+      description: "Dedicated support, priority performance, and custom contract terms tailored to your organization's needs.",
+      outcomes: ["Dedicated support", "Priority performance", "Custom terms"]
     },
     {
       icon: <Users size={32} />,
@@ -411,36 +411,30 @@ const Enterprise = () => {
     },
     {
       icon: <Database size={32} />,
-      title: "Data Governance",
-      description: "Advanced data management, backup, and recovery with custom retention policies and data sovereignty.",
-      outcomes: ["Data management", "Backup & recovery", "Custom policies"]
+      title: "Data Management",
+      description: "Secure data storage with automated backups on AWS infrastructure. Your agency's data stays protected.",
+      outcomes: ["Automated backups", "AWS infrastructure", "Secure storage"]
     },
     {
       icon: <Settings size={32} />,
-      title: "Custom Workflows",
-      description: "Tailored business processes, approval workflows, and custom reporting to match your organization.",
-      outcomes: ["Custom processes", "Approval workflows", "Tailored reporting"]
+      title: "Admin Dashboard",
+      description: "Full admin visibility with agent management, impersonation for support, and usage tracking across your organization.",
+      outcomes: ["Agent management", "Admin impersonation", "Usage tracking"]
     }
   ];
 
-  const testimonials = [
+  const valueProps = [
     {
-      quote: "ParkPro's enterprise solution has transformed our global travel operations. The custom integrations and dedicated support have been game-changing for our business.",
-      author: "Michael Chen",
-      title: "CTO",
-      company: "Global Travel Solutions"
+      title: "Built for Scale",
+      description: "Unlimited users, unlimited itineraries, and a dedicated success manager to help your team get the most from the platform."
     },
     {
-      quote: "The security and compliance features give us confidence to use ParkPro across our entire organization. The dedicated account manager has been invaluable.",
-      author: "Sarah Williams",
-      title: "VP of Operations",
-      company: "Premier Travel Group"
+      title: "Custom Integration",
+      description: "Work directly with our team to integrate ParkPro into your existing systems, workflows, and business tools."
     },
     {
-      quote: "The custom workflows and API integrations have allowed us to seamlessly integrate ParkPro into our existing systems. The ROI has been exceptional.",
-      author: "David Rodriguez",
-      title: "Head of Technology",
-      company: "Luxury Travel Enterprises"
+      title: "Dedicated Support",
+      description: "Priority support with a dedicated point of contact who understands your agency's unique requirements."
     }
   ];
 
@@ -502,24 +496,24 @@ const Enterprise = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
               >
-                <StatNumber>99.9%</StatNumber>
-                <StatLabel>Uptime SLA</StatLabel>
+                <StatNumber>Unlimited</StatNumber>
+                <StatLabel>Users & Itineraries</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <StatNumber>24/7</StatNumber>
-                <StatLabel>Dedicated Support</StatLabel>
+                <StatNumber>Dedicated</StatNumber>
+                <StatLabel>Success Manager</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.4 }}
               >
-                <StatNumber>100%</StatNumber>
-                <StatLabel>Custom Integration</StatLabel>
+                <StatNumber>Custom</StatNumber>
+                <StatLabel>Integration Support</StatLabel>
               </StatCard>
             </HeroStats>
           </HeroContent>
@@ -690,7 +684,7 @@ const Enterprise = () => {
         </Container>
       </FeaturesSection>
 
-      {/* Testimonials Section */}
+      {/* Value Props Section */}
       <TestimonialsSection>
         <Container>
           <SectionHeader>
@@ -700,7 +694,7 @@ const Enterprise = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              What Enterprise Leaders Are Saying
+              Why Enterprise Teams Choose ParkPro
             </SectionTitle>
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -708,12 +702,12 @@ const Enterprise = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join the growing community of enterprise organizations who've transformed their Disney planning operations.
+              Built for large agencies that need custom solutions, dedicated support, and infrastructure that scales.
             </SectionSubtitle>
           </SectionHeader>
 
           <CardGrid columns={3} gap={6}>
-            {testimonials.map((testimonial, index) => (
+            {valueProps.map((prop, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -721,14 +715,25 @@ const Enterprise = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <TestimonialCard>
-                  <TestimonialQuote>{testimonial.quote}</TestimonialQuote>
-                  <TestimonialAuthor>
-                    <AuthorName>{testimonial.author}</AuthorName>
-                    <AuthorTitle>{testimonial.title}</AuthorTitle>
-                    <AuthorCompany>{testimonial.company}</AuthorCompany>
-                  </TestimonialAuthor>
-                </TestimonialCard>
+                <Card variant="elevated" hover>
+                  <div style={{ textAlign: 'center', padding: '16px' }}>
+                    <h3 style={{
+                      fontSize: '24px',
+                      fontWeight: '600',
+                      color: '#0B0B0C',
+                      marginBottom: '16px',
+                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+                    }}>
+                      {prop.title}
+                    </h3>
+                    <p style={{
+                      color: '#6B7280',
+                      lineHeight: '1.6'
+                    }}>
+                      {prop.description}
+                    </p>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </CardGrid>

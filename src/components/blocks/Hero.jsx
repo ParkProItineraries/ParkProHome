@@ -271,7 +271,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           >
-            <strong>ParkPro</strong> is the best Disney itinerary generator and travel agent software. Our automated Disney planning software creates personalized Disney World and Disneyland itineraries in minutes, not hours. The leading travel agent productivity tool handles crowd levels, wait times, and dining reservations so you can focus on building relationships and closing more deals.
+            <strong>ParkPro</strong> is the best Disney itinerary generator and travel agent software. Our automated Disney planning software creates personalized Disney World and Disneyland itineraries in minutes, not hours. The leading travel agent productivity tool handles wait times, park hours, and dining reservations so you can focus on building relationships and closing more deals.
           </Subtitle>
           
           <CTAButtons

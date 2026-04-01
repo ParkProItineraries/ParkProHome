@@ -52,9 +52,9 @@ export const copy = {
       sub: "Clean day-by-day plans with live wait times, dining recs, and export-ready formats your clients actually use.",
       benefits: [
         "5-30 minute creation time vs. 8-12 hours manual",
-        "Real-time crowd predictions and wait times",
-        "Dining reservations and show schedules",
-        "Mobile-friendly for clients to use in-park",
+        "Real-time wait times and park hours",
+        "Dining recommendations and show schedules",
+        "Mobile-friendly client portal for in-park use",
         "Professional PDF export"
       ]
     },
@@ -63,29 +63,29 @@ export const copy = {
       sub: "Stop juggling spreadsheets, emails, and sticky notes. Clients, trips, and notes in one place.",
       benefits: [
         "Client database with trip history",
-        "Shared notes and tags",
-        "Task assignments and follow-ups",
-        "Team calendar and capacity planning",
-        "Activity log (who did what, when)"
+        "Trip notes and documents",
+        "Lead capture and management",
+        "Commission tracking",
+        "Real-time notifications"
       ]
     },
     agencies: {
       h2: "Made for agencies.",
-      sub: "Seats, roles, and usage controls that scale with your team.",
+      sub: "Per-agent subscriptions, roles, and usage controls that scale with your team.",
       benefits: [
-        "Multiple user seats with role permissions",
+        "Per-agent subscriptions with role permissions",
         "Usage tracking per agent",
-        "Shared agency branding on itineraries",
-        "Team performance metrics",
-        "Centralized billing and admin"
+        "Agency branding on itineraries",
+        "Centralized billing",
+        "Agent management and admin controls"
       ]
     },
     margins: {
       h2: "Own your margins.",
       sub: "Fewer clicks, fewer tools, more bookings. Get your time back.",
       benefits: [
-        "Serve 3x more clients in the same time",
-        "Eliminate manual research (crowd data, wait times)",
+        "Serve more clients in the same time",
+        "Eliminate manual research (wait times, park hours)",
         "Instant itinerary updates when plans change",
         "No more copy-paste between tools",
         "Focus on selling, not spreadsheets"
@@ -96,21 +96,19 @@ export const copy = {
       sub: "What used to take 8–12 hours now takes 15–60 minutes. Free up time to serve more families without burning out.",
       stat1: "5–10+ hrs",
       stat1Label: "Saved Per Client",
-      stat2: "3x",
-      stat2Label: "More Bookings",
-      stat3: "95%",
-      stat3Label: "Client Satisfaction"
+      stat2: "Minutes",
+      stat2Label: "To Build an Itinerary",
+      stat3: "1",
+      stat3Label: "Platform for Everything"
     },
     trust: {
       h2: "Built for scale, security, and support.",
-      sub: "Enterprise-grade infrastructure with the support your agency needs.",
+      sub: "Secure infrastructure with the support your agency needs.",
       badges: {
         ssl: "SSL Secure",
         sslSub: "256-bit Encryption",
         stripe: "Stripe Verified",
         stripeSub: "Secure Payments",
-        gdpr: "GDPR Compliant",
-        gdprSub: "Data Protected",
         guarantee: "Money-Back Guarantee",
         guaranteeSub: "14-Day Guarantee",
         agents: "Built for Agents",
@@ -178,8 +176,8 @@ export const copy = {
       bottomCta: "Still comparing tools? Book a 15-minute walkthrough.",
       guarantee: "14-day money-back guarantee on all plans.",
       taxNote: "Prices exclude applicable sales tax or VAT, calculated at checkout.",
-      title: "ParkPro Pricing | Disney Planning Software from $147/month",
-      description: "Flexible pricing for Disney planning automation. Plans start at $147/mo for 5 itineraries. Save 5–10+ hours per client. 14-day money-back guarantee."
+      title: "ParkPro Pricing | Disney Planning Software from $97/agent/month",
+      description: "Flexible per-agent pricing for Disney planning automation. Plans start at $97/agent/mo for 5 itineraries. Save 5–10+ hours per client. 14-day money-back guarantee."
     },
 
     features: {
@@ -200,7 +198,7 @@ export const copy = {
       h1: "Spend time with clients—not spreadsheets.",
       sub: "Free up 5–10+ hours per client so you can serve more families without burning out. Build polished itineraries in 15–60 minutes instead of spending entire days on manual planning.",
       title: "For Solo Agents | Disney Planning Software",
-      description: "Perfect for independent travel agents. Save 5–10+ hours per client and take on 3x more bookings without burning out."
+      description: "Perfect for independent travel agents. Save 5–10+ hours per client and take on more bookings without burning out."
     },
 
     enterprise: {

@@ -158,7 +158,7 @@ const AgentBenefits = () => {
     {
       icon: <Users size={24} />,
       title: "Impress Every Client",
-      description: "Deliver restaurant recommendations, optimal park schedules, and crowd-avoidance strategies that make you look like a Disney expert. Your clients will rave about your service.",
+      description: "Deliver restaurant recommendations, optimal park schedules, and park-flow strategies that make you look like a Disney expert. Your clients will rave about your service.",
       stats: [
         { number: "98%", label: "Satisfaction" },
         { number: "85%", label: "Referrals" }

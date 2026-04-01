@@ -355,7 +355,7 @@ const DisneyPlanningSoftware = () => {
     {
       icon: <Star />,
       title: "Real-Time Disney Data",
-      description: "Access live Disney crowd levels, wait times, and dining availability. The most accurate Disney planning software for travel professionals."
+      description: "Access live Disney wait times and dining availability. The most accurate Disney planning software for travel professionals."
     }
   ];
 

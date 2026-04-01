@@ -70,7 +70,7 @@ const DemoHeader = () => {
       >
         <Subtitle>
           Experience how ParkPro transforms client preferences into detailed, 
-          personalized Disney itineraries in seconds. Try it yourself below!
+          personalized Disney itineraries in minutes. Try it yourself below!
         </Subtitle>
       </motion.div>
     </Header>

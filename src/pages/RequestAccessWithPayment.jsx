@@ -619,53 +619,67 @@ const RequestAccessWithPayment = () => {
     initializeConfig();
   }, []);
 
-  // Available plans (fetch from backend in production)
+  // Available plans — aligned with ParkProBackend/config/pricing.js
   const allPlans = [
     {
-      id: "itinerary_starter_tier1",
-      name: "Itinerary Starter",
-      price: 147,
+      id: "solo",
+      name: "Solo Agent",
+      price: 97,
       interval: "month",
       features: [
-        "5 itineraries per month",
-        "Basic customization",
+        "5 itineraries/agent/month",
+        "Client intake forms and itinerary builder",
         "Email support",
-        "PDF exports"
+        "Extra itineraries at $50 each",
       ],
       roles: ["solo-agent", "travel-consultant", "other"],
       tier: 1
     },
     {
-      id: "itinerary_pro_tier2",
-      name: "Itinerary Pro",
-      price: 247,
+      id: "agentplus",
+      name: "Agent+",
+      price: 147,
       interval: "month",
       features: [
-        "25 itineraries per month",
-        "Advanced customization",
-        "Priority support",
-        "PDF & digital exports",
-        "Client branding"
+        "10 itineraries/agent/month",
+        "Save itinerary templates",
+        "Custom questionnaire link",
+        "Priority email support",
+        "Extra itineraries at $40 each",
       ],
       recommended: true,
       roles: ["solo-agent", "agency-owner", "agency-manager", "travel-consultant", "other"],
       tier: 2
     },
     {
-      id: "itinerary_enterprise_tier3",
-      name: "Itinerary Enterprise",
-      price: 497,
+      id: "agency",
+      name: "Agency",
+      price: 197,
       interval: "month",
       features: [
-        "Unlimited itineraries",
-        "Full white-label",
-        "Dedicated support",
-        "All export formats",
-        "Custom integrations",
-        "Multi-agent access"
+        "15 itineraries/agent/month",
+        "Shared agency dashboard",
+        "Branding: Add your logo",
+        "Tags and trip notes",
+        "Extra itineraries at $30 each",
+      ],
+      roles: ["agency-owner", "agency-manager", "other"],
+      tier: 3
+    },
+    {
+      id: "agencyplus",
+      name: "Agency+",
+      price: 247,
+      interval: "month",
+      features: [
+        "20 itineraries/agent/month",
+        "API access for integrations",
+        "White-glove onboarding",
+        "Live chat support",
+        "Extra itineraries at $22 each",
       ],
       roles: ["agency-owner", "agency-manager"],
-      tier: 3
+      tier: 4
     }
   ];
 

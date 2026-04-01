@@ -151,7 +151,7 @@ const DemoResult = ({ generatedItinerary, error, isGenerating }) => {
         <ResultTitle>Ready to Create Magic?</ResultTitle>
         <ResultText>
           Fill out the form to see how ParkPro generates personalized 
-          Disney itineraries in seconds!
+          Disney itineraries in minutes!
         </ResultText>
       </ResultContainer>
     );

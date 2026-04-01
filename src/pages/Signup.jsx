@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { PRICING_PLANS, getPlansForDisplay } from "../config/pricing";
+import { PRICING_PLANS, getPlansForDisplay, DESTINATION_ADDONS, FEATURE_FLAGS } from "../config/pricing";
 
 const plans = getPlansForDisplay();
 
@@ -213,6 +213,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [step, setStep] = useState("signup"); // 'signup', 'plan', 'done'
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedDestinations, setSelectedDestinations] = useState([]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -256,6 +257,7 @@ const Signup = () => {
           phone: form.phone.trim() || undefined,
           role: "agent",
           planId: selectedPlan?.id,
+          destinationAddons: selectedDestinations.length > 0 ? selectedDestinations : undefined,
         }),
       });
       const data = await res.json();
@@ -324,6 +326,69 @@ const Signup = () => {
                 </PlanCard>
               ))}
             </PlanRow>
+
+            {/* Destination Add-Ons (gated by feature flag) */}
+            {FEATURE_FLAGS.DESTINATION_ADDONS_ENABLED && selectedPlan && selectedPlan.id !== 'enterprise' && (
+              <div style={{ marginTop: '2rem' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem', textAlign: 'center' }}>
+                  Destination Add-Ons
+                </h3>
+                <p style={{ fontSize: '0.875rem', color: '#64748b', textAlign: 'center', marginBottom: '1rem' }}>
+                  Disney World is included. Add more destinations to your subscription.
+                </p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  {Object.values(DESTINATION_ADDONS).map((addon) => {
+                    const isSelected = selectedDestinations.includes(addon.id);
+                    return (
+                      <div
+                        key={addon.id}
+                        onClick={() => {
+                          setSelectedDestinations(prev =>
+                            isSelected
+                              ? prev.filter(id => id !== addon.id)
+                              : [...prev, addon.id]
+                          );
+                        }}
+                        style={{
+                          padding: '1rem 1.5rem',
+                          borderRadius: '10px',
+                          border: isSelected ? '2px solid #14b8a6' : '1px solid #e2e8f0',
+                          backgroundColor: isSelected ? '#f0fdfa' : '#fff',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.75rem',
+                          transition: 'all 0.15s ease',
+                          minWidth: '180px',
+                        }}
+                      >
+                        <div style={{
+                          width: '20px',
+                          height: '20px',
+                          borderRadius: '4px',
+                          border: isSelected ? '2px solid #14b8a6' : '2px solid #cbd5e1',
+                          backgroundColor: isSelected ? '#14b8a6' : 'transparent',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                        }}>
+                          {isSelected && (
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                              <path d="M2 6L5 9L10 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          )}
+                        </div>
+                        <div>
+                          <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{addon.name}</div>
+                          <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{addon.priceDisplay}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </Card>
         </Content>
       </Container>

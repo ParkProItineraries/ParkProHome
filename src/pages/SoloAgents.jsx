@@ -380,8 +380,8 @@ const SoloAgents = () => {
     {
       icon: <Zap size={32} />,
       title: "Lightning-Fast Automation",
-      description: "Generate complete Disney itineraries in under 30 seconds. Our AI considers crowd levels, wait times, and client preferences.",
-      outcomes: ["Save 5–10+ hours per client", "3x faster than manual planning", "98% client satisfaction rate"]
+      description: "Generate complete Disney itineraries in minutes, not hours. Our engine considers park-flow patterns, wait times, and client preferences.",
+      outcomes: ["Save 5–10+ hours per client", "Dramatically faster than manual planning", "Polished, client-ready output"]
     },
     {
       icon: <FileText size={32} />,
@@ -391,15 +391,15 @@ const SoloAgents = () => {
     },
     {
       icon: <BarChart3 size={32} />,
-      title: "Simple Analytics",
-      description: "Track your performance with basic analytics. See how many itineraries you've created and client satisfaction scores.",
-      outcomes: ["Performance tracking", "Client satisfaction metrics", "Business insights"]
+      title: "Trip Dashboard",
+      description: "See all your trips, clients, and itineraries in one organized workspace. Know exactly where every booking stands.",
+      outcomes: ["Trip tracking", "Client management", "Clear workspace"]
     },
     {
       icon: <Smartphone size={32} />,
       title: "Mobile Ready",
-      description: "Access your itineraries anywhere with our mobile-optimized platform. Perfect for on-the-go travel agents.",
-      outcomes: ["Mobile access", "Offline capabilities", "Always available"]
+      description: "Your clients get a mobile-optimized portal to view their itinerary, message you, and access trip documents on the go.",
+      outcomes: ["Mobile client portal", "In-park access for clients", "Calendar export"]
     },
     {
       icon: <Headphones size={32} />,
@@ -410,29 +410,23 @@ const SoloAgents = () => {
     {
       icon: <Shield size={32} />,
       title: "Secure & Reliable",
-      description: "Bank-level security with 99.9% uptime ensures your client data and itineraries are always protected.",
-      outcomes: ["Bank-level security", "99.9% uptime", "Data protection"]
+      description: "Industry-standard security with encryption, access controls, and secure payment processing through Stripe.",
+      outcomes: ["SSL encryption", "Stripe-verified payments", "Data protection"]
     }
   ];
 
-  const testimonials = [
+  const valueProps = [
     {
-      quote: "ParkPro has completely transformed my Disney planning business. I went from spending 8 hours per itinerary to just 30 minutes. My clients are amazed by the quality and detail.",
-      author: "Sarah Johnson",
-      title: "Solo Travel Agent",
-      company: "Magic Moments Travel"
+      title: "Minutes, Not Hours",
+      description: "Go from client intake to a structured, day-by-day Disney itinerary in minutes instead of spending entire days on manual planning."
     },
     {
-      quote: "The ROI is incredible. I've increased my Disney bookings by 300% while reducing my planning time by 90%. This is exactly what solo agents needed.",
-      author: "Mike Rodriguez",
-      title: "Independent Travel Agent",
-      company: "Dream Vacations"
+      title: "Concierge-Level Output",
+      description: "Deliver clean, professional park-day plans that show your clients you know Disney inside and out."
     },
     {
-      quote: "My clients love the personalized recommendations and real-time updates. I look like a Disney expert without having to memorize every detail.",
-      author: "Jennifer Chen",
-      title: "Travel Agent",
-      company: "Luxury Travel Co"
+      title: "More Clients, Less Burnout",
+      description: "Free up hours per client so you can take on more bookings without working nights and weekends."
     }
   ];
 
@@ -494,24 +488,24 @@ const SoloAgents = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
               >
-                <StatNumber>5min</StatNumber>
-                <StatLabel>Average Creation Time</StatLabel>
+                <StatNumber>5–10+ hrs</StatNumber>
+                <StatLabel>Saved Per Client</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
-                <StatNumber>3x</StatNumber>
-                <StatLabel>More Clients</StatLabel>
+                <StatNumber>Minutes</StatNumber>
+                <StatLabel>To Build an Itinerary</StatLabel>
               </StatCard>
               <StatCard
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1.4 }}
               >
-                <StatNumber>98%</StatNumber>
-                <StatLabel>Client Satisfaction</StatLabel>
+                <StatNumber>1</StatNumber>
+                <StatLabel>Platform for Everything</StatLabel>
               </StatCard>
             </HeroStats>
           </HeroContent>
@@ -577,7 +571,7 @@ const SoloAgents = () => {
                 ParkPro Solution
               </div>
               <div style={{ fontSize: '18px', opacity: 0.9, lineHeight: '1.6' }}>
-                Automated Disney planning that saves you 5–10+ hours per client and helps you serve 3x more clients
+                Automated Disney planning that saves you 5–10+ hours per client so you can serve more families
               </div>
             </SolutionVisual>
           </ProblemGrid>
@@ -683,7 +677,7 @@ const SoloAgents = () => {
         </Container>
       </FeaturesSection>
 
-      {/* Testimonials Section */}
+      {/* Value Props Section */}
       <TestimonialsSection>
         <Container>
           <SectionHeader>
@@ -693,7 +687,7 @@ const SoloAgents = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              What Solo Agents Are Saying
+              Why Solo Agents Choose ParkPro
             </SectionTitle>
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -701,12 +695,12 @@ const SoloAgents = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Join the growing community of solo travel agents who've transformed their Disney planning business.
+              Built specifically for independent travel agents who want to spend less time planning and more time serving clients.
             </SectionSubtitle>
           </SectionHeader>
 
           <CardGrid columns={3} gap={6}>
-            {testimonials.map((testimonial, index) => (
+            {valueProps.map((prop, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -714,14 +708,25 @@ const SoloAgents = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <TestimonialCard>
-                  <TestimonialQuote>{testimonial.quote}</TestimonialQuote>
-                  <TestimonialAuthor>
-                    <AuthorName>{testimonial.author}</AuthorName>
-                    <AuthorTitle>{testimonial.title}</AuthorTitle>
-                    <AuthorCompany>{testimonial.company}</AuthorCompany>
-                  </TestimonialAuthor>
-                </TestimonialCard>
+                <Card variant="elevated" hover>
+                  <div style={{ textAlign: 'center', padding: '16px' }}>
+                    <h3 style={{
+                      fontSize: '24px',
+                      fontWeight: '600',
+                      color: '#0B0B0C',
+                      marginBottom: '16px',
+                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
+                    }}>
+                      {prop.title}
+                    </h3>
+                    <p style={{
+                      color: '#6B7280',
+                      lineHeight: '1.6'
+                    }}>
+                      {prop.description}
+                    </p>
+                  </div>
+                </Card>
               </motion.div>
             ))}
           </CardGrid>
