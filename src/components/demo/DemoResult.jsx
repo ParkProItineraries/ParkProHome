@@ -11,7 +11,7 @@ import { FaRegGrinStars } from "react-icons/fa";
 const ResultContainer = styled(motion.div).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  background: linear-gradient(135deg, #F5C249, #E9B029);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   border-radius: 12px;
   padding: 3rem 2rem;
   color: white;

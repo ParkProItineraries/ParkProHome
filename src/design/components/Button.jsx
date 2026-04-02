@@ -50,14 +50,14 @@ const StyledButton = styled(motion.button).withConfig({
     switch (variant) {
       case 'primary':
         return css`
-          background: ${designTokens.colors.gold};
-          color: ${designTokens.colors.black};
-          box-shadow: ${designTokens.shadows.gold};
+          background: ${designTokens.colors.black};
+          color: ${designTokens.colors.white};
+          box-shadow: ${designTokens.shadows.lg};
           
           &:hover:not(:disabled) {
-            background: ${designTokens.colors['gold-muted']};
+            background: ${designTokens.colors['gray-800']};
             transform: translateY(-2px);
-            box-shadow: ${designTokens.shadows['gold-lg']};
+            box-shadow: ${designTokens.shadows.xl};
           }
           
           &:active:not(:disabled) {
@@ -130,12 +130,12 @@ const StyledButton = styled(motion.button).withConfig({
       case 'outline':
         return css`
           background: transparent;
-          color: ${designTokens.colors.gold};
-          border: 2px solid ${designTokens.colors.gold};
+          color: ${designTokens.colors.black};
+          border: 2px solid ${designTokens.colors['gray-300']};
           
           &:hover:not(:disabled) {
-            background: ${designTokens.colors.gold};
-            color: ${designTokens.colors.black};
+            background: ${designTokens.colors['gray-50']};
+            border-color: ${designTokens.colors.black};
             transform: translateY(-2px);
           }
           
@@ -147,21 +147,21 @@ const StyledButton = styled(motion.button).withConfig({
       case 'link':
         return css`
           background: transparent;
-          color: ${designTokens.colors.gold};
+          color: ${designTokens.colors.teal};
           padding: 0;
           height: auto;
           min-height: auto;
           text-decoration: underline;
           
           &:hover:not(:disabled) {
-            color: ${designTokens.colors['gold-muted']};
+            color: ${designTokens.colors['teal-dark']};
             text-decoration: none;
           }
         `;
         
       default:
         return css`
-          background: ${designTokens.colors.gold};
+          background: ${designTokens.colors.black};
           color: ${designTokens.colors.black};
         `;
     }
@@ -169,7 +169,7 @@ const StyledButton = styled(motion.button).withConfig({
   
   /* Focus styles */
   &:focus-visible {
-    outline: 2px solid ${designTokens.colors.gold};
+    outline: 2px solid ${designTokens.colors.teal};
     outline-offset: 2px;
   }
   
@@ -259,14 +259,14 @@ const StyledAnchor = styled.a.withConfig({
     switch (variant) {
       case 'primary':
         return css`
-          background: ${designTokens.colors.gold};
-          color: ${designTokens.colors.black};
-          box-shadow: ${designTokens.shadows.gold};
+          background: ${designTokens.colors.black};
+          color: ${designTokens.colors.white};
+          box-shadow: ${designTokens.shadows.lg};
           
           &:hover:not(:disabled) {
-            background: ${designTokens.colors['gold-muted']};
+            background: ${designTokens.colors['gray-800']};
             transform: translateY(-2px);
-            box-shadow: ${designTokens.shadows['gold-lg']};
+            box-shadow: ${designTokens.shadows.xl};
           }
           
           &:active:not(:disabled) {
@@ -339,12 +339,12 @@ const StyledAnchor = styled.a.withConfig({
       case 'outline':
         return css`
           background: transparent;
-          color: ${designTokens.colors.gold};
-          border: 2px solid ${designTokens.colors.gold};
+          color: ${designTokens.colors.black};
+          border: 2px solid ${designTokens.colors['gray-300']};
           
           &:hover:not(:disabled) {
-            background: ${designTokens.colors.gold};
-            color: ${designTokens.colors.black};
+            background: ${designTokens.colors['gray-50']};
+            border-color: ${designTokens.colors.black};
             transform: translateY(-2px);
           }
           
@@ -356,21 +356,21 @@ const StyledAnchor = styled.a.withConfig({
       case 'link':
         return css`
           background: transparent;
-          color: ${designTokens.colors.gold};
+          color: ${designTokens.colors.teal};
           padding: 0;
           height: auto;
           min-height: auto;
           text-decoration: underline;
           
           &:hover:not(:disabled) {
-            color: ${designTokens.colors['gold-muted']};
+            color: ${designTokens.colors['teal-dark']};
             text-decoration: none;
           }
         `;
         
       default:
         return css`
-          background: ${designTokens.colors.gold};
+          background: ${designTokens.colors.black};
           color: ${designTokens.colors.black};
         `;
     }
@@ -378,7 +378,7 @@ const StyledAnchor = styled.a.withConfig({
   
   /* Focus styles */
   &:focus-visible {
-    outline: 2px solid ${designTokens.colors.gold};
+    outline: 2px solid ${designTokens.colors.teal};
     outline-offset: 2px;
   }
   

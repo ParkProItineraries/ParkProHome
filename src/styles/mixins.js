@@ -130,7 +130,7 @@ export const hoverLift = css`
 
 export const focusRing = css`
   &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.colors.gold};
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
     outline-offset: 2px;
     border-radius: ${({ theme }) => theme.radius.md};
   }

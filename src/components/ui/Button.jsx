@@ -74,109 +74,122 @@ const StyledButton = styled(motion.button).withConfig({
     switch (variant) {
       case 'primary':
         return css`
-          background: ${tokens.colors.gold};
-          color: ${tokens.colors.black};
-          box-shadow: ${tokens.shadows.gold};
-          
+          background: ${tokens.colors.black};
+          color: ${tokens.colors.white};
+          box-shadow: ${tokens.shadows.lg};
+
           &:hover:not(:disabled) {
-            background: ${tokens.colors['gold-dark']};
-            color: ${tokens.colors.black} !important;
+            background: ${tokens.colors['gray-800']};
+            color: ${tokens.colors.white} !important;
             transform: translateY(-2px);
-            box-shadow: ${tokens.shadows['gold-lg']};
+            box-shadow: ${tokens.shadows.xl};
           }
-          
+
           &:active:not(:disabled) {
             transform: translateY(0);
-            color: ${tokens.colors.black} !important;
+            color: ${tokens.colors.white} !important;
           }
         `;
-        
+
       case 'secondary':
         return css`
           background: ${tokens.colors.white};
           color: ${tokens.colors.black};
-          border: 2px solid ${tokens.colors.black};
-          
+          border: 2px solid ${tokens.colors['gray-300']};
+
           &:hover:not(:disabled) {
-            background: ${tokens.colors.black};
-            color: ${tokens.colors.white};
+            background: ${tokens.colors['gray-50']};
+            border-color: ${tokens.colors.black};
             transform: translateY(-2px);
           }
-          
+
           &:active:not(:disabled) {
             transform: translateY(0);
           }
         `;
-        
+
       case 'ghost':
         return css`
           background: transparent;
           color: ${tokens.colors['text-secondary']};
-          
+
           &:hover:not(:disabled) {
             background: ${tokens.colors['gray-100']};
             color: ${tokens.colors.black};
           }
         `;
-        
+
       case 'gold':
         return css`
           background: ${tokens.colors.gold};
           color: ${tokens.colors.black};
           box-shadow: ${tokens.shadows.gold};
-          
+
           &:hover:not(:disabled) {
             background: ${tokens.colors['gold-dark']};
             transform: translateY(-2px);
             box-shadow: ${tokens.shadows['gold-lg']};
           }
         `;
-        
+
+      case 'teal':
+        return css`
+          background: ${tokens.colors.teal};
+          color: ${tokens.colors.white};
+          box-shadow: ${tokens.shadows.teal};
+
+          &:hover:not(:disabled) {
+            background: ${tokens.colors['teal-dark']};
+            transform: translateY(-2px);
+            box-shadow: ${tokens.shadows['teal-lg']};
+          }
+        `;
+
       case 'purple':
         return css`
           background: ${tokens.colors.purple};
           color: ${tokens.colors.white};
           box-shadow: ${tokens.shadows.purple};
-          
+
           &:hover:not(:disabled) {
             background: ${tokens.colors['purple-dark']};
             transform: translateY(-2px);
             box-shadow: ${tokens.shadows['purple-lg']};
           }
         `;
-        
+
       case 'outline':
         return css`
           background: transparent;
-          color: ${tokens.colors.gold};
-          border: 2px solid ${tokens.colors.gold};
-          
+          color: ${tokens.colors.black};
+          border: 2px solid ${tokens.colors['gray-300']};
+
           &:hover:not(:disabled) {
-            background: ${tokens.colors.gold};
-            color: ${tokens.colors.black};
+            border-color: ${tokens.colors.black};
+            background: ${tokens.colors['gray-50']};
             transform: translateY(-2px);
           }
         `;
-        
+
       case 'link':
         return css`
           background: transparent;
-          color: ${tokens.colors.gold};
+          color: ${tokens.colors.teal};
           padding: 0;
           height: auto;
           min-height: auto;
           text-decoration: underline;
-          
+
           &:hover:not(:disabled) {
-            color: ${tokens.colors['gold-dark']};
+            color: ${tokens.colors['teal-dark']};
             text-decoration: none;
           }
         `;
-        
+
       default:
         return css`
-          background: ${tokens.colors.gold};
-          color: ${tokens.colors.black};
+          background: ${tokens.colors.black};
+          color: ${tokens.colors.white};
         `;
     }
   }}
@@ -190,10 +203,10 @@ const StyledButton = styled(motion.button).withConfig({
   
   /* Focus Styles */
   &:focus-visible {
-    outline: 2px solid ${tokens.colors.gold};
+    outline: 2px solid ${tokens.colors.teal};
     outline-offset: 2px;
   }
-  
+
   /* Loading State */
   ${({ loading }) => loading && css`
     &::after {
@@ -285,57 +298,57 @@ const StyledAnchor = styled.a.withConfig({
     switch (variant) {
       case 'primary':
         return css`
-          background: ${tokens.colors.gold};
-          color: ${tokens.colors.black};
-          box-shadow: ${tokens.shadows.gold};
-          
+          background: ${tokens.colors.black};
+          color: ${tokens.colors.white};
+          box-shadow: ${tokens.shadows.lg};
+
           &:hover:not(:disabled) {
-            background: ${tokens.colors['gold-dark']};
-            color: ${tokens.colors.black} !important;
+            background: ${tokens.colors['gray-800']};
+            color: ${tokens.colors.white} !important;
             transform: translateY(-2px);
-            box-shadow: ${tokens.shadows['gold-lg']};
+            box-shadow: ${tokens.shadows.xl};
           }
-          
+
           &:active:not(:disabled) {
             transform: translateY(0);
-            color: ${tokens.colors.black} !important;
+            color: ${tokens.colors.white} !important;
           }
         `;
-        
+
       case 'secondary':
         return css`
           background: ${tokens.colors.white};
           color: ${tokens.colors.black};
-          border: 2px solid ${tokens.colors.black};
-          
+          border: 2px solid ${tokens.colors['gray-300']};
+
           &:hover:not(:disabled) {
-            background: ${tokens.colors.black};
-            color: ${tokens.colors.white};
+            background: ${tokens.colors['gray-50']};
+            border-color: ${tokens.colors.black};
             transform: translateY(-2px);
           }
-          
+
           &:active:not(:disabled) {
             transform: translateY(0);
           }
         `;
-        
+
       case 'ghost':
         return css`
           background: transparent;
           color: ${tokens.colors['text-secondary']};
-          
+
           &:hover:not(:disabled) {
             background: ${tokens.colors['gray-100']};
             color: ${tokens.colors.black};
           }
         `;
-        
+
       case 'gold':
         return css`
           background: ${tokens.colors.gold};
           color: ${tokens.colors.black};
           box-shadow: ${tokens.shadows.gold};
-          
+
           &:hover:not(:disabled) {
             background: ${tokens.colors['gold-dark']};
             color: ${tokens.colors.black} !important;
@@ -343,66 +356,79 @@ const StyledAnchor = styled.a.withConfig({
             box-shadow: ${tokens.shadows['gold-lg']};
           }
         `;
-        
+
+      case 'teal':
+        return css`
+          background: ${tokens.colors.teal};
+          color: ${tokens.colors.white};
+          box-shadow: ${tokens.shadows.teal};
+
+          &:hover:not(:disabled) {
+            background: ${tokens.colors['teal-dark']};
+            transform: translateY(-2px);
+            box-shadow: ${tokens.shadows['teal-lg']};
+          }
+        `;
+
       case 'purple':
         return css`
           background: ${tokens.colors.purple};
           color: ${tokens.colors.white};
           box-shadow: ${tokens.shadows.purple};
-          
+
           &:hover:not(:disabled) {
             background: ${tokens.colors['purple-dark']};
             transform: translateY(-2px);
             box-shadow: ${tokens.shadows['purple-lg']};
           }
         `;
-        
+
       case 'outline':
         return css`
           background: transparent;
-          color: ${tokens.colors.gold};
-          border: 2px solid ${tokens.colors.gold};
-          
+          color: ${tokens.colors.black};
+          border: 2px solid ${tokens.colors['gray-300']};
+
           &:hover:not(:disabled) {
-            background: ${tokens.colors.gold};
-            color: ${tokens.colors.black};
+            border-color: ${tokens.colors.black};
+            background: ${tokens.colors['gray-50']};
             transform: translateY(-2px);
           }
         `;
-        
+
       case 'link':
         return css`
           background: transparent;
-          color: ${tokens.colors.gold};
+          color: ${tokens.colors.teal};
           padding: 0;
           height: auto;
           min-height: auto;
           text-decoration: underline;
-          
+
           &:hover:not(:disabled) {
-            color: ${tokens.colors['gold-dark']};
+            color: ${tokens.colors['teal-dark']};
             text-decoration: none;
           }
         `;
-        
+
       default:
         return css`
-          background: ${tokens.colors.gold};
-          color: ${tokens.colors.black};
+          background: ${tokens.colors.black};
+          color: ${tokens.colors.white};
         `;
     }
   }}
-  
+
   /* Disabled State */
   ${({ disabled, loading }) => (disabled || loading) && css`
     opacity: 0.6;
     cursor: not-allowed;
     pointer-events: none;
   `}
-  
+
   /* Focus Styles */
   &:focus-visible {
-    outline: 2px solid ${tokens.colors.gold};
+    outline: 2px solid ${tokens.colors.teal};
     outline-offset: 2px;
   }
 `;

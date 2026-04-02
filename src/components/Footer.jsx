@@ -80,7 +80,7 @@ const FooterLink = styled(Link)`
   transition: ${({ theme }) => theme.transitions.normal};
   
   &:hover {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -102,7 +102,7 @@ const ContactItem = styled.div`
   }
   
   svg {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.teal};
     flex-shrink: 0;
   }
   
@@ -133,8 +133,8 @@ const SocialLink = styled.a`
   transition: ${({ theme }) => theme.transitions.normal};
   
   &:hover {
-    background: ${({ theme }) => theme.colors.gold};
-    color: ${({ theme }) => theme.colors.black};
+    background: rgba(255, 255, 255, 0.2);
+    color: ${({ theme }) => theme.colors.white};
     transform: translateY(-2px);
   }
   

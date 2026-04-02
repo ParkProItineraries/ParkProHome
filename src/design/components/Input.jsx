@@ -87,8 +87,8 @@ const StyledInput = styled(motion.input).withConfig({
           border: 1px solid ${designTokens.colors['border-medium']};
           
           &:focus {
-            border-color: ${designTokens.colors.gold};
-            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+            border-color: ${designTokens.colors.teal};
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
           }
         `;
         
@@ -189,7 +189,7 @@ const InputAction = styled.button`
   }
   
   &:focus-visible {
-    outline: 2px solid ${designTokens.colors.gold};
+    outline: 2px solid ${designTokens.colors.teal};
     outline-offset: 2px;
   }
 `;

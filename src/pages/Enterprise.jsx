@@ -4,55 +4,39 @@ import SEO from '../components/seo/SEO';
 import { SEOConfigs } from '../components/seo/SEOConfigs';
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { 
-  Crown, 
-  Users, 
-  TrendingUp, 
-  Star,
-  CheckCircle,
-  ArrowRight,
-  Play,
+import {
+  Crown,
   Shield,
-  Smartphone,
-  Headphones,
-  Zap,
-  Award,
-  Target,
-  BarChart3,
-  FileText,
-  Palette,
-  X,
-  Globe,
-  Settings,
-  Building2,
+  Users,
+  ArrowRight,
   Lock,
   Server,
+  Headphones,
+  Settings,
+  BarChart3,
+  CheckCircle,
   Database,
-  Code,
-  Zap as Lightning
 } from "lucide-react";
 import { copy } from "../content/strings";
-import { Button, Card, CardGrid } from "../design";
+import { Button } from "../design";
 import Container from "../components/layout/Container";
-import Section from "../components/layout/Section";
-import { flexColumnCenter } from "../styles/mixins";
 
-// Enterprise Solution Page
-const EnterpriseWrapper = styled.div`
-  padding-top: 88px; // Account for fixed navbar
+const PageWrapper = styled.div`
+  padding-top: 88px;
   background: ${({ theme }) => theme.colors.white};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: 72px;
   }
-  
+
   @media (max-width: 475px) {
     padding-top: 68px;
   }
 `;
 
+// Hero with gold accent for enterprise premium feel
 const HeroSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing['3xl']} 0 ${({ theme }) => theme.spacing['2xl']};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -62,281 +46,309 @@ const HeroSection = styled.section`
   &::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing['2xl']} 0 ${({ theme }) => theme.spacing.xl};
   }
 `;
 
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(201, 162, 39, 0.1);
+  background: rgba(245, 194, 73, 0.1);
   color: ${({ theme }) => theme.colors.gold};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
-  display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 162, 39, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  border: 1px solid rgba(245, 194, 73, 0.3);
 `;
 
 const HeroTitle = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['6xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
-  
-  .gradient-text {
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   }
 `;
 
 const HeroSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  max-width: 700px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
-const HeroStats = styled(motion.div)`
+const ButtonRow = styled(motion.div)`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.md};
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+// Section Label (blue uppercase 13px)
+const SectionLabel = styled(motion.span)`
+  font-size: 13px;
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors['blue-600']};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+`;
+
+// Section Header
+const SectionHeader = styled.div`
+  text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+`;
+
+// Section Title (4xl, text-primary)
+const SectionTitle = styled(motion.h2)`
+  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  color: ${({ theme }) => theme.colors['text-primary']};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  }
+`;
+
+// Section Subtitle (lg, gray-500)
+const SectionSubtitle = styled(motion.p)`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: ${({ theme }) => theme.colors['gray-500']};
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
+`;
+
+// Security & Compliance Section (light background)
+const SecuritySection = styled.section`
+  padding: 96px 0;
+  background: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 0;
+  }
+`;
+
+const SecurityGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing['2xl']};
-  margin-top: ${({ theme }) => theme.spacing['3xl']};
-  
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: ${({ theme }) => theme.spacing['2xl']};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.lg};
+    gap: 20px;
   }
 `;
 
-const StatCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing.lg};
-  text-align: center;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: ${({ theme }) => theme.shadows.xl};
+const SecurityCard = styled(motion.div)`
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
+  display: flex;
+  gap: ${({ theme }) => theme.spacing.lg};
+  align-items: flex-start;
+  transition: ${({ theme }) => theme.transitions.normal};
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  }
+
+  @media (max-width: 475px) {
+    flex-direction: column;
+    padding: 24px;
+  }
 `;
 
-const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.black};
+const SecurityIcon = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(245, 194, 73, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.gold};
+  flex-shrink: 0;
+`;
+
+const SecurityContent = styled.div`
+  flex: 1;
+`;
+
+const SecurityTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors['text-primary']};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+`;
+
+const SecurityDescription = styled.p`
+  color: ${({ theme }) => theme.colors['gray-500']};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  margin: 0;
+`;
+
+// Features Section (light background, alternating)
+const FeaturesSection = styled.section`
+  padding: 96px 0;
+  background: ${({ theme }) => theme.colors['gray-50']};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 0;
+  }
+`;
+
+const FeatureGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: ${({ theme }) => theme.spacing['2xl']};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+`;
+
+const FeatureCard = styled(motion.div)`
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: ${({ theme }) => theme.transitions.normal};
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 24px;
+  }
+`;
+
+const FeatureIcon = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors['blue-600']};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  flex-shrink: 0;
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors['text-primary']};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
 
-const StatLabel = styled.div`
-  color: ${({ theme }) => theme.colors['gray-600']};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-`;
-
-// Problem/Solution Section
-const ProblemSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
-`;
-
-const ProblemGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing['3xl']};
-  align-items: center;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing['2xl']};
-  }
-`;
-
-const ProblemContent = styled.div``;
-
-const ProblemTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  }
-`;
-
-const ProblemDescription = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+const FeatureDescription = styled.p`
+  color: ${({ theme }) => theme.colors['gray-500']};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-const ProblemList = styled.ul`
-  list-style: none;
-  padding: 0;
+  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  flex: 1;
   margin: 0;
 `;
 
-const ProblemItem = styled.li`
-  display: flex;
-  align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  
-  svg {
-    color: ${({ theme }) => theme.colors.error};
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-`;
-
-const SolutionVisual = styled.div`
-  background: ${({ theme }) => theme.colors.black};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
-  min-height: 300px;
-  ${flexColumnCenter}
-`;
-
-// Features Section
-const FeaturesSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors.white};
-`;
-
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
-`;
-
-const SectionTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  }
-`;
-
-const SectionSubtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-// Testimonials Section
-const TestimonialsSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
-`;
-
-const TestimonialCard = styled(Card)`
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  border: none;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
-  }
-`;
-
-const TestimonialQuote = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: ${({ theme }) => theme.colors['text-primary']};
-  font-style: italic;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
-  &::before {
-    content: '"';
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    color: ${({ theme }) => theme.colors.gold};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-  }
-  
-  &::after {
-    content: '"';
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    color: ${({ theme }) => theme.colors.gold};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-  }
-`;
-
-const TestimonialAuthor = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const AuthorName = styled.div`
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors['text-primary']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-`;
-
-const AuthorTitle = styled.div`
-  color: ${({ theme }) => theme.colors['text-secondary']};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-const AuthorCompany = styled.div`
-  color: ${({ theme }) => theme.colors.gold};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-// CTA Section
+// CTA Section (dark gradient)
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing.xl} 0;
-  background: ${({ theme }) => theme.colors.black};
+  padding: 96px 0;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 0;
+  }
 `;
 
 const CTAContent = styled.div`
-  max-width: 800px;
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
   margin: 0 auto;
 `;
 
@@ -344,403 +356,235 @@ const CTATitle = styled(motion.h2)`
   font-size: ${({ theme }) => theme.typography.sizes['4xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   }
 `;
 
 const CTASubtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
-  }
-`;
 
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
-  justify-content: center;
-  flex-wrap: wrap;
-  
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex-direction: column;
-    align-items: center;
+    font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
 const Enterprise = () => {
-  const problems = [
-    "Complex integration requirements with existing systems",
-    "Need for advanced security and compliance features",
-    "Requirement for custom workflows and business logic",
-    "Need for dedicated support and training resources",
-    "Challenges with data governance and user management"
+  const securityItems = [
+    {
+      icon: <Lock size={24} />,
+      title: "SSL Encryption",
+      description: "All data is encrypted in transit with 256-bit TLS. Your agency's client data never travels unprotected.",
+    },
+    {
+      icon: <Server size={24} />,
+      title: "AWS Infrastructure",
+      description: "Hosted on Amazon Web Services with automatic scaling, redundancy, and 99.9% uptime SLA.",
+    },
+    {
+      icon: <Shield size={24} />,
+      title: "SOC 2 & GDPR Compliance",
+      description: "Data handling practices aligned with SOC 2 and GDPR requirements. Built for organizations with compliance needs.",
+    },
+    {
+      icon: <Database size={24} />,
+      title: "Data Isolation",
+      description: "Enterprise accounts include dedicated data environments. Your agency's data is logically separated and access-controlled.",
+    },
   ];
 
   const features = [
     {
-      icon: <Code size={32} />,
-      title: "Custom Integrations",
-      description: "Full API access and custom integrations with your existing CRM, booking systems, and business tools.",
-      outcomes: ["Full API access", "Custom integrations", "Seamless workflow"]
+      icon: <Users size={24} />,
+      title: "Unlimited Agent Seats",
+      description: "Add your entire team with no per-seat caps. Enterprise plans are designed for organizations of any size.",
     },
     {
-      icon: <Lock size={32} />,
-      title: "Security & Audit Logging",
-      description: "Role-based access controls, encryption, comprehensive audit logging, and rate limiting built into the platform.",
-      outcomes: ["Role-based access", "Encryption", "Audit logging"]
-    },
-    {
-      icon: <Server size={32} />,
-      title: "Priority Infrastructure",
-      description: "Dedicated support, priority performance, and custom contract terms tailored to your organization's needs.",
-      outcomes: ["Dedicated support", "Priority performance", "Custom terms"]
-    },
-    {
-      icon: <Users size={32} />,
+      icon: <Headphones size={24} />,
       title: "Dedicated Account Manager",
-      description: "Personal account manager with deep industry expertise to help you maximize your investment.",
-      outcomes: ["Personal support", "Industry expertise", "Strategic guidance"]
+      description: "A named point of contact who knows your agency, your workflow, and your goals. Not a support queue.",
     },
     {
-      icon: <Database size={32} />,
-      title: "Data Management",
-      description: "Secure data storage with automated backups on AWS infrastructure. Your agency's data stays protected.",
-      outcomes: ["Automated backups", "AWS infrastructure", "Secure storage"]
+      icon: <Settings size={24} />,
+      title: "Custom Integrations",
+      description: "API access for connecting ParkPro to your existing CRM, booking system, or internal tools.",
     },
     {
-      icon: <Settings size={32} />,
-      title: "Admin Dashboard",
-      description: "Full admin visibility with agent management, impersonation for support, and usage tracking across your organization.",
-      outcomes: ["Agent management", "Admin impersonation", "Usage tracking"]
-    }
-  ];
-
-  const valueProps = [
-    {
-      title: "Built for Scale",
-      description: "Unlimited users, unlimited itineraries, and a dedicated success manager to help your team get the most from the platform."
+      icon: <BarChart3 size={24} />,
+      title: "Advanced Reporting",
+      description: "Agency-wide analytics on itinerary volume, agent productivity, and planning efficiency across your organization.",
     },
     {
-      title: "Custom Integration",
-      description: "Work directly with our team to integrate ParkPro into your existing systems, workflows, and business tools."
+      icon: <Crown size={24} />,
+      title: "White-Label Everything",
+      description: "Full branding control across itineraries, client portals, and exported documents. Your brand, front and center.",
     },
     {
-      title: "Dedicated Support",
-      description: "Priority support with a dedicated point of contact who understands your agency's unique requirements."
-    }
+      icon: <CheckCircle size={24} />,
+      title: "Priority Infrastructure",
+      description: "Enterprise accounts run on dedicated resources with priority processing, faster exports, and guaranteed uptime.",
+    },
   ];
 
   return (
-    <EnterpriseWrapper>
+    <PageWrapper>
       <SEO {...SEOConfigs.enterprise} schemaType="SoftwareApplication" />
-      {/* Hero Section */}
+
       <HeroSection>
         <Container>
           <HeroContent>
             <HeroBadge
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <Crown size={16} style={{ marginRight: '8px' }} />
+              <Crown size={14} />
               Enterprise Solution
             </HeroBadge>
-            
+
             <HeroTitle
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               {copy.pages.enterprise.h1}
             </HeroTitle>
-            
+
             <HeroSubtitle
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               {copy.pages.enterprise.sub}
             </HeroSubtitle>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+
+            <ButtonRow
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '48px' }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <Button variant="primary" size="lg" to="/demo">
-                <Star size={20} />
+              <Button variant="primary" size="lg" to="/contact">
                 Contact Sales
+                <ArrowRight size={20} />
               </Button>
               <Button variant="secondary" size="lg" to="/demo">
-                <Play size={20} />
-                Watch Demo
+                Book a Demo
               </Button>
-            </motion.div>
-            
-            <HeroStats
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <StatCard
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-              >
-                <StatNumber>Unlimited</StatNumber>
-                <StatLabel>Users & Itineraries</StatLabel>
-              </StatCard>
-              <StatCard
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-              >
-                <StatNumber>Dedicated</StatNumber>
-                <StatLabel>Success Manager</StatLabel>
-              </StatCard>
-              <StatCard
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.4 }}
-              >
-                <StatNumber>Custom</StatNumber>
-                <StatLabel>Integration Support</StatLabel>
-              </StatCard>
-            </HeroStats>
+            </ButtonRow>
           </HeroContent>
         </Container>
       </HeroSection>
 
-      {/* Problem/Solution Section */}
-      <ProblemSection>
+      {/* Security & Compliance — unique to Enterprise */}
+      <SecuritySection>
         <Container>
-          <ProblemGrid>
-            <ProblemContent>
-              <ProblemTitle
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                The Enterprise Challenge
-              </ProblemTitle>
-              <ProblemDescription
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                Large organizations have unique requirements: complex integrations, advanced security, 
-                custom workflows, and dedicated support. Standard solutions don't meet enterprise needs.
-              </ProblemDescription>
-              <ProblemList>
-                {problems.map((problem, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '12px',
-                      marginBottom: '16px',
-                      color: '#6B7280',
-                      fontSize: '16px'
-                    }}
-                  >
-                    <X size={20} style={{ color: '#EF4444', flexShrink: 0, marginTop: '2px' }} />
-                    {problem}
-                  </motion.li>
-                ))}
-              </ProblemList>
-            </ProblemContent>
-            <SolutionVisual
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+          <SectionHeader>
+            <SectionLabel
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Security & Compliance
+            </SectionLabel>
+
+            <SectionTitle
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div style={{ fontSize: '64px', marginBottom: '24px', color: theme.colors.primary }}>
-                <Crown size={64} />
-              </div>
-              <div style={{ fontSize: '24px', fontWeight: '600', marginBottom: '16px' }}>
-                ParkPro Enterprise
-              </div>
-              <div style={{ fontSize: '18px', opacity: 0.9, lineHeight: '1.6' }}>
-                Custom solutions with enterprise-grade security, dedicated support, and seamless integrations
-              </div>
-            </SolutionVisual>
-          </ProblemGrid>
-        </Container>
-      </ProblemSection>
+              Enterprise-Grade Security
+            </SectionTitle>
 
-      {/* Features Section */}
+            <SectionSubtitle
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Built on enterprise-grade infrastructure with the security controls your organization requires.
+            </SectionSubtitle>
+          </SectionHeader>
+
+          <SecurityGrid>
+            {securityItems.map((item, index) => (
+              <SecurityCard
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <SecurityIcon>{item.icon}</SecurityIcon>
+                <SecurityContent>
+                  <SecurityTitle>{item.title}</SecurityTitle>
+                  <SecurityDescription>{item.description}</SecurityDescription>
+                </SecurityContent>
+              </SecurityCard>
+            ))}
+          </SecurityGrid>
+        </Container>
+      </SecuritySection>
+
+      {/* Enterprise Features */}
       <FeaturesSection>
         <Container>
           <SectionHeader>
+            <SectionLabel
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Features
+            </SectionLabel>
+
             <SectionTitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
               Enterprise-Grade Features
             </SectionTitle>
+
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Everything you need to deploy ParkPro across your entire organization with confidence and control.
+              Everything in the Agency plan, plus dedicated resources and custom capabilities for large organizations.
             </SectionSubtitle>
           </SectionHeader>
 
-          <CardGrid columns={3} gap={6}>
+          <FeatureGrid>
             {features.map((feature, index) => (
-              <motion.div
+              <FeatureCard
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card variant="elevated" hover>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{
-                      width: '80px',
-                      height: '80px',
-                      borderRadius: '16px',
-                      background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors['primary-dark']})`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 24px',
-                      color: '#0B0B0C',
-                      fontSize: '32px'
-                    }}>
-                      {feature.icon}
-                    </div>
-                    <h3 style={{
-                      fontSize: '24px',
-                      fontWeight: '600',
-                      color: '#0B0B0C',
-                      marginBottom: '16px',
-                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
-                    }}>
-                      {feature.title}
-                    </h3>
-                    <p style={{
-                      color: '#6B7280',
-                      lineHeight: '1.6',
-                      marginBottom: '24px'
-                    }}>
-                      {feature.description}
-                    </p>
-                    <div style={{ textAlign: 'left' }}>
-                      <h4 style={{
-                        fontSize: '16px',
-                        fontWeight: '600',
-                        color: '#0B0B0C',
-                        marginBottom: '12px'
-                      }}>
-                        Enterprise Benefits:
-                      </h4>
-                      <ul style={{
-                        listStyle: 'none',
-                        padding: 0,
-                        margin: 0
-                      }}>
-                        {feature.outcomes.map((outcome, outcomeIndex) => (
-                          <li key={outcomeIndex} style={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: '8px',
-                            marginBottom: '8px',
-                            color: '#6B7280',
-                            fontSize: '14px'
-                          }}>
-                            <CheckCircle size={16} style={{ color: theme.colors.primary, flexShrink: 0, marginTop: '2px' }} />
-                            {outcome}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
+                <FeatureIcon>{feature.icon}</FeatureIcon>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+              </FeatureCard>
             ))}
-          </CardGrid>
+          </FeatureGrid>
         </Container>
       </FeaturesSection>
 
-      {/* Value Props Section */}
-      <TestimonialsSection>
-        <Container>
-          <SectionHeader>
-            <SectionTitle
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              Why Enterprise Teams Choose ParkPro
-            </SectionTitle>
-            <SectionSubtitle
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Built for large agencies that need custom solutions, dedicated support, and infrastructure that scales.
-            </SectionSubtitle>
-          </SectionHeader>
-
-          <CardGrid columns={3} gap={6}>
-            {valueProps.map((prop, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card variant="elevated" hover>
-                  <div style={{ textAlign: 'center', padding: '16px' }}>
-                    <h3 style={{
-                      fontSize: '24px',
-                      fontWeight: '600',
-                      color: '#0B0B0C',
-                      marginBottom: '16px',
-                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
-                    }}>
-                      {prop.title}
-                    </h3>
-                    <p style={{
-                      color: '#6B7280',
-                      lineHeight: '1.6'
-                    }}>
-                      {prop.description}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </CardGrid>
-        </Container>
-      </TestimonialsSection>
-
-      {/* CTA Section */}
+      {/* CTA */}
       <CTASection>
         <Container>
           <CTAContent>
@@ -750,7 +594,7 @@ const Enterprise = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Ready to transform your enterprise?
+              Let's talk about your agency's needs.
             </CTATitle>
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
@@ -758,7 +602,7 @@ const Enterprise = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Let's discuss how ParkPro can meet your organization's scale and requirements. Book a call with our team.
+              Enterprise plans are tailored to your organization. Schedule a call and we'll scope a solution that fits your team, your workflow, and your compliance requirements.
             </CTASubtitle>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -766,14 +610,15 @@ const Enterprise = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Button variant="primary" size="lg" to="/demo">
-                Book a Demo →
+              <Button variant="primary" size="lg" to="/contact">
+                Contact Sales
+                <ArrowRight size={20} />
               </Button>
             </motion.div>
           </CTAContent>
         </Container>
       </CTASection>
-    </EnterpriseWrapper>
+    </PageWrapper>
   );
 };
 

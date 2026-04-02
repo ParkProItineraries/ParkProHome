@@ -1,110 +1,145 @@
 import React, { useState } from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp, HelpCircle, ArrowRight } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/seo/SEO";
 import { SEOConfigs } from "../components/seo/SEOConfigs";
 import Container from "../components/layout/Container";
-import Section from "../components/layout/Section";
 import Button from "../components/ui/Button";
 import { copy } from "../content/strings";
 
 const PageWrapper = styled.div`
   min-height: 100vh;
   background: ${({ theme }) => theme.colors.white};
-  padding-top: 88px; // Account for fixed navbar
-  
+  padding-top: 88px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: 72px;
   }
-  
+
   @media (max-width: 475px) {
     padding-top: 68px;
   }
 `;
 
-const HeroSection = styled(Section)`
-  background: linear-gradient(135deg, #0B0B0C 0%, #1a1a1a 100%);
+const HeroSection = styled.section`
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
   color: white;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: 96px 0;
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23F5C249" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
-    opacity: 0.5;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 0;
   }
 `;
 
 const HeroTitle = styled(motion.h1).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: 3.5rem;
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  color: white;
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: 1.1;
-  
+  max-width: 800px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: 2.5rem;
+    margin-bottom: ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    font-size: 1.875rem;
   }
 `;
 
 const HeroSubtitle = styled(motion.p).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 900px;
-  margin: 0 auto ${({ theme }) => theme.spacing['2xl']} auto;
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  margin: 0 auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   font-weight: 400;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: 1rem;
   }
 `;
 
-const FAQSection = styled(Section)`
-  background: ${({ theme }) => theme.colors['gray-50']};
+const FAQSection = styled.section`
+  background: #ffffff;
+  padding: 96px 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 0;
+  }
 `;
 
-const FAQTitle = styled(motion.h2).withConfig({
+const SectionLabel = styled.div`
+  color: #2563eb;
+  font-size: 0.8125rem;
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.75rem;
+  }
+`;
+
+const SectionHeading = styled(motion.h2).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-size: 2.25rem;
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: 1.2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.sm};
+    font-size: 1.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
+  }
+`;
+
+const SectionSubtitle = styled(motion.p).withConfig({
+  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
+})`
+  font-size: 1.125rem;
+  color: #6b7280;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto ${({ theme }) => theme.spacing['2xl']} auto;
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
   }
 `;
 
@@ -118,16 +153,14 @@ const FAQGrid = styled.div`
 const FAQItem = styled(motion.div).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.xl};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &:hover {
-    box-shadow: ${({ theme }) => theme.shadows.xl};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: #2563eb;
   }
 `;
 
@@ -141,33 +174,36 @@ const FAQHeader = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors['gray-50']};
+    background: #f9fafb;
   }
 `;
 
 const FAQQuestion = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin: 0;
   flex: 1;
   text-align: left;
   line-height: 1.4;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
 const FAQIcon = styled.div`
-  color: ${({ theme }) => theme.colors.gold};
-  transition: transform 0.3s ease;
+  color: #2563eb;
+  transition: transform 0.2s ease;
   flex-shrink: 0;
   margin-left: ${({ theme }) => theme.spacing.md};
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   ${({ $isOpen }) => $isOpen && `
     transform: rotate(180deg);
   `}
@@ -175,62 +211,63 @@ const FAQIcon = styled.div`
 
 const FAQAnswer = styled(motion.div)`
   padding: 0 ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.xl};
-  color: ${({ theme }) => theme.colors['gray-700']};
+  color: #6b7280;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   font-size: ${({ theme }) => theme.typography.sizes.base};
 `;
 
-const CTASection = styled(Section)`
-  background: ${({ theme }) => theme.colors.backgroundDark};
+const CTASection = styled.section`
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
   color: white;
   text-align: center;
+  padding: 96px 0;
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></g></svg>');
-    opacity: 0.5;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 48px 0;
   }
 `;
 
 const CTATitle = styled(motion.h2).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-size: 2.25rem;
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: white;
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: 1.2;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    font-size: 1.875rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.5rem;
   }
 `;
 
 const CTASubtitle = styled(motion.p).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
   margin: 0 auto ${({ theme }) => theme.spacing['2xl']} auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   font-weight: 400;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: 1rem;
   }
 `;
 
 const FAQ = () => {
-  const theme = useTheme();
   const [openItems, setOpenItems] = useState({});
 
   const toggleItem = (index) => {
@@ -359,16 +396,16 @@ const FAQ = () => {
 
       <FAQSection>
         <Container>
-          <FAQTitle
+          <SectionLabel>FAQ</SectionLabel>
+          <SectionHeading
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <HelpCircle size={48} style={{ color: theme.colors.primary }} />
-            ParkPro FAQ
-          </FAQTitle>
-          
+            Common Questions
+          </SectionHeading>
+
           <FAQGrid>
             {faqs.map((faq, index) => (
               <FAQItem
@@ -420,7 +457,7 @@ const FAQ = () => {
           >
             The best way to see if ParkPro is right for you is to book a demo — we'll walk you through a live workflow and answer all your questions.
           </CTASubtitle>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

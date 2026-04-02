@@ -75,7 +75,7 @@ const BenefitCard = styled(motion.div).withConfig({
   &:hover {
     transform: translateY(-4px);
     box-shadow: ${({ theme }) => theme.shadows.lg};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: ${({ theme }) => theme.colors.teal};
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -87,11 +87,11 @@ const BenefitIcon = styled.div`
   width: 60px;
   height: 60px;
   border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
   ${flexCenter}
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
 `;
 
 const BenefitTitle = styled.h3`
@@ -125,7 +125,7 @@ const StatItem = styled.div`
 const StatNumber = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.teal};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
 

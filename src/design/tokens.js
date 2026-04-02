@@ -2,7 +2,7 @@
 // Comprehensive design tokens for consistent, scalable design system
 
 export const designTokens = {
-  // Brand Colors - Enhanced with teal/purple accents
+  // Brand Colors - Black, white, blue, gold
   colors: {
     // Primary Brand Colors - Premium Midnight + Gold
     black: '#0B0B0C',
@@ -12,10 +12,10 @@ export const designTokens = {
     'gold-dark': '#E9B029',
     
     // Accent Colors (as requested)
-    teal: '#14B8A6',
-    'teal-muted': '#0F766E',
-    purple: '#8B5CF6',
-    'purple-muted': '#7C3AED',
+    teal: '#3B82F6',
+    'teal-muted': '#2563EB',
+    purple: '#3B82F6',
+    'purple-muted': '#2563EB',
     
     // Gray Scale - Enhanced
     'gray-50': '#F9FAFB',
@@ -30,10 +30,10 @@ export const designTokens = {
     'gray-900': '#111827',
     
     // Semantic Colors
-    success: '#F5C249', // Changed from green to gold
+    success: '#10B981',
     warning: '#F59E0B',
     error: '#EF4444',
-    info: '#F5C249',
+    info: '#3B82F6',
     
     // Background Colors
     'bg-primary': '#FFFFFF',
@@ -49,16 +49,16 @@ export const designTokens = {
     'text-tertiary': '#6B7280',
     'text-light': '#FFFFFF',
     'text-gold': '#F5C249',
-    'text-teal': '#14B8A6',
-    'text-purple': '#8B5CF6',
+    'text-teal': '#3B82F6',
+    'text-purple': '#3B82F6',
     
     // Border Colors
     'border-light': '#E5E7EB',
     'border-medium': '#D1D5DB',
     'border-dark': '#9CA3AF',
     'border-gold': '#F5C249',
-    'border-teal': '#14B8A6',
-    'border-purple': '#8B5CF6',
+    'border-teal': '#3B82F6',
+    'border-purple': '#3B82F6',
   },
   
   // Typography System
@@ -185,10 +185,10 @@ export const designTokens = {
     // Brand-specific shadows
     gold: '0 8px 25px rgba(201, 162, 39, 0.3)',
     'gold-lg': '0 12px 35px rgba(201, 162, 39, 0.4)',
-    teal: '0 8px 25px rgba(20, 184, 166, 0.3)',
-    'teal-lg': '0 12px 35px rgba(20, 184, 166, 0.4)',
-    purple: '0 8px 25px rgba(139, 92, 246, 0.3)',
-    'purple-lg': '0 12px 35px rgba(139, 92, 246, 0.4)',
+    teal: '0 8px 25px rgba(59, 130, 246, 0.3)',
+    'teal-lg': '0 12px 35px rgba(59, 130, 246, 0.4)',
+    purple: '0 8px 25px rgba(59, 130, 246, 0.3)',
+    'purple-lg': '0 12px 35px rgba(59, 130, 246, 0.4)',
   },
   
   // Container Widths
@@ -305,12 +305,12 @@ export const designTokens = {
           border: 'none',
         },
         teal: {
-          background: '#14B8A6',
+          background: '#3B82F6',
           color: '#FFFFFF',
           border: 'none',
         },
         purple: {
-          background: '#8B5CF6',
+          background: '#3B82F6',
           color: '#FFFFFF',
           border: 'none',
         },

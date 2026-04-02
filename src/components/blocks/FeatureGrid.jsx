@@ -73,8 +73,8 @@ const FeatureCard = styled(Card)`
   
   &:hover {
     transform: translateY(-8px);
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: ${({ theme }) => theme.shadows['gold-lg']};
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: ${({ theme }) => theme.shadows.teal};
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -86,10 +86,10 @@ const IconWrapper = styled.div`
   width: 80px;
   height: 80px;
   border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
   ${flexCenter}
   margin: 0 auto ${({ theme }) => theme.spacing.xl};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   transition: ${({ theme }) => theme.transitions.normal};
   

@@ -38,15 +38,15 @@ const AboutHeader = styled.div`
 `;
 
 const AboutBadge = styled.div`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
@@ -135,7 +135,7 @@ const StoryVisual = styled.div`
 const StoryIcon = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes['5xl']};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.teal};
 `;
 
 const StoryQuote = styled.blockquote`
@@ -203,7 +203,7 @@ const ValueCard = styled(motion.div).withConfig({
   &:hover {
     transform: translateY(-8px);
     box-shadow: ${({ theme }) => theme.shadows.xl};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: ${({ theme }) => theme.colors.teal};
   }
 `;
 
@@ -211,13 +211,13 @@ const ValueIcon = styled.div`
   width: 64px;
   height: 64px;
   border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
   ${flexCenter}
   margin: 0 auto ${({ theme }) => theme.spacing.lg};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   transition: ${({ theme }) => theme.transitions.normal};
-  
+
   ${ValueCard}:hover & {
     transform: scale(1.1);
   }
@@ -288,8 +288,8 @@ const MemberAvatar = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
+  color: ${({ theme }) => theme.colors.white};
   ${flexCenter}
   font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
@@ -360,7 +360,7 @@ const StatCard = styled(motion.div).withConfig({
 const StatNumber = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes['5xl']};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.teal};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;

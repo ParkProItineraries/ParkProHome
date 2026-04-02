@@ -9,7 +9,7 @@ const Header = styled.div`
 `;
 
 const Badge = styled.span`
-  background: linear-gradient(135deg, #F5C249, #E9B029);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
   font-size: 0.875rem;
   font-weight: 600;
@@ -17,7 +17,7 @@ const Badge = styled.span`
   border-radius: 20px;
   display: inline-block;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(245, 194, 73, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 `;
 
 const Title = styled.h1`

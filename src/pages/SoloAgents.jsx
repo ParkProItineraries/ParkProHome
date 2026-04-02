@@ -4,47 +4,42 @@ import SEO from '../components/seo/SEO';
 import { SEOConfigs } from '../components/seo/SEOConfigs';
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { 
-  Users, 
-  Clock, 
-  TrendingUp, 
+import {
+  Users,
+  Clock,
   Star,
   CheckCircle,
   ArrowRight,
   Play,
   Shield,
+  Zap,
+  FileText,
   Smartphone,
   Headphones,
-  Zap,
-  Award,
-  Target,
   BarChart3,
-  FileText,
-  Palette,
-  X
 } from "lucide-react";
 import { copy } from "../content/strings";
-import { Button, Card, CardGrid } from "../design";
+import { Button } from "../design";
 import Container from "../components/layout/Container";
-import Section from "../components/layout/Section";
-import { flexColumnCenter } from "../styles/mixins";
 
-// Solo Agents Solution Page
-const SoloAgentsWrapper = styled.div`
-  padding-top: 88px; // Account for fixed navbar
+const PageWrapper = styled.div`
+  padding-top: 88px;
   background: ${({ theme }) => theme.colors.white};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: 72px;
   }
-  
+
   @media (max-width: 475px) {
     padding-top: 68px;
   }
 `;
 
+// ============================================================================
+// Hero Section (dark gradient)
+// ============================================================================
 const HeroSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
+  padding: ${({ theme }) => theme.spacing['3xl']} 0 ${({ theme }) => theme.spacing['2xl']};
   background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
@@ -54,385 +49,378 @@ const HeroSection = styled.section`
   &::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing['2xl']} 0 ${({ theme }) => theme.spacing.xl};
   }
 `;
 
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(201, 162, 39, 0.1);
-  color: ${({ theme }) => theme.colors.gold};
+  background: rgba(59, 130, 246, 0.1);
+  color: ${({ theme }) => theme.colors.teal};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
-  display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 162, 39, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.xs};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  border: 1px solid rgba(59, 130, 246, 0.3);
 `;
 
 const HeroTitle = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['6xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
-  
-  .gradient-text {
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   }
 `;
 
 const HeroSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  max-width: 700px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
-const HeroStats = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing['2xl']};
-  margin-top: ${({ theme }) => theme.spacing['3xl']};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.lg};
-  }
-`;
-
-const StatCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing.lg};
-  text-align: center;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: ${({ theme }) => theme.shadows.xl};
-`;
-
-const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-`;
-
-const StatLabel = styled.div`
-  color: ${({ theme }) => theme.colors['gray-600']};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-`;
-
-// Problem/Solution Section
-const ProblemSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
-`;
-
-const ProblemGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing['3xl']};
-  align-items: center;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing['2xl']};
-  }
-`;
-
-const ProblemContent = styled.div``;
-
-const ProblemTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  }
-`;
-
-const ProblemDescription = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-const ProblemList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const ProblemItem = styled.li`
+const ButtonRow = styled(motion.div)`
   display: flex;
-  align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  
-  svg {
-    color: ${({ theme }) => theme.colors.error};
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-`;
-
-const SolutionVisual = styled.div`
-  background: ${({ theme }) => theme.colors.black};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
-  min-height: 300px;
-  ${flexColumnCenter}
-`;
-
-// Features Section
-const FeaturesSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors.white};
-`;
-
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['3xl']};
-`;
-
-const SectionTitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  }
-`;
-
-const SectionSubtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-// Testimonials Section
-const TestimonialsSection = styled.section`
-  padding: ${({ theme }) => theme.spacing['4xl']} 0;
-  background: ${({ theme }) => theme.colors['gray-50']};
-`;
-
-const TestimonialCard = styled(Card)`
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing['2xl']};
-  border: none;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme.shadows.xl};
-  }
-`;
-
-const TestimonialQuote = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: ${({ theme }) => theme.colors['text-primary']};
-  font-style: italic;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
-  &::before {
-    content: '"';
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    color: ${({ theme }) => theme.colors.gold};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-  }
-  
-  &::after {
-    content: '"';
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    color: ${({ theme }) => theme.colors.gold};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-  }
-`;
-
-const TestimonialAuthor = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const AuthorName = styled.div`
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors['text-primary']};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-`;
-
-const AuthorTitle = styled.div`
-  color: ${({ theme }) => theme.colors['text-secondary']};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-const AuthorCompany = styled.div`
-  color: ${({ theme }) => theme.colors.gold};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-`;
-
-// CTA Section
-const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing.xl} 0;
-  background: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
-`;
-
-const CTAContent = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const CTATitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  }
-`;
-
-const CTASubtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
-  }
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
+  gap: ${({ theme }) => theme.spacing.md};
   justify-content: center;
   flex-wrap: wrap;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
     align-items: center;
   }
 `;
 
+// ============================================================================
+// Section Labels & Headers (shared across all light sections)
+// ============================================================================
+const SectionLabel = styled(motion.div)`
+  font-size: 13px;
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #3b82f6;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+`;
+
+const SectionHeading = styled(motion.h2)`
+  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
+  color: ${({ theme }) => theme.colors['text-primary']};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  }
+`;
+
+const SectionSubtitle = styled(motion.p)`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: ${({ theme }) => theme.colors['gray-500']};
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
+`;
+
+const SectionHeader = styled.div`
+  text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+`;
+
+// ============================================================================
+// Before/After Section (light background with bordered cards)
+// ============================================================================
+const CompareSection = styled.section`
+  padding: 96px 0;
+  background: #FFFFFF;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const CompareGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: ${({ theme }) => theme.spacing.xl};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
+  }
+`;
+
+const CompareCard = styled(motion.div)`
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
+  transition: ${({ theme }) => theme.transitions.normal};
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 24px;
+  }
+`;
+
+const CompareLabel = styled.div`
+  font-size: 13px;
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: ${({ $type, theme }) => $type === 'before' ? theme.colors.error : theme.colors.teal};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+`;
+
+const CompareTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  color: ${({ theme }) => theme.colors['text-primary']};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+`;
+
+const CompareList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const CompareItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing.sm};
+  color: ${({ theme }) => theme.colors['gray-500']};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+`;
+
+// ============================================================================
+// Features Section (light background)
+// ============================================================================
+const FeaturesSection = styled.section`
+  padding: 96px 0;
+  background: #F9FAFB;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const FeatureCardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${({ theme }) => theme.spacing.xl};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: ${({ theme }) => theme.spacing.lg};
+  }
+`;
+
+const FeatureCard = styled(motion.div)`
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: ${({ theme }) => theme.transitions.normal};
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 24px;
+  }
+`;
+
+const FeatureIcon = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  color: ${({ theme }) => theme.colors['text-primary']};
+  margin-bottom: ${({ theme }) => theme.spacing.sm};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+`;
+
+const FeatureDescription = styled.p`
+  color: ${({ theme }) => theme.colors['gray-500']};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  font-size: ${({ theme }) => theme.typography.sizes.base};
+  flex: 1;
+`;
+
+// ============================================================================
+// CTA Section (dark gradient)
+// ============================================================================
+const CTASection = styled.section`
+  padding: 96px 0;
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.black} 0%, ${({ theme }) => theme.colors['gray-900']} 100%);
+  color: ${({ theme }) => theme.colors.white};
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const CTATitle = styled(motion.h2)`
+  font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  }
+`;
+
+const CTASubtitle = styled(motion.p)`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
+`;
+
 const SoloAgents = () => {
-  const problems = [
-    "Spending 8+ hours per Disney itinerary",
-    "Struggling to keep up with client demand",
-    "Losing bookings to competitors with faster turnaround",
-    "Burning out from manual planning processes",
-    "Difficulty scaling your business"
+  const beforeItems = [
+    "8–12 hours researching and building each Disney itinerary",
+    "Scattered notes across spreadsheets, emails, and documents",
+    "Starting from scratch every time — even for similar trips",
+    "Turning down bookings because you're already maxed out",
+    "Working nights and weekends to keep up with demand",
+  ];
+
+  const afterItems = [
+    "Complete itineraries generated in 15–30 minutes",
+    "One workspace for every client, trip, and itinerary",
+    "Reusable patterns that get faster with every booking",
+    "Capacity to take on more clients without more hours",
+    "Evenings and weekends back for yourself",
   ];
 
   const features = [
     {
-      icon: <Zap size={32} />,
-      title: "Lightning-Fast Automation",
-      description: "Generate complete Disney itineraries in minutes, not hours. Our engine considers park-flow patterns, wait times, and client preferences.",
-      outcomes: ["Save 5–10+ hours per client", "Dramatically faster than manual planning", "Polished, client-ready output"]
+      icon: <Zap size={24} />,
+      title: "Intake-to-Itinerary in Minutes",
+      description: "Client fills out a guided form, ParkPro generates a structured day-by-day plan. You refine and deliver — done.",
     },
     {
-      icon: <FileText size={32} />,
-      title: "Professional Branding",
-      description: "Create beautiful, branded itineraries that make you look like a Disney expert. White-label forms and professional PDFs.",
-      outcomes: ["Professional presentation", "Branded client experience", "Easy sharing options"]
+      icon: <FileText size={24} />,
+      title: "Professional, Branded Output",
+      description: "Every itinerary looks polished and consistent. Export to PDF or presentation format with your branding.",
     },
     {
-      icon: <BarChart3 size={32} />,
+      icon: <BarChart3 size={24} />,
       title: "Trip Dashboard",
-      description: "See all your trips, clients, and itineraries in one organized workspace. Know exactly where every booking stands.",
-      outcomes: ["Trip tracking", "Client management", "Clear workspace"]
+      description: "See all your active trips, upcoming deliveries, and client details in one clean workspace.",
     },
     {
-      icon: <Smartphone size={32} />,
-      title: "Mobile Ready",
-      description: "Your clients get a mobile-optimized portal to view their itinerary, message you, and access trip documents on the go.",
-      outcomes: ["Mobile client portal", "In-park access for clients", "Calendar export"]
+      icon: <Smartphone size={24} />,
+      title: "Client Portal",
+      description: "Your clients get a mobile-friendly view of their itinerary they can reference in-park — no app download required.",
     },
     {
-      icon: <Headphones size={32} />,
+      icon: <Headphones size={24} />,
       title: "Email Support",
-      description: "Get help when you need it with our responsive email support team. We're here to help you succeed.",
-      outcomes: ["Quick response times", "Expert guidance", "Success tips"]
+      description: "Responsive support when you need it. We're here to help you get the most out of ParkPro.",
     },
     {
-      icon: <Shield size={32} />,
-      title: "Secure & Reliable",
-      description: "Industry-standard security with encryption, access controls, and secure payment processing through Stripe.",
-      outcomes: ["SSL encryption", "Stripe-verified payments", "Data protection"]
-    }
-  ];
-
-  const valueProps = [
-    {
-      title: "Minutes, Not Hours",
-      description: "Go from client intake to a structured, day-by-day Disney itinerary in minutes instead of spending entire days on manual planning."
+      icon: <Shield size={24} />,
+      title: "Secure Infrastructure",
+      description: "SSL encryption, Stripe-verified payments, and enterprise-grade hosting on AWS. Your data is protected.",
     },
-    {
-      title: "Concierge-Level Output",
-      description: "Deliver clean, professional park-day plans that show your clients you know Disney inside and out."
-    },
-    {
-      title: "More Clients, Less Burnout",
-      description: "Free up hours per client so you can take on more bookings without working nights and weekends."
-    }
   ];
 
   return (
-    <SoloAgentsWrapper>
+    <PageWrapper>
       <SEO {...SEOConfigs['solo-agents']} schemaType="SoftwareApplication" />
+
       {/* Hero Section */}
       <HeroSection>
         <Container>
@@ -440,333 +428,188 @@ const SoloAgents = () => {
             <HeroBadge
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <Users size={16} style={{ marginRight: '8px' }} />
-              Perfect for Solo Travel Agents
+              <Users size={14} />
+              For Solo Travel Agents
             </HeroBadge>
-            
+
             <HeroTitle
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               {copy.pages.solo.h1}
             </HeroTitle>
-            
+
             <HeroSubtitle
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               {copy.pages.solo.sub}
             </HeroSubtitle>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+
+            <ButtonRow
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '48px' }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
               <Button variant="primary" size="lg" to="/demo">
-                <Star size={20} />
-                Start Free Trial
+                Book a Demo
+                <ArrowRight size={20} />
               </Button>
-              <Button variant="secondary" size="lg" to="/demo">
-                <Play size={20} />
-                Watch Demo
+              <Button variant="secondary" size="lg" to="/pricing#solo">
+                See Solo Pricing
               </Button>
-            </motion.div>
-            
-            <HeroStats
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <StatCard
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-              >
-                <StatNumber>5–10+ hrs</StatNumber>
-                <StatLabel>Saved Per Client</StatLabel>
-              </StatCard>
-              <StatCard
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.2 }}
-              >
-                <StatNumber>Minutes</StatNumber>
-                <StatLabel>To Build an Itinerary</StatLabel>
-              </StatCard>
-              <StatCard
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.4 }}
-              >
-                <StatNumber>1</StatNumber>
-                <StatLabel>Platform for Everything</StatLabel>
-              </StatCard>
-            </HeroStats>
+            </ButtonRow>
           </HeroContent>
         </Container>
       </HeroSection>
 
-      {/* Problem/Solution Section */}
-      <ProblemSection>
+      {/* Before & After Section — unique to Solo Agents (light background) */}
+      <CompareSection>
         <Container>
-          <ProblemGrid>
-            <ProblemContent>
-              <ProblemTitle
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                The Solo Agent Struggle
-              </ProblemTitle>
-              <ProblemDescription
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                As a solo travel agent, you're wearing all the hats. You're the planner, the researcher, 
-                the customer service rep, and the business owner. Disney planning is time-consuming and 
-                complex, but it doesn't have to be.
-              </ProblemDescription>
-              <ProblemList>
-                {problems.map((problem, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '12px',
-                      marginBottom: '16px',
-                      color: '#6B7280',
-                      fontSize: '16px'
-                    }}
-                  >
-                    <X size={20} style={{ color: '#EF4444', flexShrink: 0, marginTop: '2px' }} />
-                    {problem}
-                  </motion.li>
-                ))}
-              </ProblemList>
-            </ProblemContent>
-            <SolutionVisual
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+          <SectionHeader>
+            <SectionLabel
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Transformation
+            </SectionLabel>
+            <SectionHeading
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div style={{ fontSize: '64px', marginBottom: '24px', color: theme.colors.primary }}>
-                <Target size={64} />
-              </div>
-              <div style={{ fontSize: '24px', fontWeight: '600', marginBottom: '16px' }}>
-                ParkPro Solution
-              </div>
-              <div style={{ fontSize: '18px', opacity: 0.9, lineHeight: '1.6' }}>
-                Automated Disney planning that saves you 5–10+ hours per client so you can serve more families
-              </div>
-            </SolutionVisual>
-          </ProblemGrid>
-        </Container>
-      </ProblemSection>
+              Your Planning, Before and After ParkPro
+            </SectionHeading>
+          </SectionHeader>
 
-      {/* Features Section */}
+          <CompareGrid>
+            <CompareCard
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <CompareLabel $type="before">Without ParkPro</CompareLabel>
+              <CompareTitle>The manual grind</CompareTitle>
+              <CompareList>
+                {beforeItems.map((item, i) => (
+                  <CompareItem key={i}>
+                    <Clock size={16} style={{ color: theme.colors.error }} />
+                    <span>{item}</span>
+                  </CompareItem>
+                ))}
+              </CompareList>
+            </CompareCard>
+
+            <CompareCard
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <CompareLabel $type="after">With ParkPro</CompareLabel>
+              <CompareTitle>A system that works for you</CompareTitle>
+              <CompareList>
+                {afterItems.map((item, i) => (
+                  <CompareItem key={i}>
+                    <CheckCircle size={16} style={{ color: theme.colors.teal }} />
+                    <span>{item}</span>
+                  </CompareItem>
+                ))}
+              </CompareList>
+            </CompareCard>
+          </CompareGrid>
+        </Container>
+      </CompareSection>
+
+      {/* Features Section (light background) */}
       <FeaturesSection>
         <Container>
           <SectionHeader>
-            <SectionTitle
+            <SectionLabel
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              Features
+            </SectionLabel>
+            <SectionHeading
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
-              Everything You Need to Succeed as a Solo Agent
-            </SectionTitle>
+              Built for How You Actually Work
+            </SectionHeading>
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Powerful features designed specifically for solo travel agents who want to scale their Disney business.
+              Every feature is designed around the solo agent workflow — no team overhead, no enterprise bloat.
             </SectionSubtitle>
           </SectionHeader>
 
-          <CardGrid columns={3} gap={6}>
+          <FeatureCardGrid>
             {features.map((feature, index) => (
-              <motion.div
+              <FeatureCard
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card variant="elevated" hover>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{
-                      width: '80px',
-                      height: '80px',
-                      borderRadius: '16px',
-                      background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors['primary-dark']})`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      margin: '0 auto 24px',
-                      color: '#0B0B0C',
-                      fontSize: '32px'
-                    }}>
-                      {feature.icon}
-                    </div>
-                    <h3 style={{
-                      fontSize: '24px',
-                      fontWeight: '600',
-                      color: '#0B0B0C',
-                      marginBottom: '16px',
-                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
-                    }}>
-                      {feature.title}
-                    </h3>
-                    <p style={{
-                      color: '#6B7280',
-                      lineHeight: '1.6',
-                      marginBottom: '24px'
-                    }}>
-                      {feature.description}
-                    </p>
-                    <div style={{ textAlign: 'left' }}>
-                      <h4 style={{
-                        fontSize: '16px',
-                        fontWeight: '600',
-                        color: '#0B0B0C',
-                        marginBottom: '12px'
-                      }}>
-                        Solo Agent Benefits:
-                      </h4>
-                      <ul style={{
-                        listStyle: 'none',
-                        padding: 0,
-                        margin: 0
-                      }}>
-                        {feature.outcomes.map((outcome, outcomeIndex) => (
-                          <li key={outcomeIndex} style={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: '8px',
-                            marginBottom: '8px',
-                            color: '#6B7280',
-                            fontSize: '14px'
-                          }}>
-                            <CheckCircle size={16} style={{ color: theme.colors.primary, flexShrink: 0, marginTop: '2px' }} />
-                            {outcome}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
+                <FeatureIcon>{feature.icon}</FeatureIcon>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+              </FeatureCard>
             ))}
-          </CardGrid>
+          </FeatureCardGrid>
         </Container>
       </FeaturesSection>
 
-      {/* Value Props Section */}
-      <TestimonialsSection>
-        <Container>
-          <SectionHeader>
-            <SectionTitle
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              Why Solo Agents Choose ParkPro
-            </SectionTitle>
-            <SectionSubtitle
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Built specifically for independent travel agents who want to spend less time planning and more time serving clients.
-            </SectionSubtitle>
-          </SectionHeader>
-
-          <CardGrid columns={3} gap={6}>
-            {valueProps.map((prop, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card variant="elevated" hover>
-                  <div style={{ textAlign: 'center', padding: '16px' }}>
-                    <h3 style={{
-                      fontSize: '24px',
-                      fontWeight: '600',
-                      color: '#0B0B0C',
-                      marginBottom: '16px',
-                      fontFamily: "'Urbanist', 'DM Sans', sans-serif"
-                    }}>
-                      {prop.title}
-                    </h3>
-                    <p style={{
-                      color: '#6B7280',
-                      lineHeight: '1.6'
-                    }}>
-                      {prop.description}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </CardGrid>
-        </Container>
-      </TestimonialsSection>
-
-      {/* CTA Section */}
+      {/* CTA Section (dark gradient) */}
       <CTASection>
         <Container>
-          <CTAContent>
-            <CTATitle
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              Ready to scale your solo Disney business?
-            </CTATitle>
-            <CTASubtitle
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              See how ParkPro helps solo agents save 5–10+ hours per client. Book a demo and we'll walk you through a live planning workflow.
-            </CTASubtitle>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <Button variant="primary" size="lg" to="/demo">
-                Book a Demo →
-              </Button>
-            </motion.div>
-          </CTAContent>
+          <CTATitle
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Ready to get your time back?
+          </CTATitle>
+          <CTASubtitle
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            See how ParkPro turns hours of Disney planning into a 15-minute workflow. Book a demo and we'll use your real scenarios.
+          </CTASubtitle>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <Button variant="primary" size="lg" to="/demo">
+              Book a Demo
+              <ArrowRight size={20} />
+            </Button>
+          </motion.div>
         </Container>
       </CTASection>
-    </SoloAgentsWrapper>
+    </PageWrapper>
   );
 };
 

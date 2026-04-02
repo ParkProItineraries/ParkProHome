@@ -96,7 +96,7 @@ const CTA = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Button to="/demo" variant="gold" size="lg">
+            <Button to="/demo" variant="primary" size="lg">
               Book a Demo
             </Button>
             <Button to="/demo" variant="secondary" size="lg">

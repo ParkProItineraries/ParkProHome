@@ -73,7 +73,7 @@ const StyledCard = styled(motion.div).withConfig({
         
       case 'gradient':
         return css`
-          background: linear-gradient(135deg, ${tokens.colors.teal}, ${tokens.colors.purple});
+          background: linear-gradient(135deg, ${tokens.colors['teal-dark']}, ${tokens.colors['teal-light']});
           border: none;
           box-shadow: ${tokens.shadows['teal-lg']};
           color: ${tokens.colors.white};

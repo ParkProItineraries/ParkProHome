@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Shield, Lock, CheckCircle, Users, Star } from "lucide-react";
+import { Shield, Lock, CheckCircle, Server, CreditCard } from "lucide-react";
 import { motion } from "framer-motion";
 
 const TrustBarWrapper = styled.div`
@@ -9,11 +9,11 @@ const TrustBarWrapper = styled.div`
       ? 'linear-gradient(135deg, #0B0B0C 0%, #1a1a1a 100%)' 
       : `linear-gradient(135deg, ${theme.colors['gray-200']} 0%, ${theme.colors['gray-100']} 100%)`
   };
-  border-top: 1px solid ${({ theme, $variant }) => 
-    $variant === 'dark' ? 'rgba(201, 162, 39, 0.2)' : theme.colors['gray-200']
+  border-top: 1px solid ${({ theme, $variant }) =>
+    $variant === 'dark' ? 'rgba(255, 255, 255, 0.08)' : theme.colors['gray-200']
   };
-  border-bottom: 1px solid ${({ theme, $variant }) => 
-    $variant === 'dark' ? 'rgba(201, 162, 39, 0.2)' : theme.colors['gray-200']
+  border-bottom: 1px solid ${({ theme, $variant }) =>
+    $variant === 'dark' ? 'rgba(255, 255, 255, 0.08)' : theme.colors['gray-200']
   };
   padding: ${({ theme }) => theme.spacing.xl} 0;
   
@@ -94,16 +94,16 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${({ $variant }) => 
-    $variant === 'dark' 
-      ? 'rgba(201, 162, 39, 0.15)' 
-      : 'rgba(201, 162, 39, 0.1)'
+  background: ${({ $variant }) =>
+    $variant === 'dark'
+      ? 'rgba(59, 130, 246, 0.15)'
+      : 'rgba(59, 130, 246, 0.08)'
   };
   border-radius: 50%;
   flex-shrink: 0;
-  
+
   svg {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.teal};
   }
   
   @media (max-width: 640px) {
@@ -147,14 +147,14 @@ const SocialProofText = styled.div`
   text-align: center;
   font-size: ${({ theme }) => theme.typography.sizes.base};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
-  color: ${({ theme, $variant }) => 
-    $variant === 'dark' ? theme.colors.gold : theme.colors.black
+  color: ${({ theme, $variant }) =>
+    $variant === 'dark' ? 'rgba(255, 255, 255, 0.9)' : theme.colors.black
   };
   margin-top: ${({ theme }) => theme.spacing.md};
-  
+
   strong {
-    color: ${({ $variant, theme }) => 
-      $variant === 'dark' ? theme.colors.gold : theme.colors['gold-dark']
+    color: ${({ $variant, theme }) =>
+      $variant === 'dark' ? theme.colors.teal : theme.colors['teal-dark']
     };
     font-weight: ${({ theme }) => theme.typography.weights.semibold};
   }
@@ -168,28 +168,28 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
   const trustItems = [
     {
       icon: <Lock size={20} />,
-      label: "SSL Secure",
-      subtext: "256-bit encryption on all pages"
+      label: "SSL Encrypted",
+      subtext: "256-bit TLS encryption on all data"
+    },
+    {
+      icon: <Server size={20} />,
+      label: "AWS Hosted",
+      subtext: "Enterprise-grade cloud infrastructure"
+    },
+    {
+      icon: <CreditCard size={20} />,
+      label: "Stripe Payments",
+      subtext: "PCI-compliant payment processing"
     },
     {
       icon: <Shield size={20} />,
-      label: "Secure Payments",
-      subtext: "Payments handled through Stripe"
+      label: "SOC 2 & GDPR",
+      subtext: "Compliant data handling practices"
     },
     {
       icon: <CheckCircle size={20} />,
-      label: "Built for Travel Agents",
-      subtext: "Designed specifically for Disney-focused agencies"
-    },
-    {
-      icon: <Users size={20} />,
-      label: "No Long-Term Contracts",
-      subtext: "Upgrade, downgrade, or cancel as you grow"
-    },
-    {
-      icon: <Star size={20} />,
-      label: "Human Support",
-      subtext: "Direct email support from the founder"
+      label: "99.9% Uptime",
+      subtext: "Reliable platform you can count on"
     }
   ];
 

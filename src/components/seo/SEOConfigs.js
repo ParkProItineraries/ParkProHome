@@ -133,6 +133,42 @@ export const SEOConfigs = {
     keywords:
       'travel agency software, travel agency management software, multi-agent travel agency tools, Disney travel agency software, travel agency workflow software, travel agency operating system, agency management platform',
     url: '/travel-agency-software'
+  },
+
+  'disney-planning-software': {
+    title: 'Disney Planning Software for Travel Agents – ParkPro',
+    description:
+      'ParkPro is Disney planning software built for travel agents. Generate structured, day-by-day Disney World and Disneyland itineraries in minutes. Save hours per client with rules-based itinerary automation.',
+    keywords:
+      'Disney planning software, Disney planning tool, Disney itinerary software, Disney World planning software, Disneyland planning software, Disney travel planning tool, Disney vacation planner software, Disney itinerary generator, Disney planning software for travel agents, best Disney planning software',
+    url: '/disney-planning-software'
+  },
+
+  'travel-agent-software': {
+    title: 'Travel Agent Software – ParkPro Itinerary & Workflow Platform',
+    description:
+      'ParkPro is travel agent software that automates itinerary creation for Disney and destination vacations. Built for travel agents who want to save time, standardize deliverables, and scale their business.',
+    keywords:
+      'travel agent software, travel agent tools, travel agent platform, best travel agent software, travel agent CRM alternative, travel agent itinerary software, travel agent business tools, travel agent productivity software, software for travel agents, travel agent management software',
+    url: '/travel-agent-software'
+  },
+
+  contact: {
+    title: 'Contact Us – ParkPro',
+    description:
+      'Get in touch with the ParkPro team. Questions about our travel agent itinerary software? Reach out for support, partnership inquiries, or to learn more about ParkPro.',
+    keywords:
+      'contact ParkPro, ParkPro support, ParkPro help, travel agent software contact, ParkPro email',
+    url: '/contact'
+  },
+
+  about: {
+    title: 'About ParkPro – Our Mission & Story',
+    description:
+      'Learn about ParkPro, the travel agent itinerary software built to save Disney specialists hours per client. Our mission is to give travel agents the tools they deserve.',
+    keywords:
+      'about ParkPro, ParkPro story, ParkPro mission, who built ParkPro, ParkPro travel agent software',
+    url: '/about'
   }
 };
 

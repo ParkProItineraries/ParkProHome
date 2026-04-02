@@ -59,7 +59,7 @@ const StyledCard = styled(motion.div).withConfig({
       case 'outlined':
         return css`
           background: transparent;
-          border: 2px solid ${designTokens.colors.gold};
+          border: 2px solid ${designTokens.colors.teal};
           box-shadow: none;
         `;
         
@@ -73,9 +73,9 @@ const StyledCard = styled(motion.div).withConfig({
         
       case 'gradient':
         return css`
-          background: linear-gradient(135deg, ${designTokens.colors.gold}, ${designTokens.colors['gold-muted']});
+          background: linear-gradient(135deg, ${designTokens.colors.teal}, ${designTokens.colors['teal-light']});
           border: none;
-          box-shadow: ${designTokens.shadows.gold};
+          box-shadow: ${designTokens.shadows.teal};
           color: ${designTokens.colors.black};
         `;
         
@@ -104,7 +104,7 @@ const StyledCard = styled(motion.div).withConfig({
     }
     
     &:focus-visible {
-      outline: 2px solid ${designTokens.colors.gold};
+      outline: 2px solid ${designTokens.colors.teal};
       outline-offset: 2px;
     }
   `}
@@ -187,7 +187,7 @@ const CardBadge = styled.div`
   text-transform: uppercase;
   letter-spacing: ${designTokens.typography.letterSpacing.wide};
   
-  ${({ variant = 'gold' }) => {
+  ${({ variant = 'teal' }) => {
     switch (variant) {
       case 'gold':
         return css`
@@ -206,8 +206,8 @@ const CardBadge = styled.div`
         `;
       default:
         return css`
-          background: ${designTokens.colors.gold};
-          color: ${designTokens.colors.black};
+          background: ${designTokens.colors.teal};
+          color: ${designTokens.colors.white};
         `;
     }
   }}

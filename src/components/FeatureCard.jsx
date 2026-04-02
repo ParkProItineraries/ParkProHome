@@ -28,7 +28,7 @@ const Card = styled(motion.div).withConfig({
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #F5C249, #E9B029, #C4941E);
+    background: linear-gradient(135deg, #3B82F6, #60A5FA);
     transform: scaleX(0);
     transition: transform 0.3s ease;
   }
@@ -36,7 +36,7 @@ const Card = styled(motion.div).withConfig({
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border-color: rgba(245, 194, 73, 0.3);
+    border-color: rgba(59, 130, 246, 0.3);
     background: rgba(255, 255, 255, 0.95);
 
     &::before {
@@ -53,7 +53,7 @@ const Card = styled(motion.div).withConfig({
     height: 200%;
     background: radial-gradient(
       circle at top right,
-      rgba(245, 194, 73, 0.05),
+      rgba(59, 130, 246, 0.05),
       transparent 70%
     );
     transform: rotate(15deg);
@@ -70,19 +70,19 @@ const IconWrapper = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #F5C249, #E9B029);
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 1;
-  box-shadow: 0 8px 25px rgba(245, 194, 73, 0.25);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
   transition: all 0.3s ease;
 
   ${Card}:hover & {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 12px 35px rgba(245, 194, 73, 0.35);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.35);
   }
 
   svg {
@@ -113,7 +113,7 @@ const Description = styled.p`
 `;
 
 const Badge = styled.span`
-  background: linear-gradient(135deg, #F5C249, #E9B029);
+  background: ${({ theme }) => theme?.colors?.teal || '#3B82F6'};
   color: white;
   font-size: 0.75rem;
   font-weight: 600;
@@ -123,7 +123,7 @@ const Badge = styled.span`
   top: 1.5rem;
   right: 1.5rem;
   z-index: 2;
-  box-shadow: 0 4px 12px rgba(245, 194, 73, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 `;

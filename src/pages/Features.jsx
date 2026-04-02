@@ -1,20 +1,12 @@
 /**
  * Features Page - ParkPro Marketing Site
  *
- * STRUCTURE:
- * - Hero: Badge, title, subtitle (from copy.pages.features)
- * - Tabs: Core / Advanced / Roadmap (stored in featureCategories object)
- * - Feature Cards: Reusable FeatureCard component with icon, title, description, badge, outcomes
- * - Outcome Metrics: Grid of 4 metrics (number, label, description) with icons
- * - Demo: Placeholder video section with motion animations (no real video yet)
- * - CTA: Final call-to-action section with buttons
- *
- * IMPLEMENTATION NOTES:
- * - Feature cards use shared FeatureCard component (DRY, consistent styling)
- * - "Future" tab renamed to "Roadmap" with clear labeling that items are not live today
- * - Demo section uses motion-enabled styled component with polished placeholder
- * - Section headers use shared SectionHeader component for consistency
- * - Security/compliance copy is accurate and safe (no false certifications)
+ * DESIGN SYSTEM: Salesforce/HubSpot Enterprise SaaS
+ * - Dark hero with gradient
+ * - Light body sections (white/F9FAFB alternating)
+ * - Custom feature cards (no Card/CardGrid imports)
+ * - Enterprise typography and spacing
+ * - Professional, polished aesthetic
  */
 
 import React, { useState } from "react";
@@ -38,7 +30,7 @@ import {
   Globe,
 } from "lucide-react";
 import { copy } from "../content/strings";
-import { Button, Card, CardGrid } from "../design";
+import { Button } from "../design";
 import Container from "../components/layout/Container";
 import Section from "../components/layout/Section";
 import SEO from "../components/seo/SEO";
@@ -49,8 +41,8 @@ import { SEOConfigs } from "../components/seo/SEOConfigs";
 // ============================================================================
 
 const FeaturesWrapper = styled.div`
-  padding-top: 88px; /* Account for fixed navbar */
-  background: ${({ theme }) => theme.colors.white};
+  padding-top: 88px;
+  background: #ffffff;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: 72px;
@@ -61,68 +53,98 @@ const FeaturesWrapper = styled.div`
   }
 `;
 
-const FeaturesHeader = styled.div`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing["4xl"]};
-`;
+// ============================================================================
+// HERO SECTION (Dark Gradient)
+// ============================================================================
 
-const FeaturesBadge = styled(motion.div)`
+const HeroSection = styled.section`
+  padding: 96px 0;
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-muted"]}
+    #000000 0%,
+    #111827 100%
   );
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.radius.full};
-  display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-`;
-
-const FeaturesTitle = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes["5xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
+  color: #ffffff;
+  text-align: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
+    padding: 64px 0;
   }
 
   @media (max-width: 475px) {
-    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+    padding: 48px 0;
   }
 `;
 
-const FeaturesSubtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+const HeroBadge = styled(motion.div)`
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+`;
+
+const HeroTitle = styled(motion.h1)`
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 36px;
+  }
+
+  @media (max-width: 475px) {
+    font-size: 28px;
+  }
+`;
+
+const HeroSubtitle = styled(motion.p)`
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
   max-width: 700px;
   margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  line-height: 1.6;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.base};
-    padding: 0 ${({ theme }) => theme.spacing.md};
+    font-size: 16px;
   }
 
   @media (max-width: 475px) {
-    font-size: ${({ theme }) => theme.typography.sizes.sm};
+    font-size: 14px;
+    padding: 0 16px;
   }
 `;
 
-// Feature Categories Tabs
+// ============================================================================
+// FEATURE TABS & INTRO
+// ============================================================================
+
+const TabsSection = styled.section`
+  padding: 96px 0;
+  background: #ffffff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
 const FeatureTabs = styled.div`
   display: flex;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  gap: 16px;
+  margin-bottom: 48px;
   flex-wrap: wrap;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -132,134 +154,151 @@ const FeatureTabs = styled.div`
 `;
 
 const FeatureTab = styled.button`
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.radius.full};
-  border: 2px solid
-    ${({ active, theme }) =>
-      active ? theme.colors.gold : theme.colors["gray-300"]};
-  background: ${({ active, theme }) =>
-    active ? theme.colors.gold : "transparent"};
-  color: ${({ active, theme }) =>
-    active ? theme.colors.black : theme.colors["gray-600"]};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid ${({ active }) => (active ? "#3b82f6" : "#e5e7eb")};
+  background: ${({ active }) => (active ? "#3b82f6" : "#ffffff")};
+  color: ${({ active }) => (active ? "#ffffff" : "#6b7280")};
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  transition: ${({ theme }) => theme.transitions.normal};
+  transition: all 0.2s ease;
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.gold};
-    color: ${({ theme }) => theme.colors.black};
+    border-color: #3b82f6;
+    color: #1f2937;
   }
-`;
-
-// Roadmap Notice
-const RoadmapNotice = styled(motion.div)`
-  background: ${({ theme }) => theme.colors["gray-50"]};
-  border-left: 3px solid ${({ theme }) => theme.colors.gold};
-  padding: ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.md};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const RoadmapNoticeText = styled.p`
-  color: ${({ theme }) => theme.colors["gray-700"]};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
-  margin: 0;
 `;
 
 const CategoryIntro = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  font-size: 16px;
+  color: #6b7280;
   max-width: 700px;
-  margin: 0 auto ${({ theme }) => theme.spacing["2xl"]};
+  margin: 0 auto 48px;
   text-align: center;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  line-height: 1.6;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.sm};
-    padding: 0 ${({ theme }) => theme.spacing.md};
-    margin-bottom: ${({ theme }) => theme.spacing.xl};
-  }
-`;
-
-const FeaturesSurface = styled.div`
-  margin-top: ${({ theme }) => theme.spacing["2xl"]};
-  padding: ${({ theme }) => theme.spacing["2xl"]};
-  background: ${({ theme }) => theme.colors["gray-50"]};
-  border-radius: ${({ theme }) => theme.radius.xl};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing.lg};
-    margin-top: ${({ theme }) => theme.spacing.xl};
-  }
-
-  @media (max-width: 475px) {
-    padding: ${({ theme }) => theme.spacing.md};
-    border-radius: ${({ theme }) => theme.radius.lg};
+    font-size: 14px;
+    padding: 0 16px;
   }
 `;
 
 // ============================================================================
-// FEATURE CARD COMPONENT
+// SECTION LABELS & HEADINGS
 // ============================================================================
 
-const FeatureCardWrapper = styled.div`
+const SectionLabel = styled.div`
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
   text-align: center;
+`;
+
+const SectionHeading = styled.h2`
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 28px;
+  }
+`;
+
+const SectionSub = styled.p`
+  font-size: 18px;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto 48px;
+  text-align: center;
+  line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 16px;
+  }
+`;
+
+// ============================================================================
+// FEATURE CARDS (Custom - no Card import)
+// ============================================================================
+
+const FeatureCardsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 48px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: 24px;
+  }
+`;
+
+const FeatureCardContainer = styled(motion.div)`
+  height: 100%;
+`;
+
+const FeatureCardElement = styled.div`
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 32px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+  }
 `;
 
 const FeatureBadge = styled.div`
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-dark"]}
-  );
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.md};
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 4px;
   display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  width: fit-content;
 `;
 
 const FeatureIconWrapper = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-dark"]}
-  );
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto ${({ theme }) => theme.spacing["2xl"]};
-  color: ${({ theme }) => theme.colors.black};
+  color: #3b82f6;
+  margin-bottom: 24px;
 `;
 
 const FeatureTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 `;
 
 const FeatureDescription = styled.p`
-  color: ${({ theme }) => theme.colors["gray-600"]};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 24px;
   flex: 1;
+  font-size: 14px;
 `;
 
 const OutcomesSection = styled.div`
@@ -268,10 +307,12 @@ const OutcomesSection = styled.div`
 `;
 
 const OutcomesLabel = styled.h4`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 `;
 
 const OutcomesList = styled.ul`
@@ -283,195 +324,115 @@ const OutcomesList = styled.ul`
 const OutcomeItem = styled.li`
   display: flex;
   align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme }) => theme.colors["gray-600"]};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  gap: 12px;
+  margin-bottom: 8px;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
 `;
 
 const OutcomeIcon = styled(CheckCircle)`
   flex-shrink: 0;
   margin-top: 2px;
-  color: ${({ theme }) => theme.colors.gold};
-  fill: ${({ theme }) => theme.colors.gold};
+  color: #3b82f6;
+  width: 16px;
+  height: 16px;
 `;
 
-const FeatureCardMotionWrapper = styled(motion.div)`
-  height: 100%;
-  display: flex;
+const RoadmapNotice = styled(motion.div)`
+  background: #f9fafb;
+  border-left: 3px solid #3b82f6;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 48px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
-const StyledCard = styled(Card)`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+const RoadmapNoticeText = styled.p`
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
 `;
-
-const FeatureCard = ({
-  icon: Icon,
-  title,
-  description,
-  badge,
-  outcomes,
-  index,
-}) => {
-  return (
-    <FeatureCardMotionWrapper
-      initial={{ opacity: 0, y: 30, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-    >
-      <StyledCard variant="elevated" hover>
-        <FeatureCardWrapper>
-          {badge && <FeatureBadge>{badge}</FeatureBadge>}
-          <FeatureIconWrapper>{Icon && <Icon size={32} />}</FeatureIconWrapper>
-          <FeatureTitle>{title}</FeatureTitle>
-          <FeatureDescription>{description}</FeatureDescription>
-          {outcomes && outcomes.length > 0 && (
-            <OutcomesSection>
-              <OutcomesLabel>Agent Outcomes:</OutcomesLabel>
-              <OutcomesList>
-                {outcomes.map((outcome, outcomeIndex) => (
-                  <OutcomeItem key={outcomeIndex}>
-                    <OutcomeIcon size={16} />
-                    {outcome}
-                  </OutcomeItem>
-                ))}
-              </OutcomesList>
-            </OutcomesSection>
-          )}
-        </FeatureCardWrapper>
-      </StyledCard>
-    </FeatureCardMotionWrapper>
-  );
-};
 
 // ============================================================================
-// SECTION HEADER COMPONENT
-// ============================================================================
-
-const SectionHeaderWrapper = styled(motion.div)`
-  text-align: ${({ align }) => align || "center"};
-  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
-`;
-
-const SectionHeaderTitle = styled.h2`
-  font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme, dark }) =>
-    dark ? theme.colors.white : theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
-  }
-`;
-
-const SectionHeaderSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme, dark }) =>
-    dark ? "rgba(255, 255, 255, 0.8)" : theme.colors["gray-600"]};
-  max-width: ${({ maxWidth }) => maxWidth || "600px"};
-  margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.lg};
-  }
-`;
-
-const SectionHeader = ({
-  title,
-  subtitle,
-  align = "center",
-  maxWidth,
-  dark = false,
-  delay = 0,
-}) => {
-  return (
-    <SectionHeaderWrapper
-      align={align}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay }}
-      viewport={{ once: true }}
-    >
-      <SectionHeaderTitle dark={dark}>{title}</SectionHeaderTitle>
-      {subtitle && (
-        <SectionHeaderSubtitle dark={dark} maxWidth={maxWidth}>
-          {subtitle}
-        </SectionHeaderSubtitle>
-      )}
-    </SectionHeaderWrapper>
-  );
-};
-
-// ============================================================================
-// OUTCOME METRICS SECTION
+// METRICS SECTION
 // ============================================================================
 
 const MetricsSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors["gray-200"]} 0%,
-    ${({ theme }) => theme.colors["gray-100"]} 100%
-  );
+  padding: 96px 0;
+  background: #f9fafb;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
 `;
 
 const MetricsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: ${({ theme }) => theme.spacing.xl};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-bottom: 24px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: 24px;
+  }
 `;
 
 const MetricCard = styled(motion.div)`
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 32px;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing.xl};
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  box-shadow: ${({ theme }) => theme.shadows.md};
-  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+  }
 `;
 
 const MetricIconWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme }) => theme.colors.gold};
+  margin-bottom: 16px;
+  color: #3b82f6;
 `;
 
 const MetricNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.gold};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
+  font-size: 28px;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.2;
 `;
 
 const MetricLabel = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["text-primary"]};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+  margin-bottom: 8px;
 `;
 
 const MetricDescription = styled.div`
-  color: ${({ theme }) => theme.colors["text-secondary"]};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
 `;
 
 const MetricsDisclaimer = styled.p`
   text-align: center;
-  color: ${({ theme }) => theme.colors["gray-500"]};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  margin-top: ${({ theme }) => theme.spacing.lg};
+  color: #9ca3af;
+  font-size: 12px;
+  margin: 0;
   font-style: italic;
 `;
 
@@ -480,15 +441,47 @@ const MetricsDisclaimer = styled.p`
 // ============================================================================
 
 const DemoSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["4xl"]} 0;
-  background: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
+  padding: 96px 0;
+  background: #ffffff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
 `;
 
 const DemoContent = styled.div`
   max-width: 800px;
   margin: 0 auto;
+`;
+
+const WhoForWrapper = styled.div`
+  margin-bottom: 48px;
+  text-align: left;
+`;
+
+const WhoForTitle = styled.h3`
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+`;
+
+const WhoForList = styled.ul`
+  list-style: disc;
+  padding-left: 24px;
+  margin: 0;
+`;
+
+const WhoForItem = styled.li`
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+  line-height: 1.6;
 `;
 
 const DemoVideo = styled(motion.div)`
@@ -497,25 +490,18 @@ const DemoVideo = styled(motion.div)`
   height: 400px;
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors["gray-900"]},
-    ${({ theme }) => theme.colors["gray-800"]}
+    #1f2937 0%,
+    #111827 100%
   );
-  border-radius: ${({ theme }) => theme.radius.lg};
-  margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
+  border-radius: 12px;
+  margin-bottom: 32px;
   overflow: hidden;
   cursor: pointer;
-  transition: ${({ theme }) => theme.transitions.normal};
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Subtle grid pattern overlay */
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
     transform: scale(1.02);
@@ -530,73 +516,58 @@ const DemoPlaceholder = styled.div`
 const PlayButton = styled(motion.div)`
   width: 80px;
   height: 80px;
-  background: ${({ theme }) => theme.colors.gold};
+  background: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
-  margin: 0 auto ${({ theme }) => theme.spacing.lg};
+  color: #1f2937;
+  margin: 0 auto 16px;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 `;
 
 const PlaceholderTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 `;
 
 const PlaceholderSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   max-width: 500px;
   margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+  line-height: 1.6;
 `;
 
-const WhoForWrapper = styled.div`
-  max-width: 800px;
-  margin: 0 auto ${({ theme }) => theme.spacing["3xl"]};
-  text-align: left;
-`;
-
-const WhoForTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-`;
-
-const WhoForList = styled.ul`
-  list-style: disc;
-  padding-left: ${({ theme }) => theme.spacing["2xl"]};
-  margin: 0;
-`;
-
-const WhoForItem = styled.li`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+const DemoButtonWrapper = styled(motion.div)`
+  text-align: center;
 `;
 
 // ============================================================================
-// CTA SECTION
+// CTA SECTION (Dark Gradient)
 // ============================================================================
 
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing.xl} 0;
+  padding: 96px 0;
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.black} 0%,
-    ${({ theme }) => theme.colors["gray-900"]} 100%
+    #000000 0%,
+    #111827 100%
   );
-  color: ${({ theme }) => theme.colors.white};
+  color: #ffffff;
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
 `;
 
 const CTAContent = styled.div`
@@ -604,9 +575,33 @@ const CTAContent = styled.div`
   margin: 0 auto;
 `;
 
-const ButtonGroup = styled.div`
+const CTATitle = styled.h2`
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 28px;
+  }
+`;
+
+const CTASubtitle = styled.p`
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 16px;
+  }
+`;
+
+const CTAButtonWrapper = styled(motion.div)`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
+  gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
 
@@ -615,6 +610,45 @@ const ButtonGroup = styled.div`
     align-items: center;
   }
 `;
+
+// ============================================================================
+// FEATURE CARD COMPONENT
+// ============================================================================
+
+const FeatureCard = ({ icon: Icon, title, description, badge, outcomes, index }) => {
+  return (
+    <FeatureCardContainer
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+    >
+      <FeatureCardElement>
+        {badge && <FeatureBadge>{badge}</FeatureBadge>}
+        {Icon && (
+          <FeatureIconWrapper>
+            <Icon size={24} />
+          </FeatureIconWrapper>
+        )}
+        <FeatureTitle>{title}</FeatureTitle>
+        <FeatureDescription>{description}</FeatureDescription>
+        {outcomes && outcomes.length > 0 && (
+          <OutcomesSection>
+            <OutcomesLabel>Agent Outcomes</OutcomesLabel>
+            <OutcomesList>
+              {outcomes.map((outcome, outcomeIndex) => (
+                <OutcomeItem key={outcomeIndex}>
+                  <OutcomeIcon size={16} />
+                  {outcome}
+                </OutcomeItem>
+              ))}
+            </OutcomesList>
+          </OutcomesSection>
+        )}
+      </FeatureCardElement>
+    </FeatureCardContainer>
+  );
+};
 
 // ============================================================================
 // MAIN COMPONENT
@@ -794,32 +828,37 @@ const Features = () => {
   return (
     <FeaturesWrapper>
       <SEO {...SEOConfigs.features} schemaType="SoftwareApplication" />
-      <Section>
-        <Container>
-          <FeaturesHeader>
-            <FeaturesBadge
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Powerful Features
-            </FeaturesBadge>
-            <FeaturesTitle
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {copy.pages.features.h1}
-            </FeaturesTitle>
-            <FeaturesSubtitle
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              {copy.pages.features.sub}
-            </FeaturesSubtitle>
-          </FeaturesHeader>
 
+      {/* HERO SECTION */}
+      <HeroSection>
+        <Container>
+          <HeroBadge
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Powerful Features
+          </HeroBadge>
+          <HeroTitle
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {copy.pages.features.h1}
+          </HeroTitle>
+          <HeroSubtitle
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {copy.pages.features.sub}
+          </HeroSubtitle>
+        </Container>
+      </HeroSection>
+
+      {/* TABS & FEATURES SECTION */}
+      <TabsSection>
+        <Container>
           <FeatureTabs>
             {Object.entries(featureCategories).map(([key, category]) => (
               <FeatureTab
@@ -849,7 +888,7 @@ const Features = () => {
             </RoadmapNotice>
           )}
 
-          <CardGrid columns={3} gap={6}>
+          <FeatureCardsGrid>
             {currentFeatures.features.map((feature, index) => (
               <FeatureCard
                 key={index}
@@ -861,17 +900,18 @@ const Features = () => {
                 index={index}
               />
             ))}
-          </CardGrid>
+          </FeatureCardsGrid>
         </Container>
-      </Section>
+      </TabsSection>
 
+      {/* METRICS SECTION */}
       <MetricsSection>
         <Container>
-          <SectionHeader
-            title="What Changes When Your Itineraries Aren't Built in Spreadsheets"
-            subtitle="These are the core outcomes ParkPro is designed to create for destination-focused travel agents and agencies in their day-to-day workflow."
-            delay={0}
-          />
+          <SectionLabel>What Changes When Your Itineraries Aren't Built in Spreadsheets</SectionLabel>
+          <SectionHeading>Measurable outcomes</SectionHeading>
+          <SectionSub>
+            These are the core outcomes ParkPro is designed to create for destination-focused travel agents and agencies in their day-to-day workflow.
+          </SectionSub>
 
           <MetricsGrid>
             {metrics.map((metric, index) => (
@@ -901,6 +941,7 @@ const Features = () => {
         </Container>
       </MetricsSection>
 
+      {/* DEMO SECTION */}
       <DemoSection>
         <Container>
           <DemoContent>
@@ -914,15 +955,14 @@ const Features = () => {
               </WhoForList>
             </WhoForWrapper>
 
-            <SectionHeader
-              title="See ParkPro in Action"
-              subtitle="Watch how travel agents go from client intake to a client-ready Disney itinerary in minutes—without spreadsheets, copy-paste, or starting from a blank page."
-              dark={true}
-              delay={0}
-            />
+            <SectionLabel>See ParkPro in Action</SectionLabel>
+            <SectionHeading>Full demo walkthrough</SectionHeading>
+            <SectionSub>
+              Watch how travel agents go from client intake to a client-ready Disney itinerary in minutes—without spreadsheets, copy-paste, or starting from a blank page.
+            </SectionSub>
 
             <DemoVideo
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
@@ -941,7 +981,7 @@ const Features = () => {
               </DemoPlaceholder>
             </DemoVideo>
 
-            <motion.div
+            <DemoButtonWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -951,21 +991,20 @@ const Features = () => {
                 <Play size={20} />
                 Watch Full Demo
               </Button>
-            </motion.div>
+            </DemoButtonWrapper>
           </DemoContent>
         </Container>
       </DemoSection>
 
+      {/* CTA SECTION */}
       <CTASection>
         <Container>
           <CTAContent>
-            <SectionHeader
-              title="Ready to Turn ParkPro into Your Agency's Operating System?"
-              subtitle="See how ParkPro transforms your Disney planning workflow. Book a personalized demo and we'll show you exactly how it works for your agency."
-              delay={0}
-              dark={true}
-            />
-            <motion.div
+            <CTATitle>Ready to Turn ParkPro into Your Agency's Operating System?</CTATitle>
+            <CTASubtitle>
+              See how ParkPro transforms your Disney planning workflow. Book a personalized demo and we'll show you exactly how it works for your agency.
+            </CTASubtitle>
+            <CTAButtonWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -974,7 +1013,7 @@ const Features = () => {
               <Button variant="primary" size="lg" to="/demo">
                 Book a Demo →
               </Button>
-            </motion.div>
+            </CTAButtonWrapper>
           </CTAContent>
         </Container>
       </CTASection>

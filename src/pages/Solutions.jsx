@@ -32,17 +32,17 @@ const SolutionsHeader = styled.div`
 const SolutionsBadge = styled(motion.div)`
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-muted"]}
+    ${({ theme }) => theme.colors.teal},
+    ${({ theme }) => theme.colors["teal-light"]}
   );
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
@@ -122,7 +122,7 @@ const SolutionCard = styled(motion.div)`
   &:hover {
       transform: translateY(-3px);
     box-shadow: ${({ theme }) => theme.shadows.xl};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: ${({ theme }) => theme.colors.teal};
     }
   }
 
@@ -135,8 +135,8 @@ const SolutionCard = styled(motion.div)`
     height: 4px;
     background: linear-gradient(
       135deg,
-      ${({ theme }) => theme.colors.gold},
-      ${({ theme }) => theme.colors["gold-muted"]}
+      ${({ theme }) => theme.colors.teal},
+      ${({ theme }) => theme.colors["teal-light"]}
     );
   }
 `;
@@ -147,12 +147,12 @@ const SolutionIcon = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   background: linear-gradient(
     135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-muted"]}
+    ${({ theme }) => theme.colors.teal},
+    ${({ theme }) => theme.colors["teal-light"]}
   );
   ${flexCenter}
   margin-bottom: ${({ theme }) => theme.spacing.md};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   transition: ${({ theme }) => theme.transitions.normal};
 
@@ -214,7 +214,7 @@ const FeatureItem = styled.li`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 
   svg {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.teal};
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -245,7 +245,7 @@ const StatItem = styled.div`
 const StatNumber = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.base};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.teal};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   margin-bottom: 2px;
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};

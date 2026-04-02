@@ -40,8 +40,8 @@ const FormInput = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #F5C249;
-    box-shadow: 0 0 0 3px rgba(245, 194, 73, 0.1);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 `;
 
@@ -56,15 +56,15 @@ const FormSelect = styled.select`
 
   &:focus {
     outline: none;
-    border-color: #F5C249;
-    box-shadow: 0 0 0 3px rgba(245, 194, 73, 0.1);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 `;
 
 const GenerateButton = styled.button`
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #F5C249, #E9B029);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
   border: none;
   border-radius: 8px;
@@ -75,9 +75,9 @@ const GenerateButton = styled.button`
   margin-top: 1rem;
 
   &:hover {
-    background: linear-gradient(135deg, #2563eb, #1e40af);
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(245, 194, 73, 0.3);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
   }
 
   &:disabled {

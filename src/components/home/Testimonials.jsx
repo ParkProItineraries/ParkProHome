@@ -35,15 +35,15 @@ const SectionHeader = styled.div`
 `;
 
 const Badge = styled.div`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: rgba(59, 130, 246, 0.1);
+  color: ${({ theme }) => theme.colors.teal};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.md};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  border: 1px solid rgba(59, 130, 246, 0.3);
 `;
 
 const Title = styled.h2`
@@ -88,7 +88,7 @@ const BenefitCard = styled(motion.div)`
   box-shadow: ${({ theme }) => theme.shadows.sm};
   border: 1px solid ${({ theme }) => theme.colors['gray-200']};
   border-top: 3px solid transparent;
-  border-image: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']}) 1;
+  border-image: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']}) 1;
   border-image-slice: 1 1 0 1;
   position: relative;
   display: flex;
@@ -114,14 +114,14 @@ const IconWrapper = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}20, ${({ theme }) => theme.colors['gray-200']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}20, ${({ theme }) => theme.colors['gray-200']});
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: ${({ theme }) => theme.spacing.md};
 
   svg {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.teal};
   }
 `;
 
@@ -153,14 +153,14 @@ const CTAButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.base};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xl};
   border-radius: ${({ theme }) => theme.radius.md};
   text-decoration: none;
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.lg};
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
@@ -199,7 +199,7 @@ const Stat = styled.div`
 const StatNumber = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};

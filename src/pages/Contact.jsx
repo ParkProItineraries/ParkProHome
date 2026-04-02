@@ -39,15 +39,15 @@ const Header = styled.div`
 `;
 
 const Badge = styled.div`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
@@ -128,11 +128,11 @@ const IconWrapper = styled.div`
   width: 48px;
   height: 48px;
   border-radius: ${({ theme }) => theme.radius.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']});
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   flex-shrink: 0;
 `;
 
@@ -154,13 +154,13 @@ const ContactDetail = styled.p`
 `;
 
 const ContactLink = styled.a`
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.teal};
   text-decoration: none;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   transition: ${({ theme }) => theme.transitions.normal};
-  
+
   &:hover {
-    color: ${({ theme }) => theme.colors['gold-muted']};
+    color: ${({ theme }) => theme.colors['teal-light']};
     text-decoration: underline;
   }
 `;
@@ -203,8 +203,8 @@ const Input = styled.input`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.teal}20;
   }
   
   &::placeholder {
@@ -225,8 +225,8 @@ const TextArea = styled.textarea`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.teal}20;
   }
   
   &::placeholder {
@@ -253,9 +253,9 @@ const Select = styled.select`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23F5C249' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.teal}20;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
   }
   
   &:hover {
@@ -271,25 +271,25 @@ const Select = styled.select`
 
 const SubmitButton = styled.button`
   padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing['2xl']};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   border: none;
   border-radius: ${({ theme }) => theme.radius.lg};
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   display: flex;
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
-  
+
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows['gold-lg']};
+    box-shadow: ${({ theme }) => theme.shadows.lg};
   }
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -307,9 +307,9 @@ const Alert = styled.div`
   ${({ $variant, theme }) => {
     if ($variant === 'success') {
       return `
-        background: ${theme.colors.gold}20;
+        background: ${theme.colors.teal}20;
         color: ${theme.colors.black};
-        border: 1px solid ${theme.colors.gold}40;
+        border: 1px solid ${theme.colors.teal}40;
       `;
     }
     if ($variant === 'error') {
@@ -327,7 +327,7 @@ const InfoSection = styled.div`
   padding: ${({ theme }) => theme.spacing.xl};
   background: ${({ theme }) => theme.colors['gray-50']};
   border-radius: ${({ theme }) => theme.radius.lg};
-  border-left: 4px solid ${({ theme }) => theme.colors.gold};
+  border-left: 4px solid ${({ theme }) => theme.colors.teal};
 `;
 
 const InfoTitle = styled.h3`

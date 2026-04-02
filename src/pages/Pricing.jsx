@@ -23,8 +23,9 @@ import { copy } from "../content/strings";
 // - Agency+: $247/agent/mo, 20 itineraries/agent/month
 // - Enterprise: Custom pricing, pooled itineraries (negotiated)
 // - Enterprise is a real, clickable plan (not a decoy) that routes to /contact
+
 const PricingWrapper = styled.div`
-  padding-top: 88px; // Account for fixed navbar
+  padding-top: 88px;
   background: ${({ theme }) => theme.colors.white};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -36,15 +37,27 @@ const PricingWrapper = styled.div`
   }
 `;
 
-const PricingHeader = styled.div`
+// Dark hero section
+const HeroSection = styled.div`
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  padding: 96px ${({ theme }) => theme.spacing["3xl"]};
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px ${({ theme }) => theme.spacing.lg};
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px ${({ theme }) => theme.spacing.md};
+  }
 `;
 
-const PricingTitle = styled(motion.h1)`
+const HeroTitle = styled(motion.h1)`
   font-size: ${({ theme }) => theme.typography.sizes["5xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 
@@ -57,10 +70,10 @@ const PricingTitle = styled(motion.h1)`
   }
 `;
 
-const PricingSubtitle = styled(motion.p)`
+const HeroSubtitle = styled(motion.p)`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: ${({ theme }) => theme.colors["gray-600"]};
-  margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
+  color: #d1d5db;
+  margin-bottom: 0;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   max-width: 600px;
   margin-left: auto;
@@ -73,6 +86,65 @@ const PricingSubtitle = styled(motion.p)`
 
   @media (max-width: 475px) {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
+  }
+`;
+
+// Body section wrapper with light background
+const BodySection = styled.section`
+  background: #ffffff;
+  padding: 96px ${({ theme }) => theme.spacing["3xl"]};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px ${({ theme }) => theme.spacing.lg};
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px ${({ theme }) => theme.spacing.md};
+  }
+`;
+
+// Section label (blue, uppercase, small)
+const SectionLabel = styled.div`
+  font-size: ${({ theme }) => theme.typography.sizes.xs};
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  text-align: center;
+`;
+
+// Section heading
+const SectionHeading = styled.h2`
+  font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  color: #1f2937;
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  text-align: center;
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+  }
+
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
+  }
+`;
+
+// Section subtitle
+const SectionSub = styled.p`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: #6b7280;
+  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
   }
 `;
 
@@ -101,7 +173,7 @@ const ToggleContainer = styled.div`
 
 const ToggleLabelLeft = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   grid-column: 1;
   grid-row: 2;
@@ -115,7 +187,7 @@ const ToggleLabelLeft = styled.span`
 
 const ToggleLabelTop = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   grid-column: 2;
   grid-row: 1;
@@ -125,7 +197,7 @@ const ToggleLabelTop = styled.span`
 
 const ToggleLabelRight = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   grid-column: 3;
   grid-row: 2;
@@ -167,20 +239,19 @@ const SecondaryToggleWrapper = styled.div`
 
 const ToggleLabel = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
 `;
 
-// Primary toggle for Solo Agent / Agency (prominent with gold accent)
 const PrimaryToggle = styled.div`
   display: flex;
   align-items: center;
-  background: ${({ theme }) => theme.colors["gray-100"]};
+  background: #f3f4f6;
   border-radius: ${({ theme }) => theme.radius.full};
   padding: 3px;
   position: relative;
   cursor: pointer;
-  border: 2px solid ${({ theme }) => theme.colors["gray-200"]};
+  border: 2px solid #e5e7eb;
   box-shadow: ${({ theme }) => theme.shadows.sm};
   grid-column: 2;
   grid-row: 2;
@@ -198,9 +269,9 @@ const PrimaryToggleOption = styled(motion.button).withConfig({
   border-radius: ${({ theme }) => theme.radius.full};
   border: none;
   background: ${({ active, theme }) =>
-    active ? theme.colors.gold : "transparent"};
+    active ? "#3b82f6" : "transparent"};
   color: ${({ active, theme }) =>
-    active ? theme.colors.black : theme.colors["gray-600"]};
+    active ? theme.colors.white : "#6b7280"};
   font-weight: ${({ active, theme }) =>
     active
       ? theme.typography.weights.semibold
@@ -208,7 +279,7 @@ const PrimaryToggleOption = styled(motion.button).withConfig({
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ active, theme }) => (active ? theme.shadows.gold : "none")};
+  box-shadow: ${({ active, theme }) => (active ? theme.shadows.sm : "none")};
   z-index: 1;
   position: relative;
   min-width: 150px;
@@ -226,15 +297,14 @@ const PrimaryToggleOption = styled(motion.button).withConfig({
   }
 `;
 
-// Secondary toggle for Monthly / Annual (subtle styling, smaller)
 const SecondaryToggle = styled.div`
   display: flex;
-  background: ${({ theme }) => theme.colors["gray-50"]};
+  background: #f9fafb;
   border-radius: ${({ theme }) => theme.radius.full};
   padding: 2px;
   position: relative;
   cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
+  border: 1px solid #e5e7eb;
 `;
 
 const SecondaryToggleOption = styled(motion.button).withConfig({
@@ -246,7 +316,7 @@ const SecondaryToggleOption = styled(motion.button).withConfig({
   background: ${({ active, theme }) =>
     active ? theme.colors.white : "transparent"};
   color: ${({ active, theme }) =>
-    active ? theme.colors.black : theme.colors["gray-600"]};
+    active ? "#1f2937" : "#6b7280"};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   cursor: pointer;
@@ -296,16 +366,16 @@ const PricingCard = styled(motion.div).withConfig({
       "viewport",
       "isPopular",
       "isAgencyPlus",
+      "isEnterprise",
     ].includes(prop),
 })`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  background: #ffffff;
+  border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.xl};
-  border: 2px solid
-    ${({ theme, isPopular, isAgencyPlus }) =>
-      isPopular || isAgencyPlus ? theme.colors.gold : theme.colors["gray-300"]};
-  box-shadow: ${({ theme, isPopular, isAgencyPlus }) =>
-    isPopular || isAgencyPlus ? theme.shadows.gold : theme.shadows.md};
+  border: 1px solid #e5e7eb;
+  border-top: ${({ isPopular, isAgencyPlus }) =>
+    isPopular || isAgencyPlus ? "3px solid #3b82f6" : "none"};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   position: relative;
   transition: ${({ theme }) => theme.transitions.normal};
   opacity: 1;
@@ -326,9 +396,9 @@ const PricingCard = styled(motion.div).withConfig({
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: ${({ theme, isPopular, isAgencyPlus }) =>
-      isPopular || isAgencyPlus ? theme.shadows["gold-lg"] : theme.shadows.xl};
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     z-index: 5;
+    border-color: #d1d5db;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
@@ -342,7 +412,7 @@ const PricingCard = styled(motion.div).withConfig({
 
   @media (max-width: 475px) {
     padding: ${({ theme }) => theme.spacing.md};
-    border-radius: ${({ theme }) => theme.radius.md};
+    border-radius: 12px;
     min-height: auto;
   }
 `;
@@ -352,19 +422,15 @@ const PopularBadge = styled.div`
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-muted"]}
-  );
-  color: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   z-index: 20;
   white-space: nowrap;
   pointer-events: none;
@@ -375,19 +441,15 @@ const EnterpriseBadge = styled.div`
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-muted"]}
-  );
-  color: ${({ theme }) => theme.colors.black};
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.full};
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   z-index: 20;
   white-space: nowrap;
   pointer-events: none;
@@ -395,8 +457,8 @@ const EnterpriseBadge = styled.div`
 
 const PlanAudienceTag = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-600"]};
-  background: ${({ theme }) => theme.colors["gray-100"]};
+  color: #6b7280;
+  background: #f3f4f6;
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.radius.full};
   text-align: center;
@@ -409,7 +471,7 @@ const PlanAudienceTag = styled.div`
 const PlanName = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   text-align: center;
@@ -427,7 +489,7 @@ const PlanPrice = styled.div`
 const PriceAmount = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: #3b82f6;
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: 1;
   margin-right: -2px;
@@ -443,20 +505,20 @@ const PriceAmount = styled.div`
 
 const PricePeriod = styled.span`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   margin-left: 0;
 `;
 
 const AnnualDiscount = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   text-align: center;
   margin-top: 2px;
 `;
 
 const PriceFrom = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-500"]};
+  color: #9ca3af;
   text-align: center;
   margin-top: ${({ theme }) => theme.spacing.xs};
   font-style: italic;
@@ -464,7 +526,7 @@ const PriceFrom = styled.div`
 
 const AdditionalSeatText = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-500"]};
+  color: #9ca3af;
   text-align: center;
   margin-top: 2px;
   margin-bottom: ${({ theme }) => theme.spacing.xs};
@@ -472,20 +534,20 @@ const AdditionalSeatText = styled.div`
 `;
 
 const PlanGrowthNote = styled.div`
-  background: ${({ theme }) => theme.colors["gray-50"]};
-  border-left: 3px solid ${({ theme }) => theme.colors.gold};
+  background: #f9fafb;
+  border-left: 3px solid #3b82f6;
   padding: ${({ theme }) => theme.spacing.sm};
   margin-top: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.radius.sm};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-700"]};
+  color: #374151;
   text-align: left;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 `;
 
 const TimeSavings = styled.p`
-  color: ${({ theme }) => theme.colors.gold};
+  color: #3b82f6;
   text-align: center;
   margin-bottom: ${({ theme }) => theme.spacing.md};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
@@ -506,14 +568,13 @@ const FeatureItem = styled.li`
   gap: ${({ theme }) => theme.spacing.xs};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   color: ${({ theme, $isHighlight }) =>
-    $isHighlight ? theme.colors.gold : theme.colors["gray-600"]};
+    $isHighlight ? "#1f2937" : "#6b7280"};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ $isHighlight }) => ($isHighlight ? "600" : "400")};
 
   svg {
-    color: ${({ theme, $isHighlight }) =>
-      $isHighlight ? theme.colors.gold : theme.colors.gold};
+    color: #3b82f6;
     flex-shrink: 0;
     margin-top: 2px;
     width: 14px;
@@ -529,16 +590,24 @@ const CardButton = styled(Button)`
   font-size: ${({ theme }) => theme.typography.sizes.sm};
 `;
 
-// FAQ Section
+// FAQ Section with light background
 const FAQSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["3xl"]} 0;
-  background: ${({ theme }) => theme.colors["gray-50"]};
+  padding: 96px ${({ theme }) => theme.spacing["3xl"]};
+  background: #f9fafb;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px ${({ theme }) => theme.spacing.lg};
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px ${({ theme }) => theme.spacing.md};
+  }
 `;
 
 const FAQTitle = styled(motion.h2)`
   font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   text-align: center;
@@ -571,10 +640,10 @@ const FAQGrid = styled.div`
 
 const FAQItem = styled.div`
   background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
 `;
 
 const FAQQuestion = styled.button`
@@ -588,38 +657,80 @@ const FAQQuestion = styled.button`
   margin-bottom: ${({ theme, isOpen }) => (isOpen ? theme.spacing.md : 0)};
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   text-align: left;
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.gold};
+    color: #3b82f6;
   }
 `;
 
 const FAQAnswer = styled(motion.div)`
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   overflow: hidden;
 `;
 
+// Dark CTA section
+const CTASection = styled.section`
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  padding: 96px ${({ theme }) => theme.spacing["3xl"]};
+  text-align: center;
+  color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px ${({ theme }) => theme.spacing.lg};
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px ${({ theme }) => theme.spacing.md};
+  }
+`;
+
+const CTATitle = styled(motion.h2)`
+  font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
+  font-weight: ${({ theme }) => theme.typography.weights.bold};
+  color: ${({ theme }) => theme.colors.white};
+  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
+  }
+
+  @media (max-width: 475px) {
+    font-size: ${({ theme }) => theme.typography.sizes.xl};
+  }
+`;
+
+const CTASubtitle = styled.p`
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: #d1d5db;
+  margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.typography.sizes.base};
+  }
+`;
+
 const Pricing = () => {
   const location = useLocation();
-  // const [isAnnual, setIsAnnual] = useState(false);
   const [openFAQ, setOpenFAQ] = useState(null);
-  const [viewType, setViewType] = useState("solo"); // "solo", "agency", or "enterprise"
+  const [viewType, setViewType] = useState("solo");
 
-  // Handle hash navigation on mount and when location changes
   useEffect(() => {
     const hash = location.hash.replace("#", "");
     if (hash === "solo" || hash === "agency" || hash === "enterprise") {
       setViewType(hash);
-      // Scroll to pricing section after a brief delay to ensure toggle is set and DOM is updated
       setTimeout(() => {
         const pricingSection = document.getElementById("pricing-section");
         if (pricingSection) {
-          const offset = 120; // Account for fixed navbar (88px) + some padding
+          const offset = 120;
           const elementPosition = pricingSection.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - offset;
           window.scrollTo({
@@ -637,7 +748,7 @@ const Pricing = () => {
       name: "Solo Agent",
       description: "Perfect for solo agents just getting started or testing the waters.",
       monthlyPrice: 97,
-      annualPrice: 970, // ~$80.83/mo — 2 months free
+      annualPrice: 970,
       audience: "For solo agents",
       isPopular: false,
       isDecoy: false,
@@ -659,7 +770,7 @@ const Pricing = () => {
       name: "Agent+",
       description: "Built for growing agents who need more volume and flexibility.",
       monthlyPrice: 147,
-      annualPrice: 1470, // ~$122.50/mo — 2 months free
+      annualPrice: 1470,
       audience: "For solo agents",
       isPopular: true,
       isDecoy: false,
@@ -682,7 +793,7 @@ const Pricing = () => {
       name: "Agency",
       description: "Ideal for agencies building a steady client base.",
       monthlyPrice: 197,
-      annualPrice: 1970, // ~$164.17/mo — 2 months free
+      annualPrice: 1970,
       audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
@@ -705,7 +816,7 @@ const Pricing = () => {
       name: "Agency+",
       description: "For high-performing agencies that need power, scale, and automation.",
       monthlyPrice: 247,
-      annualPrice: 2470, // ~$205.83/mo — 2 months free
+      annualPrice: 2470,
       audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
@@ -745,7 +856,6 @@ const Pricing = () => {
     },
   ];
 
-  // Filter plans based on view type
   const filteredPlans = pricingPlans.filter((plan) => {
     if (viewType === "solo") {
       return plan.id === "solo" || plan.id === "agentplus";
@@ -808,25 +918,27 @@ const Pricing = () => {
     <PricingWrapper>
       <SEO {...SEOConfigs.pricing} schemaType="SoftwareApplication" />
 
-      <Section>
+      <HeroSection>
         <Container>
-          <PricingHeader>
-            <PricingTitle
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {copy.pages.pricing.h1}
-            </PricingTitle>
-            <PricingSubtitle
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {copy.pages.pricing.sub}
-            </PricingSubtitle>
-          </PricingHeader>
+          <HeroTitle
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {copy.pages.pricing.h1}
+          </HeroTitle>
+          <HeroSubtitle
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {copy.pages.pricing.sub}
+          </HeroSubtitle>
+        </Container>
+      </HeroSection>
 
+      <BodySection>
+        <Container>
           <div id="pricing-section">
             <ToggleWrapper>
               <ToggleContainer>
@@ -889,43 +1001,6 @@ const Pricing = () => {
               </ToggleContainer>
             </ToggleWrapper>
 
-            {/* <SecondaryToggleWrapper>
-              <ToggleLabel>Monthly</ToggleLabel>
-              <SecondaryToggle onClick={() => setIsAnnual(!isAnnual)}>
-                <SecondaryToggleOption
-                  active={!isAnnual}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    scale: !isAnnual ? 1.02 : 1,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25,
-                  }}
-                >
-                  Monthly
-                </SecondaryToggleOption>
-                <SecondaryToggleOption
-                  active={isAnnual}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    scale: isAnnual ? 1.02 : 1,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25,
-                  }}
-                >
-                  Annual
-                </SecondaryToggleOption>
-              </SecondaryToggle>
-              <ToggleLabel>Annual</ToggleLabel>
-            </SecondaryToggleWrapper> */}
-
             <PricingGrid $isEnterpriseView={viewType === "enterprise"}>
               {filteredPlans.map((plan, index) => (
                 <PricingCard
@@ -962,7 +1037,7 @@ const Pricing = () => {
                   <PlanName>{plan.name}</PlanName>
                   <PlanPrice>
                     <PriceAmount
-                      style={{ fontSize: "1.5rem", color: "#0B0B0C" }}
+                      style={{ fontSize: "1.5rem", color: "#1f2937" }}
                     >
                       Call for Pricing
                     </PriceAmount>
@@ -1008,9 +1083,8 @@ const Pricing = () => {
             </PricingGrid>
           </div>
         </Container>
-      </Section>
+      </BodySection>
 
-      {/* Trust Bar */}
       <TrustBar variant="light" showSocialProof={false} />
 
       <FAQSection>
@@ -1062,6 +1136,27 @@ const Pricing = () => {
           </FAQGrid>
         </Container>
       </FAQSection>
+
+      <CTASection>
+        <Container>
+          <CTATitle
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Ready to transform your itinerary workflow?
+          </CTATitle>
+          <CTASubtitle
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            Join Travel Agents who are saving 5-10+ hours per trip. Request access to ParkPro today.
+          </CTASubtitle>
+        </Container>
+      </CTASection>
     </PricingWrapper>
   );
 };

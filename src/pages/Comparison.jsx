@@ -40,23 +40,21 @@ const PageWrapper = styled.div`
   }
 `;
 
+// Hero Section - Dark gradient (black/gray-900)
 const HeroSection = styled(Section)`
-  background: linear-gradient(135deg, #0b0b0c 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #000000 0%, #1f2937 100%);
   color: white;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing["3xl"]} 0;
+  padding: 96px 0;
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23F5C249" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
-    opacity: 0.5;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
   }
 `;
 
@@ -86,63 +84,22 @@ const HeroSubtitle = styled(motion.p)`
   margin-bottom: ${({ theme }) => theme.spacing.lg};
 `;
 
-const HighlightBox = styled(motion.div)`
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold}20,
-    ${({ theme }) => theme.colors["gold-muted"]}20
-  );
-  border: 2px solid ${({ theme }) => theme.colors.gold};
-  border-radius: ${({ theme }) => theme.radius.xl};
-  padding: ${({ theme }) => theme.spacing.lg};
-  margin: ${({ theme }) => theme.spacing["2xl"]} auto;
-  max-width: 600px;
+// SectionLabel - Blue uppercase, 13px, 0.1em letter-spacing
+const SectionLabel = styled.p`
+  font-size: 13px;
+  font-weight: ${({ theme }) => theme.typography.weights.semibold};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #3b82f6;
   text-align: center;
-`;
-
-const HighlightTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.gold};
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
-const HighlightText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: white;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-// Section Wrappers with Alternating Backgrounds
-const StatsSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
-  background: ${({ theme }) => theme.colors["gray-50"]};
-`;
-
-const AudienceSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
-  background: ${({ theme }) => theme.colors.white};
-`;
-
-const ComparisonSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
-  background: ${({ theme }) => theme.colors.white};
-`;
-
-const ROISection = styled.section`
-  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
-  background: ${({ theme }) => theme.colors["gray-50"]};
-`;
-
-const PainSection = styled.section`
-  padding: ${({ theme }) => theme.spacing["2xl"]} 0;
-  background: ${({ theme }) => theme.colors.white};
-`;
-
+// SectionHeading - 4xl, #1F2937
 const SectionTitle = styled.h2`
   font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   text-align: center;
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
@@ -157,37 +114,103 @@ const SectionTitle = styled.h2`
   }
 `;
 
+// SectionSub - lg, #6B7280
 const SectionSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  font-size: ${({ theme }) => theme.typography.sizes.lg};
+  color: #6b7280;
   text-align: center;
   max-width: 700px;
   margin: 0 auto ${({ theme }) => theme.spacing.xl} auto;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.sm};
+    font-size: ${({ theme }) => theme.typography.sizes.base};
     margin-bottom: ${({ theme }) => theme.spacing.lg};
     padding: 0 ${({ theme }) => theme.spacing.md};
   }
 
   @media (max-width: 475px) {
-    font-size: ${({ theme }) => theme.typography.sizes.xs};
+    font-size: ${({ theme }) => theme.typography.sizes.sm};
   }
 `;
 
-// Comparison Matrix Components
+// Section Wrappers - Light backgrounds
+const AudienceSection = styled.section`
+  padding: 96px 0;
+  background: #ffffff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const StatsSection = styled.section`
+  padding: 96px 0;
+  background: #f9fafb;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const ComparisonSection = styled.section`
+  padding: 96px 0;
+  background: #ffffff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const ROISection = styled.section`
+  padding: 96px 0;
+  background: #f9fafb;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+const PainSection = styled.section`
+  padding: 96px 0;
+  background: #ffffff;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
+`;
+
+// Comparison Matrix Components - White background, 1px border, 12px radius
 const ComparisonMatrixWrapper = styled.div`
   max-width: 1100px;
   margin: ${({ theme }) => theme.spacing.xl} auto;
-  border-radius: ${({ theme }) => theme.radius.xl};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   overflow: hidden;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    border-radius: ${({ theme }) => theme.radius.md};
+    border-radius: 12px;
     margin: ${({ theme }) => theme.spacing.lg} auto;
   }
 
@@ -210,16 +233,12 @@ const MatrixHeaderRow = styled.div`
   padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.xl};
   column-gap: ${({ theme }) => theme.spacing.lg};
   row-gap: ${({ theme }) => theme.spacing.xs};
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.black} 0%,
-    #1a1a1a 100%
-  );
+  background: #1f2937;
   align-items: center;
-  border-bottom: 2px solid ${({ theme }) => theme.colors["gray-200"]};
+  border-bottom: 1px solid #e5e7eb;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: none; // Hide header row on mobile - each row will show its own context
+    display: none;
   }
 `;
 
@@ -235,21 +254,8 @@ const MatrixHeaderCell = styled.div`
 `;
 
 const ParkProHeaderCell = styled(MatrixHeaderCell)`
-  color: ${({ theme }) => theme.colors.gold};
+  color: #3b82f6;
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -${({ theme }) => theme.spacing.lg};
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: ${({ theme }) => theme.colors.gold};
-    border-radius: ${({ theme }) => theme.radius.full}
-      ${({ theme }) => theme.radius.full} 0 0;
-  }
 `;
 
 const MatrixRow = styled(motion.div)`
@@ -258,18 +264,14 @@ const MatrixRow = styled(motion.div)`
   column-gap: ${({ theme }) => theme.spacing.lg};
   row-gap: ${({ theme }) => theme.spacing.xs};
   padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg};
-  border-bottom: 1px solid ${({ theme }) => theme.colors["gray-100"]};
-  background: ${({ $isEven, theme }) =>
-    $isEven ? theme.colors.white : theme.colors["gray-50"]};
+  border-bottom: 1px solid #e5e7eb;
+  background: ${({ $isEven }) => ($isEven ? "#ffffff" : "#f9fafb")};
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
   position: relative;
 
   &:hover {
-    background: ${({ $isEven, theme }) =>
-      $isEven ? theme.colors["gray-50"] : theme.colors["gray-100"]};
-    transform: translateX(4px);
-    box-shadow: ${({ theme }) => theme.shadows.sm};
+    background: ${({ $isEven }) => ($isEven ? "#f9fafb" : "#f3f4f6")};
   }
 
   &:last-child {
@@ -279,7 +281,7 @@ const MatrixRow = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
     padding: ${({ theme }) => theme.spacing.lg};
-    border-bottom: 2px solid ${({ theme }) => theme.colors["gray-200"]};
+    border-bottom: 1px solid #e5e7eb;
   }
 
   @media (max-width: 475px) {
@@ -289,7 +291,7 @@ const MatrixRow = styled(motion.div)`
 
 const MatrixFeatureCell = styled.div`
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   text-align: left;
@@ -303,8 +305,8 @@ const MatrixFeatureCell = styled.div`
     font-weight: ${({ theme }) => theme.typography.weights.bold};
     margin-bottom: ${({ theme }) => theme.spacing.md};
     padding-bottom: ${({ theme }) => theme.spacing.sm};
-    border-bottom: 2px solid ${({ theme }) => theme.colors.gold};
-    color: ${({ theme }) => theme.colors.black};
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
     min-height: auto;
   }
 `;
@@ -318,7 +320,7 @@ const MatrixCell = styled.div`
   gap: 4px;
   text-align: left;
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   min-height: 44px;
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
@@ -348,7 +350,7 @@ const MatrixCell = styled.div`
     &::before {
       content: attr(data-label);
       font-weight: ${({ theme }) => theme.typography.weights.semibold};
-      color: ${({ theme }) => theme.colors["gray-700"]};
+      color: #374151;
       min-width: 140px;
       flex-shrink: 0;
       margin-right: ${({ theme }) => theme.spacing.sm};
@@ -357,33 +359,29 @@ const MatrixCell = styled.div`
 `;
 
 const ParkProMatrixCell = styled(MatrixCell)`
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold}15,
-    ${({ theme }) => theme.colors["gold-muted"]}10
-  );
-  border-left: 3px solid ${({ theme }) => theme.colors.gold};
+  background: #eff6ff;
+  border-left: 3px solid #3b82f6;
   border-radius: 0;
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md}
     ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.xs};
   margin: 0;
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   transition: all 0.2s ease;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    border-left: 4px solid ${({ theme }) => theme.colors.gold};
+    border-left: 4px solid #3b82f6;
     border-top: none;
     margin: ${({ theme }) => theme.spacing.sm} 0;
     padding: ${({ theme }) => theme.spacing.sm}
       ${({ theme }) => theme.spacing.md};
-    border-radius: ${({ theme }) => theme.radius.sm};
+    border-radius: 4px;
     justify-content: flex-start;
     text-align: left;
 
     &::before {
       content: "ParkPro: ";
-      color: ${({ theme }) => theme.colors.gold};
+      color: #3b82f6;
     }
   }
 `;
@@ -391,7 +389,7 @@ const ParkProMatrixCell = styled(MatrixCell)`
 const MatrixLegend = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -407,13 +405,13 @@ const MatrixBadge = styled.div`
   justify-content: center;
   gap: 4px;
   padding: 4px ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.radius.md};
+  border-radius: 4px;
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.medium};
-  background: ${({ theme }) => theme.colors["gray-100"]};
-  color: ${({ theme }) => theme.colors["gray-700"]};
+  background: #f3f4f6;
+  color: #374151;
   white-space: nowrap;
-  border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
+  border: 1px solid #e5e7eb;
 
   span {
     line-height: 1.2;
@@ -421,7 +419,7 @@ const MatrixBadge = styled.div`
 `;
 
 const MatrixIcon = styled(CheckCircle)`
-  color: ${({ theme }) => theme.colors.gold};
+  color: #3b82f6;
   flex-shrink: 0;
   width: 18px;
   height: 18px;
@@ -433,25 +431,25 @@ const MatrixIcon = styled(CheckCircle)`
 
 const MatrixPartialSymbol = styled.span`
   font-size: 14px;
-  color: ${({ theme }) => theme.colors["gray-500"]};
+  color: #9ca3af;
   flex-shrink: 0;
   line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px; // NEW: match MatrixIcon width
+  width: 18px;
   text-align: center;
 `;
 
 const MatrixNoneSymbol = styled.span`
   font-size: 14px;
-  color: ${({ theme }) => theme.colors["gray-400"]};
+  color: #d1d5db;
   flex-shrink: 0;
   line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px; // NEW: match MatrixIcon width
+  width: 18px;
   text-align: center;
 `;
 
@@ -475,12 +473,11 @@ const StatsGrid = styled.div`
 `;
 
 const StatCard = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  background: #ffffff;
+  border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
   text-align: center;
-  border: 1px solid ${({ theme }) => theme.colors["gray-200"]};
+  border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -490,9 +487,7 @@ const StatCard = styled(motion.div)`
   gap: 0;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows.md};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: #3b82f6;
   }
 `;
 
@@ -500,11 +495,7 @@ const StatIcon = styled.div`
   width: 56px;
   height: 56px;
   margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold}15,
-    ${({ theme }) => theme.colors["gold-muted"]}10
-  );
+  background: #eff6ff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -513,14 +504,14 @@ const StatIcon = styled.div`
   flex-grow: 0;
 
   svg {
-    color: ${({ theme }) => theme.colors.gold};
+    color: #3b82f6;
   }
 `;
 
 const StatNumber = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   font-family: ${({ theme }) => theme.typography.fontHeading};
   margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
@@ -536,7 +527,7 @@ const StatNumber = styled.div`
 
 const StatLabel = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-weight: ${({ theme }) => theme.typography.weights.normal};
   line-height: ${({ theme }) => theme.typography.lineHeights.normal};
   max-width: 100%;
@@ -552,10 +543,9 @@ const ROICard = styled(motion.div)`
   max-width: 900px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing["2xl"]};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  background: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: ${({ theme }) => theme.spacing.lg};
@@ -570,14 +560,14 @@ const ROICardHeader = styled.div`
 const ROICardTitle = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
 
 const ROICardSubtitle = styled.p`
   font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
 `;
 
@@ -608,7 +598,7 @@ const ROIResultsColumn = styled.div`
 const InputHint = styled.p`
   margin-top: ${({ theme }) => theme.spacing.xs};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors["gray-500"]};
+  color: #9ca3af;
   text-align: center;
   max-width: 90%;
   margin-left: auto;
@@ -617,7 +607,7 @@ const InputHint = styled.p`
 
 const ResultsHeader = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: ${({ theme }) => theme.colors["gray-500"]};
+  color: #6b7280;
   margin-bottom: ${({ theme }) => theme.spacing.xs};
 `;
 
@@ -631,30 +621,30 @@ const InputGroup = styled.div`
 const InputLabel = styled.label`
   display: block;
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
 const InputField = styled.input`
   width: 100%;
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
-  border-radius: ${({ theme }) => theme.radius.md};
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   max-height: 48px;
   transition: border-color 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: #3b82f6;
   }
 `;
 
 const ResultsBox = styled.div`
-  background: ${({ theme }) => theme.colors.black};
+  background: #1f2937;
   color: white;
   padding: ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  border-radius: 12px;
   margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
@@ -673,7 +663,7 @@ const ResultItem = styled.div`
 const ResultIcon = styled.div`
   width: 48px;
   height: 48px;
-  background: ${({ theme }) => theme.colors.gold};
+  background: #3b82f6;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -681,7 +671,7 @@ const ResultIcon = styled.div`
   flex-shrink: 0;
 
   svg {
-    color: ${({ theme }) => theme.colors.black};
+    color: white;
   }
 `;
 
@@ -702,7 +692,7 @@ const ResultLabel = styled.div`
 const ResultValue = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xl};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: #3b82f6;
 `;
 
 const ResultInfoIcon = styled(HelpCircle)`
@@ -771,28 +761,25 @@ const PainPointsGrid = styled.div`
 `;
 
 const PainPointCard = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  background: #ffffff;
+  border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.xl};
-  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
+  border: 1px solid #e5e7eb;
   transition: ${({ theme }) => theme.transitions.normal};
   display: flex;
   flex-direction: column;
   height: 100%;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows.md};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: #3b82f6;
   }
 `;
 
 const PainPointIcon = styled.div`
   width: 48px;
   height: 48px;
-  background: ${({ theme }) => theme.colors.gold}15;
-  border-radius: ${({ theme }) => theme.radius.md};
+  background: #eff6ff;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -800,14 +787,14 @@ const PainPointIcon = styled.div`
   flex-shrink: 0;
 
   svg {
-    color: ${({ theme }) => theme.colors.gold};
+    color: #3b82f6;
   }
 `;
 
 const PainPointTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.sizes.base};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin-bottom: 4px;
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: ${({ theme }) => theme.typography.lineHeights.tight};
@@ -817,7 +804,7 @@ const PainPointTitle = styled.h4`
 `;
 
 const PainPointSolution = styled.p`
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   line-height: 1.45;
   margin: 0;
@@ -833,57 +820,58 @@ const AudienceGrid = styled.div`
 `;
 
 const AudienceCard = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
+  background: #ffffff;
+  border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.lg};
-  border: 1px solid ${({ theme }) => theme.colors["border-light"]};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
+  border: 1px solid #e5e7eb;
   text-align: center;
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows.md};
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: #3b82f6;
   }
 `;
 
 const AudienceIcon = styled.div`
   width: 48px;
   height: 48px;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.gold},
-    ${({ theme }) => theme.colors["gold-muted"]}
-  );
-  border-radius: ${({ theme }) => theme.radius.lg};
+  background: #eff6ff;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme }) => theme.colors.black};
+  color: #3b82f6;
 `;
 
 const AudienceTitle = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
+  color: #1f2937;
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-family: ${({ theme }) => theme.typography.fontHeading};
 `;
 
 const AudienceBody = styled.p`
-  color: ${({ theme }) => theme.colors["gray-600"]};
+  color: #6b7280;
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   margin: 0;
 `;
 
 const CTASection = styled.section`
-  padding: ${({ theme }) => theme.spacing.xl} 0;
-  background: ${({ theme }) => theme.colors.black};
+  padding: 96px 0;
+  background: linear-gradient(135deg, #000000 0%, #1f2937 100%);
   color: white;
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 64px 0;
+  }
+
+  @media (max-width: 475px) {
+    padding: 48px 0;
+  }
 `;
 
 const CTATitle = styled.h2`
@@ -1134,15 +1122,6 @@ const Comparison = () => {
             >
               {copy.pages.comparison.sub}
             </HeroSubtitle>
-
-            <HighlightBox
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <HighlightTitle>The Real Difference</HighlightTitle>
-              <HighlightText>{copy.pages.comparison.bottomLine}</HighlightText>
-            </HighlightBox>
           </HeroContent>
         </Container>
       </HeroSection>
@@ -1150,6 +1129,7 @@ const Comparison = () => {
       {/* Who ParkPro is For Section */}
       <AudienceSection>
         <Container>
+          <SectionLabel>Built for You</SectionLabel>
           <SectionTitle>Who ParkPro Is Really Built For</SectionTitle>
           <SectionSubtitle>
             Built for Disney-first and theme-park-focused travel agents and
@@ -1176,6 +1156,7 @@ const Comparison = () => {
       {/* Stats Section */}
       <StatsSection>
         <Container>
+          <SectionLabel>The Impact</SectionLabel>
           <SectionTitle>
             What Changes When You Stop Building Disney Trips by Hand
           </SectionTitle>
@@ -1255,6 +1236,7 @@ const Comparison = () => {
       {/* Comparison Matrix Section */}
       <ComparisonSection>
         <Container>
+          <SectionLabel>Comparison</SectionLabel>
           <SectionTitle>
             How Do Your Current Tools Really Stack Up?
           </SectionTitle>
@@ -1338,6 +1320,8 @@ const Comparison = () => {
       {/* ROI Calculator Section */}
       <ROISection>
         <Container>
+          <SectionLabel>ROI Calculator</SectionLabel>
+          <SectionTitle>See What Your Time is Worth</SectionTitle>
           <ROICard
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1345,7 +1329,6 @@ const Comparison = () => {
             transition={{ duration: 0.8 }}
           >
             <ROICardHeader>
-              <ROICardTitle>See What Your Time is Worth</ROICardTitle>
               <ROICardSubtitle>
                 Use this simple example calculator to estimate how much planning
                 time ParkPro could help you reclaim each month.
@@ -1498,6 +1481,7 @@ const Comparison = () => {
       {/* Pain Points Section */}
       <PainSection>
         <Container>
+          <SectionLabel>Pain Points</SectionLabel>
           <SectionTitle>
             The Hidden Costs of Manual Planning (That Add Up Fast)
           </SectionTitle>

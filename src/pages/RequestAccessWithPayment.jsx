@@ -44,7 +44,7 @@ const Header = styled.div`
 `;
 
 const Badge = styled.div`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['gold-muted']});
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -52,7 +52,7 @@ const Badge = styled.div`
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
@@ -116,15 +116,15 @@ const StepNumber = styled.div`
   ${({ $active, $completed, theme }) => {
     if ($completed) {
       return `
-        background: ${theme.colors.gold};
+        background: ${theme.colors.teal};
         color: white;
       `;
     }
     if ($active) {
       return `
-        background: linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-muted']});
+        background: linear-gradient(135deg, ${theme.colors.teal}, ${theme.colors['gold-muted']});
         color: ${theme.colors.black};
-        box-shadow: ${theme.shadows.gold};
+        box-shadow: ${theme.shadows.sm};
       `;
     }
     return `
@@ -136,14 +136,14 @@ const StepNumber = styled.div`
 
 const StepLabel = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ $active, theme }) => $active ? theme.colors.gold : theme.colors['gray-600']};
+  color: ${({ $active, theme }) => $active ? theme.colors.teal : theme.colors['gray-600']};
   font-weight: ${({ $active, theme }) => $active ? theme.typography.weights.semibold : theme.typography.weights.normal};
 `;
 
 const StepConnector = styled.div`
   width: 60px;
   height: 2px;
-  background: ${({ $completed, theme }) => $completed ? theme.colors.gold : theme.colors['gray-300']};
+  background: ${({ $completed, theme }) => $completed ? theme.colors.teal : theme.colors['gray-300']};
   margin-top: -20px;
 `;
 
@@ -201,8 +201,8 @@ const Input = styled.input`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.teal}20;
   }
   
   &::placeholder {
@@ -235,7 +235,7 @@ const EyeButton = styled.button`
   }
   
   &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.gold};
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
     outline-offset: 2px;
     border-radius: ${({ theme }) => theme.radius.sm};
   }
@@ -259,8 +259,8 @@ const Select = styled.select`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.teal}20;
   }
 `;
 
@@ -277,8 +277,8 @@ const TextArea = styled.textarea`
   
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.colors.gold};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.gold}20;
+    border-color: ${({ theme }) => theme.colors.teal};
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.teal}20;
   }
 `;
 
@@ -298,7 +298,7 @@ const Checkbox = styled.input`
   margin: 0;
   flex-shrink: 0;
   cursor: pointer;
-  accent-color: ${({ theme }) => theme.colors.gold};
+  accent-color: ${({ theme }) => theme.colors.teal};
 `;
 
 const CheckboxLabel = styled.label`
@@ -307,7 +307,7 @@ const CheckboxLabel = styled.label`
   line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
   
   a {
-    color: ${({ theme }) => theme.colors.gold};
+    color: ${({ theme }) => theme.colors.teal};
     text-decoration: underline;
     
     &:hover {
@@ -328,9 +328,9 @@ const Alert = styled.div`
   ${({ $variant, theme }) => {
     if ($variant === 'success') {
       return `
-        background: ${theme.colors.gold}20;
+        background: ${theme.colors.teal}20;
         color: ${theme.colors.black};
-        border: 1px solid ${theme.colors.gold}40;
+        border: 1px solid ${theme.colors.teal}40;
       `;
     }
     if ($variant === 'error') {
@@ -342,24 +342,24 @@ const Alert = styled.div`
     }
     if ($variant === 'info') {
       return `
-        background: #F5C24910;
-        color: #F5C249;
-        border: 1px solid #F5C24920;
+        background: #3b82f610;
+        color: #3b82f6;
+        border: 1px solid #3b82f620;
       `;
     }
   }}
 `;
 
 const PlanCard = styled.div`
-  border: 2px solid ${({ $selected, theme }) => $selected ? theme.colors.gold : theme.colors['gray-300']};
+  border: 2px solid ${({ $selected, theme }) => $selected ? theme.colors.teal : theme.colors['gray-300']};
   border-radius: ${({ theme }) => theme.radius.lg};
   padding: ${({ theme }) => theme.spacing.lg};
   cursor: pointer;
   transition: all 0.3s ease;
-  background: ${({ $selected, theme }) => $selected ? `${theme.colors.gold}05` : theme.colors.white};
+  background: ${({ $selected, theme }) => $selected ? `${theme.colors.teal}05` : theme.colors.white};
   
   &:hover {
-    border-color: ${({ theme }) => theme.colors.gold};
+    border-color: ${({ theme }) => theme.colors.teal};
     box-shadow: ${({ theme }) => theme.shadows.md};
   }
 `;
@@ -381,7 +381,7 @@ const PlanName = styled.h3`
 const PlanPrice = styled.div`
   font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.gold};
+  color: ${({ theme }) => theme.colors.teal};
   
   span {
     font-size: ${({ theme }) => theme.typography.sizes.sm};
@@ -437,10 +437,10 @@ const ButtonBase = styled.button`
 `;
 
 const PrimaryButton = styled(ButtonBase)`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['gold-muted']});
   color: ${({ theme }) => theme.colors.black};
   border: none;
-  box-shadow: ${({ theme }) => theme.shadows.gold};
+  box-shadow: ${({ theme }) => theme.shadows.sm};
   
   &:hover:not(:disabled) {
     transform: translateY(-2px);
@@ -473,9 +473,9 @@ const SecurityBadge = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
   padding: ${({ theme }) => theme.spacing.sm};
-  background: linear-gradient(to right, ${({ theme }) => theme.colors.gold}20, ${({ theme }) => theme.colors.gold}10);
+  background: linear-gradient(to right, ${({ theme }) => theme.colors.teal}20, ${({ theme }) => theme.colors.teal}10);
   border-radius: ${({ theme }) => theme.radius.md};
-  border: 1px solid ${({ theme }) => theme.colors.gold}40;
+  border: 1px solid ${({ theme }) => theme.colors.teal}40;
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   color: ${({ theme }) => theme.colors['gray-700']};
@@ -1171,7 +1171,7 @@ const RequestAccessWithPayment = () => {
                     <span style={{ 
                       marginLeft: '0.5rem', 
                       padding: '0.25rem 0.5rem', 
-                      background: 'linear-gradient(135deg, #F5C249, #F8D86B)', 
+                      background: 'linear-gradient(135deg, #3b82f6, #F8D86B)', 
                       color: '#000', 
                       fontSize: '0.75rem', 
                       borderRadius: '9999px',
@@ -1184,7 +1184,7 @@ const RequestAccessWithPayment = () => {
               </div>
               <PlanPrice>
                 {plan.price === 0 ? (
-                  <span style={{ color: theme.colors.gold }}>FREE</span>
+                  <span style={{ color: theme.colors.teal }}>FREE</span>
                 ) : (
                   <>
                     ${plan.price}<span>/{plan.interval}</span>
@@ -1195,7 +1195,7 @@ const RequestAccessWithPayment = () => {
             <PlanFeatures>
               {plan.features.map((feature, idx) => (
                 <PlanFeature key={idx}>
-                  <Check size={16} style={{ color: theme.colors.gold, flexShrink: 0 }} />
+                  <Check size={16} style={{ color: theme.colors.teal, flexShrink: 0 }} />
                   <span>{feature}</span>
                 </PlanFeature>
               ))}
@@ -1273,7 +1273,7 @@ const RequestAccessWithPayment = () => {
           width: '80px', 
           height: '80px', 
           margin: '0 auto 1.5rem', 
-          background: `linear-gradient(135deg, ${theme.colors.gold}, ${theme.colors['gold-dark']})`, 
+          background: `linear-gradient(135deg, ${theme.colors.teal}, ${theme.colors['gold-dark']})`, 
           borderRadius: '50%', 
           display: 'flex', 
           alignItems: 'center', 

@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const Code = styled.h1`
   font-size: ${({ theme }) => theme.typography.sizes['7xl']};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-dark']});
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -33,19 +33,21 @@ const Message = styled.p`
 `;
 
 const StyledLink = styled(Link)`
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.gold}, ${({ theme }) => theme.colors['gold-muted']});
-  color: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.teal};
   padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing['2xl']};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   border-radius: ${({ theme }) => theme.radius.full};
   text-decoration: none;
   transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ theme }) => theme.shadows.gold};
-  
+  box-shadow: ${({ theme }) => theme.shadows.sm};
+  border: 2px solid ${({ theme }) => theme.colors.teal};
+
   &:hover {
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors['gold-muted']}, ${({ theme }) => theme.colors.gold});
+    background: ${({ theme }) => theme.colors.teal};
+    color: ${({ theme }) => theme.colors.black};
     transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows['gold-lg']};
+    box-shadow: ${({ theme }) => theme.shadows.lg};
   }
 `;
 

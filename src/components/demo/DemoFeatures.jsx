@@ -46,14 +46,14 @@ const FeatureCard = styled(motion.div).withConfig({
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    border-color: #F5C249;
+    border-color: #3b82f6;
   }
 `;
 
 const FeatureIcon = styled.div`
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #F5C249;
+  color: #3b82f6;
 `;
 
 const FeatureTitle = styled.h4`

@@ -5,8 +5,8 @@ import { CTAButton } from "../CTAButton";
 
 const CTASection = styled.section`
   padding: 8rem 2rem;
-  background: linear-gradient(135deg, #F5C249 0%, #E9B029 50%, #C4941E 100%);
-  color: #1a1a1a;
+  background: linear-gradient(135deg, #0B0B0C 0%, #1F2937 100%);
+  color: #FFFFFF;
   text-align: center;
   position: relative;
   overflow: hidden;
