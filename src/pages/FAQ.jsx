@@ -296,7 +296,7 @@ const FAQ = () => {
     },
     {
       question: "What Disney parks and resorts does ParkPro support?",
-      answer: "We currently support all six Disney parks in the United States: Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom at Walt Disney World in Florida, plus Disneyland Park and Disney California Adventure in California. We also include Disney Springs, water parks, and resort activities. International Disney parks are on our roadmap for 2026."
+      answer: "We currently support all six Disney parks in the United States: Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom at Walt Disney World in Florida, plus Disneyland Park and Disney California Adventure in California. We also include Disney Springs, water parks, and resort activities. International Disney parks are something we'd love to support in the future, but there's no specific timeline yet."
     },
     {
       question: "How long does it take to create an itinerary?",
@@ -308,7 +308,7 @@ const FAQ = () => {
     },
     {
       question: "How accurate is your wait time data?",
-      answer: "We pull live wait time data directly from the parks and combine it with Disney's official calendars, park hours, and special event schedules. Wait times are refreshed continuously throughout the day, giving your clients accurate, real-time information. However, unexpected circumstances (ride breakdowns, weather) can always impact conditions, which is why we also provide mobile access for day-of adjustments."
+      answer: "ParkPro uses the ThemeParks API to pull current wait times, park hours, and attraction schedules. This data is updated frequently throughout the day and is the most accurate third-party source available. However, it is not Disney's official in-house data — unexpected circumstances like ride breakdowns or weather can always impact conditions, so we recommend confirming details through the My Disney Experience app on the day of the visit."
     },
     {
       question: "Do I need to install any software?",
@@ -316,7 +316,7 @@ const FAQ = () => {
     },
     {
       question: "Can my clients access their itineraries on their phones?",
-      answer: "Yes! Every itinerary you create includes a shareable mobile link that your clients can access on their smartphones. They'll see their daily schedule, dining reservations, attraction tips, and even real-time updates if you need to make changes. The mobile view is optimized for use inside the parks with offline access for areas with poor signal."
+      answer: "Yes! Every itinerary you create includes a shareable mobile link that your clients can access on their smartphones. They'll see their daily schedule, dining reservations, and attraction tips. The mobile view is optimized for use inside the parks, and previously loaded itineraries remain accessible even in areas with poor signal."
     },
     {
       question: "What happens if Disney changes park hours or attraction availability?",
@@ -336,7 +336,7 @@ const FAQ = () => {
     },
     {
       question: "Does ParkPro integrate with other booking systems?",
-      answer: "We're currently a standalone platform that focuses exclusively on itinerary creation and client planning. While we don't have direct integrations with booking systems yet, you can easily export itineraries to PDF or share digital links to include with your booking confirmations. Integrations with popular travel agent platforms are on our 2025 roadmap based on user feedback."
+      answer: "We're currently a standalone platform that focuses exclusively on itinerary creation and client planning. While we don't have direct integrations with booking systems yet, you can easily export itineraries to PDF or share digital links to include with your booking confirmations. If integrations are important to your workflow, let us know — we prioritize features based on what our users need most."
     },
     {
       question: "What kind of support do you offer?",

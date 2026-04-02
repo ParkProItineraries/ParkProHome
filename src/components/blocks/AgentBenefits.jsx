@@ -185,10 +185,10 @@ const AgentBenefits = () => {
     {
       icon: <Zap size={24} />,
       title: "Never Miss a Booking",
-      description: "Our system tracks dining availability, park hours, and special events in real-time. You'll never have to tell a client their dream restaurant is unavailable again.",
+      description: "Our system tracks dining availability, park hours, and special events using live park data feeds. Stay on top of changes so your clients always have the latest information.",
       stats: [
-        { number: "100%", label: "Accuracy" },
-        { number: "Real-time", label: "Updates" }
+        { number: "Current", label: "Park Data" },
+        { number: "Daily", label: "Updates" }
       ]
     }
   ];

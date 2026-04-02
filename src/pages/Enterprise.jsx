@@ -386,12 +386,12 @@ const Enterprise = () => {
     {
       icon: <Server size={24} />,
       title: "AWS Infrastructure",
-      description: "Hosted on Amazon Web Services with automatic scaling, redundancy, and 99.9% uptime SLA.",
+      description: "Hosted on Amazon Web Services with automatic scaling and redundancy. Built for reliability and performance.",
     },
     {
       icon: <Shield size={24} />,
-      title: "SOC 2 & GDPR Compliance",
-      description: "Data handling practices aligned with SOC 2 and GDPR requirements. Built for organizations with compliance needs.",
+      title: "Security-First Architecture",
+      description: "All client data is encrypted at rest and in transit. Role-based access controls and secure authentication protect your agency's data.",
     },
     {
       icon: <Database size={24} />,

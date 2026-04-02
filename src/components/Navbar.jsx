@@ -6,20 +6,6 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import Button from "./ui/Button";
 import ParkProLogo from "../assets/Park Pro White_Long.svg?url";
 
-const disneyQuotes = [
-  "All our dreams can come true, if we have the courage to pursue them.",
-  "The way to get started is to quit talking and begin doing.",
-  "It's kind of fun to do the impossible.",
-  "Laughter is timeless, imagination has no age, and dreams are forever.",
-  "All it takes is faith and trust — and a little bit of pixie dust.",
-  "The more you like yourself, the less you are like anyone else.",
-  "Around here, we don't look backwards for very long.",
-  "Why worry? If you've done the very best you can, worrying won't make it any better.",
-  "First, think. Second, dream. Third, believe. And finally, dare.",
-  "When you believe in a thing, believe in it all the way.",
-];
-
-const QUOTE_INTERVAL = 6000;
 
 const Nav = styled(motion.nav).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
@@ -92,33 +78,8 @@ const Logo = styled.img`
   }
 `;
 
-const QuoteCenter = styled.div`
+const NavSpacer = styled.div`
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0 ${({ theme }) => theme.spacing.xl};
-  min-width: 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: none;
-  }
-`;
-
-const QuoteText = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: rgba(255, 255, 255, 0.55);
-  font-style: italic;
-  font-weight: ${({ theme }) => theme.typography.weights.regular};
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 600px;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  user-select: none;
 `;
 
 const RightSection = styled.div`
@@ -408,16 +369,6 @@ const MobileExternalLink = styled.a`
   }
 `;
 
-const MobileQuote = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  color: rgba(255, 255, 255, 0.4);
-  font-style: italic;
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.lg};
-  margin-top: auto;
-  line-height: 1.5;
-`;
-
 const MobileDemoButton = styled(Link)`
   display: block;
   margin: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
@@ -448,17 +399,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [quoteIndex, setQuoteIndex] = useState(0);
   const dropdownRef = useRef(null);
   const location = useLocation();
-
-  // Rotate quotes
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setQuoteIndex((prev) => (prev + 1) % disneyQuotes.length);
-    }, QUOTE_INTERVAL);
-    return () => clearInterval(timer);
-  }, []);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -519,20 +461,7 @@ const Navbar = () => {
           <Logo src={ParkProLogo} alt="ParkPro Logo" loading="eager" />
         </LogoWrapper>
 
-        {/* Center: Rotating Disney Quotes */}
-        <QuoteCenter>
-          <AnimatePresence mode="wait">
-            <QuoteText
-              key={quoteIndex}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.4 }}
-            >
-              &ldquo;{disneyQuotes[quoteIndex]}&rdquo;
-            </QuoteText>
-          </AnimatePresence>
-        </QuoteCenter>
+        <NavSpacer />
 
         {/* Right: Dropdown Menu (desktop) */}
         <RightSection>
@@ -681,9 +610,6 @@ const Navbar = () => {
               Book a Demo
             </MobileDemoButton>
 
-            <MobileQuote>
-              &ldquo;{disneyQuotes[quoteIndex]}&rdquo;
-            </MobileQuote>
           </MobileMenu>
         )}
       </AnimatePresence>

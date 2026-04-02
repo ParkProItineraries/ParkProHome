@@ -122,8 +122,8 @@ const FeatureGridComponent = () => {
     },
     {
       icon: <Clock size={32} />,
-      title: "Real-Time Data",
-      description: "Built on live wait times and park hours to help structure every day of your clients' trips."
+      title: "Current Park Data",
+      description: "Built on up-to-date wait times and park hours to help structure every day of your clients' trips."
     },
     {
       icon: <Users size={32} />,

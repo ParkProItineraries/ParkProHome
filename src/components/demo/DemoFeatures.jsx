@@ -83,8 +83,8 @@ const DemoFeatures = () => {
     },
     {
       icon: <RiTimeLine size={40} />,
-      title: "Real-Time Updates",
-      description: "Get live wait times and recommendations that adapt to current park conditions."
+      title: "Up-to-Date Park Data",
+      description: "Wait times, park hours, and attraction data sourced from live park feeds to keep itineraries accurate."
     },
     {
       icon: <RiMagicLine size={40} />,

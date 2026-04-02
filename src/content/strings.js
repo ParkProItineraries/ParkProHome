@@ -49,10 +49,10 @@ export const copy = {
   sections: {
     itineraries: {
       h2: "Itineraries that sell the trip.",
-      sub: "Clean day-by-day plans with live wait times, dining recs, and export-ready formats your clients actually use.",
+      sub: "Clean day-by-day plans with current wait times, dining recs, and export-ready formats your clients actually use.",
       benefits: [
         "5-30 minute creation time vs. 8-12 hours manual",
-        "Real-time wait times and park hours",
+        "Current wait times and park hours",
         "Dining recommendations and show schedules",
         "Mobile-friendly client portal for in-park use",
         "Professional PDF export"
@@ -66,7 +66,7 @@ export const copy = {
         "Trip notes and documents",
         "Lead capture and management",
         "Commission tracking",
-        "Real-time notifications"
+        "Trip update notifications"
       ]
     },
     agencies: {
@@ -132,7 +132,7 @@ export const copy = {
     contactSales: "Contact sales",
     requestAccess: "Request access",
     signUp: "Sign up",
-    tryFree: "Try free",
+    tryFree: "Get started",
     seeTimeSavings: "See How Much Time You'll Save",
     becomeFoundingMember: "Become a Founding Member",
     getConciergeItinerary: "Get a Concierge Itinerary"

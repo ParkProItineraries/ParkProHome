@@ -10,7 +10,6 @@ import {
   Shield,
   Smartphone,
   ArrowRight,
-  Play,
   MapPin,
   BarChart3,
   Layers,
@@ -567,7 +566,7 @@ const Home = () => {
     {
       icon: <MapPin />,
       title: "Destination Intelligence Built In",
-      description: "ParkPro understands how Disney parks actually work — park flow, transportation logistics, and real-time timing patterns are baked into every itinerary.",
+      description: "ParkPro understands how Disney parks actually work — park flow, transportation logistics, and current wait time data are baked into every itinerary.",
     },
     {
       icon: <Layers />,
@@ -596,7 +595,7 @@ const Home = () => {
       "ParkPro is destination-smart itinerary and workflow software for travel agents who plan complex park and resort vacations.",
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-260-312-0506",
+      telephone: "+1-260-414-4644",
       contactType: "Customer Service",
       email: "support@parkproit.com",
     },
@@ -679,8 +678,8 @@ const Home = () => {
                 <Button to="/demo" variant="primary" size="lg">
                   {copy.ctas.start} <ArrowRight size={18} />
                 </Button>
-                <Button to="/demo" variant="secondary" size="lg">
-                  <Play size={18} /> {copy.ctas.demo}
+                <Button to="/pricing" variant="secondary" size="lg">
+                  {copy.ctas.pricing}
                 </Button>
               </HeroCTAs>
 

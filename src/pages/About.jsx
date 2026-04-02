@@ -454,14 +454,14 @@ const About = () => {
     initials: "KT",
     name: "Kyle Todoran",
     title: "Founder & CEO",
-    bio: "Software engineer with years of Disney experience. Built ParkPro after experiencing the pain of Disney planning firsthand and seeing how travel agents struggle with manual processes."
+    bio: "Software developer and lifelong Disney fan. Started building ParkPro in 2025 after realizing how exhausting Disney trip planning was for just one vacation — and how much harder it must be for travel agents doing it dozens of times a month."
   };
 
   return (
     <AboutWrapper>
       <SEO 
         title="About ParkPro - Our Story & Mission"
-        description="Learn about ParkPro's mission to empower travel agents with automated Disney planning tools. Built by agents, for agents."
+        description="Learn about ParkPro's mission to empower travel agents with automated Disney planning tools. Built by a developer who saw the problem firsthand."
         keywords="about ParkPro, ParkPro story, Disney planning software company, travel agent tools company"
         url="/about"
       />
@@ -478,19 +478,15 @@ const About = () => {
           <StorySection>
             <StoryContent>
               <StoryText>
-                <StoryTitle>The Problem I Solved</StoryTitle>
+                <StoryTitle>The Problem I Saw</StoryTitle>
                 <StoryParagraph>
-                  As a software engineer who's been going to Disney for years, I experienced firsthand how painful and time-consuming Disney planning can be. 
-                  Researching attractions, planning routes, and creating detailed itineraries takes hours of manual work - something I knew could be automated.
+                  I'm Kyle Todoran — a software developer who's traveled to Disney several times. During one trip, I realized just how much research, coordination, and planning goes into a single Disney vacation: park hours, dining reservations, Lightning Lane strategy, transportation logistics, day-by-day scheduling. It was exhausting for one trip.
                 </StoryParagraph>
                 <StoryParagraph>
-                  After talking to travel agents and seeing how they struggle with the same planning challenges, I realized there was a huge opportunity 
-                  to build something specifically designed for Disney planning that could handle the unique requirements of theme park visits, 
-                  dining reservations, and ride strategies.
+                  Then it hit me — travel agents do this for dozens of clients at a time. They spend 8 to 12 hours manually building each itinerary, often using spreadsheets and Word documents. I knew there had to be a better way. The tools that existed were either built for general travel or hadn't been updated in years.
                 </StoryParagraph>
                 <StoryParagraph>
-                  That's why I built ParkPro - to automate the tedious parts of Disney planning and give travel agents back their time 
-                  while delivering even better experiences to their clients.
+                  So in 2025, I started building ParkPro. The goal was simple: give travel agents a dedicated tool that automates the repetitive parts of Disney planning while keeping them in full control of the client experience. No shortcuts, no AI-generated guesses — just a structured, rules-based engine that understands how Disney parks actually work.
                 </StoryParagraph>
               </StoryText>
               <StoryVisual>
