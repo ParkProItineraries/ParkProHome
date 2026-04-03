@@ -424,12 +424,12 @@ const Enterprise = () => {
     {
       icon: <Crown size={24} />,
       title: "White-Label Everything",
-      description: "Full branding control across itineraries, client portals, and exported documents. Your brand, front and center.",
+      description: "Full branding control across itineraries and the client-facing app. Your brand, front and center.",
     },
     {
       icon: <CheckCircle size={24} />,
       title: "Priority Infrastructure",
-      description: "Enterprise accounts run on dedicated resources with priority processing, faster exports, and guaranteed uptime.",
+      description: "Enterprise accounts run on dedicated resources with priority processing and guaranteed uptime.",
     },
   ];
 

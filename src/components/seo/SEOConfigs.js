@@ -21,9 +21,9 @@ export const SEOConfigs = {
   features: {
     title: 'Features – ParkPro Travel Agent Itinerary & Workflow Tools',
     description:
-      'Explore ParkPro features built for travel agents: guided client intake forms, rules-based itinerary generation, branded PDF & slide exports, and a centralized workspace for every Disney trip you plan.',
+      'Explore ParkPro features built for travel agents: guided client intake forms, rules-based itinerary generation, a branded client-facing app, and a centralized workspace for every Disney trip you plan.',
     keywords:
-      'ParkPro features, travel agent software features, Disney itinerary builder features, client intake form for travel agents, itinerary export PDF, travel agent workflow tools, Disney planning features, ParkPro itinerary features',
+      'ParkPro features, travel agent software features, Disney itinerary builder features, client intake form for travel agents, client-facing itinerary app, travel agent workflow tools, Disney planning features, ParkPro itinerary features',
     url: '/features'
   },
 

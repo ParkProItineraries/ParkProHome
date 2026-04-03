@@ -336,7 +336,7 @@ const FAQ = () => {
     },
     {
       question: "Does ParkPro integrate with other booking systems?",
-      answer: "We're currently a standalone platform that focuses exclusively on itinerary creation and client planning. While we don't have direct integrations with booking systems yet, you can easily export itineraries to PDF or share digital links to include with your booking confirmations. If integrations are important to your workflow, let us know — we prioritize features based on what our users need most."
+      answer: "We're currently a standalone platform that focuses exclusively on itinerary creation and client planning. While we don't have direct integrations with booking systems yet, your clients access their itinerary through ParkPro's client-facing app, which you can link alongside your booking confirmations. If integrations are important to your workflow, let us know — we prioritize features based on what our users need most."
     },
     {
       question: "What kind of support do you offer?",

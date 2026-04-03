@@ -283,7 +283,7 @@ const TravelAgentItinerarySoftware = () => {
     {
       icon: Palette,
       title: "Agency Branding",
-      description: "Export branded PDFs and slide decks that reflect your agency's colors, fonts, and professional standards."
+      description: "Deliver itineraries through a branded client app that reflects your agency's identity and professional standards."
     },
     {
       icon: Clock,
@@ -384,7 +384,7 @@ const TravelAgentItinerarySoftware = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            ParkPro streamlines the entire itinerary creation process. First, you send your client a guided intake form that captures travel dates, party composition, preferences, and priorities—without requiring lengthy back-and-forth conversations. Once submitted, ParkPro's rules-based engine generates a complete, day-by-day itinerary tailored to their destination and travel dates. You then review and customize the output using our intuitive editor, adjusting activities, dining, and timing as needed. Finally, you export a branded PDF or interactive slide deck that showcases your agency's professionalism. What traditionally took 8–12 hours now takes 15–60 minutes, freeing you to focus on selling, upselling, and building stronger client relationships.
+            ParkPro streamlines the entire itinerary creation process. First, you send your client a guided intake form that captures travel dates, party composition, preferences, and priorities—without requiring lengthy back-and-forth conversations. Once submitted, ParkPro's rules-based engine generates a complete, day-by-day itinerary tailored to their destination and travel dates. You then review and customize the output using our intuitive editor, adjusting activities, dining, and timing as needed. Finally, your client views their polished itinerary through ParkPro's branded, mobile-friendly client app — accessible on any device and ready to reference in-park. What traditionally took 8–12 hours now takes 15–60 minutes, freeing you to focus on selling, upselling, and building stronger client relationships.
           </BodyText>
 
           <FeaturesGrid

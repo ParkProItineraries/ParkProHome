@@ -558,7 +558,7 @@ const Home = () => {
     {
       step: 3,
       title: "Deliver to Your Client",
-      description: "Export a polished, concierge-level itinerary your client can follow from arrival to departure.",
+      description: "Share a polished, concierge-level itinerary through ParkPro's client app — your travelers can follow it from arrival to departure.",
     },
   ];
 

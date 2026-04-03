@@ -642,7 +642,6 @@ const RequestAccessWithPayment = () => {
       interval: "month",
       features: [
         "10 itineraries/agent/month",
-        "Save itinerary templates",
         "Custom questionnaire link",
         "Priority email support",
         "Extra itineraries at $40 each",

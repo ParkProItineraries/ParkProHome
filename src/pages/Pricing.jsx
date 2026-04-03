@@ -761,7 +761,7 @@ const Pricing = () => {
         "Extra itineraries available at $50 each",
       ],
       limitations: [
-        "No branding or templates",
+        "No branding customization",
         "No team collaboration",
       ],
     },
@@ -778,7 +778,6 @@ const Pricing = () => {
       features: [
         "Everything in Solo Agent",
         "10 itineraries/agent/month",
-        "Save itinerary templates",
         "Custom questionnaire link",
         "Priority email support",
         "Extra itineraries at $40 each",

@@ -9,18 +9,10 @@ import {
   Calendar,
   Users,
   Check,
-  Play,
-  Pause,
-  ChevronLeft,
-  ChevronRight,
-  ArrowRight,
-  Clock,
-  FileText,
+  Image,
 } from "lucide-react";
 import { InlineWidget } from "react-calendly";
-import Button from "../components/ui/Button";
 import Container from "../components/layout/Container";
-import Section from "../components/layout/Section";
 import { copy } from "../content/strings";
 
 const DemoWrapper = styled.div`
@@ -201,101 +193,204 @@ const WalkthroughHeader = styled.div`
   margin-bottom: 64px;
 `;
 
-// Progress bar instead of cluttered pill indicators
-const ProgressBar = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-bottom: 48px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const ProgressSegment = styled.button`
-  flex: 1;
-  height: 4px;
-  border-radius: 2px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background: ${({ $active, $completed }) =>
-    $active ? '#3B82F6' :
-    $completed ? '#93C5FD' :
-    '#E5E7EB'};
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background: ${({ $active }) =>
-      $active ? '#3B82F6' : '#D1D5DB'};
-  }
-`;
-
-const StepCard = styled(motion.div)`
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 32px;
-  border: 1px solid #E5E7EB;
-  max-width: 800px;
+// Side-by-side walkthrough layout
+const WalkthroughGrid = styled.div`
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  max-width: 1100px;
   margin: 0 auto;
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  }
+  align-items: start;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 24px;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 `;
 
-const StepCardHeader = styled.div`
+// Vertical step navigation (left side)
+const StepNav = styled.div`
   display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  flex-direction: column;
+  position: relative;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
 `;
 
-const StepBadge = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+const StepNavLine = styled.div`
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  background: #E5E7EB;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const StepNavProgress = styled(motion.div)`
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 2px;
+  background: #3B82F6;
+  border-radius: 1px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const StepNavItem = styled.button`
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 16px 16px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: ${({ $active }) => $active ? 'rgba(59, 130, 246, 0.06)' : '#F9FAFB'};
+    border: 1px solid ${({ $active }) => $active ? 'rgba(59, 130, 246, 0.2)' : '#E5E7EB'};
+    gap: 12px;
+  }
+`;
+
+const StepNavDot = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  background: ${({ $active, $completed }) =>
+    $active ? '#3B82F6' :
+    $completed ? '#3B82F6' :
+    '#F3F4F6'};
+  color: ${({ $active, $completed }) =>
+    $active || $completed ? '#FFFFFF' : '#9CA3AF'};
+  border: 2px solid ${({ $active, $completed }) =>
+    $active ? '#3B82F6' :
+    $completed ? '#3B82F6' :
+    '#E5E7EB'};
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+const StepNavText = styled.div`
+  padding-top: 4px;
+`;
+
+const StepNavLabel = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: ${({ $active }) => $active ? '#3B82F6' : '#9CA3AF'};
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+`;
+
+const StepNavTitle = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  color: ${({ $active }) => $active ? '#1F2937' : '#6B7280'};
+  line-height: 1.3;
+  transition: color 0.3s ease;
+`;
+
+// Content panel (right side)
+const StepContent = styled.div`
+  min-height: 500px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    min-height: auto;
+  }
+`;
+
+const MockupArea = styled(motion.div)`
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 2px dashed #E2E8F0;
+  border-radius: 12px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    height: 240px;
+  }
+
+  @media (max-width: 475px) {
+    height: 200px;
+  }
+`;
+
+const MockupIcon = styled.div`
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   background: rgba(59, 130, 246, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #3B82F6;
-  flex-shrink: 0;
+  margin-bottom: 16px;
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
-const StepLabel = styled.div`
-  font-size: 13px;
-  font-weight: 600;
-  color: #3B82F6;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+const MockupLabel = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: #94A3B8;
 `;
 
-const StepCardTitle = styled.h3`
-  font-size: 20px;
+const StepCardTitle = styled(motion.h3)`
+  font-size: 24px;
   font-weight: 700;
   color: #1F2937;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  margin: 4px 0 0;
+  margin: 0 0 12px;
   line-height: 1.2;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 18px;
+    font-size: 20px;
   }
 `;
 
-const StepCardDescription = styled.p`
+const StepCardDescription = styled(motion.p)`
   color: #6B7280;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 24px;
   font-size: 16px;
 
@@ -304,14 +399,10 @@ const StepCardDescription = styled.p`
   }
 `;
 
-const BulletGrid = styled.div`
+const BulletList = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  background: #F9FAFB;
-  border-radius: 8px;
-  padding: 24px;
-  border: 1px solid #E5E7EB;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
@@ -321,56 +412,27 @@ const BulletGrid = styled.div`
 const BulletItem = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   color: #4B5563;
   font-size: 14px;
-  line-height: 1.4;
-
-  svg {
-    color: #3B82F6;
-    flex-shrink: 0;
-    margin-top: 2px;
-    width: 16px;
-    height: 16px;
-  }
+  line-height: 1.5;
 `;
 
-const StepControls = styled.div`
+const BulletCheck = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.08);
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 32px;
-`;
-
-const ControlButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 16px;
-  border: 1px solid #D1D5DB;
-  border-radius: 8px;
-  background: #FFFFFF;
-  color: #4B5563;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover:not(:disabled) {
-    background: #F9FAFB;
-    border-color: #1F2937;
-    color: #1F2937;
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  flex-shrink: 0;
+  margin-top: 1px;
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
+    color: #3B82F6;
   }
 `;
 
@@ -424,14 +486,16 @@ const CalendlyContainer = styled.div`
 
 const Demo = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const steps = [
     {
       id: 0,
       label: "Step 1",
+      navTitle: "Client Intake",
       title: "Your client fills out a guided intake form",
       icon: <Users size={20} />,
+      mockupLabel: "Intake form screenshot",
       description: "Send your client a link to a friendly, guided questionnaire. They share their family details, travel dates, park preferences, and must-do priorities — no more back-and-forth emails.",
       bullets: [
         "Party size, ages, mobility, and special occasions",
@@ -443,8 +507,10 @@ const Demo = () => {
     {
       id: 1,
       label: "Step 2",
+      navTitle: "Itinerary Generation",
       title: "ParkPro builds the day-by-day itinerary",
       icon: <Calendar size={20} />,
+      mockupLabel: "Itinerary builder screenshot",
       description: "ParkPro's destination-smart engine applies real park logic — flow patterns, timing, transportation — to turn that intake into a structured plan for each day. You get a working draft in minutes.",
       bullets: [
         "Each day matched to the right park and pace",
@@ -456,52 +522,53 @@ const Demo = () => {
     {
       id: 2,
       label: "Step 3",
+      navTitle: "Refine & Brand",
       title: "You refine, personalize, and brand it",
       icon: <Sparkles size={20} />,
+      mockupLabel: "Editing interface screenshot",
       description: "Stay in full control. Swap park days, adjust suggestions, add your own notes and expertise. ParkPro does the heavy lifting — you add the magic your clients pay you for.",
       bullets: [
         "Swap parks or reorder days without starting over",
         "Add your own tips, notes, and reminders",
-        "Export to polished PDF or presentation templates",
+        "Share via ParkPro's client-facing app instantly",
         "Deliver a consistent, on-brand itinerary every time",
       ],
     },
     {
       id: 3,
       label: "Step 4",
-      title: "Deliver and reuse what works",
+      navTitle: "Deliver & Manage",
+      title: "Deliver to your client and keep it updated",
       icon: <Heart size={20} />,
-      description: "Every itinerary becomes part of your playbook. Reuse successful patterns, serve more families, and spend your time selling — not rebuilding plans from scratch.",
+      mockupLabel: "Client app delivery screenshot",
+      description: "Your client gets a polished, mobile-friendly itinerary they can pull up anytime. Need to make changes? Edit anytime and your client sees the updates instantly — no re-sending, no version confusion.",
       bullets: [
-        "Send itineraries digitally or as branded exports",
-        "Reuse successful patterns for similar families",
+        "Clients view their itinerary in a branded, mobile-friendly app",
+        "Make edits anytime — updates appear live in the client app",
+        "Every trip stays in your dashboard for easy reference",
         "Spend more time selling, less time building",
-        "Scale your bookings without scaling your hours",
       ],
     },
   ];
 
+  // Auto-advance timer — pauses when user manually clicks a step
   useEffect(() => {
-    if (!isPlaying) return;
+    if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
       setCurrentStep(prev => (prev >= steps.length - 1 ? 0 : prev + 1));
-    }, 10000);
+    }, 8000);
 
     return () => clearInterval(interval);
-  }, [isPlaying, steps.length]);
+  }, [isAutoPlaying, currentStep, steps.length]);
 
-  const handlePrevious = () => {
-    setCurrentStep(prev => (prev === 0 ? steps.length - 1 : prev - 1));
+  const handleStepClick = (index) => {
+    setCurrentStep(index);
+    setIsAutoPlaying(false);
   };
 
-  const handleNext = () => {
-    setCurrentStep(prev => (prev >= steps.length - 1 ? 0 : prev + 1));
-  };
-
-  const handlePlayPause = () => {
-    setIsPlaying(prev => !prev);
-  };
+  // Calculate vertical progress line height based on current step
+  const progressHeight = `${(currentStep / (steps.length - 1)) * 100}%`;
 
   const heroStats = [
     { number: "5–10+ hrs", label: "Saved per client" },
@@ -561,70 +628,83 @@ const Demo = () => {
       <WalkthroughSection>
         <Container>
           <WalkthroughHeader>
-            <SectionLabel>The Complete Workflow</SectionLabel>
+            <SectionLabel>How It Works</SectionLabel>
             <SectionHeading>The Complete Workflow</SectionHeading>
             <SectionSubtitle>
               From client intake to polished delivery — here's what each step looks like inside ParkPro.
             </SectionSubtitle>
           </WalkthroughHeader>
 
-          <ProgressBar>
-            {steps.map((step, index) => (
-              <ProgressSegment
-                key={step.id}
-                $active={currentStep === index}
-                $completed={currentStep > index}
-                onClick={() => setCurrentStep(index)}
-                aria-label={`Go to ${step.label}`}
+          <WalkthroughGrid>
+            {/* Left: Vertical step navigation */}
+            <StepNav>
+              <StepNavLine />
+              <StepNavProgress
+                animate={{ height: progressHeight }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
               />
-            ))}
-          </ProgressBar>
+              {steps.map((step, index) => (
+                <StepNavItem
+                  key={step.id}
+                  $active={currentStep === index}
+                  onClick={() => handleStepClick(index)}
+                  aria-label={`Go to ${step.label}: ${step.navTitle}`}
+                >
+                  <StepNavDot
+                    $active={currentStep === index}
+                    $completed={currentStep > index}
+                  >
+                    {currentStep > index ? <Check size={16} /> : index + 1}
+                  </StepNavDot>
+                  <StepNavText>
+                    <StepNavLabel $active={currentStep === index}>
+                      {step.label}
+                    </StepNavLabel>
+                    <StepNavTitle $active={currentStep === index}>
+                      {step.navTitle}
+                    </StepNavTitle>
+                  </StepNavText>
+                </StepNavItem>
+              ))}
+            </StepNav>
 
-          <AnimatePresence mode="wait">
-            <StepCard
-              key={currentStep}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              <StepCardHeader>
-                <StepBadge>{steps[currentStep].icon}</StepBadge>
-                <div>
-                  <StepLabel>{steps[currentStep].label}</StepLabel>
+            {/* Right: Step content with mockup area */}
+            <StepContent>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  {/* Screenshot placeholder — replace with real images */}
+                  <MockupArea>
+                    <MockupIcon>
+                      <Image size={24} />
+                    </MockupIcon>
+                    <MockupLabel>{steps[currentStep].mockupLabel}</MockupLabel>
+                  </MockupArea>
+
                   <StepCardTitle>{steps[currentStep].title}</StepCardTitle>
-                </div>
-              </StepCardHeader>
+                  <StepCardDescription>
+                    {steps[currentStep].description}
+                  </StepCardDescription>
 
-              <StepCardDescription>
-                {steps[currentStep].description}
-              </StepCardDescription>
-
-              <BulletGrid>
-                {steps[currentStep].bullets.map((bullet, index) => (
-                  <BulletItem key={index}>
-                    <Check size={16} />
-                    <span>{bullet}</span>
-                  </BulletItem>
-                ))}
-              </BulletGrid>
-            </StepCard>
-          </AnimatePresence>
-
-          <StepControls>
-            <ControlButton onClick={handlePrevious}>
-              <ChevronLeft size={16} />
-              Previous
-            </ControlButton>
-            <ControlButton onClick={handlePlayPause}>
-              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-              {isPlaying ? 'Pause' : 'Play'}
-            </ControlButton>
-            <ControlButton onClick={handleNext}>
-              Next
-              <ChevronRight size={16} />
-            </ControlButton>
-          </StepControls>
+                  <BulletList>
+                    {steps[currentStep].bullets.map((bullet, index) => (
+                      <BulletItem key={index}>
+                        <BulletCheck>
+                          <Check size={12} />
+                        </BulletCheck>
+                        <span>{bullet}</span>
+                      </BulletItem>
+                    ))}
+                  </BulletList>
+                </motion.div>
+              </AnimatePresence>
+            </StepContent>
+          </WalkthroughGrid>
         </Container>
       </WalkthroughSection>
 

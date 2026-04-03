@@ -443,7 +443,7 @@ const DisneyPlanningSoftware = () => {
     {
       number: "3",
       title: "Deliver & Refine",
-      description: "Export to professional PowerPoint or PDF. Clients review, agents refine in minutes based on feedback."
+      description: "Share via ParkPro's client-facing app. Clients review on any device, agents refine in minutes based on feedback."
     }
   ];
 
@@ -456,7 +456,7 @@ const DisneyPlanningSoftware = () => {
     {
       icon: <Zap size={20} />,
       title: "Professional Deliverables",
-      description: "Export polished PowerPoint and PDF itineraries that impress clients and establish your agency's premium positioning."
+      description: "Deliver polished itineraries through a branded client app that impresses clients and establishes your agency's premium positioning."
     },
     {
       icon: <BarChart3 size={20} />,

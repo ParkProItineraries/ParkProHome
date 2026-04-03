@@ -393,7 +393,7 @@ const SoloAgents = () => {
     {
       icon: <FileText size={24} />,
       title: "Professional, Branded Output",
-      description: "Every itinerary looks polished and consistent. Export to PDF or presentation format with your branding.",
+      description: "Every itinerary looks polished and consistent. Clients view it in a branded, mobile-friendly app.",
     },
     {
       icon: <BarChart3 size={24} />,

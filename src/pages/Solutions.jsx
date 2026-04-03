@@ -315,7 +315,7 @@ const Solutions = () => {
         "Built for solo, Disney-focused travel agents who want itineraries done in minutes instead of late-night marathons, without sacrificing the magic or the details.",
       features: [
         "Turn detailed Disney intake forms into clean, day-by-day itineraries in minutes",
-        "Branded PDF or slide exports that look like a premium agency, even if it's just you",
+        "A branded client-facing app that makes you look like a premium agency, even if it's just you",
         "Simple workspace to see which trips still need itineraries at a glance",
         "Done-with-you onboarding so you're never figuring it out alone",
         "Email support from the ParkPro team when you get stuck or need ideas",

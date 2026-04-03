@@ -690,13 +690,13 @@ const Features = () => {
         },
         {
           icon: Palette,
-          title: 'Client-Ready PDFs & Slides That Look "Agency Big"',
+          title: "A Client-Facing App That Makes You Look Premium",
           description:
-            "Export itineraries to ParkPro-designed PDFs or slides that match your branding. Include your logo, colors, and a premium layout so you look like the polished, professional agency your clients expect — even on your busiest weeks.",
+            "Your clients open their itinerary in ParkPro's branded, mobile-friendly app — not a PDF attachment buried in email. They get a polished, interactive experience they can reference in-park, and you look like the premium agency your clients expect.",
           outcomes: [
-            "Impress clients and owners with polished deliverables",
+            "Clients view their itinerary on any device, anytime",
             "Consistent branding across every single trip",
-            "Ready-to-send files for email, client portals, or print",
+            "Interactive, mobile-friendly experience — not a static file",
           ],
           badge: null,
         },
@@ -722,13 +722,13 @@ const Features = () => {
         },
         {
           icon: Settings,
-          title: 'Agency Templates, Not Just "Another Tool"',
+          title: "A Consistent Process, Not Tribal Knowledge",
           description:
-            "Standardize the way your agency plans Disney trips with reusable templates, best-practice flows, and consistent workflows agents can follow. Your processes live in ParkPro instead of in one senior agent's head.",
+            "Every agent in your agency uses the same guided intake, the same itinerary engine, and the same delivery flow. The quality of your itineraries doesn't depend on who built them — it's built into the system.",
           outcomes: [
             "Less variance between brand-new and senior agents",
             "Onboard new or part-time agents in days, not months",
-            "Protect your agency's \"secret sauce\" by baking it into ParkPro",
+            "Your process lives in ParkPro, not in one person's head",
           ],
           badge: null,
         },
@@ -771,7 +771,7 @@ const Features = () => {
             "Commission tracking, splits, statements, and compliance tooling so agencies can run the business side of travel without spreadsheets and late-night math. Built to make owners and accountants feel confident about the numbers.",
           outcomes: [
             "Track commissions and splits per booking (planned)",
-            "Export-ready reports for owners and accountants (planned)",
+            "Reports for owners and accountants (planned)",
             "Clear roadmap toward PCI, GDPR, and SOC 2 readiness (planned)",
           ],
           badge: "Long-term",
@@ -812,14 +812,14 @@ const Features = () => {
       number: "1 unified workspace",
       label: "Replace spreadsheets, docs, and chaos",
       description:
-        "Intake forms, trip details, and itineraries live in a single system instead of being scattered across email threads, PDFs, and random folders.",
+        "Intake forms, trip details, and itineraries live in a single system instead of being scattered across email threads, documents, and random folders.",
     },
     {
       icon: Users,
       number: "Days, not months",
       label: "Faster ramp-up for new and part-time agents",
       description:
-        "New or part-time agents can follow your ParkPro workflows and templates, so they start producing solid itineraries in days instead of months of shadowing.",
+        "New or part-time agents can follow your ParkPro workflows and guided process, so they start producing solid itineraries in days instead of months of shadowing.",
     },
   ];
 

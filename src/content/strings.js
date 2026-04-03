@@ -49,13 +49,13 @@ export const copy = {
   sections: {
     itineraries: {
       h2: "Itineraries that sell the trip.",
-      sub: "Clean day-by-day plans with current wait times, dining recs, and export-ready formats your clients actually use.",
+      sub: "Clean day-by-day plans with current wait times, dining recs, and a client-facing app your travelers actually use.",
       benefits: [
         "5-30 minute creation time vs. 8-12 hours manual",
         "Current wait times and park hours",
         "Dining recommendations and show schedules",
         "Mobile-friendly client portal for in-park use",
-        "Professional PDF export"
+        "Client-facing app for in-park use"
       ]
     },
     workspace: {
@@ -127,7 +127,7 @@ export const copy = {
     startNow: "Start now",
     features: "Explore features",
     pricing: "See pricing",
-    sample: "Download sample",
+    sample: "View sample",
     learnMore: "Learn more",
     contactSales: "Contact sales",
     requestAccess: "Request access",

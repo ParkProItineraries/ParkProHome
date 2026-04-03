@@ -984,11 +984,11 @@ const Comparison = () => {
     {
       feature: "Client-facing deliverables",
       parkpro: {
-        label: "Branded PDFs & slides",
+        label: "Branded client-facing app",
         level: "full",
       },
       generic: {
-        label: "Bare-bones exports",
+        label: "Basic PDF exports",
         level: "partial",
       },
       docs: {

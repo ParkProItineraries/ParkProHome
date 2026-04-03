@@ -485,7 +485,7 @@ const TravelAgentSoftware = () => {
     {
       icon: <FileText size={20} />,
       title: "Branded Itinerary Output",
-      description: "Export polished, professional itineraries in .pptx format. Impress clients with presentation-ready deliverables."
+      description: "Deliver polished, professional itineraries through ParkPro's branded client app. Impress clients with a premium, mobile-friendly experience."
     },
     {
       icon: <Shield size={20} />,
@@ -508,7 +508,7 @@ const TravelAgentSoftware = () => {
     {
       number: "3",
       title: "Deliver & Manage",
-      description: "Export to branded .pptx format or share via client portal. Track changes and manage updates in one place."
+      description: "Share via ParkPro's branded client app. Track changes and manage updates in one place."
     }
   ];
 
@@ -523,7 +523,7 @@ const TravelAgentSoftware = () => {
     },
     {
       heading: "Disney Specialists",
-      description: "Leverage deep Disney planning expertise built into every itinerary template and workflow."
+      description: "Leverage deep Disney planning expertise built into every itinerary and workflow."
     }
   ];
 
