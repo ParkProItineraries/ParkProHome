@@ -12,6 +12,15 @@ import Section from "../components/layout/Section";
 import TrustBar from "../components/TrustBar";
 import { copy } from "../content/strings";
 
+// Tier-specific brand colors (metallic palette) — matches ParkProUI subscriptionConfig.js
+const TIER_COLORS = {
+  solo:       { hex: '#CD7F32', text: '#A0622A' },
+  agentplus:  { hex: '#8B5A2B', text: '#6E4722' },
+  agency:     { hex: '#A8A9AD', text: '#6E6F73' },
+  agencyplus: { hex: '#6B6E72', text: '#4E5154' },
+  enterprise: { hex: '#D4AF37', text: '#A68B2B' },
+};
+
 // Pricing Page - Transparent pricing focused on time savings for Disney travel agents
 //
 // PRICING MODEL:
@@ -367,14 +376,14 @@ const PricingCard = styled(motion.div).withConfig({
       "isPopular",
       "isAgencyPlus",
       "isEnterprise",
+      "tierColor",
     ].includes(prop),
 })`
   background: #ffffff;
   border-radius: 12px;
   padding: ${({ theme }) => theme.spacing.xl};
   border: 1px solid #e5e7eb;
-  border-top: ${({ isPopular, isAgencyPlus }) =>
-    isPopular || isAgencyPlus ? "3px solid #3b82f6" : "none"};
+  border-top: ${({ tierColor }) => tierColor ? `3px solid ${tierColor}` : "none"};
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   position: relative;
   transition: ${({ theme }) => theme.transitions.normal};
@@ -422,7 +431,7 @@ const PopularBadge = styled.div`
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  background: ${({ $tierColor }) => $tierColor || '#3b82f6'};
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -441,7 +450,7 @@ const EnterpriseBadge = styled.div`
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  background: ${({ $tierColor }) => $tierColor || '#D4AF37'};
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -471,7 +480,7 @@ const PlanAudienceTag = styled.div`
 const PlanName = styled.h3`
   font-size: ${({ theme }) => theme.typography.sizes.lg};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: #1f2937;
+  color: ${({ $tierColor }) => $tierColor || '#1f2937'};
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   text-align: center;
@@ -535,7 +544,7 @@ const AdditionalSeatText = styled.div`
 
 const PlanGrowthNote = styled.div`
   background: #f9fafb;
-  border-left: 3px solid #3b82f6;
+  border-left: 3px solid ${({ $tierColor }) => $tierColor || '#3b82f6'};
   padding: ${({ theme }) => theme.spacing.sm};
   margin-top: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing.md};
@@ -574,7 +583,7 @@ const FeatureItem = styled.li`
   font-weight: ${({ $isHighlight }) => ($isHighlight ? "600" : "400")};
 
   svg {
-    color: #3b82f6;
+    color: ${({ $tierColor }) => $tierColor || '#3b82f6'};
     flex-shrink: 0;
     margin-top: 2px;
     width: 14px;
@@ -747,18 +756,18 @@ const Pricing = () => {
       id: "solo",
       name: "Solo Agent",
       description: "Perfect for solo agents just getting started or testing the waters.",
-      monthlyPrice: 97,
-      annualPrice: 970,
+      monthlyPrice: 197,
+      annualPrice: 1970,
       audience: "For solo agents",
       isPopular: false,
       isDecoy: false,
       cta: "Request Solo access",
       features: [
-        "5 itineraries/agent/month",
+        "5 itineraries per month",
         "Client intake forms and itinerary builder",
         "Trip management dashboard",
         "Email support",
-        "Extra itineraries available at $50 each",
+        "Extra itineraries at $50 each",
       ],
       limitations: [
         "No branding customization",
@@ -769,16 +778,18 @@ const Pricing = () => {
       id: "agentplus",
       name: "Agent+",
       description: "Built for growing agents who need more volume and flexibility.",
-      monthlyPrice: 147,
-      annualPrice: 1470,
+      monthlyPrice: 247,
+      annualPrice: 2470,
       audience: "For solo agents",
       isPopular: true,
       isDecoy: false,
       cta: "Request Agent+ access",
       features: [
         "Everything in Solo Agent",
-        "10 itineraries/agent/month",
+        "+5 extra itineraries per month (10 total)",
+        "Save itinerary templates",
         "Custom questionnaire link",
+        "Email Hub and MagicFlow",
         "Priority email support",
         "Extra itineraries at $40 each",
       ],
@@ -791,17 +802,18 @@ const Pricing = () => {
       id: "agency",
       name: "Agency",
       description: "Ideal for agencies building a steady client base.",
-      monthlyPrice: 197,
-      annualPrice: 1970,
+      monthlyPrice: 297,
+      annualPrice: 2970,
       audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
       cta: "Request Agency access",
       features: [
         "Everything in Agent+",
-        "15 itineraries/agent/month",
+        "+5 extra itineraries per month (15 total)",
         "Shared agency dashboard",
         "Branding: Add your logo to itineraries",
+        "Task automation",
         "Tags and trip notes",
         "Extra itineraries at $30 each",
       ],
@@ -814,15 +826,15 @@ const Pricing = () => {
       id: "agencyplus",
       name: "Agency+",
       description: "For high-performing agencies that need power, scale, and automation.",
-      monthlyPrice: 247,
-      annualPrice: 2470,
+      monthlyPrice: 347,
+      annualPrice: 3470,
       audience: "For agencies & teams",
       isPopular: false,
       isDecoy: false,
       cta: "Request Agency+ access",
       features: [
         "Everything in Agency",
-        "20 itineraries/agent/month",
+        "+5 extra itineraries per month (20 total)",
         "API access for integrations",
         "White-glove onboarding",
         "Early feature access",
@@ -1001,30 +1013,33 @@ const Pricing = () => {
             </ToggleWrapper>
 
             <PricingGrid $isEnterpriseView={viewType === "enterprise"}>
-              {filteredPlans.map((plan, index) => (
+              {filteredPlans.map((plan, index) => {
+                const tc = TIER_COLORS[plan.id] || { hex: '#3b82f6', text: '#1f2937' };
+                return (
                 <PricingCard
                   key={plan.id}
                   isPopular={plan.isPopular}
                   isAgencyPlus={plan.id === "agencyplus"}
                   isEnterprise={plan.id === "enterprise"}
+                  tierColor={tc.hex}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   {plan.isPopular && (
-                    <PopularBadge>
+                    <PopularBadge $tierColor={tc.hex}>
                       <Star size={12} style={{ marginRight: "4px" }} />
                       Most Popular for Solo Agents
                     </PopularBadge>
                   )}
                   {plan.id === "agencyplus" && (
-                    <PopularBadge>
+                    <PopularBadge $tierColor={tc.hex}>
                       <Star size={12} style={{ marginRight: "4px" }} />
                       Most Popular for Agencies
                     </PopularBadge>
                   )}
                   {plan.id === "enterprise" && (
-                    <EnterpriseBadge>
+                    <EnterpriseBadge $tierColor={tc.hex}>
                       <Award size={12} style={{ marginRight: "4px" }} />
                       Custom
                     </EnterpriseBadge>
@@ -1033,7 +1048,7 @@ const Pricing = () => {
                   {plan.audience && (
                     <PlanAudienceTag>{plan.audience}</PlanAudienceTag>
                   )}
-                  <PlanName>{plan.name}</PlanName>
+                  <PlanName $tierColor={tc.hex}>{plan.name}</PlanName>
                   <PlanPrice>
                     <PriceAmount
                       style={{ fontSize: "1.5rem", color: "#1f2937" }}
@@ -1042,7 +1057,7 @@ const Pricing = () => {
                     </PriceAmount>
                   </PlanPrice>
                   {plan.description && (
-                    <PlanGrowthNote>{plan.description}</PlanGrowthNote>
+                    <PlanGrowthNote $tierColor={tc.hex}>{plan.description}</PlanGrowthNote>
                   )}
                   <FeatureList>
                     {plan.features.map((feature, featureIndex) => {
@@ -1052,6 +1067,7 @@ const Pricing = () => {
                         <FeatureItem
                           key={featureIndex}
                           $isHighlight={isEverythingIn}
+                          $tierColor={tc.hex}
                         >
                           <Check size={16} />
                           {feature}
@@ -1059,7 +1075,7 @@ const Pricing = () => {
                       );
                     })}
                     {plan.limitations.map((limitation, limitIndex) => (
-                      <FeatureItem key={`limit-${limitIndex}`}>
+                      <FeatureItem key={`limit-${limitIndex}`} $tierColor="#9CA3AF">
                         <X size={16} />
                         {limitation}
                       </FeatureItem>
@@ -1078,7 +1094,8 @@ const Pricing = () => {
                     {plan.cta || "Get Started"}
                   </CardButton>
                 </PricingCard>
-              ))}
+                );
+              })}
             </PricingGrid>
           </div>
         </Container>
