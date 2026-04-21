@@ -356,6 +356,18 @@ const Flyout = styled(motion.div).withConfig({
   padding: 6px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   z-index: ${({ theme }) => theme.zIndex.dropdown};
+
+  /* Invisible hit-area bridge that covers the 8px gap between the
+     trigger and the flyout so the mouse doesn't drop out of the
+     hover region while traveling from trigger → menu items. */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
 `;
 
 const FlyoutLink = styled(Link)`
@@ -579,7 +591,37 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const productRef = useRef(null);
   const resourcesRef = useRef(null);
+  const productCloseTimer = useRef(null);
+  const resourcesCloseTimer = useRef(null);
   const location = useLocation();
+
+  // Hover intent helpers — keep flyouts open briefly so the user can cross
+  // the gap between trigger and menu without losing the dropdown.
+  const HOVER_CLOSE_DELAY_MS = 180;
+  const openProduct = () => {
+    if (productCloseTimer.current) clearTimeout(productCloseTimer.current);
+    setProductOpen(true);
+  };
+  const scheduleCloseProduct = () => {
+    if (productCloseTimer.current) clearTimeout(productCloseTimer.current);
+    productCloseTimer.current = setTimeout(() => setProductOpen(false), HOVER_CLOSE_DELAY_MS);
+  };
+  const openResources = () => {
+    if (resourcesCloseTimer.current) clearTimeout(resourcesCloseTimer.current);
+    setResourcesOpen(true);
+  };
+  const scheduleCloseResources = () => {
+    if (resourcesCloseTimer.current) clearTimeout(resourcesCloseTimer.current);
+    resourcesCloseTimer.current = setTimeout(() => setResourcesOpen(false), HOVER_CLOSE_DELAY_MS);
+  };
+
+  // Clean up any pending timers on unmount
+  useEffect(() => {
+    return () => {
+      if (productCloseTimer.current) clearTimeout(productCloseTimer.current);
+      if (resourcesCloseTimer.current) clearTimeout(resourcesCloseTimer.current);
+    };
+  }, []);
 
   // Close desktop flyouts on outside click
   useEffect(() => {
@@ -661,8 +703,8 @@ const Navbar = () => {
           <NavLinks>
             <NavItem
               ref={productRef}
-              onMouseEnter={() => setProductOpen(true)}
-              onMouseLeave={() => setProductOpen(false)}
+              onMouseEnter={openProduct}
+              onMouseLeave={scheduleCloseProduct}
             >
               <NavTrigger
                 type="button"
@@ -670,7 +712,7 @@ const Navbar = () => {
                 aria-expanded={productOpen}
                 $isOpen={productOpen}
                 onClick={() => setProductOpen((p) => !p)}
-                onFocus={() => setProductOpen(true)}
+                onFocus={openProduct}
               >
                 Product
                 <ChevronDown size={14} />
@@ -699,8 +741,8 @@ const Navbar = () => {
 
             <NavItem
               ref={resourcesRef}
-              onMouseEnter={() => setResourcesOpen(true)}
-              onMouseLeave={() => setResourcesOpen(false)}
+              onMouseEnter={openResources}
+              onMouseLeave={scheduleCloseResources}
             >
               <NavTrigger
                 type="button"
@@ -708,7 +750,7 @@ const Navbar = () => {
                 aria-expanded={resourcesOpen}
                 $isOpen={resourcesOpen}
                 onClick={() => setResourcesOpen((p) => !p)}
-                onFocus={() => setResourcesOpen(true)}
+                onFocus={openResources}
               >
                 Resources
                 <ChevronDown size={14} />
