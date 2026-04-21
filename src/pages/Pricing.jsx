@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SEO from "../components/seo/SEO";
 import { SEOConfigs } from "../components/seo/SEOConfigs";
-import { Star, Check, X, ChevronDown, ChevronUp, Award } from "lucide-react";
-import { Button } from "../design";
+import { Star, Check, ChevronDown, ChevronUp, Crown, Layers, MapPin } from "lucide-react";
 import Container from "../components/layout/Container";
-import Section from "../components/layout/Section";
 import TrustBar from "../components/TrustBar";
 import { copy } from "../content/strings";
 
@@ -21,17 +18,34 @@ const TIER_COLORS = {
   enterprise: { hex: '#D4AF37', text: '#A68B2B' },
 };
 
-// Pricing Page - Transparent pricing focused on time savings for Disney travel agents
+// Tier family labels — Bronze / Silver / Gold groupings (matches in-app Subscription page)
+const TIER_FAMILY = {
+  solo:       'Bronze',
+  agentplus:  'Bronze',
+  agency:     'Silver',
+  agencyplus: 'Silver',
+  enterprise: 'Gold',
+};
+
+// "Includes previous tier" lookup
+const INCLUDES_PREVIOUS = {
+  agentplus:  'Solo Agent',
+  agency:     'Agent+',
+  agencyplus: 'Agency',
+  enterprise: 'Agency+',
+};
+
+// Pricing Page — five-card grid mirroring the in-app Manage Subscription layout.
 //
 // PRICING MODEL:
 // - All prices are per agent per month (each agent has their own subscription)
 // - Annual = monthlyPrice * 10 (equivalent to "2 months free")
-// - Solo Agent: $97/agent/mo, 5 itineraries/agent/month
-// - Agent+: $147/agent/mo, 10 itineraries/agent/month
-// - Agency: $197/agent/mo, 15 itineraries/agent/month
-// - Agency+: $247/agent/mo, 20 itineraries/agent/month
+// - Solo Agent: $197/agent/mo, 5 itineraries/agent/month
+// - Agent+: $247/agent/mo, 10 itineraries/agent/month
+// - Agency: $297/agent/mo, 15 itineraries/agent/month
+// - Agency+: $347/agent/mo, 20 itineraries/agent/month
 // - Enterprise: Custom pricing, pooled itineraries (negotiated)
-// - Enterprise is a real, clickable plan (not a decoy) that routes to /contact
+// - Enterprise routes to /contact; all paid tiers route to /request-access
 
 const PricingWrapper = styled.div`
   padding-top: 88px;
@@ -98,508 +112,368 @@ const HeroSubtitle = styled(motion.p)`
   }
 `;
 
-// Body section wrapper with light background
+// Body section wrapper with subtle gradient background
 const BodySection = styled.section`
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 50%, #f9fafb 100%);
+  padding: 80px ${({ theme }) => theme.spacing["3xl"]};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 56px ${({ theme }) => theme.spacing.lg};
+  }
+
+  @media (max-width: 475px) {
+    padding: 40px ${({ theme }) => theme.spacing.md};
+  }
+`;
+
+// ── Billing toggle (Monthly / Yearly) ────────────────────────────────────────
+const BillingToggleWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+`;
+
+const BillingToggle = styled.div`
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
   background: #ffffff;
-  padding: 96px ${({ theme }) => theme.spacing["3xl"]};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 64px ${({ theme }) => theme.spacing.lg};
-  }
-
-  @media (max-width: 475px) {
-    padding: 48px ${({ theme }) => theme.spacing.md};
-  }
-`;
-
-// Section label (blue, uppercase, small)
-const SectionLabel = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: #3b82f6;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  text-align: center;
-`;
-
-// Section heading
-const SectionHeading = styled.h2`
-  font-size: ${({ theme }) => theme.typography.sizes["4xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: #1f2937;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  text-align: center;
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
-  }
-
-  @media (max-width: 475px) {
-    font-size: ${({ theme }) => theme.typography.sizes.xl};
-  }
-`;
-
-// Section subtitle
-const SectionSub = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  color: #6b7280;
-  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
-  text-align: center;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.base};
-  }
-`;
-
-const ToggleWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-bottom: ${({ theme }) => theme.spacing["1xl"]};
-  flex-wrap: wrap;
-
-  @media (max-width: 475px) {
-    gap: ${({ theme }) => theme.spacing.md};
-  }
-`;
-
-const ToggleContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 1fr;
-  align-items: center;
-  justify-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  position: relative;
-`;
-
-const ToggleLabelLeft = styled.span`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: #6b7280;
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  grid-column: 1;
-  grid-row: 2;
-  text-align: right;
-  padding-right: ${({ theme }) => theme.spacing.md};
-
-  @media (max-width: 475px) {
-    padding-right: ${({ theme }) => theme.spacing.sm};
-  }
-`;
-
-const ToggleLabelTop = styled.span`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: #6b7280;
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  grid-column: 2;
-  grid-row: 1;
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-`;
-
-const ToggleLabelRight = styled.span`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: #6b7280;
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  grid-column: 3;
-  grid-row: 2;
-  text-align: left;
-  padding-left: ${({ theme }) => theme.spacing.md};
-
-  @media (max-width: 475px) {
-    padding-left: ${({ theme }) => theme.spacing.sm};
-  }
-`;
-
-const SecondaryToggleWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-  margin-left: auto;
-  margin-right: auto;
-  flex-wrap: nowrap;
-  width: 100%;
-  max-width: 480px;
-  padding-left: 80px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: ${({ theme }) => theme.spacing.lg};
-    padding-left: 0;
-    justify-content: center;
-  }
-
-  @media (max-width: 475px) {
-    gap: ${({ theme }) => theme.spacing.sm};
-    flex-wrap: wrap;
-    max-width: 100%;
-  }
-`;
-
-const ToggleLabel = styled.span`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: #6b7280;
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-`;
-
-const PrimaryToggle = styled.div`
-  display: flex;
-  align-items: center;
-  background: #f3f4f6;
-  border-radius: ${({ theme }) => theme.radius.full};
-  padding: 3px;
-  position: relative;
-  cursor: pointer;
-  border: 2px solid #e5e7eb;
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-  grid-column: 2;
-  grid-row: 2;
-  min-width: 480px;
-
-  @media (max-width: 475px) {
-    min-width: 320px;
-  }
-`;
-
-const PrimaryToggleOption = styled(motion.button).withConfig({
-  shouldForwardProp: (prop) => !["active"].includes(prop),
-})`
-  padding: 7px ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.radius.full};
-  border: none;
-  background: ${({ active, theme }) =>
-    active ? "#3b82f6" : "transparent"};
-  color: ${({ active, theme }) =>
-    active ? theme.colors.white : "#6b7280"};
-  font-weight: ${({ active, theme }) =>
-    active
-      ? theme.typography.weights.semibold
-      : theme.typography.weights.medium};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  cursor: pointer;
-  transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ active, theme }) => (active ? theme.shadows.sm : "none")};
-  z-index: 1;
-  position: relative;
-  min-width: 150px;
-  flex: 1;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-
-  @media (max-width: 475px) {
-    min-width: 100px;
-    padding: 7px ${({ theme }) => theme.spacing.md};
-    font-size: ${({ theme }) => theme.typography.sizes.xs};
-  }
-`;
-
-const SecondaryToggle = styled.div`
-  display: flex;
-  background: #f9fafb;
-  border-radius: ${({ theme }) => theme.radius.full};
-  padding: 2px;
-  position: relative;
-  cursor: pointer;
+  border-radius: 999px;
   border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 `;
 
-const SecondaryToggleOption = styled(motion.button).withConfig({
-  shouldForwardProp: (prop) => !["active"].includes(prop),
+const BillingOption = styled.button.withConfig({
+  shouldForwardProp: (prop) => !["$active"].includes(prop),
 })`
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.full};
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
   border: none;
-  background: ${({ active, theme }) =>
-    active ? theme.colors.white : "transparent"};
-  color: ${({ active, theme }) =>
-    active ? "#1f2937" : "#6b7280"};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
   cursor: pointer;
-  transition: ${({ theme }) => theme.transitions.normal};
-  box-shadow: ${({ active, theme }) => (active ? theme.shadows.sm : "none")};
-  z-index: 1;
-  position: relative;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: ${({ $active }) => ($active ? '#0B0B0C' : 'transparent')};
+  color: ${({ $active }) => ($active ? '#ffffff' : '#6b7280')};
+  box-shadow: ${({ $active }) => ($active ? '0 1px 2px rgba(0, 0, 0, 0.06)' : 'none')};
+
+  &:hover {
+    color: ${({ $active }) => ($active ? '#ffffff' : '#374151')};
+  }
 `;
 
-const PricingGrid = styled.div`
+const BillingSavingsPill = styled.span`
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #047857;
+  background: #d1fae5;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+`;
+
+// ── Five-card plan grid ──────────────────────────────────────────────────────
+const PlanGrid = styled.div`
   display: grid;
-  grid-template-columns: ${({ $isEnterpriseView }) =>
-    $isEnterpriseView ? "1fr" : "repeat(3, 1fr)"};
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-top: ${({ theme }) => theme.spacing["2xl"]};
-  margin-bottom: ${({ theme }) => theme.spacing["3xl"]};
-  max-width: ${({ $isEnterpriseView }) =>
-    $isEnterpriseView ? "400px" : "1200px"};
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
-    padding: 0 ${({ theme }) => theme.spacing.md};
+    gap: 16px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.lg};
-    padding: 0 ${({ theme }) => theme.spacing.sm};
-  }
-
-  @media (max-width: 475px) {
-    gap: ${({ theme }) => theme.spacing.md};
+    gap: 16px;
   }
 `;
 
-const PricingCard = styled(motion.div).withConfig({
+const PlanCard = styled(motion.div).withConfig({
   shouldForwardProp: (prop) =>
     ![
+      "$tierColor",
+      "$isHighlighted",
       "initial",
       "animate",
       "transition",
-      "exit",
       "whileInView",
       "viewport",
-      "isPopular",
-      "isAgencyPlus",
-      "isEnterprise",
-      "tierColor",
     ].includes(prop),
 })`
-  background: #ffffff;
-  border-radius: 12px;
-  padding: ${({ theme }) => theme.spacing.xl};
-  border: 1px solid #e5e7eb;
-  border-top: ${({ tierColor }) => tierColor ? `3px solid ${tierColor}` : "none"};
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   position: relative;
-  transition: ${({ theme }) => theme.transitions.normal};
-  opacity: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 600px;
-  min-width: 0;
-  overflow: visible;
-
-  ${({ isEnterprise }) =>
-    isEnterprise &&
-    `
-    min-height: auto;
-    max-width: 400px;
-    margin: 0 auto;
-  `}
+  background: #ffffff;
+  border-radius: 16px;
+  border-top: 4px solid ${({ $tierColor }) => $tierColor || '#9ca3af'};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 
   &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  ${({ $isHighlighted, $tierColor }) =>
+    $isHighlighted &&
+    `
+    box-shadow: 0 8px 32px ${$tierColor}26;
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    z-index: 5;
-    border-color: #d1d5db;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
-    min-height: 550px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    min-height: auto;
-    padding: ${({ theme }) => theme.spacing.lg};
-  }
-
-  @media (max-width: 475px) {
-    padding: ${({ theme }) => theme.spacing.md};
-    border-radius: 12px;
-    min-height: auto;
-  }
+  `}
 `;
 
-const PopularBadge = styled.div`
+const PlanBadge = styled.div`
   position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: ${({ $tierColor }) => $tierColor || '#3b82f6'};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.full};
+  top: -14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+`;
+
+const BadgePill = styled.span.withConfig({
+  shouldForwardProp: (prop) => !["$tierColor"].includes(prop),
+})`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-  z-index: 20;
+  color: #ffffff;
+  background: ${({ $tierColor }) => $tierColor || '#9ca3af'};
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   white-space: nowrap;
-  pointer-events: none;
 `;
 
-const EnterpriseBadge = styled.div`
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: ${({ $tierColor }) => $tierColor || '#D4AF37'};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.full};
+const PlanCardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px 20px;
+`;
+
+const TierFamilyLabel = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["$tierColor"].includes(prop),
+})`
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-  z-index: 20;
-  white-space: nowrap;
-  pointer-events: none;
+  color: ${({ $tierColor }) => $tierColor || '#9ca3af'};
+  margin-bottom: 4px;
 `;
 
-const PlanAudienceTag = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: #6b7280;
-  background: #f3f4f6;
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.radius.full};
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
-  display: inline-block;
-  width: 100%;
-`;
-
-const PlanName = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ $tierColor }) => $tierColor || '#1f2937'};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
+const PlanCardName = styled.h3`
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b0b0c;
+  margin: 0 0 8px;
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  text-align: center;
 `;
 
-const PlanPrice = styled.div`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
+const PlanCardDescription = styled.p`
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0 0 20px;
+  min-height: 36px;
+`;
+
+const PlanPriceBlock = styled.div`
   display: flex;
   align-items: baseline;
-  justify-content: center;
-  gap: 0;
+  gap: 4px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 `;
 
-const PriceAmount = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes["3xl"]};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: #3b82f6;
+const PlanPriceAmount = styled.span`
+  font-size: 32px;
+  font-weight: 800;
+  color: #0b0b0c;
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+`;
+
+const PlanPricePeriod = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  color: #9ca3af;
+`;
+
+const PlanPriceCustom = styled.span.withConfig({
+  shouldForwardProp: (prop) => !["$tierColor"].includes(prop),
+})`
+  font-size: 22px;
+  font-weight: 800;
+  color: ${({ $tierColor }) => $tierColor || '#0b0b0c'};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   line-height: 1;
-  margin-right: -2px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
-    font-size: ${({ theme }) => theme.typography.sizes["2xl"]};
-  }
-
-  @media (max-width: 475px) {
-    font-size: ${({ theme }) => theme.typography.sizes.xl};
-  }
 `;
 
-const PricePeriod = styled.span`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: #6b7280;
-  margin-left: 0;
+const PlanDiscountPill = styled.span`
+  margin-left: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  border-radius: 999px;
 `;
 
-const AnnualDiscount = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: #6b7280;
-  text-align: center;
-  margin-top: 2px;
+const PlanDivider = styled.div`
+  height: 1px;
+  background: #f3f4f6;
+  margin-bottom: 16px;
 `;
 
-const PriceFrom = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: #9ca3af;
-  text-align: center;
-  margin-top: ${({ theme }) => theme.spacing.xs};
+const PlanIncludesPrev = styled.p.withConfig({
+  shouldForwardProp: (prop) => !["$tierText"].includes(prop),
+})`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
   font-style: italic;
+  color: ${({ $tierText }) => $tierText || '#6b7280'};
+  margin: 0 0 12px;
+  line-height: 1.4;
 `;
 
-const AdditionalSeatText = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: #9ca3af;
-  text-align: center;
-  margin-top: 2px;
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  font-style: italic;
-`;
-
-const PlanGrowthNote = styled.div`
-  background: #f9fafb;
-  border-left: 3px solid ${({ $tierColor }) => $tierColor || '#3b82f6'};
-  padding: ${({ theme }) => theme.spacing.sm};
-  margin-top: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.sm};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: #374151;
-  text-align: left;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-`;
-
-const TimeSavings = styled.p`
-  color: #3b82f6;
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-`;
-
-const FeatureList = styled.ul`
+const PlanFeatureList = styled.ul`
   list-style: none;
-  margin: 0 0 ${({ theme }) => theme.spacing.lg} 0;
   padding: 0;
+  margin: 0 0 20px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
-const FeatureItem = styled.li`
+const PlanFeatureItem = styled.li`
   display: flex;
   align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing.xs};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme, $isHighlight }) =>
-    $isHighlight ? "#1f2937" : "#6b7280"};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  font-weight: ${({ $isHighlight }) => ($isHighlight ? "600" : "400")};
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4b5563;
+`;
 
-  svg {
-    color: ${({ $tierColor }) => $tierColor || '#3b82f6'};
-    flex-shrink: 0;
-    margin-top: 2px;
-    width: 14px;
-    height: 14px;
+const PlanFeatureCheck = styled.span.withConfig({
+  shouldForwardProp: (prop) => !["$tierColor"].includes(prop),
+})`
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${({ $tierColor }) => `${$tierColor}1F`};
+  margin-top: 2px;
+`;
+
+const PlanCTAButton = styled(Link).withConfig({
+  shouldForwardProp: (prop) => !["$tierColor"].includes(prop),
+})`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  background: ${({ $tierColor }) => $tierColor || '#0b0b0c'};
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: auto;
+  transition: all 0.18s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px ${({ $tierColor }) => `${$tierColor}40`};
+    filter: brightness(1.05);
   }
 `;
 
-const CardButton = styled(Button)`
-  width: 100%;
+// ── Destination Add-On banner ────────────────────────────────────────────────
+const AddOnBanner = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: auto;
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
+  gap: 12px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 18px 28px;
+  background: #ffffff;
+  border: 1px dashed #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 16px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
-// FAQ Section with light background
+const AddOnIcon = styled.div`
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.12);
+
+  svg {
+    color: #D4AF37;
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+const AddOnContent = styled.div`
+  text-align: left;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    text-align: center;
+  }
+`;
+
+const AddOnTitle = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 2px;
+`;
+
+const AddOnDescription = styled.p`
+  font-size: 12px;
+  line-height: 1.5;
+  color: #6b7280;
+  margin: 0;
+`;
+
+// ── FAQ Section (preserved from original) ────────────────────────────────────
 const FAQSection = styled.section`
   padding: 96px ${({ theme }) => theme.spacing["3xl"]};
   background: #f9fafb;
@@ -655,7 +529,9 @@ const FAQItem = styled.div`
   border: 1px solid #e5e7eb;
 `;
 
-const FAQQuestion = styled.button`
+const FAQQuestion = styled.button.withConfig({
+  shouldForwardProp: (prop) => !["isOpen"].includes(prop),
+})`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -672,7 +548,7 @@ const FAQQuestion = styled.button`
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    color: #3b82f6;
+    color: #F5C249;
   }
 `;
 
@@ -682,7 +558,7 @@ const FAQAnswer = styled(motion.div)`
   overflow: hidden;
 `;
 
-// Dark CTA section
+// ── Dark CTA section (preserved from original) ───────────────────────────────
 const CTASection = styled.section`
   background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
   padding: 96px ${({ theme }) => theme.spacing["3xl"]};
@@ -727,25 +603,23 @@ const CTASubtitle = styled.p`
   }
 `;
 
+// ── Component ────────────────────────────────────────────────────────────────
 const Pricing = () => {
   const location = useLocation();
   const [openFAQ, setOpenFAQ] = useState(null);
-  const [viewType, setViewType] = useState("solo");
+  const [billingCycle, setBillingCycle] = useState("monthly");
 
+  // Scroll to pricing section if URL hash is set (preserve legacy anchors)
   useEffect(() => {
     const hash = location.hash.replace("#", "");
-    if (hash === "solo" || hash === "agency" || hash === "enterprise") {
-      setViewType(hash);
+    if (hash === "pricing-section" || hash === "solo" || hash === "agency" || hash === "enterprise") {
       setTimeout(() => {
-        const pricingSection = document.getElementById("pricing-section");
-        if (pricingSection) {
+        const el = document.getElementById("pricing-section");
+        if (el) {
           const offset = 120;
-          const elementPosition = pricingSection.getBoundingClientRect().top;
+          const elementPosition = el.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
       }, 150);
     }
@@ -755,12 +629,10 @@ const Pricing = () => {
     {
       id: "solo",
       name: "Solo Agent",
-      description: "Perfect for solo agents just getting started or testing the waters.",
+      description: "Perfect for solo agents getting started or testing the waters.",
       monthlyPrice: 197,
       annualPrice: 1970,
-      audience: "For solo agents",
       isPopular: false,
-      isDecoy: false,
       cta: "Request Solo access",
       features: [
         "5 itineraries per month",
@@ -769,33 +641,21 @@ const Pricing = () => {
         "Email support",
         "Extra itineraries at $50 each",
       ],
-      limitations: [
-        "No branding customization",
-        "No team collaboration",
-      ],
     },
     {
       id: "agentplus",
       name: "Agent+",
-      description: "Built for growing agents who need more volume and flexibility.",
+      description: "For growing agents who need more volume and flexibility.",
       monthlyPrice: 247,
       annualPrice: 2470,
-      audience: "For solo agents",
       isPopular: true,
-      isDecoy: false,
       cta: "Request Agent+ access",
       features: [
-        "Everything in Solo Agent",
         "+5 extra itineraries per month (10 total)",
         "Save itinerary templates",
         "Custom questionnaire link",
         "Email Hub and MagicFlow",
         "Priority email support",
-        "Extra itineraries at $40 each",
-      ],
-      limitations: [
-        "No team collaboration",
-        "No API access",
       ],
     },
     {
@@ -804,58 +664,41 @@ const Pricing = () => {
       description: "Ideal for agencies building a steady client base.",
       monthlyPrice: 297,
       annualPrice: 2970,
-      audience: "For agencies & teams",
       isPopular: false,
-      isDecoy: false,
       cta: "Request Agency access",
       features: [
-        "Everything in Agent+",
         "+5 extra itineraries per month (15 total)",
         "Shared agency dashboard",
-        "Branding: Add your logo to itineraries",
+        "Branding: add your logo to itineraries",
         "Task automation",
         "Tags and trip notes",
-        "Extra itineraries at $30 each",
-      ],
-      limitations: [
-        "No API access",
-        "No dedicated account manager",
       ],
     },
     {
       id: "agencyplus",
       name: "Agency+",
-      description: "For high-performing agencies that need power, scale, and automation.",
+      description: "For high-performing agencies that need power and scale.",
       monthlyPrice: 347,
       annualPrice: 3470,
-      audience: "For agencies & teams",
-      isPopular: false,
-      isDecoy: false,
+      isPopular: true,
       cta: "Request Agency+ access",
       features: [
-        "Everything in Agency",
         "+5 extra itineraries per month (20 total)",
         "API access for integrations",
         "White-glove onboarding",
         "Early feature access",
         "Live chat support",
-        "Extra itineraries at $22 each",
-      ],
-      limitations: [
-        "No dedicated account manager (available in Enterprise)",
       ],
     },
     {
       id: "enterprise",
       name: "Enterprise",
       description: "Designed for national brands and high-volume agencies.",
-      customPricing: "Custom Quote",
-      audience: "For large agencies",
-      isPopular: false,
-      isDecoy: false,
+      customPricing: true,
       cta: "Talk to us",
+      isPopular: false,
+      isRecommended: true,
       features: [
-        "Everything in Agency+",
         "Pooled itineraries (negotiated per contract)",
         "Unlimited agent seats",
         "Dedicated success manager",
@@ -863,20 +706,19 @@ const Pricing = () => {
         "Custom CRM/API integrations",
         "SLA-backed priority support",
       ],
-      limitations: [],
     },
   ];
 
-  const filteredPlans = pricingPlans.filter((plan) => {
-    if (viewType === "solo") {
-      return plan.id === "solo" || plan.id === "agentplus";
-    } else if (viewType === "agency") {
-      return plan.id === "agency" || plan.id === "agencyplus";
-    } else if (viewType === "enterprise") {
-      return plan.id === "enterprise";
-    }
-    return false;
-  });
+  const formatPrice = (plan) => {
+    if (plan.customPricing) return null;
+    const price = billingCycle === "yearly" ? plan.annualPrice : plan.monthlyPrice;
+    return billingCycle === "yearly" ? Math.round(price / 12) : Math.round(price);
+  };
+
+  const getYearlyDiscount = (plan) => {
+    if (!plan.annualPrice) return 0;
+    return Math.round(((plan.monthlyPrice - plan.annualPrice / 12) / plan.monthlyPrice) * 100);
+  };
 
   const faqs = [
     {
@@ -951,152 +793,134 @@ const Pricing = () => {
       <BodySection>
         <Container>
           <div id="pricing-section">
-            <ToggleWrapper>
-              <ToggleContainer>
-                <ToggleLabelTop>Agency</ToggleLabelTop>
-                <ToggleLabelLeft>Solo Agent</ToggleLabelLeft>
-                <PrimaryToggle>
-                  <PrimaryToggleOption
-                    active={viewType === "solo"}
-                    onClick={() => setViewType("solo")}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={{
-                      scale: viewType === "solo" ? 1.02 : 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 25,
-                    }}
-                  >
-                    Solo Agent
-                  </PrimaryToggleOption>
-                  <PrimaryToggleOption
-                    active={viewType === "agency"}
-                    onClick={() => setViewType("agency")}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={{
-                      scale: viewType === "agency" ? 1.02 : 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 25,
-                    }}
-                  >
-                    Agency
-                  </PrimaryToggleOption>
-                  <PrimaryToggleOption
-                    active={viewType === "enterprise"}
-                    onClick={() => setViewType("enterprise")}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    animate={{
-                      scale: viewType === "enterprise" ? 1.02 : 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 25,
-                    }}
-                  >
-                    Enterprise
-                  </PrimaryToggleOption>
-                </PrimaryToggle>
-                <ToggleLabelRight>Enterprise</ToggleLabelRight>
-              </ToggleContainer>
-            </ToggleWrapper>
-
-            <PricingGrid $isEnterpriseView={viewType === "enterprise"}>
-              {filteredPlans.map((plan, index) => {
-                const tc = TIER_COLORS[plan.id] || { hex: '#3b82f6', text: '#1f2937' };
-                return (
-                <PricingCard
-                  key={plan.id}
-                  isPopular={plan.isPopular}
-                  isAgencyPlus={plan.id === "agencyplus"}
-                  isEnterprise={plan.id === "enterprise"}
-                  tierColor={tc.hex}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+            <BillingToggleWrapper>
+              <BillingToggle role="tablist" aria-label="Billing cycle">
+                <BillingOption
+                  type="button"
+                  role="tab"
+                  aria-selected={billingCycle === "monthly"}
+                  $active={billingCycle === "monthly"}
+                  onClick={() => setBillingCycle("monthly")}
                 >
-                  {plan.isPopular && (
-                    <PopularBadge $tierColor={tc.hex}>
-                      <Star size={12} style={{ marginRight: "4px" }} />
-                      Most Popular for Solo Agents
-                    </PopularBadge>
-                  )}
-                  {plan.id === "agencyplus" && (
-                    <PopularBadge $tierColor={tc.hex}>
-                      <Star size={12} style={{ marginRight: "4px" }} />
-                      Most Popular for Agencies
-                    </PopularBadge>
-                  )}
-                  {plan.id === "enterprise" && (
-                    <EnterpriseBadge $tierColor={tc.hex}>
-                      <Award size={12} style={{ marginRight: "4px" }} />
-                      Custom
-                    </EnterpriseBadge>
-                  )}
+                  Monthly
+                </BillingOption>
+                <BillingOption
+                  type="button"
+                  role="tab"
+                  aria-selected={billingCycle === "yearly"}
+                  $active={billingCycle === "yearly"}
+                  onClick={() => setBillingCycle("yearly")}
+                >
+                  Yearly
+                  <BillingSavingsPill>2 MONTHS FREE</BillingSavingsPill>
+                </BillingOption>
+              </BillingToggle>
+            </BillingToggleWrapper>
 
-                  {plan.audience && (
-                    <PlanAudienceTag>{plan.audience}</PlanAudienceTag>
-                  )}
-                  <PlanName $tierColor={tc.hex}>{plan.name}</PlanName>
-                  <PlanPrice>
-                    <PriceAmount
-                      style={{ fontSize: "1.5rem", color: "#1f2937" }}
-                    >
-                      Call for Pricing
-                    </PriceAmount>
-                  </PlanPrice>
-                  {plan.description && (
-                    <PlanGrowthNote $tierColor={tc.hex}>{plan.description}</PlanGrowthNote>
-                  )}
-                  <FeatureList>
-                    {plan.features.map((feature, featureIndex) => {
-                      const isEverythingIn =
-                        feature.startsWith("Everything in");
-                      return (
-                        <FeatureItem
-                          key={featureIndex}
-                          $isHighlight={isEverythingIn}
-                          $tierColor={tc.hex}
-                        >
-                          <Check size={16} />
-                          {feature}
-                        </FeatureItem>
-                      );
-                    })}
-                    {plan.limitations.map((limitation, limitIndex) => (
-                      <FeatureItem key={`limit-${limitIndex}`} $tierColor="#9CA3AF">
-                        <X size={16} />
-                        {limitation}
-                      </FeatureItem>
-                    ))}
-                  </FeatureList>
+            <PlanGrid>
+              {pricingPlans.map((plan, index) => {
+                const tc = TIER_COLORS[plan.id] || { hex: "#9ca3af", text: "#6b7280" };
+                const tierFamily = TIER_FAMILY[plan.id] || "";
+                const includesPrev = INCLUDES_PREVIOUS[plan.id] || null;
+                const monthlyPrice = formatPrice(plan);
+                const yearlyDiscount = getYearlyDiscount(plan);
 
-                  <CardButton
-                    variant="secondary"
-                    size="lg"
-                    to={
-                      plan.id === "enterprise" ? "/contact" : "/request-access"
-                    }
-                    isDecoy={false}
-                    disabled={false}
+                return (
+                  <PlanCard
+                    key={plan.id}
+                    $tierColor={tc.hex}
+                    $isHighlighted={plan.isPopular}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.45,
+                      delay: index * 0.06,
+                      ease: [0.2, 0.8, 0.2, 1],
+                    }}
+                    viewport={{ once: true, margin: "-80px" }}
                   >
-                    {plan.cta || "Get Started"}
-                  </CardButton>
-                </PricingCard>
+                    {plan.isPopular && (
+                      <PlanBadge>
+                        <BadgePill $tierColor={tc.hex}>
+                          <Star size={11} /> Most Popular
+                        </BadgePill>
+                      </PlanBadge>
+                    )}
+                    {plan.isRecommended && !plan.isPopular && (
+                      <PlanBadge>
+                        <BadgePill $tierColor={tc.hex}>
+                          <Crown size={11} /> Recommended
+                        </BadgePill>
+                      </PlanBadge>
+                    )}
+
+                    <PlanCardBody>
+                      {tierFamily && (
+                        <TierFamilyLabel $tierColor={tc.hex}>{tierFamily}</TierFamilyLabel>
+                      )}
+                      <PlanCardName>{plan.name}</PlanCardName>
+                      <PlanCardDescription>{plan.description}</PlanCardDescription>
+
+                      <PlanPriceBlock>
+                        {plan.customPricing ? (
+                          <>
+                            <PlanPriceCustom $tierColor={tc.hex}>Custom</PlanPriceCustom>
+                            <PlanPricePeriod>pricing</PlanPricePeriod>
+                          </>
+                        ) : (
+                          <>
+                            <PlanPriceAmount>${monthlyPrice}</PlanPriceAmount>
+                            <PlanPricePeriod>/mo</PlanPricePeriod>
+                            {billingCycle === "yearly" && yearlyDiscount > 0 && (
+                              <PlanDiscountPill>-{yearlyDiscount}%</PlanDiscountPill>
+                            )}
+                          </>
+                        )}
+                      </PlanPriceBlock>
+
+                      <PlanDivider />
+
+                      {includesPrev && (
+                        <PlanIncludesPrev $tierText={tc.text}>
+                          <Layers size={12} style={{ color: tc.hex, flexShrink: 0 }} />
+                          Everything in {includesPrev}, plus:
+                        </PlanIncludesPrev>
+                      )}
+
+                      <PlanFeatureList>
+                        {plan.features.slice(0, 7).map((feature, fIdx) => (
+                          <PlanFeatureItem key={fIdx}>
+                            <PlanFeatureCheck $tierColor={tc.hex}>
+                              <Check size={10} style={{ color: tc.hex }} />
+                            </PlanFeatureCheck>
+                            <span>{feature}</span>
+                          </PlanFeatureItem>
+                        ))}
+                      </PlanFeatureList>
+
+                      <PlanCTAButton
+                        to={plan.id === "enterprise" ? "/contact" : "/request-access"}
+                        $tierColor={tc.hex}
+                      >
+                        {plan.cta}
+                      </PlanCTAButton>
+                    </PlanCardBody>
+                  </PlanCard>
                 );
               })}
-            </PricingGrid>
+            </PlanGrid>
+
+            <AddOnBanner>
+              <AddOnIcon>
+                <MapPin />
+              </AddOnIcon>
+              <AddOnContent>
+                <AddOnTitle>Coming Soon: Destination Add-Ons</AddOnTitle>
+                <AddOnDescription>
+                  Expand your itinerary offerings with additional destination bundles — Disneyland, Universal, Cruises, and more.
+                </AddOnDescription>
+              </AddOnContent>
+            </AddOnBanner>
           </div>
         </Container>
       </BodySection>
@@ -1129,11 +953,7 @@ const Pricing = () => {
                     onClick={() => toggleFAQ(index)}
                   >
                     {faq.question}
-                    {openFAQ === index ? (
-                      <ChevronUp size={20} />
-                    ) : (
-                      <ChevronDown size={20} />
-                    )}
+                    {openFAQ === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                   </FAQQuestion>
 
                   {openFAQ === index && (
