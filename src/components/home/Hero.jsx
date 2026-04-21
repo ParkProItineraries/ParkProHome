@@ -234,7 +234,7 @@ const Hero = () => {
         <Badge
           initial={{ opacity: 0, y: 20, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <RiStarLine />
           Automated Disney Planning
@@ -243,7 +243,7 @@ const Hero = () => {
         <Title
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
         >
           Transform Your Disney Planning with{" "}
           <span className="gradient-text">Automation</span>
@@ -252,7 +252,7 @@ const Hero = () => {
         <Subtitle
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
         >
           Create personalized Disney itineraries in minutes, not hours.
           Our automated system analyzes preferences, park hours, and wait times to craft 
@@ -262,7 +262,7 @@ const Hero = () => {
         <CTAButtons
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
         >
           <CTAButton to="/demo" variant="gold" size="large">
             Try Demo
@@ -275,7 +275,7 @@ const Hero = () => {
         <HeroStats
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
         >
           {stats.map((stat, index) => (
             <StatItem

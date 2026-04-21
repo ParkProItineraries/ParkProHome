@@ -75,7 +75,7 @@ const CTA = () => {
           <CTATitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Ready to Scale Your Disney Business?
@@ -84,7 +84,7 @@ const CTA = () => {
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
             Start saving 10+ hours per client while increasing your bookings. See ParkPro in action.
@@ -93,7 +93,7 @@ const CTA = () => {
           <CTAButtons
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <Button to="/demo" variant="primary" size="lg">

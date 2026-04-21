@@ -842,14 +842,14 @@ const Features = () => {
           <HeroTitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             {copy.pages.features.h1}
           </HeroTitle>
           <HeroSubtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             {copy.pages.features.sub}
           </HeroSubtitle>
@@ -964,7 +964,7 @@ const Features = () => {
             <DemoVideo
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <DemoPlaceholder>
@@ -984,7 +984,7 @@ const Features = () => {
             <DemoButtonWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <Button variant="primary" size="lg" to="/demo">
@@ -1007,7 +1007,7 @@ const Features = () => {
             <CTAButtonWrapper
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <Button variant="primary" size="lg" to="/demo">

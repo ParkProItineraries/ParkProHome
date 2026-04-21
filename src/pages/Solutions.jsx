@@ -383,14 +383,14 @@ const Solutions = () => {
             <SolutionsTitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               {copy.pages.solutions.h1}
             </SolutionsTitle>
             <SolutionsSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
               {copy.pages.solutions.sub}
             </SolutionsSubtitle>
@@ -464,7 +464,7 @@ const Solutions = () => {
             <CTATitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Ready to see how ParkPro fits your agency?
@@ -472,7 +472,7 @@ const Solutions = () => {
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Whether you're a solo agent or running a growing team, ParkPro has a plan that fits. Book a demo to see the right solution for your agency.
@@ -480,7 +480,7 @@ const Solutions = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <Button variant="primary" size="lg" to="/demo">

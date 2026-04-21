@@ -255,6 +255,181 @@ const DropdownDemoButton = styled(Link)`
   }
 `;
 
+/* ============================================================
+   DESKTOP NAV — Superhuman-tier proper desktop navigation
+   ============================================================ */
+const DesktopNav = styled.nav`
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 48px;
+  margin-left: 32px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: flex;
+  }
+`;
+
+const NavLinks = styled.ul`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavItem = styled.li`
+  position: relative;
+`;
+
+const NavLink = styled(Link)`
+  font-family: ${({ theme }) => theme.typography.fontBody};
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ $isActive }) => ($isActive ? '#FFFFFF' : 'rgba(255, 255, 255, 0.75)')};
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: ${({ $isActive }) => ($isActive ? 'rgba(245, 194, 73, 0.08)' : 'transparent')};
+  border: none;
+
+  &:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
+    outline-offset: 2px;
+  }
+`;
+
+const NavTrigger = styled.button`
+  font-family: ${({ theme }) => theme.typography.fontBody};
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ $isOpen }) => ($isOpen ? '#FFFFFF' : 'rgba(255, 255, 255, 0.75)')};
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background: ${({ $isOpen }) => ($isOpen ? 'rgba(255, 255, 255, 0.06)' : 'transparent')};
+  border: none;
+
+  &:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
+    outline-offset: 2px;
+  }
+
+  svg {
+    transition: transform 180ms ease;
+    transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0)')};
+  }
+`;
+
+const Flyout = styled(motion.div).withConfig({
+  shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop),
+})`
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 200px;
+  background: #151519;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: ${({ theme }) => theme.zIndex.dropdown};
+`;
+
+const FlyoutLink = styled(Link)`
+  display: block;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 150ms ease;
+  font-weight: 500;
+  font-family: ${({ theme }) => theme.typography.fontBody};
+
+  &:hover {
+    color: #FFFFFF;
+    background: rgba(245, 194, 73, 0.08);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
+    outline-offset: -2px;
+  }
+`;
+
+const NavActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const NavTextLink = styled.a`
+  font-family: ${({ theme }) => theme.typography.fontBody};
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+`;
+
+const NavCTAButton = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: ${({ theme }) => theme.typography.fontBody};
+  font-size: 14px;
+  font-weight: 600;
+  color: #0B0B0C;
+  background: #F5C249;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 180ms ease;
+
+  &:hover {
+    background: #F8D86B;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(245, 194, 73, 0.3);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.teal};
+    outline-offset: 2px;
+  }
+`;
+
 /* ---- Mobile ---- */
 
 const MobileMenuButton = styled.button`
@@ -399,8 +574,28 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [productOpen, setProductOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const productRef = useRef(null);
+  const resourcesRef = useRef(null);
   const location = useLocation();
+
+  // Close desktop flyouts on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (productRef.current && !productRef.current.contains(e.target)) setProductOpen(false);
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target)) setResourcesOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close desktop flyouts on route change
+  useEffect(() => {
+    setProductOpen(false);
+    setResourcesOpen(false);
+  }, [location.pathname]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -461,103 +656,101 @@ const Navbar = () => {
           <Logo src={ParkProLogo} alt="ParkPro Logo" loading="eager" />
         </LogoWrapper>
 
-        <NavSpacer />
-
-        {/* Right: Dropdown Menu (desktop) */}
-        <RightSection>
-          <DropdownWrapper ref={dropdownRef}>
-            <DropdownTrigger
-              onClick={() => setIsDropdownOpen((prev) => !prev)}
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="true"
-              aria-controls="nav-dropdown-menu"
+        {/* Desktop nav — hidden on mobile via media query */}
+        <DesktopNav aria-label="Primary">
+          <NavLinks>
+            <NavItem
+              ref={productRef}
+              onMouseEnter={() => setProductOpen(true)}
+              onMouseLeave={() => setProductOpen(false)}
             >
-              Menu
-              <ChevronIcon
-                animate={{ rotate: isDropdownOpen ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
+              <NavTrigger
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={productOpen}
+                $isOpen={productOpen}
+                onClick={() => setProductOpen((p) => !p)}
+                onFocus={() => setProductOpen(true)}
               >
-                <ChevronDown size={16} />
-              </ChevronIcon>
-            </DropdownTrigger>
+                Product
+                <ChevronDown size={14} />
+              </NavTrigger>
+              <AnimatePresence>
+                {productOpen && (
+                  <Flyout
+                    role="menu"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <FlyoutLink to="/features" role="menuitem">Features</FlyoutLink>
+                    <FlyoutLink to="/solutions" role="menuitem">Solutions</FlyoutLink>
+                    <FlyoutLink to="/demo" role="menuitem">Demo</FlyoutLink>
+                    <FlyoutLink to="/faq" role="menuitem">FAQ</FlyoutLink>
+                  </Flyout>
+                )}
+              </AnimatePresence>
+            </NavItem>
 
-            <AnimatePresence>
-              {isDropdownOpen && (
-                <DropdownMenu
-                  id="nav-dropdown-menu"
-                  role="menu"
-                  initial={{ opacity: 0, y: -8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.96 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <DropdownSection>
-                    <DropdownItem to="/pricing" $isActive={isActive("/pricing")} onClick={closeDropdown} role="menuitem">
-                      Pricing
-                      {isActive("/pricing") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/features" $isActive={isActive("/features")} onClick={closeDropdown} role="menuitem">
-                      Features
-                      {isActive("/features") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/comparison" $isActive={isActive("/comparison")} onClick={closeDropdown} role="menuitem">
-                      Why ParkPro
-                      {isActive("/comparison") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/faq" $isActive={isActive("/faq")} onClick={closeDropdown} role="menuitem">
-                      FAQ
-                      {isActive("/faq") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/about" $isActive={isActive("/about")} onClick={closeDropdown} role="menuitem">
-                      About
-                      {isActive("/about") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/contact" $isActive={isActive("/contact")} onClick={closeDropdown} role="menuitem">
-                      Contact
-                      {isActive("/contact") && <ActiveDot />}
-                    </DropdownItem>
-                  </DropdownSection>
+            <NavItem>
+              <NavLink to="/pricing" $isActive={isActive("/pricing")}>Pricing</NavLink>
+            </NavItem>
 
-                  <DropdownSection>
-                    <DropdownSectionLabel>Solutions</DropdownSectionLabel>
-                    <DropdownItem to="/solutions/solo-agents" $isActive={isActive("/solutions/solo-agents")} onClick={closeDropdown} role="menuitem">
-                      <span><SubItemIndicator><ChevronRight size={12} /></SubItemIndicator>Solo Agents</span>
-                      {isActive("/solutions/solo-agents") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/solutions/agencies" $isActive={isActive("/solutions/agencies")} onClick={closeDropdown} role="menuitem">
-                      <span><SubItemIndicator><ChevronRight size={12} /></SubItemIndicator>Agencies</span>
-                      {isActive("/solutions/agencies") && <ActiveDot />}
-                    </DropdownItem>
-                    <DropdownItem to="/solutions/enterprise" $isActive={isActive("/solutions/enterprise")} onClick={closeDropdown} role="menuitem">
-                      <span><SubItemIndicator><ChevronRight size={12} /></SubItemIndicator>Enterprise</span>
-                      {isActive("/solutions/enterprise") && <ActiveDot />}
-                    </DropdownItem>
-                  </DropdownSection>
+            <NavItem
+              ref={resourcesRef}
+              onMouseEnter={() => setResourcesOpen(true)}
+              onMouseLeave={() => setResourcesOpen(false)}
+            >
+              <NavTrigger
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={resourcesOpen}
+                $isOpen={resourcesOpen}
+                onClick={() => setResourcesOpen((p) => !p)}
+                onFocus={() => setResourcesOpen(true)}
+              >
+                Resources
+                <ChevronDown size={14} />
+              </NavTrigger>
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <Flyout
+                    role="menu"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <FlyoutLink to="/comparison" role="menuitem">Comparison</FlyoutLink>
+                    <FlyoutLink to="/contact" role="menuitem">Contact</FlyoutLink>
+                  </Flyout>
+                )}
+              </AnimatePresence>
+            </NavItem>
 
-                  <DropdownSection>
-                    <DropdownExternalItem href="https://app.parkproit.com/agent/login" target="_blank" rel="noopener noreferrer" onClick={closeDropdown} role="menuitem">
-                      Log In
-                    </DropdownExternalItem>
-                  </DropdownSection>
+            <NavItem>
+              <NavLink to="/about" $isActive={isActive("/about")}>About</NavLink>
+            </NavItem>
+          </NavLinks>
 
-                  <DropdownDemoButton to="/demo" onClick={closeDropdown}>
-                    Book a Demo
-                  </DropdownDemoButton>
-                </DropdownMenu>
-              )}
-            </AnimatePresence>
-          </DropdownWrapper>
+          <NavActions>
+            <NavTextLink href="https://app.parkproit.com/agent/login" target="_blank" rel="noopener noreferrer">
+              Log in
+            </NavTextLink>
+            <NavCTAButton to="/request-access">Get Started</NavCTAButton>
+          </NavActions>
+        </DesktopNav>
 
-          {/* Mobile hamburger */}
-          <MobileMenuButton
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-navigation-menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </MobileMenuButton>
-        </RightSection>
+        {/* Mobile hamburger — unchanged */}
+        <MobileMenuButton
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation-menu"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </MobileMenuButton>
       </Nav>
 
       {/* Mobile fullscreen menu */}

@@ -536,14 +536,14 @@ const TravelAgentSoftware = () => {
           <HeroTitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             Travel Agent Software for Disney Planning
           </HeroTitle>
           <HeroSubtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             ParkPro automates Disney itinerary generation and trip management for Travel Agents.
             Go from 8 hours to 15 minutes per itinerary and deliver professional, branded plans your clients love.
@@ -552,7 +552,7 @@ const TravelAgentSoftware = () => {
           <HeroCTA
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <DemoButton to="/demo">
               Book a Demo
@@ -721,7 +721,7 @@ const TravelAgentSoftware = () => {
           <FinalCTATitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Ready to streamline your travel agent business?
@@ -729,7 +729,7 @@ const TravelAgentSoftware = () => {
           <FinalCTASubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
             See how ParkPro takes your Disney itinerary work from 8 hours to 15 minutes. Book a personalized demo and we'll walk you through the full workflow.
@@ -738,7 +738,7 @@ const TravelAgentSoftware = () => {
           <FinalCTAButton
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <DemoButton to="/demo">

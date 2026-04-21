@@ -498,7 +498,7 @@ const Enterprise = () => {
             <SectionTitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Enterprise-Grade Security
@@ -507,7 +507,7 @@ const Enterprise = () => {
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Built on enterprise-grade infrastructure with the security controls your organization requires.
@@ -550,7 +550,7 @@ const Enterprise = () => {
             <SectionTitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Enterprise-Grade Features
@@ -559,7 +559,7 @@ const Enterprise = () => {
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Everything in the Agency plan, plus dedicated resources and custom capabilities for large organizations.
@@ -591,7 +591,7 @@ const Enterprise = () => {
             <CTATitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Let's talk about your agency's needs.
@@ -599,7 +599,7 @@ const Enterprise = () => {
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Enterprise plans are tailored to your organization. Schedule a call and we'll scope a solution that fits your team, your workflow, and your compliance requirements.
@@ -607,7 +607,7 @@ const Enterprise = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <Button variant="primary" size="lg" to="/contact">

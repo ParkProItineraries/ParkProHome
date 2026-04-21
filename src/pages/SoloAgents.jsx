@@ -482,7 +482,7 @@ const SoloAgents = () => {
             <SectionHeading
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Your Planning, Before and After ParkPro
@@ -544,7 +544,7 @@ const SoloAgents = () => {
             <SectionHeading
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Built for How You Actually Work
@@ -552,7 +552,7 @@ const SoloAgents = () => {
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Every feature is designed around the solo agent workflow — no team overhead, no enterprise bloat.
@@ -583,7 +583,7 @@ const SoloAgents = () => {
           <CTATitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Ready to get your time back?
@@ -591,7 +591,7 @@ const SoloAgents = () => {
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
             See how ParkPro turns hours of Disney planning into a 15-minute workflow. Book a demo and we'll use your real scenarios.
@@ -599,7 +599,7 @@ const SoloAgents = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <Button variant="primary" size="lg" to="/demo">

@@ -776,14 +776,14 @@ const Pricing = () => {
           <HeroTitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             {copy.pages.pricing.h1}
           </HeroTitle>
           <HeroSubtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             {copy.pages.pricing.sub}
           </HeroSubtitle>
@@ -932,7 +932,7 @@ const Pricing = () => {
           <FAQTitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Frequently Asked Questions
@@ -978,7 +978,7 @@ const Pricing = () => {
           <CTATitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Ready to transform your itinerary workflow?
@@ -986,7 +986,7 @@ const Pricing = () => {
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
             Join Travel Agents who collapse Disney itinerary work from 8 hours to 15 minutes. Request access to ParkPro today.

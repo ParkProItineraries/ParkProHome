@@ -1111,14 +1111,14 @@ const Comparison = () => {
             <HeroTitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
             >
               {copy.pages.comparison.h1}
             </HeroTitle>
             <HeroSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               {copy.pages.comparison.sub}
             </HeroSubtitle>
@@ -1326,7 +1326,7 @@ const Comparison = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             <ROICardHeader>
               <ROICardSubtitle>

@@ -144,7 +144,7 @@ const HomeCTA = () => {
         <CTATitle
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           Ready to Transform Your Disney Planning?
@@ -153,7 +153,7 @@ const HomeCTA = () => {
         <CTASubtitle
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           Join the travel agents already running their Disney planning on ParkPro 
@@ -163,7 +163,7 @@ const HomeCTA = () => {
         <CTAButtons
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <CTAButton to="/request-access" variant="premium" size="medium">

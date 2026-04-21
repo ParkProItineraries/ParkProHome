@@ -201,7 +201,7 @@ const AgentBenefits = () => {
             <BenefitsTitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Why Travel Agents Choose ParkPro - The Best Disney Planning Software
@@ -209,7 +209,7 @@ const AgentBenefits = () => {
             <BenefitsSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Join hundreds of successful travel agents who've transformed their Disney planning business with ParkPro travel agent software. 

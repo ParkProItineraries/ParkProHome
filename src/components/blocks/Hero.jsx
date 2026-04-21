@@ -248,7 +248,7 @@ const Hero = () => {
           <Badge
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             role="status"
             aria-label="Built for travel agents"
           >
@@ -259,7 +259,7 @@ const Hero = () => {
           <Title
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             <span className="gradient-text">ParkPro</span> - The #1 Disney Planning Software for Travel Agents{" "}
             <span className="gradient-text">Stop Spending Hours on Disney Itineraries</span>
@@ -268,7 +268,7 @@ const Hero = () => {
           <Subtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
           >
             <strong>ParkPro</strong> is the best Disney itinerary generator and travel agent software. Our automated Disney planning software creates personalized Disney World and Disneyland itineraries in minutes, not hours. The leading travel agent productivity tool handles wait times, park hours, and dining reservations so you can focus on building relationships and closing more deals.
           </Subtitle>
@@ -276,7 +276,7 @@ const Hero = () => {
           <CTAButtons
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
             role="group"
             aria-label="Call to action buttons"
           >
@@ -318,7 +318,7 @@ const Hero = () => {
           <HeroStats
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
             role="group"
             aria-label="Key statistics and benefits"
           >

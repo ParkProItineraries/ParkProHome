@@ -380,14 +380,14 @@ const FAQ = () => {
           <HeroTitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             {copy.pages.faq.h1}
           </HeroTitle>
           <HeroSubtitle
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             {copy.pages.faq.sub}
           </HeroSubtitle>
@@ -400,7 +400,7 @@ const FAQ = () => {
           <SectionHeading
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Common Questions
@@ -444,7 +444,7 @@ const FAQ = () => {
           <CTATitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             {copy.pages.faq.bottomCta}
@@ -452,7 +452,7 @@ const FAQ = () => {
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
             The best way to see if ParkPro is right for you is to book a demo — we'll walk you through a live workflow and answer all your questions.
@@ -461,7 +461,7 @@ const FAQ = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <Button

@@ -1,296 +1,219 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Shield, Users, Star, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const TestimonialsWrapper = styled.section`
-  padding: ${({ theme }) => theme.spacing['3xl']} 0;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors['gray-200']} 0%, ${({ theme }) => theme.colors['gray-100']} 100%);
+const PactSection = styled.section`
+  padding: 140px 0;
+  background: #FAFAFA;
+  position: relative;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 80px 0;
+  }
+`;
+
+const PactInner = styled.div`
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+`;
+
+const PactCard = styled(motion.div)`
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #EAEAEA;
+  padding: 64px 56px;
+  text-align: center;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #F5C249 0%, #F8D86B 100%);
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing['2xl']} 0;
+    padding: 40px 24px;
   }
 `;
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.spacing.lg};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 0 ${({ theme }) => theme.spacing.md};
-  }
-
-  @media (max-width: 475px) {
-    padding: 0 ${({ theme }) => theme.spacing.sm};
-  }
+const PactEyebrow = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  color: #E9B029;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 20px;
 `;
 
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
-`;
-
-const Badge = styled.div`
-  background: rgba(245, 194, 73, 0.1);
-  color: ${({ theme }) => theme.colors.teal};
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.radius.full};
-  display: inline-block;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-  border: 1px solid rgba(245, 194, 73, 0.3);
-`;
-
-const Title = styled.h2`
-  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
+const PactHeadline = styled.h2`
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 700;
+  color: #0B0B0C;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
   font-family: ${({ theme }) => theme.typography.fontHeading};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  }
 `;
 
-const Subtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
+const PactBody = styled.p`
+  font-size: 17px;
+  line-height: 1.65;
+  color: #4B5563;
+  max-width: 620px;
+  margin: 0 auto 48px;
 `;
 
-const BenefitsGrid = styled.div`
+const PactTerms = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-top: ${({ theme }) => theme.spacing.xl};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 32px;
+  align-items: start;
+  text-align: left;
+  margin: 0 auto 48px;
+  max-width: 760px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+    max-width: 360px;
   }
 `;
 
-const BenefitCard = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  padding: ${({ theme }) => theme.spacing.xl};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-  border: 1px solid ${({ theme }) => theme.colors['gray-200']};
-  border-top: 3px solid transparent;
-  border-image: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}, ${({ theme }) => theme.colors['teal-light']}) 1;
-  border-image-slice: 1 1 0 1;
-  position: relative;
+const PactTerm = styled.div`
+  min-width: 0;
+`;
+
+const PactTermDivider = styled.span`
+  width: 1px;
+  height: 56px;
+  background: #E5E7EB;
+  align-self: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) { display: none; }
+`;
+
+const PactTermLabel = styled.div`
+  font-size: 13px;
+  font-weight: 600;
+  color: #0B0B0C;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+`;
+
+const PactTermDesc = styled.div`
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6B7280;
+`;
+
+const PactCTA = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  transition: ${({ theme }) => theme.transitions.normal};
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows.md};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing.lg};
-  }
-
-  @media (max-width: 475px) {
-    padding: ${({ theme }) => theme.spacing.md};
-  }
-`;
-
-const IconWrapper = styled.div`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.teal}20, ${({ theme }) => theme.colors['gray-200']});
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing.md};
-
-  svg {
-    color: ${({ theme }) => theme.colors.teal};
-  }
+  gap: 14px;
 `;
 
-const BenefitTitle = styled.h3`
-  font-size: ${({ theme }) => theme.typography.sizes.lg};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-`;
-
-const BenefitDescription = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  line-height: ${({ theme }) => theme.typography.lineHeights.relaxed};
-  flex: 1;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.sm};
-  }
-`;
-
-const CTAWrapper = styled.div`
-  text-align: center;
-  margin-top: ${({ theme }) => theme.spacing['2xl']};
-`;
-
-const CTAButton = styled(Link)`
+const PactButton = styled(Link)`
   display: inline-flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  background: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.typography.sizes.base};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xl};
-  border-radius: ${({ theme }) => theme.radius.md};
+  gap: 10px;
+  background: #0B0B0C;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 12px;
   text-decoration: none;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  transition: ${({ theme }) => theme.transitions.normal};
+  transition: all 180ms ease;
+  letter-spacing: -0.01em;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.shadows.lg};
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
   }
+
+  svg { transition: transform 180ms ease; }
+  &:hover svg { transform: translateX(2px); }
 `;
 
-const MutedText = styled.p`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors['gray-500']};
-  margin-top: ${({ theme }) => theme.spacing.md};
-`;
-
-const StatsBar = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.xl};
-  margin-top: ${({ theme }) => theme.spacing['2xl']};
-  padding: ${({ theme }) => theme.spacing.lg};
-  background: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.md};
-    text-align: center;
-  }
-`;
-
-const Stat = styled.div`
-  text-align: center;
-`;
-
-const StatNumber = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.bold};
-  color: ${({ theme }) => theme.colors.black};
-  font-family: ${({ theme }) => theme.typography.fontHeading};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  line-height: ${({ theme }) => theme.typography.lineHeights.tight};
-`;
-
-const StatLabel = styled.div`
-  font-size: ${({ theme }) => theme.typography.sizes.xs};
-  color: ${({ theme }) => theme.colors['gray-600']};
-  font-weight: ${({ theme }) => theme.typography.weights.medium};
+const PactNote = styled.div`
+  font-size: 13px;
+  color: #9CA3AF;
+  letter-spacing: 0.01em;
 `;
 
 const Testimonials = () => {
-  const benefits = [
+  const terms = [
     {
-      icon: <Shield size={24} />,
-      title: "Lifetime Founding Pricing",
-      description: "Your founding rate is locked permanently. As we add features and raise prices for new customers, you stay at your original tier."
+      label: "Lifetime founding pricing",
+      desc: "Your tier price is locked permanently — even when public pricing rises.",
     },
     {
-      icon: <Users size={24} />,
-      title: "Direct Line to the Team",
-      description: "Your feedback goes directly to the founder. Founding partners shape what ships next — not customer support, not a roadmap portal."
+      label: "Direct line to the founder",
+      desc: "Your feedback shapes what ships next. No support tickets, no roadmap portals.",
     },
     {
-      icon: <Star size={24} />,
-      title: "White-Glove Onboarding",
-      description: "A dedicated onboarding session tailored to your agency's current workflow. We migrate your process with you, not a generic checklist."
-    }
-  ];
-
-  const stats = [
-    { number: "8 hrs → 15 min", label: "Per Itinerary" },
-    { number: "Every Trip", label: "One Workspace" },
-    { number: "Zero", label: "Spreadsheets" }
+      label: "White-glove onboarding",
+      desc: "We migrate your existing workflow into ParkPro with you, not a checklist.",
+    },
   ];
 
   return (
-    <TestimonialsWrapper>
-      <Container>
-        <SectionHeader>
-          <Badge>Now Accepting Partners</Badge>
-          <Title>Become a Founding Partner</Title>
-          <Subtitle>
-            We're selecting a limited group of Disney-specialist agents to help shape ParkPro before public launch. In exchange for your feedback during the founding period, you get lifetime pricing locked at your founding tier, direct access to the team, and priority support — permanently.
-          </Subtitle>
-        </SectionHeader>
+    <PactSection>
+      <PactInner>
+        <PactCard
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          viewport={{ once: true, margin: "-80px" }}
+        >
+          <PactEyebrow>Now accepting founding partners</PactEyebrow>
+          <PactHeadline>A pact, not a pitch.</PactHeadline>
+          <PactBody>
+            We're selecting a small group of Disney-specialist agents to help shape ParkPro before
+            public launch. In exchange for your honest feedback during the founding period, you get
+            permanent founding pricing, a direct line to the team, and onboarding tailored to how
+            your agency actually works.
+          </PactBody>
 
-        <BenefitsGrid>
-          {benefits.map((benefit, index) => (
-            <BenefitCard
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-              viewport={{ once: true, margin: "-80px" }}
-            >
-              <IconWrapper>
-                {benefit.icon}
-              </IconWrapper>
-              <BenefitTitle>{benefit.title}</BenefitTitle>
-              <BenefitDescription>{benefit.description}</BenefitDescription>
-            </BenefitCard>
-          ))}
-        </BenefitsGrid>
+          <PactTerms>
+            <PactTerm>
+              <PactTermLabel>{terms[0].label}</PactTermLabel>
+              <PactTermDesc>{terms[0].desc}</PactTermDesc>
+            </PactTerm>
+            <PactTermDivider />
+            <PactTerm>
+              <PactTermLabel>{terms[1].label}</PactTermLabel>
+              <PactTermDesc>{terms[1].desc}</PactTermDesc>
+            </PactTerm>
+            <PactTermDivider />
+            <PactTerm>
+              <PactTermLabel>{terms[2].label}</PactTermLabel>
+              <PactTermDesc>{terms[2].desc}</PactTermDesc>
+            </PactTerm>
+          </PactTerms>
 
-        <CTAWrapper>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <CTAButton to="/demo">
-              Book a Demo
-              <ArrowRight size={18} />
-            </CTAButton>
-            <MutedText>Limited spots available. No commitment required to explore.</MutedText>
-          </motion.div>
-        </CTAWrapper>
-
-        {/* Stats Bar */}
-        <StatsBar>
-          {stats.map((stat, index) => (
-            <Stat key={index}>
-              <StatNumber>{stat.number}</StatNumber>
-              <StatLabel>{stat.label}</StatLabel>
-            </Stat>
-          ))}
-        </StatsBar>
-      </Container>
-    </TestimonialsWrapper>
+          <PactCTA>
+            <PactButton to="/request-access">
+              Apply to be a founding partner <ArrowRight size={16} />
+            </PactButton>
+            <PactNote>Limited spots. No commitment required to apply.</PactNote>
+          </PactCTA>
+        </PactCard>
+      </PactInner>
+    </PactSection>
   );
 };
 

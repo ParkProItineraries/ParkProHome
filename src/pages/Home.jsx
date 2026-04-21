@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import theme from "../styles/theme";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -44,20 +45,20 @@ const HomeWrapper = styled.div`
 `;
 
 /* ============================================================
-   HERO — Dark, keeps current premium feel
+   HERO — Superhuman-tier composition: H1 + sub + 1 CTA + supporting line
    ============================================================ */
 const HeroSection = styled.section`
-  min-height: 78vh;
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: ${({ theme }) => theme.spacing['3xl']} 0 ${({ theme }) => theme.spacing.xl};
+  padding: 120px 0 80px;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(245, 194, 73, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(245, 194, 73, 0.04) 0%, transparent 60%),
-    linear-gradient(180deg, #0B0B0C 0%, #050506 100%);
+    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(245, 194, 73, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 50% 100%, rgba(245, 194, 73, 0.03) 0%, transparent 60%),
+    linear-gradient(180deg, #0A0A0C 0%, #050506 100%);
   position: relative;
   overflow: hidden;
 
@@ -65,9 +66,7 @@ const HeroSection = styled.section`
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.025'%3E%3Ccircle cx='60' cy='60' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 1;
+    background: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.02'%3E%3Ccircle cx='80' cy='80' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
   }
 
@@ -75,85 +74,99 @@ const HeroSection = styled.section`
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 0%, transparent 85%, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(180deg, transparent 0%, transparent 80%, rgba(0, 0, 0, 0.4) 100%);
     pointer-events: none;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing.xl} 0;
-    min-height: auto;
+    padding: 80px 0 60px;
+    min-height: 72vh;
   }
 `;
 
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
   ${flexColumnCenter}
   padding: 0 ${({ theme }) => theme.spacing.md};
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(245, 194, 73, 0.12);
+  background: rgba(245, 194, 73, 0.08);
   color: #F5C249;
-  font-size: ${({ theme }) => theme.typography.sizes.sm};
-  font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.radius.full};
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  border: 1px solid rgba(245, 194, 73, 0.3);
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: ${({ theme }) => theme.typography.sizes.xs};
-    padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.md};
-  }
+  gap: 8px;
+  margin: 0 0 32px;
+  border: 1px solid rgba(245, 194, 73, 0.2);
 `;
 
 const HeroTitle = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['7xl']};
-  font-weight: ${({ theme }) => theme.typography.weights.extrabold};
-  color: ${({ theme }) => theme.colors.white};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  line-height: 1.05;
+  font-size: clamp(40px, 7.5vw, 104px);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 24px;
+  line-height: 0.98;
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  letter-spacing: -0.035em;
+  letter-spacing: -0.045em;
+  max-width: 1100px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes['4xl']};
-    letter-spacing: -0.025em;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+  em {
+    font-style: normal;
+    background: linear-gradient(135deg, #F5C249 0%, #F8D86B 50%, #F5C249 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 `;
 
 const HeroSubtitle = styled(motion.p)`
-  font-size: ${({ theme }) => theme.typography.sizes.xl};
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-  line-height: 1.6;
-  max-width: 620px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.sizes.base};
-  }
+  font-size: clamp(16px, 1.3vw, 20px);
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 40px;
+  line-height: 1.5;
+  max-width: 640px;
+  font-weight: 400;
 `;
 
 const HeroCTAs = styled(motion.div)`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
+  margin-bottom: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
     width: 100%;
-    max-width: 340px;
+    max-width: 320px;
+  }
+`;
+
+const HeroSupportingText = styled(motion.p)`
+  margin: 20px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 150ms ease;
+
+    &:hover {
+      color: #F5C249;
+      border-color: #F5C249;
+    }
   }
 `;
 
@@ -193,6 +206,91 @@ const StatLabel = styled.div`
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   text-transform: uppercase;
   letter-spacing: 0.05em;
+`;
+
+/* ============================================================
+   PROBLEM STATEMENT — anchors the reader in the pain
+   ============================================================ */
+const ProblemSection = styled.section`
+  padding: 140px 0;
+  background: linear-gradient(180deg, #050506 0%, #0A0A0C 100%);
+  color: #FFFFFF;
+  position: relative;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 80px 0;
+  }
+`;
+
+const ProblemStatement = styled(motion.h2)`
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto 32px;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+
+  em {
+    font-style: normal;
+    background: linear-gradient(135deg, #F5C249 0%, #F8D86B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+`;
+
+const ProblemBody = styled(motion.p)`
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const MetricsRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 72px auto 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+`;
+
+const MetricItem = styled(motion.div)`
+  text-align: center;
+  padding: 32px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+`;
+
+const MetricValue = styled.div`
+  font-size: 36px;
+  font-weight: 700;
+  color: #F5C249;
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+`;
+
+const MetricLabel = styled.div`
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 `;
 
 /* ============================================================
@@ -253,7 +351,136 @@ const SectionHeader = styled.div`
 `;
 
 /* ============================================================
-   FEATURE CARDS — Clean, bordered, corporate
+   FEATURE ROWS — alternating image+text scaffold (Superhuman pattern)
+   ============================================================ */
+const FeatureRowSection = styled.section`
+  padding: 120px 0;
+  background: #FFFFFF;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 72px 0;
+  }
+`;
+
+const FeatureRow = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 120px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:nth-child(even) {
+    direction: rtl;
+    > * { direction: ltr; }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 72px;
+
+    &:nth-child(even) { direction: ltr; }
+  }
+`;
+
+const FeatureCopy = styled.div`
+  max-width: 480px;
+`;
+
+const FeatureEyebrow = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  color: #E9B029;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+`;
+
+const FeatureRowTitle = styled.h3`
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  color: #0B0B0C;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  font-family: ${({ theme }) => theme.typography.fontHeading};
+`;
+
+const FeatureRowDesc = styled.p`
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4B5563;
+  margin: 0 0 24px;
+`;
+
+const FeatureBullets = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const FeatureBullet = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #374151;
+  margin-bottom: 12px;
+
+  svg {
+    flex-shrink: 0;
+    color: #F5C249;
+    margin-top: 3px;
+  }
+
+  &:last-child { margin-bottom: 0; }
+`;
+
+const FeatureVisual = styled.div`
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+  border: 1px solid #E5E7EB;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Placeholder pattern — replaced with real product screenshots */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px dashed rgba(107, 114, 128, 0.2);
+    border-radius: 12px;
+  }
+`;
+
+const FeatureVisualPlaceholder = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #9CA3AF;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 1;
+
+  svg { width: 32px; height: 32px; }
+`;
+
+/* ============================================================
+   FEATURE CARDS — Clean, bordered, corporate (legacy, may be unused)
    ============================================================ */
 const FeatureGrid = styled.div`
   display: grid;
@@ -464,16 +691,28 @@ const DiffDesc = styled.p`
    FINAL CTA — Dark, full contrast
    ============================================================ */
 const CTASection = styled.section`
-  padding: 96px 0;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.black} 0%,
-    ${({ theme }) => theme.colors['gray-900']} 100%
-  );
+  padding: 160px 0;
+  background:
+    radial-gradient(ellipse at center top, rgba(245, 194, 73, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, #050506 0%, #0B0B0C 100%);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(245, 194, 73, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 64px 0;
+    padding: 96px 0;
   }
 `;
 
@@ -570,6 +809,48 @@ const Home = () => {
     { value: "8 hrs → 15 min", label: "Planning time per itinerary" },
     { value: "Every trip", label: "Built in one workspace" },
     { value: "Zero", label: "Spreadsheets to maintain" },
+  ];
+
+  const featureRows = [
+    {
+      eyebrow: "Intake → Itinerary",
+      title: "From client form to full itinerary in 15 minutes",
+      description:
+        "Send your client a short intake form. ParkPro structures their answers into a complete, day-by-day Disney plan — park hours, dining, transportation, and timing logic baked in.",
+      bullets: [
+        "Branded intake form in your agency colors",
+        "Real park hours and current operating logic",
+        "Dining, shows, and transportation built into every day",
+        "Editable output — add your touches before delivery",
+      ],
+      visualLabel: "Itinerary Builder",
+    },
+    {
+      eyebrow: "Client Workspace",
+      title: "Every client, trip, and itinerary in one place",
+      description:
+        "Stop switching between spreadsheets, email threads, and sticky notes. ParkPro centralizes your entire client relationship around their trips — past, current, and upcoming.",
+      bullets: [
+        "Unified client profiles with trip history",
+        "Document and note storage per trip",
+        "Lead and opportunity tracking",
+        "Commission visibility at a glance",
+      ],
+      visualLabel: "Client Dashboard",
+    },
+    {
+      eyebrow: "Agency Scale",
+      title: "Multiply your agency without multiplying headcount",
+      description:
+        "If each of your agents collapses Disney planning from 8 hours to 15 minutes, your agency handles more bookings without hiring — or burning out existing staff.",
+      bullets: [
+        "Per-agent usage tracking and permissions",
+        "Agency-wide itinerary branding",
+        "Centralized billing and seat management",
+        "Admin oversight for consistency and quality",
+      ],
+      visualLabel: "Agency View",
+    },
   ];
 
   const howItWorks = [
@@ -683,9 +964,8 @@ const Home = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.08, ease: [0.2, 0.8, 0.2, 1] }}
-              >
-                {copy.hero.h1}
-              </HeroTitle>
+                dangerouslySetInnerHTML={{ __html: copy.hero.h1 }}
+              />
 
               <HeroSubtitle
                 initial={{ opacity: 0, y: 16 }}
@@ -703,61 +983,103 @@ const Home = () => {
                 <Button to="/demo" variant="primary" size="lg">
                   {copy.ctas.start} <ArrowRight size={18} />
                 </Button>
-                <Button to="/pricing" variant="secondary" size="lg">
-                  {copy.ctas.pricing}
-                </Button>
               </HeroCTAs>
 
-              <StatsRow
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.32, ease: [0.2, 0.8, 0.2, 1] }}
+              <HeroSupportingText
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
               >
-                {stats.map((s, i) => (
-                  <StatPill key={i}>
-                    <StatValue>{s.value}</StatValue>
-                    <StatLabel>{s.label}</StatLabel>
-                  </StatPill>
-                ))}
-              </StatsRow>
+                Or <Link to="/pricing">see pricing</Link> &middot; Built for Disney-specialist agents
+              </HeroSupportingText>
             </HeroContent>
           </Container>
         </HeroSection>
 
-        {/* ---- TRUST BAR ---- */}
-        <TrustBar variant="light" showSocialProof={true} />
-
-        {/* ---- FEATURES (white) ---- */}
-        <LightSection>
+        {/* ---- PROBLEM STATEMENT ---- */}
+        <ProblemSection>
           <Container>
-            <SectionHeader>
-              <SectionLabel {...fadeUp}>Features</SectionLabel>
-              <SectionHeading {...fadeUp}>
-                Why Travel Agents Choose ParkPro
-              </SectionHeading>
-              <SectionSub {...fadeUp}>
-                Built for agents handling complex park and resort trips who want
-                their commissions, workflow, and time to finally make sense together.
-              </SectionSub>
-            </SectionHeader>
+            <ProblemStatement
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              Every Disney trip eats a <em>full day of planning</em>. And another. And another.
+            </ProblemStatement>
+            <ProblemBody
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              You didn't become a travel agent to stare at spreadsheets, cross-reference park hours,
+              and rebuild the same Disney itinerary from scratch for every client. The process is
+              broken — not you.
+            </ProblemBody>
 
-            <FeatureGrid>
-              {features.map((f, i) => (
-                <FeatureCard
+            <MetricsRow>
+              {stats.map((s, i) => (
+                <MetricItem
                   key={i}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
                   viewport={{ once: true, margin: "-80px" }}
                 >
-                  <FeatureIcon>{f.icon}</FeatureIcon>
-                  <FeatureTitle>{f.title}</FeatureTitle>
-                  <FeatureDesc>{f.description}</FeatureDesc>
-                </FeatureCard>
+                  <MetricValue>{s.value}</MetricValue>
+                  <MetricLabel>{s.label}</MetricLabel>
+                </MetricItem>
               ))}
-            </FeatureGrid>
+            </MetricsRow>
           </Container>
-        </LightSection>
+        </ProblemSection>
+
+        {/* ---- TRUST BAR (minimal) ---- */}
+        <TrustBar variant="minimal" />
+
+        {/* ---- FEATURE ROWS (alternating image + text) ---- */}
+        <FeatureRowSection>
+          <Container>
+            <SectionHeader style={{ marginBottom: 80 }}>
+              <SectionLabel {...fadeUp}>Built for Disney specialists</SectionLabel>
+              <SectionHeading {...fadeUp}>
+                Three things ParkPro does that no spreadsheet can
+              </SectionHeading>
+            </SectionHeader>
+
+            {featureRows.map((row, i) => (
+              <FeatureRow
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, ease: [0.2, 0.8, 0.2, 1] }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <FeatureCopy>
+                  <FeatureEyebrow>{row.eyebrow}</FeatureEyebrow>
+                  <FeatureRowTitle>{row.title}</FeatureRowTitle>
+                  <FeatureRowDesc>{row.description}</FeatureRowDesc>
+                  <FeatureBullets>
+                    {row.bullets.map((b, bi) => (
+                      <FeatureBullet key={bi}>
+                        <CheckCircle2 size={18} />
+                        <span>{b}</span>
+                      </FeatureBullet>
+                    ))}
+                  </FeatureBullets>
+                </FeatureCopy>
+
+                <FeatureVisual>
+                  <FeatureVisualPlaceholder>
+                    <Layers />
+                    <span>{row.visualLabel}</span>
+                  </FeatureVisualPlaceholder>
+                </FeatureVisual>
+              </FeatureRow>
+            ))}
+          </Container>
+        </FeatureRowSection>
 
         {/* ---- HOW IT WORKS (alt gray) ---- */}
         <LightSection $alt>

@@ -457,7 +457,7 @@ const Agencies = () => {
             <SectionTitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               The Power of Scale
@@ -465,7 +465,7 @@ const Agencies = () => {
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               When every agent on your team saves hours per client, the math adds up fast.
@@ -498,7 +498,7 @@ const Agencies = () => {
             <SectionTitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Built for Teams, Not Just Individuals
@@ -506,7 +506,7 @@ const Agencies = () => {
             <SectionSubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Everything your agents need to plan faster, plus the admin tools you need to run a tight operation.
@@ -541,7 +541,7 @@ const Agencies = () => {
             <CTATitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
               Ready to scale your agency?
@@ -549,7 +549,7 @@ const Agencies = () => {
             <CTASubtitle
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
               Book a demo and we'll walk your team through a live planning workflow using your agency's real Disney scenarios.
@@ -557,7 +557,7 @@ const Agencies = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <Button variant="primary" size="lg" to="/demo">

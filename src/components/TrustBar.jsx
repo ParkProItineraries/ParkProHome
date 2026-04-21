@@ -143,6 +143,49 @@ const TrustSubtext = styled.div`
   };
 `;
 
+/* Minimal variant — single quiet line of text, Stripe/Linear style */
+const MinimalTrustWrapper = styled.div`
+  background: #FFFFFF;
+  border-top: 1px solid #F3F4F6;
+  border-bottom: 1px solid #F3F4F6;
+  padding: 28px 0;
+`;
+
+const MinimalTrustInner = styled.div`
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+`;
+
+const MinimalTrustItem = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  svg {
+    color: #9CA3AF;
+    flex-shrink: 0;
+  }
+`;
+
+const MinimalDivider = styled.span`
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D1D5DB;
+
+  @media (max-width: 640px) { display: none; }
+`;
+
 const SocialProofText = styled.div`
   text-align: center;
   font-size: ${({ theme }) => theme.typography.sizes.base};
@@ -165,6 +208,22 @@ const SocialProofText = styled.div`
 `;
 
 const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
+  if (variant === 'minimal') {
+    return (
+      <MinimalTrustWrapper>
+        <MinimalTrustInner>
+          <MinimalTrustItem><Lock size={14} /> SSL encrypted</MinimalTrustItem>
+          <MinimalDivider />
+          <MinimalTrustItem><Server size={14} /> AWS infrastructure</MinimalTrustItem>
+          <MinimalDivider />
+          <MinimalTrustItem><CreditCard size={14} /> Stripe payments</MinimalTrustItem>
+          <MinimalDivider />
+          <MinimalTrustItem><Shield size={14} /> Built for travel agents</MinimalTrustItem>
+        </MinimalTrustInner>
+      </MinimalTrustWrapper>
+    );
+  }
+
   const trustItems = [
     {
       icon: <Lock size={20} />,

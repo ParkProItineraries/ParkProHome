@@ -510,14 +510,14 @@ const DisneyPlanningSoftware = () => {
             <HeroTitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
             >
               Disney Planning Software Built for Travel Agents
             </HeroTitle>
             <HeroSubtitle
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               ParkPro automates itinerary generation for Disney World, Disneyland, Universal, and cruise destinations.
               Turn complex planning into minutes of work. The Salesforce of the travel industry.
@@ -526,7 +526,7 @@ const DisneyPlanningSoftware = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
               <Button
                 to="/demo"
@@ -559,7 +559,7 @@ const DisneyPlanningSoftware = () => {
           <SectionHeading
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             The Foundation of Modern Travel Agency Operations
@@ -569,7 +569,7 @@ const DisneyPlanningSoftware = () => {
             as={motion.p}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
             Disney planning software automates the creation of personalized, day-by-day itineraries for families visiting Walt Disney World, Disneyland, Universal Studios, and cruise destinations. Instead of building itineraries manually in spreadsheets, Travel Agents input client preferences—party size, dates, budget, interests—and the software instantly generates a structured, sequenced plan.
@@ -579,7 +579,7 @@ const DisneyPlanningSoftware = () => {
             as={motion.p}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
             For Travel Agents, this means collapsing Disney planning from 8 hours to 15 minutes, delivering professional outputs that impress, and scaling your business without hiring. ParkPro's rule-based engine applies proven logic: park hours, attraction sequences, dining timing, and reservation management—no guessing, no fabricated data, no AI hallucinations. Just reliable, enterprise-grade tools built for professionals.
@@ -593,7 +593,7 @@ const DisneyPlanningSoftware = () => {
           <SectionHeading
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Three Steps from Intake to Delivery
@@ -605,7 +605,7 @@ const DisneyPlanningSoftware = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 <ProcessNumber>{step.number}</ProcessNumber>
@@ -623,7 +623,7 @@ const DisneyPlanningSoftware = () => {
           <SectionHeading
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Enterprise-Grade Tools, Agent-Friendly Workflow
@@ -635,7 +635,7 @@ const DisneyPlanningSoftware = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 <FeatureIconWrapper>{feature.icon}</FeatureIconWrapper>
@@ -653,7 +653,7 @@ const DisneyPlanningSoftware = () => {
           <SectionHeading
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             The Honest Comparison
@@ -667,7 +667,7 @@ const DisneyPlanningSoftware = () => {
                 as={motion.div}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 <ComparisonTitle>{comparison.title}</ComparisonTitle>
@@ -692,7 +692,7 @@ const DisneyPlanningSoftware = () => {
           <CTATitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             Ready to Transform Your Planning Workflow?
@@ -700,7 +700,7 @@ const DisneyPlanningSoftware = () => {
           <CTASubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
             See ParkPro in action. Book a 20-minute demo and we'll walk you through a live itinerary using your agency's scenarios.
@@ -709,7 +709,7 @@ const DisneyPlanningSoftware = () => {
           <CTAButtonWrapper
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <Button

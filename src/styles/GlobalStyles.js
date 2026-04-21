@@ -90,6 +90,16 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
+    /* Premium type rendering — Stripe/Linear/Superhuman style */
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01', 'ss03';
+    font-variant-ligatures: common-ligatures;
+  }
+
+  /* Tabular numerals on prices, metrics, and stats */
+  .tabular-nums,
+  [data-tabular-nums] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' on, 'lnum' on;
   }
 
   /* Typography */

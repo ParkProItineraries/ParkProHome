@@ -37,7 +37,7 @@ export const copy = {
 
   // Hero Section
   hero: {
-    h1: "Disney itineraries, built in 15 minutes instead of 8 hours.",
+    h1: "Disney itineraries, built in <em>15 minutes</em> instead of <em>8 hours</em>.",
     sub: "ParkPro turns your client intake forms into structured, day-by-day Disney itineraries in minutes — so you stop rebuilding every trip from scratch and start running your business like the professional you are.",
     ctaPrimary: "Get a demo",
     ctaSecondary: "See pricing",
@@ -170,7 +170,7 @@ export const copy = {
     },
     
     pricing: {
-      h1: "Simple, transparent pricing",
+      h1: "Pricing that scales with your agency",
       sub: "Every plan is designed around one promise: take your Disney itinerary work from 8 hours to 15 minutes. Start with the plan that fits your current bookings and scale up as your agency grows.",
       faqIntro: "Common questions about pricing",
       bottomCta: "Still comparing tools? Book a 15-minute walkthrough.",
