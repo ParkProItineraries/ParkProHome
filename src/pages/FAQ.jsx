@@ -300,7 +300,7 @@ const FAQ = () => {
     },
     {
       question: "How long does it take to create an itinerary?",
-      answer: "Most agents create a complete multi-day itinerary in 15-30 minutes, compared to the 8-12 hours typically required for manual planning. The initial setup (client preferences, party details) takes about 5 minutes, then our system generates the base itinerary instantly. You'll spend another 10-20 minutes customizing and adding personal touches before presenting it to your client."
+      answer: "Most agents create a complete multi-day itinerary in 15 minutes, compared to the 8 hours typically required for manual planning. The initial setup (client preferences, party details) takes about 5 minutes, then our system generates the base itinerary instantly. You'll spend another 10 minutes customizing and adding personal touches before presenting it to your client."
     },
     {
       question: "Can I customize itineraries for different client needs?",

@@ -11,11 +11,12 @@ export const designTokens = {
     'gold-muted': '#F8D86B',
     'gold-dark': '#E9B029',
     
-    // Accent Colors (as requested)
-    teal: '#3B82F6',
-    'teal-muted': '#2563EB',
-    purple: '#3B82F6',
-    'purple-muted': '#2563EB',
+    // Accent Colors — marketing site uses gold as single accent.
+    // teal/purple tokens preserved as legacy aliases pointing to gold.
+    teal: '#F5C249',
+    'teal-muted': '#E9B029',
+    purple: '#F5C249',
+    'purple-muted': '#E9B029',
     
     // Gray Scale - Enhanced
     'gray-50': '#F9FAFB',
@@ -49,16 +50,16 @@ export const designTokens = {
     'text-tertiary': '#6B7280',
     'text-light': '#FFFFFF',
     'text-gold': '#F5C249',
-    'text-teal': '#3B82F6',
-    'text-purple': '#3B82F6',
+    'text-teal': '#F5C249',
+    'text-purple': '#F5C249',
     
     // Border Colors
     'border-light': '#E5E7EB',
     'border-medium': '#D1D5DB',
     'border-dark': '#9CA3AF',
     'border-gold': '#F5C249',
-    'border-teal': '#3B82F6',
-    'border-purple': '#3B82F6',
+    'border-teal': '#F5C249',
+    'border-purple': '#F5C249',
   },
   
   // Typography System
@@ -185,10 +186,10 @@ export const designTokens = {
     // Brand-specific shadows
     gold: '0 8px 25px rgba(201, 162, 39, 0.3)',
     'gold-lg': '0 12px 35px rgba(201, 162, 39, 0.4)',
-    teal: '0 8px 25px rgba(59, 130, 246, 0.3)',
-    'teal-lg': '0 12px 35px rgba(59, 130, 246, 0.4)',
-    purple: '0 8px 25px rgba(59, 130, 246, 0.3)',
-    'purple-lg': '0 12px 35px rgba(59, 130, 246, 0.4)',
+    teal: '0 8px 25px rgba(245, 194, 73, 0.3)',
+    'teal-lg': '0 12px 35px rgba(245, 194, 73, 0.4)',
+    purple: '0 8px 25px rgba(245, 194, 73, 0.3)',
+    'purple-lg': '0 12px 35px rgba(245, 194, 73, 0.4)',
   },
   
   // Container Widths
@@ -305,13 +306,13 @@ export const designTokens = {
           border: 'none',
         },
         teal: {
-          background: '#3B82F6',
-          color: '#FFFFFF',
+          background: '#F5C249',
+          color: '#0B0B0C',
           border: 'none',
         },
         purple: {
-          background: '#3B82F6',
-          color: '#FFFFFF',
+          background: '#F5C249',
+          color: '#0B0B0C',
           border: 'none',
         },
       },

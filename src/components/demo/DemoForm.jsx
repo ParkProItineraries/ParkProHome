@@ -41,7 +41,7 @@ const FormInput = styled.input`
   &:focus {
     outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(245, 194, 73, 0.1);
   }
 `;
 
@@ -57,7 +57,7 @@ const FormSelect = styled.select`
   &:focus {
     outline: none;
     border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(245, 194, 73, 0.1);
   }
 `;
 
@@ -77,7 +77,7 @@ const GenerateButton = styled.button`
   &:hover {
     background: linear-gradient(135deg, #2563eb, #3b82f6);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 25px rgba(245, 194, 73, 0.3);
   }
 
   &:disabled {

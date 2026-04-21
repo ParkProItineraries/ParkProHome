@@ -96,8 +96,8 @@ const IconWrapper = styled.div`
   justify-content: center;
   background: ${({ $variant }) =>
     $variant === 'dark'
-      ? 'rgba(59, 130, 246, 0.15)'
-      : 'rgba(59, 130, 246, 0.08)'
+      ? 'rgba(245, 194, 73, 0.15)'
+      : 'rgba(245, 194, 73, 0.08)'
   };
   border-radius: 50%;
   flex-shrink: 0;

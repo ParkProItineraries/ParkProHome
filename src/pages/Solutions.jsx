@@ -321,7 +321,7 @@ const Solutions = () => {
         "Email support from the ParkPro team when you get stuck or need ideas",
       ],
       stats: [
-        { number: "5–10+ hrs", label: "Planning time saved per trip" },
+        { number: "8 hrs → 15 min", label: "Planning time per itinerary" },
         { number: "More trips", label: "Handled per month, same hours" },
       ],
       cta: "Start with Solo",

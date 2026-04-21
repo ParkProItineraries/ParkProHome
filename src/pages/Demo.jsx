@@ -34,7 +34,7 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
   }
 
@@ -55,15 +55,15 @@ const HeroContent = styled.div`
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(59, 130, 246, 0.1);
-  color: #3B82F6;
+  background: rgba(245, 194, 73, 0.1);
+  color: #F5C249;
   font-size: 13px;
   font-weight: 600;
   padding: 8px 16px;
   border-radius: 9999px;
   display: inline-block;
   margin-bottom: 24px;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(245, 194, 73, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 `;
@@ -151,7 +151,7 @@ const WalkthroughSection = styled.section`
 const SectionLabel = styled.div`
   font-size: 13px;
   font-weight: 600;
-  color: #3B82F6;
+  color: #F5C249;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-align: center;
@@ -240,7 +240,7 @@ const StepNavProgress = styled(motion.div)`
   left: 20px;
   top: 20px;
   width: 2px;
-  background: #3B82F6;
+  background: #F5C249;
   border-radius: 1px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -265,8 +265,8 @@ const StepNavItem = styled.button`
     flex-shrink: 0;
     padding: 12px 16px;
     border-radius: 10px;
-    background: ${({ $active }) => $active ? 'rgba(59, 130, 246, 0.06)' : '#F9FAFB'};
-    border: 1px solid ${({ $active }) => $active ? 'rgba(59, 130, 246, 0.2)' : '#E5E7EB'};
+    background: ${({ $active }) => $active ? 'rgba(245, 194, 73, 0.06)' : '#F9FAFB'};
+    border: 1px solid ${({ $active }) => $active ? 'rgba(245, 194, 73, 0.2)' : '#E5E7EB'};
     gap: 12px;
   }
 `;
@@ -283,14 +283,14 @@ const StepNavDot = styled.div`
   font-weight: 700;
   transition: all 0.3s ease;
   background: ${({ $active, $completed }) =>
-    $active ? '#3B82F6' :
-    $completed ? '#3B82F6' :
+    $active ? '#F5C249' :
+    $completed ? '#F5C249' :
     '#F3F4F6'};
   color: ${({ $active, $completed }) =>
     $active || $completed ? '#FFFFFF' : '#9CA3AF'};
   border: 2px solid ${({ $active, $completed }) =>
-    $active ? '#3B82F6' :
-    $completed ? '#3B82F6' :
+    $active ? '#F5C249' :
+    $completed ? '#F5C249' :
     '#E5E7EB'};
 
   svg {
@@ -308,7 +308,7 @@ const StepNavLabel = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: ${({ $active }) => $active ? '#3B82F6' : '#9CA3AF'};
+  color: ${({ $active }) => $active ? '#F5C249' : '#9CA3AF'};
   margin-bottom: 4px;
   transition: color 0.3s ease;
 `;
@@ -356,11 +356,11 @@ const MockupIcon = styled.div`
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #3B82F6;
+  color: #F5C249;
   margin-bottom: 16px;
 
   svg {
@@ -422,7 +422,7 @@ const BulletCheck = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,7 +432,7 @@ const BulletCheck = styled.div`
   svg {
     width: 12px;
     height: 12px;
-    color: #3B82F6;
+    color: #F5C249;
   }
 `;
 
@@ -571,7 +571,7 @@ const Demo = () => {
   const progressHeight = `${(currentStep / (steps.length - 1)) * 100}%`;
 
   const heroStats = [
-    { number: "5–10+ hrs", label: "Saved per client" },
+    { number: "8 hrs → 15 min", label: "Per itinerary" },
     { number: "Minutes", label: "To build an itinerary" },
     { number: "4 Steps", label: "Intake to delivery" },
   ];
@@ -723,7 +723,7 @@ const Demo = () => {
               styles={{ height: '700px' }}
               pageSettings={{
                 backgroundColor: 'ffffff',
-                primaryColor: '3B82F6',
+                primaryColor: 'F5C249',
                 textColor: '0B0B0C',
                 hideLandingPageDetails: false,
                 hideEventTypeDetails: false,

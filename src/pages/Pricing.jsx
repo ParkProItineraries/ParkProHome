@@ -887,7 +887,7 @@ const Pricing = () => {
     {
       question: "How much time does ParkPro typically save per client?",
       answer:
-        "Most travel agents save 5–10+ hours per destination-specific trip compared to building itineraries by hand. What used to take 8–12 hours of research, planning, and formatting now takes roughly 15–60 minutes inside ParkPro.",
+        "Most travel agents go from 8 hours of manual itinerary work to 15 minutes inside ParkPro. What used to take an entire planning day becomes a 15-minute task.",
     },
     {
       question: "What's included in the Founding Member program?",
@@ -1169,7 +1169,7 @@ const Pricing = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            Join Travel Agents who are saving 5-10+ hours per trip. Request access to ParkPro today.
+            Join Travel Agents who collapse Disney itinerary work from 8 hours to 15 minutes. Request access to ParkPro today.
           </CTASubtitle>
         </Container>
       </CTASection>

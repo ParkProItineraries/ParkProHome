@@ -35,7 +35,7 @@ const SectionHeader = styled.div`
 `;
 
 const Badge = styled.div`
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(245, 194, 73, 0.1);
   color: ${({ theme }) => theme.colors.teal};
   font-size: ${({ theme }) => theme.typography.sizes.xs};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -43,7 +43,7 @@ const Badge = styled.div`
   border-radius: ${({ theme }) => theme.radius.full};
   display: inline-block;
   margin-bottom: ${({ theme }) => theme.spacing.md};
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(245, 194, 73, 0.3);
 `;
 
 const Title = styled.h2`
@@ -251,10 +251,10 @@ const Testimonials = () => {
           {benefits.map((benefit, index) => (
             <BenefitCard
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+              viewport={{ once: true, margin: "-80px" }}
             >
               <IconWrapper>
                 {benefit.icon}

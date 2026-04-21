@@ -14,23 +14,25 @@ export const tokens = {
     'gold-dark': '#E9B029',
     'gold-muted': 'rgba(245, 194, 73, 0.1)',
     
-    // Primary Accent - Blue (main accent color, matches ParkProUI)
-    blue: '#3B82F6',
-    'blue-light': '#60A5FA',
-    'blue-dark': '#2563EB',
-    'blue-muted': 'rgba(59, 130, 246, 0.1)',
+    // Primary Accent - Gold (marketing site uses gold as the single accent)
+    // NOTE: ParkProUI (the product) still uses blue. The marketing site intentionally
+    // diverges to keep the premium brand distinct from the in-product UI chrome.
+    blue: '#F5C249',
+    'blue-light': '#F8D86B',
+    'blue-dark': '#E9B029',
+    'blue-muted': 'rgba(245, 194, 73, 0.1)',
 
-    // Legacy alias
-    teal: '#3B82F6',
-    'teal-light': '#60A5FA',
-    'teal-dark': '#2563EB',
-    'teal-muted': 'rgba(59, 130, 246, 0.1)',
+    // Legacy alias — points to gold
+    teal: '#F5C249',
+    'teal-light': '#F8D86B',
+    'teal-dark': '#E9B029',
+    'teal-muted': 'rgba(245, 194, 73, 0.1)',
     
-    // Legacy alias - Purple (mapped to blue)
-    purple: '#3B82F6',
-    'purple-light': '#60A5FA',
-    'purple-dark': '#2563EB',
-    'purple-muted': 'rgba(59, 130, 246, 0.1)',
+    // Legacy alias - Purple — points to gold
+    purple: '#F5C249',
+    'purple-light': '#F8D86B',
+    'purple-dark': '#E9B029',
+    'purple-muted': 'rgba(245, 194, 73, 0.1)',
     
     // Gray Scale - Premium Neutrals
     'gray-50': '#F9FAFB',
@@ -164,10 +166,10 @@ export const tokens = {
     '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     
     // Premium Brand Shadows
-    teal: '0 8px 25px rgba(59, 130, 246, 0.25)',
-    'teal-lg': '0 12px 35px rgba(59, 130, 246, 0.3)',
-    purple: '0 8px 25px rgba(59, 130, 246, 0.25)',
-    'purple-lg': '0 12px 35px rgba(59, 130, 246, 0.3)',
+    teal: '0 8px 25px rgba(245, 194, 73, 0.25)',
+    'teal-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
+    purple: '0 8px 25px rgba(245, 194, 73, 0.25)',
+    'purple-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
     gold: '0 8px 25px rgba(245, 194, 73, 0.25)',
     'gold-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
     

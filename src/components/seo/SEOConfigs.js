@@ -3,7 +3,7 @@ export const SEOConfigs = {
   home: {
     title: 'ParkPro – Travel Agent Itinerary Software for Disney & Beyond',
     description:
-      'ParkPro is itinerary and workflow software built for travel agents. Create destination-specific itineraries in minutes, starting with Disney. Save 5–10+ hours per client and deliver premium, branded trip plans your clients love.',
+      'ParkPro is itinerary software for Disney-specialist travel agents. Turn 8 hours of manual planning into 15 minutes. Deliver premium, branded trip plans your clients love.',
     keywords:
       'travel agent itinerary software, travel agent itinerary tool, Disney travel agent software, Disney itinerary builder, Disney planning software, itinerary software for travel agencies, travel agent workflow tools, travel agency software, ParkPro, Park Pro, ParkPro Itineraries, travel agent productivity tools',
     url: '/'
@@ -39,7 +39,7 @@ export const SEOConfigs = {
   'solo-agents': {
     title: 'Solo Travel Agents – ParkPro for Independent Disney Specialists',
     description:
-      'ParkPro helps solo Disney travel agents save 5–10+ hours per client. Go from intake form to structured itinerary in minutes, so you can spend more time selling and serving clients instead of building plans from scratch.',
+      'ParkPro takes solo Disney travel agents from 8 hours to 15 minutes per itinerary. Go from intake form to structured day-by-day plan in 15 minutes, so you can spend your time selling and serving clients instead of building from scratch.',
     keywords:
       'solo travel agent software, independent travel agent itinerary tool, Disney specialist travel agent, solo Disney travel agent tools, travel agent automation, Disney itinerary builder for solo agents',
     url: '/solutions/solo-agents'
@@ -75,7 +75,7 @@ export const SEOConfigs = {
   'request-access': {
     title: 'Book a Demo – See ParkPro in Action',
     description:
-      'Book a personalized ParkPro demo. See how travel agents save 5–10+ hours per Disney client with automated itinerary generation.',
+      'Book a personalized ParkPro demo. See how travel agents go from 8 hours to 15 minutes per Disney itinerary with automated itinerary generation.',
     keywords:
       'demo, book a demo, ParkPro demo, travel agent software demo',
     url: '/request-access'
@@ -102,7 +102,7 @@ export const SEOConfigs = {
   'travel-agent-itinerary-software': {
     title: 'Travel Agent Itinerary Software – ParkPro',
     description:
-      'ParkPro is the leading travel agent itinerary software built for Disney and destination planning. Create professional, day-by-day itineraries in minutes instead of hours. Save 5–10+ hours per client with automated itinerary generation.',
+      'ParkPro is travel agent itinerary software built for Disney planning. Turn 8 hours of manual itinerary work into 15 minutes with automated, day-by-day generation.',
     keywords:
       'travel agent itinerary software, itinerary software for travel agents, travel agent itinerary tool, Disney itinerary software, automated itinerary builder, travel agent planning software, itinerary generation software, travel agent productivity tools',
     url: '/travel-agent-itinerary-software'

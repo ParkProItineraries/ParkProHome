@@ -282,7 +282,7 @@ const FeatureCard = styled(motion.div)`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-    border-color: rgba(59, 130, 246, 0.3);
+    border-color: rgba(245, 194, 73, 0.3);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -294,7 +294,7 @@ const FeatureIcon = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;

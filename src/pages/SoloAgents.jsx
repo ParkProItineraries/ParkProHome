@@ -67,7 +67,7 @@ const HeroContent = styled.div`
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(245, 194, 73, 0.1);
   color: ${({ theme }) => theme.colors.teal};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -77,7 +77,7 @@ const HeroBadge = styled(motion.div)`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.xs};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(245, 194, 73, 0.3);
 `;
 
 const HeroTitle = styled(motion.h1)`
@@ -288,7 +288,7 @@ const FeatureCard = styled(motion.div)`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border-color: rgba(59, 130, 246, 0.3);
+    border-color: rgba(245, 194, 73, 0.3);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -300,7 +300,7 @@ const FeatureIcon = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -369,7 +369,7 @@ const CTASubtitle = styled(motion.p)`
 
 const SoloAgents = () => {
   const beforeItems = [
-    "8–12 hours researching and building each Disney itinerary",
+    "8 hours researching and building each Disney itinerary",
     "Scattered notes across spreadsheets, emails, and documents",
     "Starting from scratch every time — even for similar trips",
     "Turning down bookings because you're already maxed out",
@@ -377,7 +377,7 @@ const SoloAgents = () => {
   ];
 
   const afterItems = [
-    "Complete itineraries generated in 15–30 minutes",
+    "Complete itineraries generated in 15 minutes",
     "One workspace for every client, trip, and itinerary",
     "Reusable patterns that get faster with every booking",
     "Capacity to take on more clients without more hours",

@@ -64,7 +64,7 @@ const SectionLabel = styled(motion.p).withConfig({
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #3B82F6;
+  color: #F5C249;
   margin-bottom: 12px;
   text-align: center;
 `;
@@ -123,7 +123,7 @@ const Card = styled(motion(Link)).withConfig({
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border-color: #3B82F6;
+    border-color: #F5C249;
   }
 `;
 
@@ -149,7 +149,7 @@ const CardLink = styled.span`
   gap: 6px;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #3B82F6;
+  color: #F5C249;
 `;
 
 const RelatedPages = ({ currentSlug }) => {

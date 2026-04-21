@@ -197,7 +197,7 @@ const FloatingElement = styled(motion.div).withConfig({
 
 const Hero = () => {
   const stats = [
-    { number: "5–10+", label: "Hours Saved Per Client" },
+    { number: "8 hrs → 15 min", label: "Per Itinerary" },
     { number: "10,000+", label: "Itineraries Created" },
     { number: "98%", label: "Client Satisfaction" }
   ];

@@ -77,7 +77,7 @@ const HeroSection = styled.section`
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(59, 130, 246, 0.15);
+  background: rgba(245, 194, 73, 0.15);
   color: #3b82f6;
   font-size: 13px;
   font-weight: 600;
@@ -87,7 +87,7 @@ const HeroBadge = styled(motion.div)`
   margin-bottom: 24px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  border: 1px solid rgba(245, 194, 73, 0.25);
 `;
 
 const HeroTitle = styled(motion.h1)`
@@ -260,7 +260,7 @@ const FeatureCardElement = styled.div`
 `;
 
 const FeatureBadge = styled.div`
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(245, 194, 73, 0.1);
   color: #3b82f6;
   font-size: 12px;
   font-weight: 600;
@@ -277,7 +277,7 @@ const FeatureIconWrapper = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -670,7 +670,7 @@ const Features = () => {
           description:
             "Turn a detailed Disney trip intake into a clean, day-by-day itinerary in minutes. ParkPro applies proven park-flow rules, park-hopper logic, and your client's must-dos so you stop rebuilding the same trip from scratch and finally feel in control of your planning workflow.",
           outcomes: [
-            "Save 5–10+ hours of manual planning per Disney trip",
+            "Cut Disney itinerary work from 8 hours to 15 minutes",
             'Go from intake to "good first draft" in minutes, not days',
             "Keep control of the plan while ParkPro does the heavy lifting",
           ],
@@ -795,10 +795,10 @@ const Features = () => {
   const metrics = [
     {
       icon: Clock,
-      number: "5–10+ hrs",
-      label: "Plan trips 5–10 hours faster — without cutting quality",
+      number: "8 hrs → 15 min",
+      label: "Per itinerary — without cutting quality",
       description:
-        "Stop rebuilding day-by-day Disney plans from scratch. ParkPro gives you a working itinerary in minutes so you can spend your time refining, not starting over.",
+        "Stop rebuilding day-by-day Disney plans from scratch. ParkPro gives you a working itinerary in 15 minutes so you can spend your time refining, not starting over.",
     },
     {
       icon: TrendingUp,

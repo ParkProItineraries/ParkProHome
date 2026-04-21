@@ -25,7 +25,7 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.5;
   }
 
@@ -36,7 +36,7 @@ const HeroSection = styled.section`
     right: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(245, 194, 73, 0.05) 0%, transparent 70%);
     animation: float 20s ease-in-out infinite;
   }
 
@@ -60,7 +60,7 @@ const HeroContent = styled.div`
 const Badge = styled(motion.div).withConfig({
   shouldForwardProp: (prop) => !['initial', 'animate', 'transition', 'exit'].includes(prop)
 })`
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(245, 194, 73, 0.1);
   color: ${({ theme }) => theme.colors.teal};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -71,7 +71,7 @@ const Badge = styled(motion.div).withConfig({
   gap: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(245, 194, 73, 0.3);
 
   svg {
     font-size: ${({ theme }) => theme.typography.sizes.base};
@@ -202,10 +202,10 @@ const FloatingElement = styled(motion.div).withConfig({
   position: absolute;
   width: 60px;
   height: 60px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   border-radius: 50%;
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(245, 194, 73, 0.15);
 `;
 
 const Hero = () => {

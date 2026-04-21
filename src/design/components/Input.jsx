@@ -88,7 +88,7 @@ const StyledInput = styled(motion.input).withConfig({
           
           &:focus {
             border-color: ${designTokens.colors.teal};
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(245, 194, 73, 0.1);
           }
         `;
         

@@ -19,28 +19,30 @@ export const theme = {
     focus: '#FFD870',
     active: '#E9B029',
     
-    // Primary Accent - Blue (main accent color, matches ParkProUI)
-    blue: '#3B82F6',
-    'blue-light': '#60A5FA',
-    'blue-dark': '#2563EB',
-    'blue-muted': 'rgba(59, 130, 246, 0.1)',
+    // Primary Accent - Gold (marketing site uses gold as the single accent)
+    // NOTE: ParkProUI (the product) still uses blue. The marketing site intentionally
+    // diverges to keep the premium brand distinct from the in-product UI chrome.
+    blue: '#F5C249',
+    'blue-light': '#F8D86B',
+    'blue-dark': '#E9B029',
+    'blue-muted': 'rgba(245, 194, 73, 0.1)',
 
-    // Legacy alias
-    teal: '#3B82F6',
-    'teal-light': '#60A5FA',
-    'teal-dark': '#2563EB',
-    'teal-muted': 'rgba(59, 130, 246, 0.1)',
+    // Legacy alias — points to gold
+    teal: '#F5C249',
+    'teal-light': '#F8D86B',
+    'teal-dark': '#E9B029',
+    'teal-muted': 'rgba(245, 194, 73, 0.1)',
     
-    // Legacy alias - Purple (mapped to blue)
-    purple: '#3B82F6',
-    'purple-light': '#60A5FA',
-    'purple-dark': '#2563EB',
-    'purple-muted': 'rgba(59, 130, 246, 0.1)',
+    // Legacy alias - Purple — points to gold
+    purple: '#F5C249',
+    'purple-light': '#F8D86B',
+    'purple-dark': '#E9B029',
+    'purple-muted': 'rgba(245, 194, 73, 0.1)',
     
-    // Accent Colors (legacy compatibility)
-    accent: '#3B82F6',            // Blue - Primary accent
-    'accent-dark': '#2563EB',     // Darker blue
-    'accent-light': '#60A5FA',    // Lighter blue
+    // Accent Colors (legacy compatibility) — points to gold
+    accent: '#F5C249',
+    'accent-dark': '#E9B029',
+    'accent-light': '#F8D86B',
     
     // Gray Scale (Matches ParkProUI)
     'gray-50': '#F9FAFB',
@@ -62,7 +64,7 @@ export const theme = {
     overlay: 'rgba(0,0,0,0.6)',
     green: '#10B981',
     red: '#EF4444',
-    blue: '#3B82F6',
+    blue: '#F5C249',
     
     // Midnight Backgrounds
     backgroundDark: '#0A0A0F',    // Hero/section backgrounds
@@ -154,15 +156,15 @@ export const theme = {
     xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
     '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     // Premium Brand Shadows
-    teal: '0 8px 25px rgba(59, 130, 246, 0.25)',
-    'teal-lg': '0 12px 35px rgba(59, 130, 246, 0.3)',
-    purple: '0 8px 25px rgba(59, 130, 246, 0.25)',
-    'purple-lg': '0 12px 35px rgba(59, 130, 246, 0.3)',
-    gold: '0 8px 25px rgba(245, 194, 73, 0.25)',      // Gold glow (used sparingly)
-    'gold-lg': '0 12px 35px rgba(245, 194, 73, 0.3)', // Large gold glow
-    shadowGlow: '0 0 16px rgba(59, 130, 246, 0.35)', // Premium blue glow
-    primary: '0 8px 25px rgba(59, 130, 246, 0.25)',   // Blue shadow (primary)
-    'primary-lg': '0 12px 35px rgba(59, 130, 246, 0.3)', // Large blue shadow
+    teal: '0 8px 25px rgba(245, 194, 73, 0.25)',
+    'teal-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
+    purple: '0 8px 25px rgba(245, 194, 73, 0.25)',
+    'purple-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
+    gold: '0 8px 25px rgba(245, 194, 73, 0.25)',
+    'gold-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
+    shadowGlow: '0 0 16px rgba(245, 194, 73, 0.35)',
+    primary: '0 8px 25px rgba(245, 194, 73, 0.25)',
+    'primary-lg': '0 12px 35px rgba(245, 194, 73, 0.3)',
   },
   
   containerWidths: {

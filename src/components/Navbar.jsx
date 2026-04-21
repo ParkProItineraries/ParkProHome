@@ -177,7 +177,7 @@ const DropdownItem = styled(Link)`
   text-decoration: none;
   font-weight: ${({ theme }) => theme.typography.weights.medium};
   transition: ${({ theme }) => theme.transitions.fast};
-  background: ${({ $isActive }) => $isActive ? 'rgba(59, 130, 246, 0.1)' : 'transparent'};
+  background: ${({ $isActive }) => $isActive ? 'rgba(245, 194, 73, 0.1)' : 'transparent'};
   min-height: 40px;
 
   &:hover {
@@ -227,7 +227,7 @@ const ActiveDot = styled.span`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #3B82F6;
+  background: #F5C249;
   flex-shrink: 0;
 `;
 
@@ -235,7 +235,7 @@ const DropdownDemoButton = styled(Link)`
   display: block;
   margin: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-  background: #3B82F6;
+  background: #F5C249;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -245,7 +245,7 @@ const DropdownDemoButton = styled(Link)`
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    background: #2563EB;
+    background: #E9B029;
   }
 
   &:focus-visible {
@@ -329,7 +329,7 @@ const MobileNavLink = styled(Link)`
   border-radius: ${({ theme }) => theme.radius.md};
   transition: ${({ theme }) => theme.transitions.normal};
   border-left: 3px solid ${({ $isActive }) =>
-    $isActive ? '#3B82F6' : 'transparent'};
+    $isActive ? '#F5C249' : 'transparent'};
   min-height: 48px;
   display: flex;
   align-items: center;
@@ -373,7 +373,7 @@ const MobileDemoButton = styled(Link)`
   display: block;
   margin: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
   padding: ${({ theme }) => theme.spacing.md};
-  background: #3B82F6;
+  background: #F5C249;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -386,7 +386,7 @@ const MobileDemoButton = styled(Link)`
   justify-content: center;
 
   &:hover {
-    background: #2563EB;
+    background: #E9B029;
   }
 
   &:focus-visible {

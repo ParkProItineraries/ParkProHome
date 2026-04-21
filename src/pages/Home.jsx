@@ -47,26 +47,36 @@ const HomeWrapper = styled.div`
    HERO — Dark, keeps current premium feel
    ============================================================ */
 const HeroSection = styled.section`
-  min-height: 75vh;
+  min-height: 78vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: ${({ theme }) => theme.spacing['3xl']} 0 ${({ theme }) => theme.spacing.xl};
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.black} 0%,
-    ${({ theme }) => theme.colors['gray-900']} 100%
-  );
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(245, 194, 73, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(245, 194, 73, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, #0B0B0C 0%, #050506 100%);
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
+    background:
+      url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5C249' fill-opacity='0.025'%3E%3Ccircle cx='60' cy='60' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 85%, rgba(0, 0, 0, 0.3) 100%);
+    pointer-events: none;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -85,8 +95,8 @@ const HeroContent = styled.div`
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(59, 130, 246, 0.1);
-  color: #3B82F6;
+  background: rgba(245, 194, 73, 0.12);
+  color: #F5C249;
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
@@ -95,7 +105,7 @@ const HeroBadge = styled(motion.div)`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  border: 1px solid rgba(245, 194, 73, 0.3);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.sizes.xs};
@@ -104,16 +114,17 @@ const HeroBadge = styled(motion.div)`
 `;
 
 const HeroTitle = styled(motion.h1)`
-  font-size: ${({ theme }) => theme.typography.sizes['6xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['7xl']};
   font-weight: ${({ theme }) => theme.typography.weights.extrabold};
   color: ${({ theme }) => theme.colors.white};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
-  line-height: 1.1;
+  line-height: 1.05;
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  letter-spacing: -0.025em;
+  letter-spacing: -0.035em;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes['4xl']};
+    letter-spacing: -0.025em;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.sizes['3xl']};
@@ -204,7 +215,7 @@ const SectionLabel = styled(motion.span)`
   display: inline-block;
   font-size: 13px;
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
-  color: #3B82F6;
+  color: #F5C249;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: ${({ theme }) => theme.spacing.md};
@@ -275,11 +286,11 @@ const FeatureIcon = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #3B82F6;
+  color: #F5C249;
   margin-bottom: 20px;
 
   svg { width: 22px; height: 22px; }
@@ -313,11 +324,11 @@ const StepsGrid = styled.div`
   &::before {
     content: '';
     position: absolute;
-    top: 40px;
+    top: 36px;
     left: 16%;
     right: 16%;
-    height: 2px;
-    background: ${({ theme }) => theme.colors['gray-200']};
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(245, 194, 73, 0.25) 20%, rgba(245, 194, 73, 0.25) 80%, transparent 100%);
     z-index: 0;
   }
 
@@ -335,23 +346,35 @@ const StepCard = styled(motion.div)`
 `;
 
 const StepNumber = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: #3B82F6;
-  color: white;
-  font-size: ${({ theme }) => theme.typography.sizes['2xl']};
+  background: transparent;
+  border: 1.5px solid rgba(245, 194, 73, 0.35);
+  color: #F5C249;
+  font-size: ${({ theme }) => theme.typography.sizes['3xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   font-family: ${({ theme }) => theme.typography.fontHeading};
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 24px;
+  letter-spacing: -0.02em;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 194, 73, 0.12);
+    pointer-events: none;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 64px;
-    height: 64px;
-    font-size: ${({ theme }) => theme.typography.sizes.xl};
+    width: 60px;
+    height: 60px;
+    font-size: ${({ theme }) => theme.typography.sizes['2xl']};
   }
 `;
 
@@ -395,8 +418,8 @@ const DiffCard = styled(motion.div)`
   transition: ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    border-color: #3B82F6;
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+    border-color: #F5C249;
+    box-shadow: 0 4px 16px rgba(245, 194, 73, 0.12);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -408,11 +431,11 @@ const DiffIcon = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #3B82F6;
+  color: #F5C249;
   flex-shrink: 0;
 
   svg { width: 24px; height: 24px; }
@@ -455,15 +478,20 @@ const CTASection = styled.section`
 `;
 
 const CTATitle = styled(motion.h2)`
-  font-size: ${({ theme }) => theme.typography.sizes['5xl']};
+  font-size: ${({ theme }) => theme.typography.sizes['6xl']};
   font-weight: ${({ theme }) => theme.typography.weights.bold};
   color: white;
   margin-bottom: ${({ theme }) => theme.spacing.md};
   font-family: ${({ theme }) => theme.typography.fontHeading};
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.sizes['3xl']};
+    letter-spacing: -0.02em;
   }
 `;
 
@@ -510,7 +538,7 @@ const Home = () => {
       icon: <TrendingUp />,
       title: "Make your commission feel worth the work",
       description:
-        "Compress 5-10+ hours of park and resort planning into minutes so the time you invest finally matches the commission you earn on each trip.",
+        "Cut Disney itinerary work from 8 hours to 15 minutes so the time you invest finally matches the commission you earn on each trip.",
     },
     {
       icon: <Users />,
@@ -643,34 +671,34 @@ const Home = () => {
           <Container>
             <HeroContent>
               <HeroBadge
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                initial={{ opacity: 0, y: 12, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
               >
                 <Star size={16} />
                 {copy.hero.badge}
               </HeroBadge>
 
               <HeroTitle
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15 }}
+                transition={{ duration: 0.45, delay: 0.08, ease: [0.2, 0.8, 0.2, 1] }}
               >
                 {copy.hero.h1}
               </HeroTitle>
 
               <HeroSubtitle
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.45, delay: 0.16, ease: [0.2, 0.8, 0.2, 1] }}
               >
                 {copy.hero.sub}
               </HeroSubtitle>
 
               <HeroCTAs
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
+                transition={{ duration: 0.45, delay: 0.24, ease: [0.2, 0.8, 0.2, 1] }}
               >
                 <Button to="/demo" variant="primary" size="lg">
                   {copy.ctas.start} <ArrowRight size={18} />
@@ -681,9 +709,9 @@ const Home = () => {
               </HeroCTAs>
 
               <StatsRow
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.45, delay: 0.32, ease: [0.2, 0.8, 0.2, 1] }}
               >
                 {stats.map((s, i) => (
                   <StatPill key={i}>
@@ -717,10 +745,10 @@ const Home = () => {
               {features.map((f, i) => (
                 <FeatureCard
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+                  viewport={{ once: true, margin: "-80px" }}
                 >
                   <FeatureIcon>{f.icon}</FeatureIcon>
                   <FeatureTitle>{f.title}</FeatureTitle>
@@ -748,10 +776,10 @@ const Home = () => {
               {howItWorks.map((step, i) => (
                 <StepCard
                   key={step.step}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+                  viewport={{ once: true, margin: "-80px" }}
                 >
                   <StepNumber>{step.step}</StepNumber>
                   <StepTitle>{step.title}</StepTitle>
@@ -780,10 +808,10 @@ const Home = () => {
               {differentiators.map((d, i) => (
                 <DiffCard
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+                  viewport={{ once: true, margin: "-80px" }}
                 >
                   <DiffIcon>{d.icon}</DiffIcon>
                   <DiffContent>

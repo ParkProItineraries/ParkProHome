@@ -63,7 +63,7 @@ const HeroContent = styled.div`
 `;
 
 const HeroBadge = styled(motion.div)`
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(245, 194, 73, 0.1);
   color: ${({ theme }) => theme.colors.teal};
   font-size: ${({ theme }) => theme.typography.sizes.sm};
   font-weight: ${({ theme }) => theme.typography.weights.semibold};
@@ -73,7 +73,7 @@ const HeroBadge = styled(motion.div)`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.xs};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(245, 194, 73, 0.3);
 `;
 
 const HeroTitle = styled(motion.h1)`
@@ -253,7 +253,7 @@ const FeatureIcon = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -350,8 +350,8 @@ const CTASubtitle = styled(motion.p)`
 const Agencies = () => {
   const impactMetrics = [
     {
-      number: "5–10+ hrs",
-      label: "Saved per agent per client",
+      number: "8 hrs → 15 min",
+      label: "Per agent, per itinerary",
       context: "Multiply that across your entire team and every active booking.",
     },
     {

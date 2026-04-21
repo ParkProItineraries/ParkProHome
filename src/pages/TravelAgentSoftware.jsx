@@ -136,7 +136,7 @@ const DemoButton = styled(Button)`
 const SectionLabel = styled.div`
   font-size: 13px;
   font-weight: 600;
-  color: #3B82F6;
+  color: #F5C249;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
@@ -224,11 +224,11 @@ const IconWrapper = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(245, 194, 73, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #3B82F6;
+  color: #F5C249;
   margin-bottom: 20px;
   flex-shrink: 0;
 `;
@@ -294,7 +294,7 @@ const StepCard = styled(motion.div).withConfig({
 
   &:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-color: #3B82F6;
+    border-color: #F5C249;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -309,8 +309,8 @@ const StepNumber = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.1);
-  color: #3B82F6;
+  background: rgba(245, 194, 73, 0.1);
+  color: #F5C249;
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 16px;
@@ -515,7 +515,7 @@ const TravelAgentSoftware = () => {
   const audiences = [
     {
       heading: "Solo Travel Agents",
-      description: "Save 5–10+ hours per client and take on more bookings without burning out."
+      description: "Cut Disney itinerary work from 8 hours to 15 minutes and take on more bookings without burning out."
     },
     {
       heading: "Travel Agencies",
@@ -546,7 +546,7 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             ParkPro automates Disney itinerary generation and trip management for Travel Agents.
-            Save 5–10+ hours per client and deliver professional, branded itineraries in minutes.
+            Go from 8 hours to 15 minutes per itinerary and deliver professional, branded plans your clients love.
           </HeroSubtitle>
 
           <HeroCTA
@@ -732,7 +732,7 @@ const TravelAgentSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            See how ParkPro saves you 5–10+ hours per client. Book a personalized demo and we'll walk you through the full workflow.
+            See how ParkPro takes your Disney itinerary work from 8 hours to 15 minutes. Book a personalized demo and we'll walk you through the full workflow.
           </FinalCTASubtitle>
 
           <FinalCTAButton

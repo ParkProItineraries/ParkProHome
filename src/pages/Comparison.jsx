@@ -1175,9 +1175,9 @@ const Comparison = () => {
               <StatIcon>
                 <Clock size={28} />
               </StatIcon>
-              <StatNumber>Save 5–10+ hours</StatNumber>
+              <StatNumber>8 hrs → 15 min</StatNumber>
               <StatLabel>
-                Planning time saved per trip when you stop rebuilding everything
+                Planning time per itinerary when you stop rebuilding everything
                 in docs.
               </StatLabel>
             </StatCard>

@@ -102,7 +102,7 @@ const SectionLabel = styled.div`
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #3B82F6;
+  color: #F5C249;
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
@@ -200,7 +200,7 @@ const ProcessCard = styled(motion.div).withConfig({
 const ProcessNumber = styled.div`
   font-size: 48px;
   font-weight: 700;
-  color: #3B82F6;
+  color: #F5C249;
   margin-bottom: ${({ theme }) => theme.spacing.lg};
   line-height: 1;
 `;
@@ -258,8 +258,8 @@ const FeatureIconWrapper = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: rgba(59, 130, 246, 0.08);
-  color: #3B82F6;
+  background: rgba(245, 194, 73, 0.08);
+  color: #F5C249;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -315,9 +315,9 @@ const ComparisonCard = styled.div`
   transition: all 0.3s ease;
 
   ${({ $highlight, theme }) => $highlight && `
-    border-color: #3B82F6;
+    border-color: #F5C249;
     border-width: 2px;
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 20px 40px rgba(245, 194, 73, 0.15);
   `}
 
   &:hover {
@@ -450,7 +450,7 @@ const DisneyPlanningSoftware = () => {
   const features = [
     {
       icon: <Clock size={20} />,
-      title: "15–60 Minutes to Build an Itinerary",
+      title: "15 Minutes to Build an Itinerary",
       description: "From intake to final output, ParkPro dramatically cuts planning time compared to manual spreadsheet work."
     },
     {
@@ -461,7 +461,7 @@ const DisneyPlanningSoftware = () => {
     {
       icon: <BarChart3 size={20} />,
       title: "Scale Your Business",
-      description: "Handle more clients without scaling your team. Reclaim 5–10+ hours per itinerary and focus on upsells and relationship building."
+      description: "Handle more clients without scaling your team. Cut itinerary work from 8 hours to 15 minutes and focus on upsells and relationship building."
     },
     {
       icon: <AlertCircle size={20} />,
@@ -484,7 +484,7 @@ const DisneyPlanningSoftware = () => {
       title: "ParkPro",
       highlight: true,
       items: [
-        { icon: <CheckCircle2 size={16} />, text: "15–60 minutes per itinerary" },
+        { icon: <CheckCircle2 size={16} />, text: "15 minutes per itinerary" },
         { icon: <CheckCircle2 size={16} />, text: "Structured, professional output" },
         { icon: <CheckCircle2 size={16} />, text: "Consistent logic across all trips" },
         { icon: <CheckCircle2 size={16} />, text: "Built for Travel Agents at scale" }
@@ -582,7 +582,7 @@ const DisneyPlanningSoftware = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            For Travel Agents, this means reclaiming 5–10+ hours per client, delivering professional outputs that impress, and scaling your business without hiring. ParkPro's rule-based engine applies proven logic: park hours, attraction sequences, dining timing, and reservation management—no guessing, no fabricated data, no AI hallucinations. Just reliable, enterprise-grade tools built for professionals.
+            For Travel Agents, this means collapsing Disney planning from 8 hours to 15 minutes, delivering professional outputs that impress, and scaling your business without hiring. ParkPro's rule-based engine applies proven logic: park hours, attraction sequences, dining timing, and reservation management—no guessing, no fabricated data, no AI hallucinations. Just reliable, enterprise-grade tools built for professionals.
           </EducationalText>
         </Container>
       </EducationalSection>

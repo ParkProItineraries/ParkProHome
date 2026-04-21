@@ -88,14 +88,14 @@ const Stats = () => {
   const stats = [
     {
       icon: <RiTimeLine />,
-      number: "Minutes",
+      number: "15 min",
       label: "To Build an Itinerary",
-      description: "What used to take 8–12 hours now takes minutes. Focus on clients, not spreadsheets."
+      description: "What used to take 8 hours now takes 15 minutes. Focus on clients, not spreadsheets."
     },
     {
       icon: <RiTimeLine />,
-      number: "5–10+ hrs",
-      label: "Saved Per Client"
+      number: "8 hrs → 15 min",
+      label: "Per Itinerary"
     },
     {
       icon: <RiStarLine />,
