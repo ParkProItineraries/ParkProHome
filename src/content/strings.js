@@ -177,7 +177,7 @@ export const copy = {
       guarantee: "14-day money-back guarantee on all plans.",
       taxNote: "Prices exclude applicable sales tax or VAT, calculated at checkout.",
       title: "ParkPro Pricing | Disney Planning Software from $97/agent/month",
-      description: "Flexible per-agent pricing for Disney planning automation. Plans start at $97/agent/mo for 5 itineraries. Save 5–10+ hours per client. 14-day money-back guarantee."
+      description: "Flexible per-agent pricing for Disney planning automation. Plans start at $97/agent/mo for 5 itineraries. Take Disney itinerary work from 8 hours to 15 minutes. 14-day money-back guarantee."
     },
 
     features: {
@@ -191,14 +191,14 @@ export const copy = {
       h1: "Run your agency on one platform.",
       sub: "Multiply your team's capacity. If each agent collapses Disney planning from 8 hours to 15 minutes, your agency handles more bookings without hiring extra staff. Replace spreadsheets and scattered tools with a single workspace for planners, leads, and reporting.",
       title: "For Agencies | Team Management & Collaboration Tools",
-      description: "Multi-agent features, shared workspace, branding, and team management. Each agent saves 5–10+ hours per client. Scale your Disney planning agency."
+      description: "Multi-agent features, shared workspace, branding, and team management. Each agent collapses Disney planning from 8 hours to 15 minutes. Scale your Disney planning agency."
     },
 
     solo: {
       h1: "Spend time with clients—not spreadsheets.",
       sub: "Collapse Disney itinerary work from 8 hours to 15 minutes, so you serve more families without burning out. No templates to build, no spreadsheets to maintain.",
       title: "For Solo Agents | Disney Planning Software",
-      description: "Perfect for independent travel agents. Save 5–10+ hours per client and take on more bookings without burning out."
+      description: "Perfect for independent travel agents. Cut Disney itinerary work from 8 hours to 15 minutes and take on more bookings without burning out."
     },
 
     enterprise: {
