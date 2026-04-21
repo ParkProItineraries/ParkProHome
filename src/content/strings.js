@@ -37,12 +37,12 @@ export const copy = {
 
   // Hero Section
   hero: {
-    h1: "Plan Magical Disney Trips in a Fraction of the Time.",
-    sub: "Most travel agents believe long hours are just part of creating great itineraries. The truth? It only feels that way because the process is outdated — not you. ParkPro gives professional travel agents a destination-smart system that turns intake forms into clean, concierge-level daily plans in minutes.",
+    h1: "Disney itineraries, built in 15 minutes instead of 8 hours.",
+    sub: "ParkPro turns your client intake forms into structured, day-by-day Disney itineraries in minutes — so you stop rebuilding every trip from scratch and start running your business like the professional you are.",
     ctaPrimary: "Get a demo",
     ctaSecondary: "See pricing",
     proof: "Built for destination-focused travel agents to save hours per client.",
-    badge: "Built For Destination-Focused Travel Agents"
+    badge: "Built For Disney-Specialist Travel Agents"
   },
 
   // Main Value Propositions
@@ -51,7 +51,7 @@ export const copy = {
       h2: "Itineraries that sell the trip.",
       sub: "Clean day-by-day plans with current wait times, dining recs, and a client-facing app your travelers actually use.",
       benefits: [
-        "5-30 minute creation time vs. 8-12 hours manual",
+        "15 minute creation time vs. 8 hours manual",
         "Current wait times and park hours",
         "Dining recommendations and show schedules",
         "Mobile-friendly client portal for in-park use",
@@ -92,14 +92,14 @@ export const copy = {
       ]
     },
     timeSavings: {
-      h2: "Save 5–10+ hours per client.",
-      sub: "What used to take 8–12 hours now takes 15–60 minutes. Free up time to serve more families without burning out.",
-      stat1: "5–10+ hrs",
-      stat1Label: "Saved Per Client",
-      stat2: "Minutes",
-      stat2Label: "To Build an Itinerary",
-      stat3: "1",
-      stat3Label: "Platform for Everything"
+      h2: "From 8 hours to 15 minutes.",
+      sub: "What used to consume an entire planning day takes 15 minutes in ParkPro. Serve more clients without burning out.",
+      stat1: "8 hrs → 15 min",
+      stat1Label: "Per Itinerary",
+      stat2: "Every Trip",
+      stat2Label: "One Workspace",
+      stat3: "Zero",
+      stat3Label: "Spreadsheets"
     },
     trust: {
       h2: "Built for scale, security, and support.",
@@ -164,14 +164,14 @@ export const copy = {
   // Page-Specific Copy
   pages: {
     home: {
-      title: "ParkPro | Disney Itinerary Software for Travel Agents | Save 5–10+ Hours Per Client",
-      description: "ParkPro is Disney planning software for travel agents that turns 8–12 hours of manual work into a 15–30 minute workflow. Build premium Disney itineraries, keep trip details in one place, and serve more clients without burning out.",
-      keywords: "Disney planning software, travel agent software, automated Disney itineraries, Disney World planning, itinerary builder, save hours Disney planning"
+      title: "ParkPro | Disney Itinerary Software for Travel Agents | 8 Hours to 15 Minutes",
+      description: "ParkPro turns 8 hours of manual Disney planning into a 15-minute workflow. Built for Disney-specialist travel agents. Structured itineraries, client workspace, and a planning system that scales with your agency.",
+      keywords: "Disney planning software, travel agent software, automated Disney itineraries, Disney World planning, itinerary builder, Disney travel agent"
     },
     
     pricing: {
       h1: "Simple, transparent pricing",
-      sub: "Every plan is designed around one promise: help you save 5–10+ hours per Disney client. Start with the plan that fits your current bookings and scale up as your agency grows.",
+      sub: "Every plan is designed around one promise: take your Disney itinerary work from 8 hours to 15 minutes. Start with the plan that fits your current bookings and scale up as your agency grows.",
       faqIntro: "Common questions about pricing",
       bottomCta: "Still comparing tools? Book a 15-minute walkthrough.",
       guarantee: "14-day money-back guarantee on all plans.",
@@ -189,14 +189,14 @@ export const copy = {
 
     agencies: {
       h1: "Run your agency on one platform.",
-      sub: "Multiply your team's capacity. If each agent saves 5–10+ hours per client, your agency can handle more bookings without hiring extra staff. Replace spreadsheets and scattered tools with a single workspace for planners, leads, and reporting.",
+      sub: "Multiply your team's capacity. If each agent collapses Disney planning from 8 hours to 15 minutes, your agency handles more bookings without hiring extra staff. Replace spreadsheets and scattered tools with a single workspace for planners, leads, and reporting.",
       title: "For Agencies | Team Management & Collaboration Tools",
       description: "Multi-agent features, shared workspace, branding, and team management. Each agent saves 5–10+ hours per client. Scale your Disney planning agency."
     },
 
     solo: {
       h1: "Spend time with clients—not spreadsheets.",
-      sub: "Free up 5–10+ hours per client so you can serve more families without burning out. Build polished itineraries in 15–60 minutes instead of spending entire days on manual planning.",
+      sub: "Collapse Disney itinerary work from 8 hours to 15 minutes, so you serve more families without burning out. No templates to build, no spreadsheets to maintain.",
       title: "For Solo Agents | Disney Planning Software",
       description: "Perfect for independent travel agents. Save 5–10+ hours per client and take on more bookings without burning out."
     },
@@ -240,9 +240,9 @@ export const copy = {
       calculatorSub: "Enter your numbers to see your personalized ROI",
       painPointsH2: "The real pain points of manual planning",
       painPointsSub: "And how ParkPro solves each one",
-      bottomCta: "Ready to stop wasting 10+ hours per client?",
+      bottomCta: "Ready to stop burning 8 hours per Disney itinerary?",
       title: "ParkPro vs Manual Disney Planning | Save 10+ Hours Per Client",
-      description: "Manual Disney planning takes 8-12 hours. ParkPro does it in 15 minutes. See the comparison and calculate your savings."
+      description: "Manual Disney planning takes 8 hours. ParkPro does it in 15 minutes. See the comparison and calculate your savings."
     },
 
     demo: {

@@ -312,7 +312,7 @@ const Solutions = () => {
       icon: <Users size={32} />,
       title: "For Solo Travel Agents",
       description:
-        "Built for solo, Disney-focused travel agents who want itineraries done in minutes instead of late-night marathons, without sacrificing the magic or the details.",
+        "Built for solo, Disney-focused travel agents who want itineraries done in minutes instead of late-night marathons, without sacrificing the quality or the details.",
       features: [
         "Turn detailed Disney intake forms into clean, day-by-day itineraries in minutes",
         "A branded client-facing app that makes you look like a premium agency, even if it's just you",

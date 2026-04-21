@@ -2,7 +2,7 @@
 // Enterprise-grade design system for modern, premium UI
 
 export const tokens = {
-  // Premium Brand Colors - Futuristic, Magical, Premium
+  // Premium Brand Colors - Futuristic, Polished, Premium
   colors: {
     // Core Brand
     black: '#0B0B0C',

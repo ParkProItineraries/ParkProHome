@@ -156,7 +156,7 @@ const HomeCTA = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          Join hundreds of travel agents who are already creating magical Disney experiences 
+          Join the travel agents already running their Disney planning on ParkPro 
           for their clients with ParkPro. Start your free trial today!
         </CTASubtitle>
         

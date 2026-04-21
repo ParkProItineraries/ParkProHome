@@ -183,8 +183,8 @@ const TrustBar = ({ variant = 'light', showSocialProof = true }) => {
     },
     {
       icon: <Shield size={20} />,
-      label: "SOC 2 & GDPR",
-      subtext: "Compliant data handling practices"
+      label: "Enterprise-Grade Security",
+      subtext: "Industry-standard data protection practices"
     },
     {
       icon: <CheckCircle size={20} />,

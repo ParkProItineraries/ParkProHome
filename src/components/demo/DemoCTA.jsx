@@ -62,7 +62,7 @@ const DemoCTA = () => {
       >
         <CTASubtitle>
           Join thousands of travel agents who are already using ParkPro to create 
-          magical Disney experiences for their clients. Start your free trial today!
+          polished Disney itineraries for their clients. Start your free trial today!
         </CTASubtitle>
       </motion.div>
       

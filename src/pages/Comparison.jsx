@@ -1047,7 +1047,7 @@ const Comparison = () => {
     {
       icon: <Users size={24} />,
       title: "Solo Disney Travel Agents",
-      body: "You're the one doing it all yourself—and you want Disney and park itineraries done in minutes instead of late-night marathons, without losing the magic or the details.",
+      body: "You're the one doing it all yourself—and you want Disney and park itineraries done in minutes instead of late-night marathons, without losing the details or the polish.",
     },
     {
       icon: <Building2 size={24} />,
@@ -1066,7 +1066,7 @@ const Comparison = () => {
       icon: <Clock size={20} />,
       title: "You spend all day building one itinerary",
       solution:
-        "ParkPro gives you a working Disney or park trip plan in minutes so you can spend your time refining the magic instead of starting from a blank page.",
+        "ParkPro gives you a working Disney or park trip plan in minutes so you can spend your time refining the client-facing details instead of starting from a blank page.",
     },
     {
       icon: <AlertTriangle size={20} />,

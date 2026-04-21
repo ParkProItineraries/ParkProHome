@@ -10,12 +10,12 @@ export const redirectMap = {
   '/terms': '/business/terms-of-service',
   '/privacy': '/business/privacy-policy',
   
-  // SEO redirects
+  // SEO redirects - consolidating thin landing pages to canonical ones
   '/why-parkpro': '/comparison',
-  
-  // Legacy paths (if any are discovered)
-  // Add more as needed
+  '/travel-agent-itinerary-software': '/disney-planning-software',
+  '/disney-travel-agent-software': '/disney-planning-software',
+  '/travel-agent-workflow-software': '/travel-agent-software',
+  '/travel-agency-software': '/travel-agent-software',
 };
 
 export default redirectMap;
-

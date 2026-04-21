@@ -526,7 +526,7 @@ const Demo = () => {
       title: "You refine, personalize, and brand it",
       icon: <Sparkles size={20} />,
       mockupLabel: "Editing interface screenshot",
-      description: "Stay in full control. Swap park days, adjust suggestions, add your own notes and expertise. ParkPro does the heavy lifting — you add the magic your clients pay you for.",
+      description: "Stay in full control. Swap park days, adjust suggestions, add your own notes and expertise. ParkPro does the heavy lifting — you add the expertise your clients pay you for.",
       bullets: [
         "Swap parks or reorder days without starting over",
         "Add your own tips, notes, and reminders",

@@ -215,25 +215,25 @@ const Testimonials = () => {
   const benefits = [
     {
       icon: <Shield size={24} />,
-      title: "Locked-In Pricing",
-      description: "Your founding rate stays the same — even as we add features and raise prices."
+      title: "Lifetime Founding Pricing",
+      description: "Your founding rate is locked permanently. As we add features and raise prices for new customers, you stay at your original tier."
     },
     {
       icon: <Users size={24} />,
-      title: "Direct Access",
-      description: "Work directly with our team. Your feedback shapes the product roadmap."
+      title: "Direct Line to the Team",
+      description: "Your feedback goes directly to the founder. Founding partners shape what ships next — not customer support, not a roadmap portal."
     },
     {
       icon: <Star size={24} />,
-      title: "Priority Support",
-      description: "Founding partners get dedicated onboarding and priority response times."
+      title: "White-Glove Onboarding",
+      description: "A dedicated onboarding session tailored to your agency's current workflow. We migrate your process with you, not a generic checklist."
     }
   ];
 
   const stats = [
-    { number: "5–10+ hrs", label: "Saved Per Client" },
-    { number: "Minutes", label: "To Generate an Itinerary" },
-    { number: "1 Platform", label: "For All Your Disney Planning" }
+    { number: "8 hrs → 15 min", label: "Per Itinerary" },
+    { number: "Every Trip", label: "One Workspace" },
+    { number: "Zero", label: "Spreadsheets" }
   ];
 
   return (
@@ -241,9 +241,9 @@ const Testimonials = () => {
       <Container>
         <SectionHeader>
           <Badge>Now Accepting Partners</Badge>
-          <Title>Be Among Our Founding Partners</Title>
+          <Title>Become a Founding Partner</Title>
           <Subtitle>
-            We're launching ParkPro with a select group of travel agents and agencies. Founding partners get exclusive benefits as we build the future of travel planning together.
+            We're selecting a limited group of Disney-specialist agents to help shape ParkPro before public launch. In exchange for your feedback during the founding period, you get lifetime pricing locked at your founding tier, direct access to the team, and priority support — permanently.
           </Subtitle>
         </SectionHeader>
 

@@ -88,7 +88,7 @@ const DemoFeatures = () => {
     },
     {
       icon: <RiMagicLine size={40} />,
-      title: "Magic Moments",
+      title: "Key Moments",
       description: "Discover hidden gems and insider tips that make your Disney experience truly special."
     },
     {

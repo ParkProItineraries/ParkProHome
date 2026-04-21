@@ -539,9 +539,9 @@ const Home = () => {
   ];
 
   const stats = [
-    { value: "5-10+ hours", label: "Planning time saved per trip" },
-    { value: "Minutes", label: "To build an itinerary" },
-    { value: "1 workspace", label: "For every park & resort itinerary" },
+    { value: "8 hrs → 15 min", label: "Planning time per itinerary" },
+    { value: "Every trip", label: "Built in one workspace" },
+    { value: "Zero", label: "Spreadsheets to maintain" },
   ];
 
   const howItWorks = [
@@ -664,10 +664,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                ParkPro turns client intake forms into structured, day-by-day
-                Disney itineraries in minutes — so you can stop rebuilding
-                every trip from scratch and start running your business like
-                the professional you are.
+                {copy.hero.sub}
               </HeroSubtitle>
 
               <HeroCTAs
@@ -806,11 +803,12 @@ const Home = () => {
         <CTASection>
           <Container>
             <CTATitle {...fadeUp}>
-              Stop planning like it's 2015.
+              See a full Disney itinerary generated live, in under 15 minutes.
             </CTATitle>
             <CTASub {...fadeUp}>
-              See how ParkPro turns hours of manual Disney planning into a
-              repeatable, professional workflow — in a 15-minute demo.
+              Book a walkthrough with our team. We'll build a real itinerary
+              together — start to finish — so you can see exactly how ParkPro
+              would fit into your workflow.
             </CTASub>
             <CTAButtons {...fadeUp}>
               <Button to="/demo" variant="primary" size="lg">
